@@ -1,0 +1,9387 @@
+﻿Questionnaire
+	  
+
+	
+
+  
+
+Page: consent
+<p>You are invited to participate in a survey on national and community affairs conducted by YouGov in conjunction with 50 of the nation's leading universities and research institutes.</p> <p>The goal of this survey is to obtain opinions on current events. You will be asked a number of questions on current events. Your participation is voluntary. You are free not to answer any question or to withdraw from the study at any time. This poll should take approximately 20 minutes to complete.</p> <p>A report of the results of this study will be provided to you upon request. In order to analyze responses to our questionnaire, your answers will be recorded. **No identifying information about you will be made public and any views you express will be kept completely confidential. **</p> <p>Findings from this study will be reported in scholarly journals, at academic seminars, and at research association meetings. The data will be stored at a secured location and retained indefinitely. A benefit from participating in this study is that it may increase awareness of current events.</p> <p>Should you have questions regarding the research project, please contact us <a href="https://yougov.zendesk.com/hc/en-us/requests/new" target="_blank">here</a>.</p>
+CCEStake- required
+	SINGLE CHOICE
+	Do you agree to participate in the study?
+	
+
+pii        False
+chart_layout        1
+varlabel        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes
+	
+
+	2
+	○
+	No
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Exit                     (screenout)                     if CCEStake == 2
+Page: addressqc if pdl.cassdpv.text == "Y" and sourcevar not in [1]
+This survey includes questions about your community and state. According to our records your name and current address is: $name_text $address_text $address2_text
+add_confirm- required
+	SINGLE CHOICE
+	Is the name and address displayed above correct?
+	
+
+pii        False
+chart_layout        1
+varlabel        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes
+	
+
+	2
+	○
+	No
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_inputzip
+inputzip- Show if add_confirm == 2 or not add_confirm/required
+	OPEN INTEGER TEXTBOX
+	So that we can ask you about the news and events in your area, in what zip code do you currently reside?
+	
+
+pii        False
+right        
+prompt        
+dk_text        Don't know
+filter_text        
+cols        5
+topic        
+required_text        Please provide a valid 5-digit zip code
+dk        False
+rows        1
+subtext        
+min        501
+minlength        0
+access        
+width        
+above        
+varlabel        
+description        
+spd_category        
+tags        
+max        99999
+required        HARD
+below        
+maxlength        0
+left        
+Page: demosfront1
+birthyr- Show if not pdl.birthyr or not panman.is_panelist/required
+	OPEN INTEGER TEXTBOX
+	In what year were you born?
+	
+
+pii        False
+right        
+prompt        
+dk_text        Don't know
+filter_text        
+cols        4
+topic        
+required_text        
+dk        False
+rows        1
+subtext        
+min        1900
+minlength        0
+access        
+width        
+above        
+varlabel        Birth Year
+description        
+spd_category        
+tags        used_in_US_Omni_Survey_Template, GV_CA, Globalvars_7, GV_US, GlobalVars_7, scripting_template
+max        2024
+required        HARD
+below        
+maxlength        0
+left        
+gender4- Show if not pdl.gender4 or pdl.gender4.last > months(1)/required
+	SINGLE CHOICE
+	What is your gender?
+	
+
+pii        False
+chart_layout        1
+varlabel        Gender
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Man
+	
+
+	2
+	○
+	Woman
+	
+
+	3
+	○
+	Non-binary
+	Not randomized
+	4
+	○
+	Other (open [gender4_t])
+	Not randomized
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+gender- Show if 0/required
+	SINGLE CHOICE
+	Are you…?
+	
+
+pii        False
+chart_layout        1
+varlabel        Gender
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        check_for_coding, CA_GV_Survey_1, GV_US, used_in_US_Omni_Survey_Template, US_GV_Survey_1, CA_GV_Mini_demographics, Globalvars_7, GV_CA, US_GV_Mini_demographics, Profile_Codebook, scripting_template
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Male
+	
+
+	2
+	○
+	Female
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Exit                     (screenout)                     if int(birthyr) > 2006 or int(birthyr) < 1924
+end module: implicit_module_0
+Module: race_hisp_mod
+Page: demosfront2
+educ- Show if not pdl.educ or not panman.is_panelist/required
+	SINGLE CHOICE
+	What is the highest level of education you have completed?
+	
+
+pii        False
+chart_layout        1
+varlabel        Education
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        core, core codebook, Profile_Codebook_Education, Profile_Codebook, profile_core, GV_US, cbs, Profile_Codebook_Demographics, US_GV_GL_Mini_LocalDemos, US_GV_Survey_1, profile, election2014, check_for_coding, coresampling, Profile_Basic_Info, used_in_US_Omni_Survey_Template, nytimes, core_survey, scripting_template
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Did not graduate from high school
+	
+
+	2
+	○
+	High school graduate
+	
+
+	3
+	○
+	Some college, but no degree (yet)
+	
+
+	4
+	○
+	2-year college degree
+	
+
+	5
+	○
+	4-year college degree
+	
+
+	6
+	○
+	Postgraduate degree (MA, MBA, MD, JD, PhD, etc.)
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+race- Show if not pdl.race or pdl.race.last > months(12) or check_flag == 1/required
+	SINGLE CHOICE
+	What racial or ethnic group best describes you?
+	
+
+pii        False
+chart_layout        1
+varlabel        Race
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        core, Profile_Codebook, GlobalVars_7, equivalent_spd_race, profile_core, GV_US, cbs, Profile_Codebook_Demographics, US_GV_GL_Mini_LocalDemos, US_GV_Survey_1, profile, election2014, Profile_Codebook_Core, coresampling, Profile_Basic_Info, used_in_US_Omni_Survey_Template, nytimes, scripting_template
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	White
+	
+
+	2
+	○
+	Black or African-American
+	
+
+	3
+	○
+	Hispanic or Latino
+	
+
+	4
+	○
+	Asian or Asian-American
+	
+
+	5
+	○
+	Native American
+	
+
+	8
+	○
+	Middle Eastern
+	
+
+	6
+	○
+	Two or more races
+	
+
+	7
+	○
+	Other (open [race_other])
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: p_hispanic if race != 3
+hispanic- Show if not pdl.hispanic or pdl.hispanic.last >= months(12) or check_flag == 1/required
+	SINGLE CHOICE
+	Are you of Spanish, Latino, or Hispanic origin or descent?
+	
+
+pii        False
+chart_layout        1
+varlabel        Hispanic
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        hispanic, race, Profile_Basic_Info
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes
+	
+
+	2
+	○
+	No
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+
+
+end module: race_hisp_mod
+Module: implicit_module_1
+Page: implicit_page_multrace
+multrace- Show if race == 6 and (not pdl.multrace or pdl.multrace.last > months(12))
+	MULTIPLE CHOICE
+	Please indicate the racial or ethnic groups that best describe you. (select all that apply)
+	
+
+pii        False
+chart_layout        1
+displaymax        
+varlabel        mixed race
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+required_text        Please choose an answer
+min_columns        1
+min        
+sample_type        
+access        
+autoadvance        False
+columns        1
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, core, core codebook, core_survey, Profile_Codebook_Demographics, biracial, Profile_Codebook_Core, race, mixedrace, multrace, equivalent_spd_race, Profile_Codebook
+max        3
+exactly        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	□
+	White
+	
+
+	2
+	□
+	Black or African-American
+	
+
+	3
+	□
+	Hispanic or Latino
+	
+
+	4
+	□
+	Asian or Asian-American
+	
+
+	5
+	□
+	Native American
+	
+
+	8
+	□
+	Middle Eastern
+	
+
+	97
+	□
+	Other
+	Show if 0
+	98
+	□
+	Don't know
+	Exclude other punches
+	99
+	□
+	None of these
+	Show if 0
+	
+
+Page: implicit_page_comptype
+comptype- required
+	SINGLE CHOICE
+	What type of device are you currently taking this survey on?
+	
+
+pii        False
+chart_layout        1
+varlabel        Device type
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	I am taking this survey on a smart phone (e.g., iPhone or Android phone)
+	
+
+	2
+	○
+	I am taking this survey on a tablet (e.g., iPad)
+	
+
+	3
+	○
+	I am taking this survey on a desktop computer or laptop computer
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_votereg
+votereg- Show if not pdl.votereg or pdl.votereg.last > months(1)/required
+	SINGLE CHOICE
+	Are you registered to vote?
+	
+
+pii        False
+chart_layout        1
+varlabel        Voter Registration Status
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, core, Profile_Political, profile_core, vote, Profile_Codebook_Demographics, Profile_Codebook_Core, used_in_US_Omni_Survey_Template, Profile_Codebook
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes
+	
+
+	2
+	○
+	No
+	
+
+	3
+	○
+	Don't know
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_votereg_f
+votereg_f- Show if votereg == 1/required
+	SINGLE CHOICE
+	Is $izip the zip code where you are registered to vote?
+	
+
+pii        False
+chart_layout        1
+varlabel        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes
+	
+
+	2
+	○
+	No (open-intrange [regzip])
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: page_pid3
+pid3- Show if not pdl.pid3 or pdl.pid3.last > months(1)/required
+	SINGLE CHOICE
+	Generally speaking, do you think of yourself as a ...?
+	
+
+pii        False
+chart_layout        1
+varlabel        3 point party ID
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Democrat
+	
+
+	2
+	○
+	Republican
+	
+
+	3
+	○
+	Independent
+	
+
+	4
+	○
+	Other (open [pid3_t])
+	
+
+	5
+	○
+	Not sure
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: page_pid7
+pid7- Show if (not pdl.pid7 or pdl.pid7.last > months(1)) and pid3/required
+	SINGLE CHOICE
+	$pid7text
+	
+
+pii        False
+chart_layout        1
+varlabel        7 point Party ID
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Strong Democrat
+	Show if pid3==1
+	2
+	○
+	Not very strong Democrat
+	Show if pid3==1
+	7
+	○
+	Strong Republican
+	Show if pid3==2
+	6
+	○
+	Not very strong Republican
+	Show if pid3==2
+	3
+	○
+	The Democratic Party
+	Show if pid3 in [3,4,5]
+	5
+	○
+	The Republican Party
+	Show if pid3 in [3,4,5]
+	4
+	○
+	Neither
+	Show if pid3 in [3,4,5]
+	8
+	○
+	Not sure
+	Show if pid3 in [3,4,5]
+	9
+	○
+	Don't know
+	Show if 0
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_inputstate
+inputstate- Show if 0
+	SINGLE CHOICE
+	What is your State of Residence?
+	
+
+pii        False
+chart_layout        1
+varlabel        State of Residence
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Alabama
+	
+
+	2
+	○
+	Alaska
+	
+
+	4
+	○
+	Arizona
+	
+
+	5
+	○
+	Arkansas
+	
+
+	6
+	○
+	California
+	
+
+	8
+	○
+	Colorado
+	
+
+	9
+	○
+	Connecticut
+	
+
+	10
+	○
+	Delaware
+	
+
+	11
+	○
+	District of Columbia
+	
+
+	12
+	○
+	Florida
+	
+
+	13
+	○
+	Georgia
+	
+
+	15
+	○
+	Hawaii
+	
+
+	16
+	○
+	Idaho
+	
+
+	17
+	○
+	Illinois
+	
+
+	18
+	○
+	Indiana
+	
+
+	19
+	○
+	Iowa
+	
+
+	20
+	○
+	Kansas
+	
+
+	21
+	○
+	Kentucky
+	
+
+	22
+	○
+	Louisiana
+	
+
+	23
+	○
+	Maine
+	
+
+	24
+	○
+	Maryland
+	
+
+	25
+	○
+	Massachusetts
+	
+
+	26
+	○
+	Michigan
+	
+
+	27
+	○
+	Minnesota
+	
+
+	28
+	○
+	Mississippi
+	
+
+	29
+	○
+	Missouri
+	
+
+	30
+	○
+	Montana
+	
+
+	31
+	○
+	Nebraska
+	
+
+	32
+	○
+	Nevada
+	
+
+	33
+	○
+	New Hampshire
+	
+
+	34
+	○
+	New Jersey
+	
+
+	35
+	○
+	New Mexico
+	
+
+	36
+	○
+	New York
+	
+
+	37
+	○
+	North Carolina
+	
+
+	38
+	○
+	North Dakota
+	
+
+	39
+	○
+	Ohio
+	
+
+	40
+	○
+	Oklahoma
+	
+
+	41
+	○
+	Oregon
+	
+
+	42
+	○
+	Pennsylvania
+	
+
+	44
+	○
+	Rhode Island
+	
+
+	45
+	○
+	South Carolina
+	
+
+	46
+	○
+	South Dakota
+	
+
+	47
+	○
+	Tennessee
+	
+
+	48
+	○
+	Texas
+	
+
+	49
+	○
+	Utah
+	
+
+	50
+	○
+	Vermont
+	
+
+	51
+	○
+	Virginia
+	
+
+	53
+	○
+	Washington
+	
+
+	54
+	○
+	West Virginia
+	
+
+	55
+	○
+	Wisconsin
+	
+
+	56
+	○
+	Wyoming
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_region
+region- Show if 0
+	SINGLE CHOICE
+	In which census region do you live?
+	
+
+pii        False
+chart_layout        1
+varlabel        Region
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Northeast
+	
+
+	2
+	○
+	Midwest
+	
+
+	3
+	○
+	South
+	
+
+	4
+	○
+	West
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: testmod_page if 0
+testmodule- Show if testing
+	SINGLE CHOICE
+	Which survey would you like to test?
+	
+
+pii        False
+chart_layout        1
+varlabel        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        2
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	UNC
+	
+
+	2
+	○
+	GSU
+	
+
+	3
+	○
+	UIM
+	
+
+	4
+	○
+	CNJ
+	
+
+	5
+	○
+	RUT
+	
+
+	6
+	○
+	MIZ
+	
+
+	7
+	○
+	VAN
+	
+
+	8
+	○
+	SYR
+	
+
+	9
+	○
+	UMS
+	
+
+	10
+	○
+	USC
+	
+
+	11
+	○
+	TTU
+	
+
+	12
+	○
+	NEU
+	
+
+	13
+	○
+	DKU
+	
+
+	14
+	○
+	CAC
+	
+
+	15
+	○
+	ZOU
+	
+
+	16
+	○
+	GTN
+	
+
+	17
+	○
+	UTA
+	
+
+	18
+	○
+	UTB
+	
+
+	19
+	○
+	TAM
+	
+
+	20
+	○
+	UHO
+	
+
+	21
+	○
+	HOO
+	
+
+	22
+	○
+	NCW
+	
+
+	23
+	○
+	CAR
+	
+
+	24
+	○
+	FSU
+	
+
+	25
+	○
+	UCI
+	
+
+	26
+	○
+	MSL
+	
+
+	27
+	○
+	IOW
+	
+
+	28
+	○
+	UGA
+	
+
+	29
+	○
+	BFL
+	
+
+	30
+	○
+	COR
+	
+
+	31
+	○
+	LBU
+	
+
+	32
+	○
+	UMA
+	
+
+	33
+	○
+	BRN
+	
+
+	34
+	○
+	TUF
+	
+
+	35
+	○
+	UTK
+	
+
+	36
+	○
+	HOB
+	
+
+	37
+	○
+	OXF
+	
+
+	38
+	○
+	CSF
+	
+
+	39
+	○
+	MSU
+	
+
+	40
+	○
+	GWU
+	
+
+	41
+	○
+	BOS
+	
+
+	42
+	○
+	JHU
+	
+
+	43
+	○
+	UTD
+	
+
+	44
+	○
+	UND
+	
+
+	45
+	○
+	BYU
+	
+
+	46
+	○
+	AUB
+	
+
+	47
+	○
+	CUB
+	
+
+	48
+	○
+	NYU
+	
+
+	49
+	○
+	UCL
+	
+
+	50
+	○
+	YAL
+	
+
+	51
+	○
+	NCB
+	
+
+	52
+	○
+	UCR
+	
+
+	53
+	○
+	DAR
+	
+
+	54
+	○
+	YLS
+	
+
+	55
+	○
+	MCS
+	
+
+	56
+	○
+	CSU
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+ccesmodule- Show if False
+	SINGLE CHOICE
+	Survey assigned
+	
+
+pii        False
+chart_layout        1
+varlabel        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	UNC
+	
+
+	2
+	○
+	GSU
+	
+
+	3
+	○
+	UIM
+	
+
+	4
+	○
+	CNJ
+	
+
+	5
+	○
+	RUT
+	
+
+	6
+	○
+	MIZ
+	
+
+	7
+	○
+	VAN
+	
+
+	8
+	○
+	SYR
+	
+
+	9
+	○
+	UMS
+	
+
+	10
+	○
+	USC
+	
+
+	11
+	○
+	TTU
+	
+
+	12
+	○
+	NEU
+	
+
+	13
+	○
+	DKU
+	
+
+	14
+	○
+	CAC
+	
+
+	15
+	○
+	ZOU
+	
+
+	16
+	○
+	GTN
+	
+
+	17
+	○
+	UTA
+	
+
+	18
+	○
+	UTB
+	
+
+	19
+	○
+	TAM
+	
+
+	20
+	○
+	UHO
+	
+
+	21
+	○
+	HOO
+	
+
+	22
+	○
+	NCW
+	
+
+	23
+	○
+	CAR
+	
+
+	24
+	○
+	FSU
+	
+
+	25
+	○
+	UCI
+	
+
+	26
+	○
+	MSL
+	
+
+	27
+	○
+	IOW
+	
+
+	28
+	○
+	UGA
+	
+
+	29
+	○
+	BFL
+	
+
+	30
+	○
+	COR
+	
+
+	31
+	○
+	LBU
+	
+
+	32
+	○
+	UMA
+	
+
+	33
+	○
+	BRN
+	
+
+	34
+	○
+	TUF
+	
+
+	35
+	○
+	UTK
+	
+
+	36
+	○
+	HOB
+	
+
+	37
+	○
+	OXF
+	
+
+	38
+	○
+	CSF
+	
+
+	39
+	○
+	MSU
+	
+
+	40
+	○
+	GWU
+	
+
+	41
+	○
+	BOS
+	
+
+	42
+	○
+	JHU
+	
+
+	43
+	○
+	UTD
+	
+
+	44
+	○
+	UND
+	
+
+	45
+	○
+	BYU
+	
+
+	46
+	○
+	AUB
+	
+
+	47
+	○
+	CUB
+	
+
+	48
+	○
+	NYU
+	
+
+	49
+	○
+	UCL
+	
+
+	50
+	○
+	YAL
+	
+
+	51
+	○
+	NCB
+	
+
+	52
+	○
+	UCR
+	
+
+	53
+	○
+	DAR
+	
+
+	54
+	○
+	YLS
+	
+
+	55
+	○
+	MCS
+	
+
+	56
+	○
+	CSU
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+skipcommon- Show if testing
+	SINGLE CHOICE
+	Do you want to go directly to the team content?
+	
+
+pii        False
+chart_layout        1
+varlabel        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes
+	
+
+	2
+	○
+	No
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Module: commoncore
+Page: implicit_page_CC24_300
+CC24_300
+	MULTIPLE CHOICE
+	In the past 24 hours have you... (check all that apply)
+	
+
+pii        False
+chart_layout        1
+displaymax        
+varlabel        Media use past 24 hrs
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+required_text        Please choose an answer
+min_columns        1
+min        
+sample_type        
+access        
+autoadvance        False
+columns        1
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+max        
+exactly        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize
+1
+	□
+	Used social media (such as Facebook, Twitter/X, WhatsApp or YouTube)
+	
+
+	2
+	□
+	Watched TV news (Did you watch local news, national news, or both? [CC24_300a])
+	
+
+	3
+	□
+	Read a newspaper in print or online (Did you read a print newspaper, an online newspaper, or both? [CC24_300c])
+	
+
+	4
+	□
+	Listened to a radio news program or talk radio
+	
+
+	5
+	□
+	None of these
+	Not randomized,exclude other punches
+	
+
+Page: implicit_page_CC24_300b
+CC24_300b- Show if CC24_300a in [2,3]
+	MULTIPLE CHOICE
+	Which of these networks did you watch?
+	
+
+pii        False
+chart_layout        1
+displaymax        
+varlabel        Media use networks
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+required_text        Please choose an answer
+min_columns        1
+min        
+sample_type        
+access        
+autoadvance        False
+columns        1
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+max        
+exactly        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	□
+	ABC
+	
+
+	2
+	□
+	CBS
+	
+
+	3
+	□
+	NBC
+	
+
+	4
+	□
+	CNN
+	
+
+	5
+	□
+	Fox News
+	
+
+	6
+	□
+	MSNBC
+	
+
+	7
+	□
+	PBS
+	
+
+	8
+	□
+	Other
+	
+
+	
+
+Page: implicit_page_CC24_300d
+CC24_300d- Show if 1 in CC24_300
+	MULTIPLE CHOICE
+	In the past 24 hours, did you do any of the following on social media (such as Facebook, Twitter/X, WhatsApp or YouTube)?
+	
+
+pii        False
+chart_layout        1
+displaymax        
+varlabel        Recent social media use
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+required_text        Please choose an answer
+min_columns        1
+min        
+sample_type        
+access        
+autoadvance        False
+columns        1
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+max        
+exactly        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	□
+	Posted a story, photo, video or link about politics
+	
+
+	2
+	□
+	Posted a comment about politics
+	
+
+	3
+	□
+	Read a story or watched a video about politics
+	
+
+	4
+	□
+	Followed a political event
+	
+
+	5
+	□
+	Forwarded a story, photo, video or link about politics to friends
+	
+
+	6
+	□
+	None of the above
+	Exclude other punches
+	
+
+Page: implicit_page_CC24_301
+CC24_301
+	SINGLE CHOICE
+	Would you say that OVER THE PAST YEAR the nation's economy has ...
+	
+
+pii        False
+chart_layout        1
+varlabel        National Economics
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Gotten much better
+	
+
+	2
+	○
+	Gotten somewhat better
+	
+
+	3
+	○
+	Stayed about the same
+	
+
+	4
+	○
+	Gotten somewhat worse
+	
+
+	5
+	○
+	Gotten much worse
+	
+
+	6
+	○
+	Not sure
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_302
+CC24_302
+	SINGLE CHOICE
+	OVER THE PAST YEAR, has your household's annual income...?
+	
+
+pii        False
+chart_layout        1
+varlabel        Household income
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Increased a lot
+	
+
+	2
+	○
+	Increased somewhat
+	
+
+	3
+	○
+	Stayed about the same
+	
+
+	4
+	○
+	Decreased somewhat
+	
+
+	5
+	○
+	Decreased a lot
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_303
+CC24_303
+	SINGLE CHOICE
+	OVER THE PAST YEAR, have the prices of everyday goods and services...?
+	
+
+pii        False
+chart_layout        1
+varlabel        Price change in past year
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Increased a lot
+	
+
+	2
+	○
+	Increased somewhat
+	
+
+	3
+	○
+	Stayed about the same
+	
+
+	4
+	○
+	Decreased somewhat
+	
+
+	5
+	○
+	Decreased a lot
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_employ
+employ- Show if not pdl.employ or pdl.employ.last > months(3)
+	SINGLE CHOICE
+	Which of the following best describes your current employment status?
+	
+
+pii        False
+chart_layout        1
+varlabel        Employment Status
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, work status, Profile_Codebook_Main_Consumer, nytimes, profile_core, Profile_Codebook_Demographics, work, Profile_Codebook_Investments, cbs, job, profile_employ, Profile_B2B, election2014, core, used_in_US_Omni_Survey_Template, check_for_coding, Profile_Codebook, scripting_template
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Working full time now
+	
+
+	2
+	○
+	Working part time now
+	
+
+	3
+	○
+	Temporarily laid off
+	
+
+	4
+	○
+	Unemployed
+	
+
+	5
+	○
+	Retired
+	
+
+	6
+	○
+	Permanently disabled
+	
+
+	7
+	○
+	Taking care of home or family
+	
+
+	8
+	○
+	Student
+	
+
+	9
+	○
+	Other (open [employ_t])
+	Not randomized
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_305
+CC24_305- prompt once on skip
+	MULTIPLE CHOICE
+	Over the past year have you...(Check all that apply)
+	
+
+pii        False
+chart_layout        1
+displaymax        
+varlabel        Life Changes
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+required_text        Please choose an answer
+min_columns        1
+min        
+sample_type        
+access        
+autoadvance        False
+columns        1
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+max        
+exactly        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        SOFT
+mask        
+custom_order        
+client        
+order        as-is
+1
+	□
+	Married
+	
+
+	2
+	□
+	Lost a job
+	
+
+	3
+	□
+	Finished school
+	
+
+	4
+	□
+	Retired
+	
+
+	5
+	□
+	Divorced
+	
+
+	6
+	□
+	Had a child
+	
+
+	7
+	□
+	Taken a new job
+	
+
+	9
+	□
+	Been a victim of a crime
+	
+
+	10
+	□
+	Visited an emergency room
+	
+
+	11
+	□
+	Visited a doctor for a regular examination
+	
+
+	12
+	□
+	Received a raise at work
+	
+
+	13
+	□
+	Had a pay cut at work
+	
+
+	14
+	□
+	None of the above
+	Exclude other punches
+	
+
+Page: implicit_page_CC24_309e
+CC24_309e
+	SINGLE CHOICE
+	Would you say that in general your health is...
+	
+
+pii        False
+chart_layout        1
+varlabel        General health
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Excellent
+	
+
+	2
+	○
+	Very good
+	
+
+	3
+	○
+	Good
+	
+
+	4
+	○
+	Fair
+	
+
+	5
+	○
+	Poor
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_308a
+CC24_308a- prompt once on skip
+	MULTIPLE CHOICE
+	As you may know Russia invaded Ukraine in February 2022.  What should the U.S. do about the situation in Ukraine?
+	
+
+pii        False
+chart_layout        1
+displaymax        
+varlabel        Ukraine
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+required_text        Please choose an answer
+min_columns        1
+min        
+sample_type        
+access        
+autoadvance        False
+columns        1
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+max        
+exactly        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        SOFT
+mask        
+custom_order        
+client        
+order        as-is
+1
+	□
+	Do not get involved
+	Exclude other punches
+	2
+	□
+	Send food, medicine, and other humanitarian aid to Ukraine
+	
+
+	3
+	□
+	Impose economic sanctions on Russia
+	
+
+	4
+	□
+	Provide arms to Ukraine
+	
+
+	5
+	□
+	Send military support staff to Ukraine (non-combat)
+	
+
+	6
+	□
+	Send significant force to fight Russia
+	
+
+	7
+	□
+	Negotiate a peace accord between Russia and Ukraine
+	
+
+	8
+	□
+	Send aid to the affected communities after the conflict to help rebuild destroyed schools, hospitals, and roads
+	
+
+	
+
+Page: implicit_page_CC24_308b
+CC24_308b- prompt once on skip
+	MULTIPLE CHOICE
+	As you may know there is a war between Israel and Hamas taking place in Gaza. What do you think the United States should do?
+	
+
+pii        False
+chart_layout        1
+displaymax        
+varlabel        Israel/Gaza
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+required_text        Please choose an answer
+min_columns        1
+min        
+sample_type        
+access        
+autoadvance        False
+columns        1
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+max        
+exactly        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        SOFT
+mask        
+custom_order        
+client        
+order        as-is
+1
+	□
+	Do not get involved
+	Exclude other punches
+	2
+	□
+	Send food, medicine and other aid to the communities affected
+	
+
+	3
+	□
+	Provide arms to Israel
+	
+
+	4
+	□
+	Provide arms to Hamas
+	
+
+	5
+	□
+	Send the US Navy and troops to the region to keep the hostility from escalating
+	
+
+	6
+	□
+	Send military support staff (non-combat) to Israel
+	
+
+	7
+	□
+	Send military support staff (non-combat) to Gaza
+	
+
+	8
+	□
+	Negotiate a peace settlement
+	
+
+	9
+	□
+	Send aid to the affected communities after the conflict to help rebuild destroyed schools, hospitals, and roads
+	
+
+	
+
+Page: implicit_page_CC24_309d
+CC24_309d
+	MULTIPLE CHOICE
+	Suppose that you have an emergency expense that costs $400. Based on your current financial situation, how would you pay for this expense? If you would use more than one method to cover this expense, please select all that apply.
+	
+
+pii        False
+chart_layout        1
+displaymax        
+varlabel        Emergency expense
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+required_text        Please choose an answer
+min_columns        1
+min        
+sample_type        
+access        
+autoadvance        False
+columns        1
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+max        
+exactly        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	□
+	Put it on my credit card and pay it off in full at the next statement
+	
+
+	2
+	□
+	Put it on my credit card and pay it off over time
+	
+
+	3
+	□
+	With the money currently in my checking/savings account or with cash
+	
+
+	4
+	□
+	Using money from a bank loan or line of credit
+	
+
+	5
+	□
+	By borrowing from a friend or family member
+	
+
+	6
+	□
+	Using a payday loan, deposit advance, or overdraft
+	
+
+	7
+	□
+	By selling something
+	
+
+	8
+	□
+	I wouldn't be able to pay for the expense right now
+	Exclude other punches
+	9
+	□
+	Other (open [CC24_309d_t])
+	
+
+	
+
+Page: implicit_page_CC24_310grid
+<style> .grid-layout .grid-item-text-left{     font-size: 16px!important; } </style>
+CC24_310grid- prompt once on skip
+	GRID
+	Which party has a majority of seats in the ...
+	
+
+collapsible        True
+dk_text        Don't know
+chart_layout        1
+displaymax        
+filter_text        
+custom_colorder        
+custom_roworder        
+topic        
+header_alignment        center
+chart_color        green
+chart_type        bar
+rowsample        
+crossbreak        Total
+is_rating        False
+roworder        as-is
+required_text        
+dk        False
+unique        False
+collapse_expanded        True
+rowsum        
+sample_type        
+access        
+width        0
+dk_missing        False
+widget        
+varlabel        Know Party in Government
+as_banner        False
+description        
+spd_category        
+tags        
+transpose        False
+stripes        False
+sticky_header        False
+splitlabels        False
+offset        0
+visible_rows        
+grid_chart_type        stacked_bar
+sort_order        none
+colsum        
+slide_title        
+required        SOFT
+collapse_width        575
+client        
+colsample        
+colorder        as-is
+ROWS
+CC24_310a
+	U.S. House of Representatives
+	CC24_310b
+	U.S. Senate
+	CC24_310c- Show if inputstate != 11
+	$inputstate State Senate
+	CC24_310d- Show if LowerChamberName
+	$LowerChamberName
+	COLUMNS
+1
+	○
+	Republicans
+	
+
+	2
+	○
+	Democrats
+	
+
+	3
+	○
+	Neither
+	
+
+	4
+	○
+	Not sure
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: pageCC24_311grid if CurrentGovName or CurrentSen1Name or CurrentSen2Name or CurrentHouseName
+<style> .grid-layout .grid-item-text-left{     font-size: 16px!important; } </style>
+CC24_311grid- Show if CurrentGovName or CurrentSen1Name or CurrentSen2Name or CurrentHouseName/prompt once on skip
+	GRID
+	Please indicate whether you've heard of this person and if so which party he or she is affiliated with.
+	
+
+collapsible        True
+dk_text        Don't know
+chart_layout        1
+displaymax        
+filter_text        
+custom_colorder        
+custom_roworder        
+topic        
+header_alignment        center
+chart_color        green
+chart_type        bar
+rowsample        
+crossbreak        Total
+is_rating        False
+roworder        as-is
+required_text        
+dk        False
+unique        False
+collapse_expanded        True
+rowsum        
+sample_type        
+access        
+width        0
+dk_missing        False
+widget        
+varlabel        Know Party of Representative
+as_banner        False
+description        
+spd_category        
+tags        
+transpose        False
+stripes        False
+sticky_header        False
+splitlabels        False
+offset        0
+visible_rows        
+grid_chart_type        stacked_bar
+sort_order        none
+colsum        
+slide_title        
+required        SOFT
+collapse_width        575
+client        
+colsample        
+colorder        as-is
+ROWS
+CC24_311a- Show if CurrentGovName
+	$CurrentGovName
+	CC24_311b- Show if CurrentSen1Name
+	$CurrentSen1Name
+	CC24_311c- Show if CurrentSen2Name
+	$CurrentSen2Name
+	CC24_311d- Show if CurrentHouseName
+	$CurrentHouseName
+	COLUMNS
+1
+	○
+	Never Heard 
+of Person
+	
+
+	2
+	○
+	Republican
+	
+
+	3
+	○
+	Democrat
+	
+
+	4
+	○
+	Other Party / Independent
+	
+
+	5
+	○
+	Not sure
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_312grid
+<style> .grid-layout .grid-item-text-left{     font-size: 16px!important; } </style> <b>We'd now like to ask you some questions about the people who represent you in government.</b>
+CC24_312grid- prompt once on skip
+	GRID
+	Do you approve of the way each is doing their job?
+	
+
+collapsible        True
+dk_text        Don't know
+chart_layout        1
+displaymax        
+filter_text        
+custom_colorder        
+custom_roworder        
+topic        
+header_alignment        center
+chart_color        green
+chart_type        bar
+rowsample        
+crossbreak        Total
+is_rating        False
+roworder        as-is
+required_text        
+dk        False
+unique        False
+collapse_expanded        True
+rowsum        
+sample_type        
+access        
+width        0
+dk_missing        False
+widget        
+varlabel        Job Approval Institutions
+as_banner        False
+description        
+spd_category        
+tags        
+transpose        False
+stripes        False
+sticky_header        False
+splitlabels        False
+offset        0
+visible_rows        
+grid_chart_type        stacked_bar
+sort_order        none
+colsum        
+slide_title        
+required        SOFT
+collapse_width        575
+client        
+colsample        
+colorder        as-is
+ROWS
+CC24_312a
+	President Biden
+	CC24_312i
+	Vice President Harris
+	CC24_312b
+	The U.S. Congress
+	CC24_312c
+	The U.S. Supreme Court
+	CC24_312d- Show if inputstate!=11 and inputstate
+	The Governor of $inputstate
+	CC24_312e- Show if inputstate!=11 and LegName
+	$LegName
+	CC24_312f- Show if CurrentHouseName
+	$CurrentHouseName
+	CC24_312g- Show if CurrentSen1Name
+	$CurrentSen1Name
+	CC24_312h- Show if CurrentSen2Name
+	$CurrentSen2Name
+	COLUMNS
+1
+	○
+	Strongly approve
+	
+
+	2
+	○
+	Somewhat approve
+	
+
+	3
+	○
+	Somewhat disapprove
+	
+
+	4
+	○
+	Strongly disapprove
+	
+
+	5
+	○
+	Not sure
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_cit1
+cit1
+	SINGLE CHOICE
+	Are you a United States citizen?
+	
+
+pii        False
+chart_layout        1
+varlabel        US citizen
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes
+	
+
+	2
+	○
+	No
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_immstat
+immstat- Show if cit1 == 1 or not cit1
+	SINGLE CHOICE
+	Which of these statements best describes you?
+	
+
+pii        False
+chart_layout        1
+varlabel        Immigration background
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	I am an immigrant to the USA and a naturalized citizen
+	
+
+	2
+	○
+	I am an immigrant to the USA but not a citizen
+	Show if not cit1
+	3
+	○
+	I was born in the USA but at least one of my parents is an immigrant
+	
+
+	4
+	○
+	My parents and I were born in the USA but at least one of my grandparents was an immigrant
+	
+
+	5
+	○
+	My parents, grandparents and I were all born in the USA
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_321grid
+CC24_321grid- prompt once on skip
+	DYNAMIC GRID
+	On the issue of gun regulation, do you support or oppose a proposal that would do the following?
+	
+
+collapsible        True
+row_align        
+color        teal
+chart_layout        1
+filter_text        
+topic        
+chart_color        green
+chart_type        bar
+rowsample        
+crossbreak        Total
+wrap        True
+is_rating        False
+roworder        as-is
+horizontal        True
+required_text        
+min_columns        1
+collapse_expanded        False
+rowsum        
+sample_type        
+access        
+wrap_break        -<br />
+columns        0
+varlabel        Gun control
+as_banner        False
+description        
+spd_category        
+tags        
+transpose        False
+visible_rows        
+grid_chart_type        stacked_bar
+sort_order        none
+colsum        
+slide_title        
+required        SOFT
+collapse_width        575
+client        
+colsample        
+autoadvance        True
+colorder        as-is
+ROWS
+CC24_321a
+	Ban assault rifles
+	CC24_321b
+	Make it easier for people to obtain concealed-carry permit
+	CC24_321c
+	Require criminal background checks on all gun sales
+	CC24_321d
+	Increase the number of police on the street by 10 percent, even if it means fewer funds for other public services
+	CC24_321e
+	Decrease the number of police on the street by 10 percent, and increase funding for other public services
+	CC24_321f
+	<ul><li>Increase spending on mental health and school safety </li><li>Allow police to confiscate guns from people deemed to be dangerous by a judge </li><li>Prohibit people convicted of domestic violence from owning guns; enhance background checks on minors </li><li>Increase penalties for illegal gun purchases.</li></ul>
+	COLUMNS
+1
+	○
+	Support
+	
+
+	2
+	○
+	Oppose
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_323grid
+CC24_323grid- prompt once on skip
+	DYNAMIC GRID
+	What do you think the U.S. government should do about immigration? Do you support or oppose each of the following?
+	
+
+collapsible        True
+row_align        
+color        teal
+chart_layout        1
+filter_text        
+topic        
+chart_color        green
+chart_type        bar
+rowsample        
+crossbreak        Total
+wrap        True
+is_rating        False
+roworder        as-is
+horizontal        True
+required_text        
+min_columns        1
+collapse_expanded        False
+rowsum        
+sample_type        
+access        
+wrap_break        -<br />
+columns        0
+varlabel        Immigration
+as_banner        False
+description        
+spd_category        
+tags        
+transpose        False
+visible_rows        
+grid_chart_type        stacked_bar
+sort_order        none
+colsum        
+slide_title        
+required        SOFT
+collapse_width        575
+client        
+colsample        
+autoadvance        True
+colorder        as-is
+ROWS
+CC24_323a
+	Grant legal status to all illegal immigrants who have held jobs and paid taxes for at least 3 years, and not been convicted of any felony crimes
+	CC24_323b
+	Increase the number of border patrols on the US-Mexican border
+	CC24_323c
+	Build a wall between the U.S. and Mexico
+	CC24_323d
+	Provide permanent resident status to children of immigrants who were brought to the United States by their parents (also known as Dreamers). Provide these immigrants a pathway to citizenship if they meet the citizenship requirements and have committed no crimes
+	COLUMNS
+1
+	○
+	Support
+	
+
+	2
+	○
+	Oppose
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_324grid
+<style> .grid-layout .grid-item-text-left{     font-size: 16px!important; } </style>
+CC24_324grid- prompt once on skip
+	GRID
+	On the topic of abortion, do you support or oppose each of the following proposals?
+	
+
+collapsible        True
+dk_text        Don't know
+chart_layout        1
+displaymax        
+filter_text        
+custom_colorder        
+custom_roworder        
+topic        
+header_alignment        center
+chart_color        green
+chart_type        bar
+rowsample        
+crossbreak        Total
+is_rating        False
+roworder        as-is
+required_text        
+dk        False
+unique        False
+collapse_expanded        True
+rowsum        
+sample_type        
+access        
+width        150
+dk_missing        False
+widget        
+varlabel        Abortion
+as_banner        False
+description        
+spd_category        
+tags        
+transpose        False
+stripes        False
+sticky_header        False
+splitlabels        False
+offset        0
+visible_rows        
+grid_chart_type        stacked_bar
+sort_order        none
+colsum        
+slide_title        
+required        SOFT
+collapse_width        575
+client        
+colsample        
+colorder        as-is
+ROWS
+CC24_324a
+	Always allow a woman the right to obtain an abortion as a matter of choice
+	CC24_324b
+	Permit abortion only in case of rape, incest or when the woman's life is in danger
+	CC24_324c
+	Make abortions illegal in all circumstances
+	CC24_324d
+	Expand access to abortion, including making it more affordable, broadening the types of providers who can offer care, and protecting access to abortion clinics
+	COLUMNS
+1
+	○
+	Support
+	
+
+	2
+	○
+	Oppose
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_325
+CC24_325
+	RULE
+	Different states are debating when, if at all, abortion should be legal during a woman’s pregnancy. A normal pregnancy could go up to as many as 40 weeks. Until what point in a pregnancy do you think a woman should be legally allowed to obtain an abortion?
+	
+
+pii        False
+right        40 weeks
+dk_text        Not sure
+chart_layout        1
+filter_text        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+required_text        Please provide a response
+dk        True
+show_labels        False
+min        0
+sample_type        
+access        
+autoadvance        False
+varlabel        Abortion Month
+as_banner        False
+description        
+spd_category        
+tags        
+max        40
+show_value        1
+grid_chart_type        stacked_bar
+sort_order        none
+wide_view        horizontal
+slide_title        
+required        NONE
+client        
+narrow_view        horizontal
+left        0 weeks
+Page: implicit_page_CC24_326grid
+CC24_326grid- prompt once on skip
+	DYNAMIC GRID
+	Do you support or oppose each of the following proposals?
+	
+
+collapsible        True
+row_align        
+color        teal
+chart_layout        1
+filter_text        
+topic        
+chart_color        green
+chart_type        bar
+rowsample        
+crossbreak        Total
+wrap        True
+is_rating        False
+roworder        as-is
+horizontal        True
+required_text        
+min_columns        1
+collapse_expanded        False
+rowsum        
+sample_type        
+access        
+wrap_break        -<br />
+columns        0
+varlabel        Environment
+as_banner        False
+description        
+spd_category        
+tags        
+transpose        False
+visible_rows        
+grid_chart_type        stacked_bar
+sort_order        none
+colsum        
+slide_title        
+required        SOFT
+collapse_width        575
+client        
+colsample        
+autoadvance        True
+colorder        as-is
+ROWS
+CC24_326a
+	Give the Environmental Protection Agency power to regulate carbon dioxide emissions
+	CC24_326b
+	Require that at least 20 percent of electricity be generated with renewable sources such as wind, solar, or hydroelectric power
+	CC24_326c
+	Strengthen the Environmental Protection Agency enforcement of the Clean Air Act and Clean Water Act even if it costs U.S. jobs
+	CC24_326d
+	Increase fossil fuel production in the U.S.
+	CC24_326e
+	Halt new oil and gas leases on federal lands
+	CC24_326f
+	Prevent the government from banning gas stove
+	COLUMNS
+1
+	○
+	Support
+	
+
+	2
+	○
+	Oppose
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_328grid
+<style> .grid-layout .grid-item-text-left{     font-size: 16px!important; } </style>
+CC24_328grid- prompt once on skip
+	GRID
+	Do you support or oppose each of the following proposals?
+	
+
+collapsible        True
+dk_text        Don't know
+chart_layout        1
+displaymax        
+filter_text        
+custom_colorder        
+custom_roworder        
+topic        
+header_alignment        center
+chart_color        green
+chart_type        bar
+rowsample        
+crossbreak        Total
+is_rating        False
+roworder        as-is
+required_text        
+dk        False
+unique        False
+collapse_expanded        True
+rowsum        
+sample_type        
+access        
+width        150
+dk_missing        False
+widget        
+varlabel        Tax policies
+as_banner        False
+description        
+spd_category        
+tags        
+transpose        False
+stripes        False
+sticky_header        False
+splitlabels        False
+offset        0
+visible_rows        
+grid_chart_type        stacked_bar
+sort_order        none
+colsum        
+slide_title        
+required        SOFT
+collapse_width        575
+client        
+colsample        
+colorder        as-is
+ROWS
+CC24_328a
+	Relax local zoning laws in your state to allow for construction of more apartments and condos.
+	CC24_328b
+	Expand federal tax incentives to encourage developers to build homes for people who make less than half of the average income in your area
+	CC24_328c
+	Require able-bodied adults under 64 years of age who do not have dependents to have a job in order to receive Medicaid.
+	CC24_328d
+	Repeal the Affordable Care Act
+	CC24_328e
+	Expand Medicaid to cover individuals making less than $25,000 and families making less than $40,000 a year.
+	CC24_323f
+	Forgive up to $20,000 of student loan debt for each person
+	COLUMNS
+1
+	○
+	Support
+	
+
+	2
+	○
+	Oppose
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_330grid
+<style> .grid-layout .grid-item-text-left{     font-size: 16px!important; } </style>
+CC24_330grid- prompt once on skip
+	GRID
+	How would you rate each of the following individuals and groups?
+	
+
+collapsible        True
+dk_text        Don't know
+chart_layout        1
+displaymax        7
+filter_text        
+custom_colorder        
+custom_roworder        
+topic        
+header_alignment        center
+chart_color        green
+chart_type        bar
+rowsample        
+crossbreak        Total
+is_rating        False
+roworder        as-is
+required_text        
+dk        False
+unique        False
+collapse_expanded        True
+rowsum        
+sample_type        
+access        
+width        0
+dk_missing        False
+widget        
+varlabel        Rate ideology
+as_banner        False
+description        
+spd_category        
+tags        
+transpose        False
+stripes        False
+sticky_header        False
+splitlabels        False
+offset        0
+visible_rows        
+grid_chart_type        stacked_bar
+sort_order        none
+colsum        
+slide_title        
+required        SOFT
+collapse_width        575
+client        
+colsample        
+colorder        as-is
+ROWS
+CC24_330a
+	Yourself
+	CC24_330b- Show if CurrentGovName
+	$CurrentGovName
+	CC24_330c
+	Joe Biden
+	CC24_330d
+	Kamala Harris
+	CC24_330e
+	Donald Trump
+	CC24_330f
+	The Democratic Party
+	CC24_330g
+	The Republican Party
+	CC24_330h
+	The U.S. Supreme Court
+	CC24_330i- Show if CurrentSen1Name
+	$CurrentSen1Name
+	CC24_330j- Show if CurrentSen2Name
+	$CurrentSen2Name
+	CC24_330l- Show if CurrentHouseName
+	$CurrentHouseName
+	COLUMNS
+1
+	○
+	Very Liberal
+	
+
+	2
+	○
+	Liberal
+	
+
+	3
+	○
+	Somewhat Liberal
+	
+
+	4
+	○
+	Middle of the Road
+	
+
+	5
+	○
+	Somewhat Conservative
+	
+
+	6
+	○
+	Conservative
+	
+
+	7
+	○
+	Very Conservative
+	
+
+	8
+	○
+	Not sure
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_340grid
+<style> .grid-layout .grid-item-text-left{     font-size: 16px!important; } </style>
+CC24_340grid
+	GRID
+	Do you support or oppose each of the following bills before Congress?
+	
+
+collapsible        True
+dk_text        Don't know
+chart_layout        1
+displaymax        
+filter_text        
+custom_colorder        
+custom_roworder        
+topic        
+header_alignment        center
+chart_color        green
+chart_type        bar
+rowsample        
+crossbreak        Total
+is_rating        False
+roworder        as-is
+required_text        
+dk        False
+unique        False
+collapse_expanded        True
+rowsum        
+sample_type        
+access        
+width        150
+dk_missing        False
+widget        
+varlabel        Congress Bills
+as_banner        False
+description        
+spd_category        
+tags        
+transpose        False
+stripes        False
+sticky_header        False
+splitlabels        False
+offset        0
+visible_rows        
+grid_chart_type        stacked_bar
+sort_order        none
+colsum        
+slide_title        
+required        NONE
+collapse_width        575
+client        
+colsample        
+colorder        as-is
+ROWS
+CC24_340a
+	Prohibit government restrictions on the provision of, and access to, contraceptives.
+	CC24_340b
+	Prohibit government restrictions on the provision of, and access to, abortion services.
+	CC24_340c
+	Require that all federal agencies recognize same-sex marriages and interracial marriages.
+	CC24_340d
+	Ban TikTok unless China sells it to a US company.
+	CC24_340e
+	Renew the federal surveillance programs that were adopted after 9/11 and that allow the government to search private electronic data without a search warrant.
+	CC24_340f
+	Deny access to asylum for immigrants who cross the US-Mexico border illegally.
+	COLUMNS
+1
+	○
+	Support
+	
+
+	2
+	○
+	Oppose
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_341grid
+<style> .grid-layout .grid-item-text-left{     font-size: 16px!important; } </style>
+CC24_341grid
+	GRID
+	Do you support or oppose each of the following proposals?
+	
+
+collapsible        True
+dk_text        Don't know
+chart_layout        1
+displaymax        
+filter_text        
+custom_colorder        
+custom_roworder        
+topic        
+header_alignment        center
+chart_color        green
+chart_type        bar
+rowsample        
+crossbreak        Total
+is_rating        False
+roworder        as-is
+required_text        
+dk        False
+unique        False
+collapse_expanded        True
+rowsum        
+sample_type        
+access        
+width        150
+dk_missing        False
+widget        
+varlabel        Tax rates
+as_banner        False
+description        
+spd_category        
+tags        
+transpose        False
+stripes        False
+sticky_header        False
+splitlabels        False
+offset        0
+visible_rows        
+grid_chart_type        stacked_bar
+sort_order        none
+colsum        
+slide_title        
+required        NONE
+collapse_width        575
+client        
+colsample        
+colorder        as-is
+ROWS
+CC24_341a
+	Extend the tax cuts enacted in 2017, which reduced individual and corporate income tax rates and limited deductions on mortgage interest and state and local taxes
+	CC24_341b
+	Raise the corporate income tax rate from 21 percent to 28 percent
+	CC24_341c
+	Allow tax rates on those earning $400,000 or more a year to rise to 35 percent
+	CC24_341d
+	Spend $150 billion a year for 8 years on construction and repair of roads and bridges, rail, public transit, airports, water systems, broadband internet, and electric grid
+	COLUMNS
+1
+	○
+	Support
+	
+
+	2
+	○
+	Oppose
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_361b
+CC24_361b- Show if AskParty == 1
+	SINGLE CHOICE
+	With which party, if any, are you registered?
+	
+
+pii        False
+chart_layout        1
+varlabel        Party Registration
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	No Party, Independent, Declined to State
+	
+
+	2
+	○
+	Democratic Party
+	
+
+	3
+	○
+	Republican Party
+	
+
+	4
+	○
+	Other (open [CC24_360_t])
+	
+
+	5
+	○
+	Not sure
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_363
+CC24_363
+	SINGLE CHOICE
+	Do you intend to vote in the 2024 general election on November 5th?
+	
+
+pii        False
+chart_layout        1
+varlabel        Vote Intention
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes, definitely
+	
+
+	2
+	○
+	Probably
+	
+
+	3
+	○
+	I already voted (early or absentee)
+	
+
+	4
+	○
+	I plan to vote before November 5th
+	
+
+	5
+	○
+	No
+	
+
+	6
+	○
+	Undecided
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Module: alreadyvoted if CC24_363 == 3
+Page: implicit_page_CC24_364a
+CC24_364a
+	SINGLE CHOICE
+	For which candidate for President of the United States did you vote?
+	
+
+pii        False
+chart_layout        1
+varlabel        Pres vote
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize($randorderpres)
+1
+	○
+	Kamala Harris (Democrat)
+	
+
+	2
+	○
+	Donald Trump (Republican)
+	
+
+	3
+	○
+	Someone else
+	
+
+	4
+	○
+	I'm not sure
+	
+
+	5
+	○
+	I didn't vote in this election
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_365_voted
+CC24_365_voted- Show if (SenCand1Name or SenCand2Name or SenCand3Name)
+	SINGLE CHOICE
+	For which candidate for U.S. Senator did you vote?
+	
+
+pii        False
+chart_layout        1
+varlabel        Senate vote
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize($randordersen)
+1
+	○
+	$SenCand1Name ($SenCand1Party)
+	Show if sencand1name
+	2
+	○
+	$SenCand2Name ($SenCand2Party)
+	Show if sencand2name
+	3
+	○
+	$SenCand3Name ($SenCand3Party)
+	Show if sencand3name
+	7
+	○
+	Other (open [CC24_365_voted_t])
+	Not randomized
+	8
+	○
+	I'm not sure
+	Not randomized
+	9
+	○
+	I didn't vote in this election
+	Not randomized
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_365b_voted
+CC24_365b_voted- Show if (SenCand1Name2 or SenCand2Name2)
+	SINGLE CHOICE
+	For which candidate for the special election for U.S. Senate did you vote?
+	
+
+pii        False
+chart_layout        1
+varlabel        Senate vote 2nd race
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize($randordersen2)
+1
+	○
+	$SenCand1Name2 ($SenCand1Party2)
+	Show if sencand1name2
+	2
+	○
+	$SenCand2Name2 ($SenCand2Party2)
+	Show if sencand2name2
+	7
+	○
+	Other (open [CC24_365b_voted_t])
+	Not randomized
+	8
+	○
+	I'm not sure
+	Not randomized
+	9
+	○
+	I didn't vote in this election
+	Not randomized
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_366_voted
+CC24_366_voted- Show if (GovCand1Name or GovCand2Name or GovCand3Name)
+	SINGLE CHOICE
+	For which candidate for Governor did you vote?
+	
+
+pii        False
+chart_layout        1
+varlabel        Governor vote
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize($randordergov)
+1
+	○
+	$GovCand1Name ($GovCand1Party)
+	Show if govcand1name
+	2
+	○
+	$GovCand2Name ($GovCand2Party)
+	Show if govcand2name
+	7
+	○
+	Other (open [CC24_366_voted_t])
+	Not randomized
+	8
+	○
+	I'm not sure
+	Not randomized
+	9
+	○
+	I didn't vote in this election
+	Not randomized
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_367_voted
+CC24_367_voted- Show if (HouseCand1Name or HouseCand2Name)
+	SINGLE CHOICE
+	For which candidate for U.S. House of Representatives in your area did you vote?
+	
+
+pii        False
+chart_layout        1
+varlabel        House vote
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize($randorderhouse)
+1
+	○
+	$HouseCand1Name ($HouseCand1Party)
+	Show if housecand1name
+	2
+	○
+	$HouseCand2Name ($HouseCand2Party)
+	Show if housecand2name
+	3
+	○
+	$HouseCand3Name ($HouseCand3Party)
+	Show if housecand3name
+	10
+	○
+	Other (open [CC24_367_voted_t])
+	Not randomized
+	98
+	○
+	I'm not sure
+	Not randomized
+	99
+	○
+	I didn't vote in this election
+	Not randomized
+	998
+	
+
+	Skipped
+	
+
+	999
+	
+
+	Not Asked
+	
+
+	
+
+end module: alreadyvoted if CC24_363 == 3
+Module: novote
+Page: implicit_page_CC24_364b
+CC24_364b- Show if CC24_363 != 3 or CC24_364a in [5]
+	SINGLE CHOICE
+	Which candidate for President of the United States do you prefer?
+	
+
+pii        False
+chart_layout        1
+varlabel        Pres preference
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize($randorderpres)
+1
+	○
+	Kamala Harris (Democrat)
+	
+
+	2
+	○
+	Donald Trump (Republican)
+	
+
+	3
+	○
+	Other
+	
+
+	4
+	○
+	I won't vote in this election
+	
+
+	5
+	○
+	I'm not sure
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_365
+CC24_365- Show if (SenCand1Name or SenCand2Name or SenCand3Name) and (CC24_363 != 3 or CC24_365_voted in [9] or not CC24_365_voted)
+	SINGLE CHOICE
+	In the race for U.S. Senator in your state, who do you prefer?
+	
+
+pii        False
+chart_layout        1
+varlabel        Senate preference
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize($randordersen)
+1
+	○
+	$SenCand1Name ($SenCand1Party)
+	Show if sencand1name
+	2
+	○
+	$SenCand2Name ($SenCand2Party)
+	Show if sencand2name
+	3
+	○
+	$SenCand3Name ($SenCand3Party)
+	Show if sencand3name
+	7
+	○
+	Other (open [CC24_365_t])
+	Not randomized
+	8
+	○
+	I'm not sure
+	Not randomized
+	9
+	○
+	No one
+	Not randomized
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_365a
+CC24_365a- Show if CC24_365 in [1,2,3,7] and SenCand3Name
+	SINGLE CHOICE
+	Who is your second choice for U.S. Senator?
+	
+
+pii        False
+chart_layout        1
+varlabel        Senate second preference
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	$SenCand1Name ($SenCand1Party)
+	Show if sencand1name and cc24_365 != 1
+	2
+	○
+	$SenCand2Name ($SenCand2Party)
+	Show if sencand2name and cc24_365 != 2
+	3
+	○
+	$SenCand3Name ($SenCand3Party)
+	Show if sencand3name and cc24_365 != 3
+	7
+	○
+	Other (open [CC24_365a_t])
+	
+
+	8
+	○
+	I'm not sure
+	
+
+	9
+	○
+	No one
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_365b
+CC24_365b- Show if (SenCand1Name2 or SenCand2Name2) and (CC24_363 != 3 or CC24_365b_voted in [9] or not CC24_365b_voted)
+	SINGLE CHOICE
+	In the special election for U.S. Senator in your state, who do you prefer?
+	
+
+pii        False
+chart_layout        1
+varlabel        Senate preference 2nd race
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	$SenCand1Name2 ($SenCand1Party2)
+	Show if sencand1name2
+	2
+	○
+	$SenCand2Name2 ($SenCand2Party2)
+	Show if sencand2name2
+	7
+	○
+	Other (open [CC24_365b_t])
+	
+
+	8
+	○
+	I'm not sure
+	
+
+	9
+	○
+	No one
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_365c
+CC24_365c- Show if CC24_365b in [1,2,7]
+	SINGLE CHOICE
+	Who is your second choice for U.S. Senator?
+	
+
+pii        False
+chart_layout        1
+varlabel        Senate second preference 2nd race
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize($randordersen2)
+1
+	○
+	$SenCand1Name2 ($SenCand1Party2)
+	Show if sencand1name2 and cc24_365b != 1
+	2
+	○
+	$SenCand2Name2 ($SenCand2Party2)
+	Show if sencand2name2 and cc24_365b != 2
+	7
+	○
+	Other (open [CC24_365c_t])
+	Not randomized
+	8
+	○
+	I'm not sure
+	Not randomized
+	9
+	○
+	No one
+	Not randomized
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_366
+CC24_366- Show if (GovCand1Name or GovCand2Name or GovCand3Name) and (CC24_363 != 3 or CC24_366_voted in [9] or not CC24_366_voted)
+	SINGLE CHOICE
+	In the race for Governor in your state, who do you prefer?
+	
+
+pii        False
+chart_layout        1
+varlabel        Governor preference
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize($randordergov)
+1
+	○
+	$GovCand1Name ($GovCand1Party)
+	Show if govcand1name
+	2
+	○
+	$GovCand2Name ($GovCand2Party)
+	Show if govcand2name
+	3
+	○
+	$GovCand3Name ($GovCand3Party)
+	Show if govcand3name
+	7
+	○
+	Other (open [CC24_366_t])
+	Not randomized
+	8
+	○
+	I'm not sure
+	Not randomized
+	9
+	○
+	No one
+	Not randomized
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_367
+CC24_367- Show if (HouseCand1Name or HouseCand2Name) and (CC24_363 != 3 or CC24_367_voted in [99] or not CC24_367_voted)
+	SINGLE CHOICE
+	In the general election for U.S. House of Representatives in your area, who do you prefer?
+	
+
+pii        False
+chart_layout        1
+varlabel        House preference
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize($randorderhouse)
+1
+	○
+	$HouseCand1Name ($HouseCand1Party)
+	Show if housecand1name
+	2
+	○
+	$HouseCand2Name ($HouseCand2Party)
+	Show if housecand2name
+	3
+	○
+	$HouseCand3Name ($HouseCand3Party)
+	Show if housecand3name
+	10
+	○
+	Other (open [CC24_367_t])
+	Not randomized
+	98
+	○
+	I'm not sure
+	Not randomized
+	99
+	○
+	No one
+	Not randomized
+	998
+	
+
+	Skipped
+	
+
+	999
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_367a
+CC24_367a- Show if CC24_367 in [1,2,3,4,5,6,7,8,9,10]
+	SINGLE CHOICE
+	Who is your second choice for U.S. House of Representatives?
+	
+
+pii        False
+chart_layout        1
+varlabel        House second choice
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize($randorderhouse)
+1
+	○
+	$HouseCand1Name ($HouseCand1Party)
+	Show if housecand1name and cc24_367 != 1
+	2
+	○
+	$HouseCand2Name ($HouseCand2Party)
+	Show if housecand2name and cc24_367 != 2
+	3
+	○
+	$HouseCand3Name ($HouseCand3Party)
+	Show if housecand3name and cc24_367 != 3
+	10
+	○
+	Other (open [CC24_367a_t])
+	Not randomized
+	98
+	○
+	I'm not sure
+	Not randomized
+	99
+	○
+	No one
+	Not randomized
+	998
+	
+
+	Skipped
+	
+
+	999
+	
+
+	Not Asked
+	
+
+	
+
+end module: novote
+Module: moredemos
+Page: implicit_page_urbancity
+urbancity- Show if not pdl.urbancity or pdl.urbancity.last > months(3)/required
+	SINGLE CHOICE
+	How would you describe the place where you live?
+	
+
+pii        False
+chart_layout        1
+varlabel        Type of Area Living In
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        Profile_Basic_Info, used_in_US_Omni_Survey_Template, Profile_Codebook
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	City
+	
+
+	2
+	○
+	Suburb
+	
+
+	3
+	○
+	Town
+	
+
+	4
+	○
+	Rural area
+	
+
+	5
+	○
+	Other (open [urbancity_t])
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_ideo5
+ideo5- Show if not pdl.ideo5 or pdl.ideo5.last > months(12)
+	SINGLE CHOICE
+	In general, how would you describe your own political viewpoint?
+	
+
+pii        False
+chart_layout        1
+varlabel        Ideology
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, core, Profile_Political, nytimes, profile_core, Profile_Codebook_Demographics, Profile_Codebook_Core, cbs, election2014, used_in_US_Omni_Survey_Template, equivalent_spd_politics, Profile_Codebook
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        reverse
+1
+	○
+	Very liberal
+	
+
+	2
+	○
+	Liberal
+	
+
+	3
+	○
+	Moderate
+	
+
+	4
+	○
+	Conservative
+	
+
+	5
+	○
+	Very conservative
+	
+
+	6
+	○
+	Not sure
+	Not randomized
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_parent
+parent- Show if not pdl.parent or pdl.parent.last > months(12)
+	MULTIPLE CHOICE
+	Are you a parent or guardian? Please select all that apply.
+	
+
+pii        False
+chart_layout        1
+displaymax        
+varlabel        Parent of children younger or older than 18
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+required_text        Please choose an answer
+min_columns        1
+min        
+sample_type        
+access        
+autoadvance        False
+columns        1
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+max        
+exactly        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	□
+	Yes, of at least one child younger than 18 years old
+	
+
+	2
+	□
+	Yes, of at least one child 18 years old or older
+	
+
+	97
+	□
+	No, I am neither a parent or guardian
+	Exclude other punches
+	
+
+Page: implicit_page_child18
+child18- Show if 0
+	SINGLE CHOICE
+	Are you the parent or guardian of any children under the age of 18?
+	
+
+pii        False
+chart_layout        1
+varlabel        Children under the age of 18
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, core, nytimes, profile_core, Profile_Codebook_Demographics, coresampling, Profile_Family, cbs, Profile_Codebook_Household, election2014, Profile_Codebook, scripting_template
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes
+	
+
+	2
+	○
+	No
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_hadjob
+hadjob- Show if employ not in [1,2]
+	SINGLE CHOICE
+	At any time over the past five years
+	
+
+pii        False
+chart_layout        1
+varlabel        Had job in past 5 years
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes
+	
+
+	2
+	○
+	No
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Module: religion
+Page: implicit_page_pew_bornagain
+pew_bornagain- Show if not pdl.pew_bornagain or pdl.pew_bornagain.last > months(14) or not panman.is_panelist
+	SINGLE CHOICE
+	Would you describe yourself as a &quot;born-again&quot; or evangelical Christian, or not?
+	
+
+pii        False
+chart_layout        1
+varlabel        Born Again (Pew version)
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, core, nytimes, cbs, Profile_Codebook_Demographics, Profile_Religion, election2014, Profile_Codebook_Core, equivalent_spd_religion, Profile_Codebook
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes
+	
+
+	2
+	○
+	No
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_pew_religimp
+pew_religimp- Show if not pdl.pew_religimp or pdl.pew_religimp.last > months(14) or not panman.is_panelist
+	SINGLE CHOICE
+	How important is religion in your life?
+	
+
+pii        False
+chart_layout        1
+varlabel        Importance of religion (Pew version)
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, core, Profile_Codebook_Demographics, Profile_Religion, Profile_Codebook_Core, equivalent_spd_religion
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Very important
+	
+
+	2
+	○
+	Somewhat important
+	
+
+	3
+	○
+	Not too important
+	
+
+	4
+	○
+	Not at all important
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_pew_churatd
+pew_churatd- Show if not pdl.pew_churatd or pdl.pew_churatd.last > months(14) or not panman.is_panelist
+	SINGLE CHOICE
+	Aside from weddings and funerals, how often do you attend religious services?
+	
+
+pii        False
+chart_layout        1
+varlabel        Church attendance (Pew version)
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, core, nytimes, cbs, Profile_Codebook_Demographics, Profile_Religion, election2014, Profile_Codebook_Core, equivalent_spd_religion
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	More than once a week
+	
+
+	2
+	○
+	Once a week
+	
+
+	3
+	○
+	Once or twice a month
+	
+
+	4
+	○
+	A few times a year
+	
+
+	5
+	○
+	Seldom
+	
+
+	6
+	○
+	Never
+	
+
+	7
+	○
+	Don't know
+	Not randomized
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_pew_prayer
+pew_prayer- Show if not pdl.pew_prayer or pdl.pew_prayer.last > months(14) or not panman.is_panelist
+	SINGLE CHOICE
+	People practice their religion in different ways. Outside of attending religious services, how often do you pray?
+	
+
+pii        False
+chart_layout        1
+varlabel        Frequency of Prayer (Pew version)
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, core, Profile_Codebook_Demographics, Profile_Religion, Profile_Codebook_Core, equivalent_spd_religion
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Several times a day
+	
+
+	2
+	○
+	Once a day
+	
+
+	3
+	○
+	A few times a week
+	
+
+	4
+	○
+	Once a week
+	
+
+	5
+	○
+	A few times a month
+	
+
+	6
+	○
+	Seldom
+	
+
+	7
+	○
+	Never
+	
+
+	8
+	○
+	Don't know
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_religpew
+religpew- Show if not pdl.religpew or pdl.religpew.last > months(14) or not panman.is_panelist
+	SINGLE CHOICE
+	What is your present religion, if any?
+	
+
+pii        False
+chart_layout        1
+varlabel        Religion
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        core, GlobalVars_7, profile_core, GV_US, cbs, equivalent_spd_religion, Profile_Codebook_Demographics, US_GV_GL_Mini_LocalDemos, US_GV_Survey_1, profile, election2014, Profile_Codebook_Core, nytimes, Profile_Religion, Profile_Codebook
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Protestant
+	
+
+	2
+	○
+	Roman Catholic
+	
+
+	3
+	○
+	Mormon
+	
+
+	4
+	○
+	Eastern or Greek Orthodox
+	
+
+	5
+	○
+	Jewish
+	
+
+	6
+	○
+	Muslim
+	
+
+	7
+	○
+	Buddhist
+	
+
+	8
+	○
+	Hindu
+	
+
+	9
+	○
+	Atheist
+	
+
+	10
+	○
+	Agnostic
+	
+
+	11
+	○
+	Nothing in particular
+	
+
+	12
+	○
+	Something else (open [religpew_t])
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_religpew_protestant
+religpew_protestant- Show if (religpew == 1 and not pdl.religpew_protestant) or (religpew == 1 and pdl.religpew_protestant.last > months(14))
+	SINGLE CHOICE
+	To which Protestant church or group do you belong?
+	
+
+pii        False
+chart_layout        1
+varlabel        Protestant Church
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, core, Profile_Codebook_Demographics, Profile_Religion, Profile_Codebook_Core, equivalent_spd_religion, Profile_Codebook
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Baptist
+	
+
+	2
+	○
+	Methodist
+	
+
+	3
+	○
+	Nondenominational or Independent Church
+	
+
+	4
+	○
+	Lutheran
+	
+
+	5
+	○
+	Presbyterian
+	
+
+	6
+	○
+	Pentecostal
+	
+
+	7
+	○
+	Episcopalian
+	
+
+	8
+	○
+	Church of Christ or Disciples of Christ
+	
+
+	9
+	○
+	Congregational or United Church of Christ
+	
+
+	10
+	○
+	Holiness
+	
+
+	11
+	○
+	Reformed
+	
+
+	12
+	○
+	Adventist
+	
+
+	13
+	○
+	Jehovah's Witness
+	
+
+	90
+	○
+	Something else (open [religpew_protestant_t])
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+
+
+Page: religion_denom
+religpew_baptist- Show if (religpew_protestant == 1 and not pdl.religpew_baptist) or (religpew_protestant == 1 and pdl.religpew_baptist.last > months(14))
+	SINGLE CHOICE
+	To which Baptist church do you belong, if any?
+	
+
+pii        False
+chart_layout        1
+varlabel        Baptist Church
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, Profile_Religion
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Southern Baptist Convention
+	
+
+	2
+	○
+	American Baptist Churches in USA
+	
+
+	3
+	○
+	National Baptist Convention
+	
+
+	4
+	○
+	Progressive Baptist Convention
+	
+
+	5
+	○
+	Independent Baptist
+	
+
+	6
+	○
+	Baptist General Conference
+	
+
+	7
+	○
+	Baptist Missionary Association
+	
+
+	8
+	○
+	Conservative Baptist Assoc. of America
+	
+
+	9
+	○
+	Free Will Baptist
+	
+
+	10
+	○
+	General Association of Regular Baptists
+	
+
+	90
+	○
+	Other Baptist (open [religpew_baptist_t])
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+religpew_methodist- Show if (religpew_protestant == 2 and not pdl.religpew_methodist) or (religpew_protestant == 2 and pdl.religpew_methodist.last > months(14))
+	SINGLE CHOICE
+	To which Methodist church do you belong, if any?
+	
+
+pii        False
+chart_layout        1
+varlabel        Methodist Church
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, Profile_Religion
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	United Methodist Church
+	
+
+	2
+	○
+	Free Methodist Church
+	
+
+	3
+	○
+	African Methodist Episcopal
+	
+
+	4
+	○
+	African Methodist Episcopal Zion
+	
+
+	5
+	○
+	Christian Methodist Episcopal Church
+	
+
+	90
+	○
+	Other Methodist Church (open [religpew_methodist_t])
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+religpew_nondenom- Show if (religpew_protestant == 3 and not pdl.religpew_nondenom) or (religpew_protestant == 3 and pdl.religpew_nondenom.last > months(14))
+	SINGLE CHOICE
+	To which kind of nondenominational or independent church do you belong, if any?
+	
+
+pii        False
+chart_layout        1
+varlabel        Nondenominational or Independent Church
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, Profile_Religion
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Nondenominational evangelical
+	
+
+	2
+	○
+	Nondenominational fundamentalist
+	
+
+	3
+	○
+	Nondenominational charismatic
+	
+
+	4
+	○
+	Interdenominational
+	
+
+	5
+	○
+	Community church
+	
+
+	90
+	○
+	Other (open [religpew_nondenom_t])
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+religpew_lutheran- Show if (religpew_protestant == 4 and not pdl.religpew_lutheran) or (religpew_protestant == 4 and pdl.religpew_lutheran.last > months(14))
+	SINGLE CHOICE
+	To which Lutheran church do you belong?
+	
+
+pii        False
+chart_layout        1
+varlabel        Lutheran Church
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, Profile_Religion
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Evangelical Lutheran Church in America (ELCA)
+	
+
+	2
+	○
+	Lutheran Church, Missouri Synod
+	
+
+	3
+	○
+	Lutheran Church, Wisconsin Synod
+	
+
+	4
+	○
+	Other Lutheran Church (open [religpew_lutheran_t])
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+religpew_presby- Show if (religpew_protestant == 5 and not pdl.religpew_presby) or (religpew_protestant == 5 and pdl.religpew_presby.last > months(14))
+	SINGLE CHOICE
+	To which Presbyterian church do you belong?
+	
+
+pii        False
+chart_layout        1
+varlabel        Presbyterian Church
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, Profile_Religion
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Presbyterian Church USA
+	
+
+	2
+	○
+	Presbyterian Church in America
+	
+
+	3
+	○
+	Associate Reformed Presbyterian
+	
+
+	4
+	○
+	Cumberland Presbyterian Church
+	
+
+	5
+	○
+	Orthodox Presbyterian
+	
+
+	6
+	○
+	Evangelical Presbyterian Church
+	
+
+	90
+	○
+	Other Presbyterian Church (open [religpew_presby_t])
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+religpew_pentecost- Show if (religpew_protestant == 6 and not pdl.religpew_pentecost) or (religpew_protestant == 6 and pdl.religpew_pentecost.last > months(14))
+	SINGLE CHOICE
+	To which Pentecostal church do you belong?
+	
+
+pii        False
+chart_layout        1
+varlabel        Pentecostal Church
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, Profile_Religion
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Assemblies of God
+	
+
+	2
+	○
+	Church of God Cleveland TN
+	
+
+	3
+	○
+	Four Square Gospel
+	
+
+	4
+	○
+	Pentecostal Church of God
+	
+
+	5
+	○
+	Pentecostal Holiness Church
+	
+
+	6
+	○
+	Church of God in Christ
+	
+
+	7
+	○
+	Church of God of the Apostolic Faith
+	
+
+	8
+	○
+	Assembly of Christian Churches
+	
+
+	9
+	○
+	Apostolic Christian
+	
+
+	90
+	○
+	Other Pentecostal Church (open [religpew_pentecost_t])
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+religpew_episcop- Show if (religpew_protestant == 7 and not pdl.religpew_episcop) or (religpew_protestant == 7 and pdl.religpew_episcop.last > months(14))
+	SINGLE CHOICE
+	To which Episcopalian church do you belong?
+	
+
+pii        False
+chart_layout        1
+varlabel        Episcopal Church
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, Profile_Religion
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Episcopal Church in the USA
+	
+
+	2
+	○
+	Anglican Church (Church of England)
+	
+
+	3
+	○
+	Anglican Orthodox Church
+	
+
+	4
+	○
+	Reformed Episcopal Church
+	
+
+	90
+	○
+	Other Episcopalian or Anglican Church (open [religpew_episcop_t])
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+religpew_christian- Show if (religpew_protestant == 8 and not pdl.religpew_christian) or (religpew_protestant == 8 and pdl.religpew_christian.last > months(14))
+	SINGLE CHOICE
+	To which Christian church do you belong?
+	
+
+pii        False
+chart_layout        1
+varlabel        Christian Church
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, Profile_Religion
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Church of Christ
+	
+
+	2
+	○
+	Disciples of Christ
+	
+
+	3
+	○
+	Christian Churches and Churches of Christ
+	
+
+	90
+	○
+	Other Christian church (open [religpew_christian_t])
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+religpew_congreg- Show if (religpew_protestant == 9 and not pdl.religpew_congreg) or (religpew_protestant == 9 and pdl.religpew_congreg.last > months(14))
+	SINGLE CHOICE
+	To which congregational church do you belong?
+	
+
+pii        False
+chart_layout        1
+varlabel        Congregational Church
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, Profile_Religion
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	United Church of Christ
+	
+
+	2
+	○
+	Conservative Congregational Christian
+	
+
+	3
+	○
+	National Association of Congregational Christians
+	
+
+	90
+	○
+	Other Congregational (open [religpew_congreg_t])
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+religpew_holiness- Show if (religpew_protestant == 10 and not pdl.religpew_holiness) or (religpew_protestant == 10 and pdl.religpew_holiness.last > months(14))
+	SINGLE CHOICE
+	To which Holiness church do you belong?
+	
+
+pii        False
+chart_layout        1
+varlabel        Holiness Church
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, Profile_Religion
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Church of the Nazarene
+	
+
+	2
+	○
+	Wesleyan Church
+	
+
+	3
+	○
+	Free Methodist Church
+	
+
+	4
+	○
+	Christian and Missionary Alliance
+	
+
+	5
+	○
+	Church of God (Anderson, Indiana)
+	
+
+	6
+	○
+	Salvation Army, American Rescue workers
+	
+
+	90
+	○
+	Other Holiness (open [religpew_holiness_t])
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+religpew_reformed- Show if (religpew_protestant == 11 and not pdl.religpew_reformed) or (religpew_protestant == 11 and pdl.religpew_reformed.last > months(14))
+	SINGLE CHOICE
+	To which Reformed church do you belong?
+	
+
+pii        False
+chart_layout        1
+varlabel        Reformed Church
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, Profile_Religion
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Reformed Church in America
+	
+
+	2
+	○
+	Christian Reformed Church
+	
+
+	90
+	○
+	Other Reformed (open [religpew_reformed_t])
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+religpew_advent- Show if (religpew_protestant == 12 and not pdl.religpew_advent) or (religpew_protestant == 12 and pdl.religpew_advent.last > months(14))
+	SINGLE CHOICE
+	To which Adventist church do you belong?
+	
+
+pii        False
+chart_layout        1
+varlabel        Adventist Church
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, Profile_Religion
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Seventh Day Adventist
+	
+
+	2
+	○
+	Church of God, General Conference
+	
+
+	3
+	○
+	Advent Christian
+	
+
+	90
+	○
+	Other Adventist (open [religpew_advent_t])
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+religpew_catholic- Show if (religpew == 2 and not pdl.religpew_catholic) or (religpew == 2 and pdl.religpew_catholic.last > months(14))
+	SINGLE CHOICE
+	To which Catholic church do you belong?
+	
+
+pii        False
+chart_layout        1
+varlabel        Catholic Church
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, Profile_Religion
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Roman Catholic Church
+	
+
+	2
+	○
+	National Polish Catholic Church
+	
+
+	3
+	○
+	Greek-rite Catholic
+	
+
+	4
+	○
+	Armenian Catholic
+	
+
+	5
+	○
+	Old Catholic
+	
+
+	90
+	○
+	Other Catholic (open [religpew_catholic_t])
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+religpew_mormon- Show if (religpew == 3 and not pdl.religpew_mormon) or (religpew == 3 and pdl.religpew_mormon.last > months(14))
+	SINGLE CHOICE
+	To which Mormon church do you belong?
+	
+
+pii        False
+chart_layout        1
+varlabel        Mormon Church
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, Profile_Religion
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	The Church of Jesus Christ of Latter-day Saints
+	
+
+	2
+	○
+	Community of Christ
+	
+
+	90
+	○
+	Other Mormon (open [religpew_mormon_t])
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+religpew_orthodox- Show if (religpew == 4 and not pdl.religpew_orthodox) or (religpew == 4 and pdl.religpew_orthodox.last > months(14))
+	SINGLE CHOICE
+	To which Orthodox church do you belong?
+	
+
+pii        False
+chart_layout        1
+varlabel        Orthodox Church
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, Profile_Religion
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Greek Orthodox
+	
+
+	2
+	○
+	Russian Orthodox
+	
+
+	3
+	○
+	Orthodox Church in America
+	
+
+	4
+	○
+	Armenian Orthodox
+	
+
+	5
+	○
+	Eastern Orthodox
+	
+
+	6
+	○
+	Serbian Orthodox
+	
+
+	90
+	○
+	Other Orthodox (open [religpew_orthodox_t])
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+religpew_jewish- Show if (religpew == 5 and not pdl.religpew_jewish) or (religpew == 5 and pdl.religpew_jewish.last > months(14))
+	SINGLE CHOICE
+	To which Jewish group do you belong?
+	
+
+pii        False
+chart_layout        1
+varlabel        Jewish Group
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, Profile_Religion
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Reform
+	
+
+	2
+	○
+	Conservative
+	
+
+	3
+	○
+	Orthodox
+	
+
+	4
+	○
+	Reconstructionist
+	
+
+	90
+	○
+	Other (open [religpew_jewish_t])
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+religpew_muslim- Show if (religpew == 6 and not pdl.religpew_muslim) or (religpew == 6 and pdl.religpew_muslim.last > months(14))
+	SINGLE CHOICE
+	To which Muslim group do you belong?
+	
+
+pii        False
+chart_layout        1
+varlabel        Muslim Group
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, Profile_Religion
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Sunni
+	
+
+	2
+	○
+	Shia
+	
+
+	3
+	○
+	Nation of Islam (Black Muslim)
+	
+
+	90
+	○
+	Other Muslim (open [religpew_muslim_t])
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+religpew_buddhist- Show if (religpew == 7 and not pdl.religpew_buddhist) or (religpew == 7 and pdl.religpew_buddhist.last > months(14))
+	SINGLE CHOICE
+	To which Buddhist group do you belong?
+	
+
+pii        False
+chart_layout        1
+varlabel        Buddhist group
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, Profile_Religion
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Theravada (Vipassana) Buddhism
+	
+
+	2
+	○
+	Mahayana (Zen) Buddhism
+	
+
+	3
+	○
+	Vajrayana (Tibetan) Buddhism
+	
+
+	90
+	○
+	Other Buddhist (open [religpew_buddhist_t])
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+religpew_hindu- Show if (religpew == 8 and not pdl.religpew_hindu) or (religpew == 8 and pdl.religpew_hindu.last > months(14))
+	SINGLE CHOICE
+	With which of the following Hindu groups, if any, do you identify with most closely?
+	
+
+pii        False
+chart_layout        1
+varlabel        Hindu Group
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, Profile_Religion
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Vaishnava Hinduism
+	
+
+	2
+	○
+	Shaivite Hinduism
+	
+
+	3
+	○
+	Shaktism Hinduism
+	
+
+	90
+	○
+	Other Hindu (open [religpew_hindu_t])
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+end module: religion
+Page: implicit_page_marstat
+marstat- Show if not pdl.marstat or pdl.marstat.last > months(12) or not panman.is_panelist
+	SINGLE CHOICE
+	What is your marital status?
+	
+
+pii        False
+chart_layout        1
+varlabel        Marital Status
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, Profile_Basic_Info, coresampling, profile_core, election2014, cbs, nytimes, core_survey, core codebook, core, check_for_coding, equivalent_spd_sex, scripting_template
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Married
+	
+
+	2
+	○
+	Separated
+	
+
+	3
+	○
+	Divorced
+	
+
+	4
+	○
+	Widowed
+	
+
+	5
+	○
+	Never married
+	
+
+	6
+	○
+	Domestic / civil partnership
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_union
+union- Show if not pdl.union or pdl.union.last > months(6) or not panman.is_panelist
+	SINGLE CHOICE
+	Are you a member of a labor union?
+	
+
+pii        False
+chart_layout        1
+varlabel        Labor union member
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes, I am currently a member of a labor union
+	
+
+	2
+	○
+	I formerly was a member of a labor union
+	
+
+	3
+	○
+	I am not now, nor have I been, a member of a labor union
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_union_coverage
+union_coverage- Show if union in [2,3]
+	SINGLE CHOICE
+	Are you covered by a union contract, also known as a collective bargaining agreement?
+	
+
+pii        False
+chart_layout        1
+varlabel        Covered by union contract
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes
+	
+
+	2
+	○
+	No
+	
+
+	3
+	○
+	Not sure
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_unionhh
+unionhh- Show if not pdl.unionhh or pdl.unionhh.last > months(6)
+	SINGLE CHOICE
+	Other than yourself, is any member of your household a union member?
+	
+
+pii        False
+chart_layout        1
+varlabel        Family labor union member
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes, a member of my household is currently a union member
+	
+
+	2
+	○
+	A member of my household was formerly a member of a labor union, but is not now
+	
+
+	3
+	○
+	No, no one in my household has ever been a member of a labor union
+	
+
+	4
+	○
+	Not sure
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+end module: moredemos
+end module: commoncore
+Module: implicit_module_2
+
+
+Page: implicit_page_ownhome
+ownhome- Show if not pdl.ownhome or pdl.ownhome.last > months(6)
+	SINGLE CHOICE
+	Do you own your home or pay rent?
+	
+
+pii        False
+chart_layout        1
+varlabel        Home ownership
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, core, Profile_Codebook_Demographics, Profile_Codebook_Household, profile_core, check_for_coding, Profile_Codebook
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Own
+	
+
+	2
+	○
+	Rent
+	
+
+	3
+	○
+	Other (open [ownhome_t])
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: demos2c
+newsint- Show if not pdl.newsint or pdl.newsint.last > months(12) or not panman.is_panelist
+	SINGLE CHOICE
+	Some people seem to follow what's going on in government and public affairs most of the time, whether there's an election going on or not. Others aren't that interested. Would you say you follow what's going on in government and public affairs ...
+	
+
+pii        False
+chart_layout        1
+varlabel        Political Interest
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, core, Profile_Political, nytimes, profile_core, Profile_Codebook_Demographics, Profile_Codebook_Core, cbs, election2014, Profile_Codebook
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Most of the time
+	
+
+	2
+	○
+	Some of the time
+	
+
+	3
+	○
+	Only now and then
+	
+
+	4
+	○
+	Hardly at all
+	
+
+	7
+	○
+	Don't know
+	Not randomized
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+faminc_new- Show if (not pdl.faminc_new) or (pdl.faminc_new.last > months(6))
+	SINGLE CHOICE
+	Thinking back over the last year, what was your family's annual income?
+	
+
+pii        False
+chart_layout        1
+varlabel        Family income
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        check_for_coding, Profile_Codebook, scripting_template
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Less than $10,000
+	
+
+	2
+	○
+	$10,000 - $19,999
+	
+
+	3
+	○
+	$20,000 - $29,999
+	
+
+	4
+	○
+	$30,000 - $39,999
+	
+
+	5
+	○
+	$40,000 - $49,999
+	
+
+	6
+	○
+	$50,000 - $59,999
+	
+
+	7
+	○
+	$60,000 - $69,999
+	
+
+	8
+	○
+	$70,000 - $79,999
+	
+
+	9
+	○
+	$80,000 - $99,999
+	
+
+	10
+	○
+	$100,000 - $119,999
+	
+
+	11
+	○
+	$120,000 - $149,999
+	
+
+	12
+	○
+	$150,000 - $199,999
+	
+
+	13
+	○
+	$200,000 - $249,999
+	
+
+	14
+	○
+	$250,000 - $349,999
+	
+
+	15
+	○
+	$350,000 - $499,999
+	
+
+	16
+	○
+	$500,000 or more
+	
+
+	97
+	○
+	Prefer not to say
+	
+
+	998
+	
+
+	Skipped
+	
+
+	999
+	
+
+	Not Asked
+	
+
+	
+
+
+
+Page: implicit_page_milstat
+milstat- Show if not pdl.milstat or pdl.milstat.last > months(6)
+	MULTIPLE CHOICE
+	We'd like to know whether you or someone in your immediate family is currently serving or has ever served in the U.S. military.  Immediate family is defined as your parents, siblings, spouse, and children.  Please check all boxes that apply.
+	
+
+pii        False
+chart_layout        1
+displaymax        
+varlabel        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+required_text        Please choose an answer
+min_columns        1
+min        
+sample_type        
+access        
+autoadvance        False
+columns        1
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        Profile_Basic_Info
+max        
+exactly        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	□
+	I am currently serving in the U.S. military
+	
+
+	2
+	□
+	I have immediate family members currently serving in the U.S. military
+	
+
+	3
+	□
+	I previously served in the U.S. military but I am no longer active
+	
+
+	4
+	□
+	Members of my immediate family have served in the U.S. military but are no longer active
+	
+
+	5
+	□
+	Neither myself nor any members of my immediate family have ever served in the U.S. military
+	Exclude other punches
+	
+
+Page: implicit_page_healthins
+healthins
+	MULTIPLE CHOICE
+	Do you currently have health insurance? (Please check all that apply)
+	
+
+pii        False
+chart_layout        1
+displaymax        
+varlabel        Health insurance
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+required_text        Please choose an answer
+min_columns        1
+min        
+sample_type        
+access        
+autoadvance        False
+columns        1
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+max        
+exactly        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	□
+	Yes, through my job or a family member's employer
+	
+
+	2
+	□
+	Yes, through a government program, such as Medicare or Medicaid
+	
+
+	3
+	□
+	Yes, through my school
+	
+
+	4
+	□
+	Yes, I purchased my own
+	
+
+	5
+	□
+	Not sure
+	Exclude other punches
+	6
+	□
+	No
+	Exclude other punches
+	
+
+end module: implicit_module_2
+Module: mena_mod
+Page: implicit_page_mena
+mena- Show if race != 8 and (not pdl.mena or pdl.mena.last >= months(24))/required
+	SINGLE CHOICE
+	Are you of Middle Eastern or North African origin or descent?
+	
+
+pii        False
+chart_layout        1
+varlabel        Middle Eastern or North African
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes
+	
+
+	2
+	○
+	No
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_mena_origin
+mena_origin- Show if mena == 1 and (not pdl.mena_origin or pdl.mena_origin.last >= months(24))/required
+	MULTIPLE CHOICE
+	From which country or region do you trace your heritage or ancestry? (Check all that apply)
+	
+
+pii        False
+chart_layout        1
+displaymax        
+varlabel        Middle Eastern or North African Country of Origin
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+required_text        Please choose an answer
+min_columns        1
+min        
+sample_type        
+access        
+autoadvance        False
+columns        1
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+max        
+exactly        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        randomize
+1
+	□
+	Afghan
+	
+
+	2
+	□
+	Egyptian
+	
+
+	3
+	□
+	Iranian
+	
+
+	4
+	□
+	Iraqi
+	
+
+	5
+	□
+	Israeli
+	
+
+	6
+	□
+	Lebanese
+	
+
+	7
+	□
+	Moroccan
+	
+
+	8
+	□
+	Palestinian
+	
+
+	9
+	□
+	Somali
+	
+
+	10
+	□
+	Syrian
+	
+
+	11
+	□
+	Turkish
+	
+
+	12
+	□
+	Other Middle Eastern or North African origin (open [mena_origin_t])
+	Not randomized
+	
+
+end module: mena_mod
+Module: implicit_module_3
+Page: implicit_page_CC24_hisp
+CC24_hisp- Show if race == 3 or hispanic == 1
+	MULTIPLE CHOICE
+	From which country or region do you trace your heritage or ancestry? (Check all that apply)
+	
+
+pii        False
+chart_layout        1
+displaymax        
+varlabel        Latin heritage
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+required_text        Please choose an answer
+min_columns        1
+min        
+sample_type        
+access        
+autoadvance        False
+columns        1
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+max        
+exactly        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	□
+	No Country in Particular
+	Exclude other punches
+	2
+	□
+	United States
+	
+
+	3
+	□
+	Mexico
+	
+
+	4
+	□
+	Puerto Rico
+	
+
+	5
+	□
+	Cuba
+	
+
+	6
+	□
+	Dominican Republic
+	
+
+	7
+	□
+	South America
+	
+
+	8
+	□
+	Central America
+	
+
+	9
+	□
+	Caribbean
+	
+
+	10
+	□
+	Spain
+	
+
+	11
+	□
+	Other (open [CC24_hisp_t])
+	
+
+	12
+	□
+	I am not of Latino, Hispanic or Spanish Heritage
+	Exclude other punches
+	
+
+Page: implicit_page_CC24_asian
+CC24_asian- Show if race == 4
+	MULTIPLE CHOICE
+	From which country or region do you trace your heritage or ancestry? (Check all that apply)
+	
+
+pii        False
+chart_layout        1
+displaymax        
+varlabel        Asian heritage
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+required_text        Please choose an answer
+min_columns        1
+min        
+sample_type        
+access        
+autoadvance        False
+columns        1
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+max        
+exactly        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	□
+	No Country in Particular
+	Exclude other punches
+	2
+	□
+	United States
+	
+
+	3
+	□
+	China
+	
+
+	4
+	□
+	Japan
+	
+
+	5
+	□
+	India
+	
+
+	6
+	□
+	Philippines
+	
+
+	7
+	□
+	Taiwan
+	
+
+	8
+	□
+	Korea
+	
+
+	9
+	□
+	Vietnam
+	
+
+	10
+	□
+	Pakistan
+	
+
+	11
+	□
+	Hmong
+	
+
+	12
+	□
+	Cambodia
+	
+
+	13
+	□
+	Thailand
+	
+
+	14
+	□
+	Other (open [CC24_asian_t])
+	
+
+	15
+	□
+	I am not of Asian Heritage
+	Exclude other punches
+	
+
+Page: implicit_page_CC24_native
+CC24_native- Show if race == 5
+	OPEN TEXTBOX
+	You selected Native American as your racial group.  What tribe(s) do you belong to?
+	
+
+pii        False
+right        
+prompt        
+dk_text        Don't know
+filter_text        
+cols        20
+topic        
+required_text        
+dk        False
+rows        1
+subtext        
+minlength        0
+access        
+above        
+varlabel        Native America heritage
+description        
+spd_category        
+tags        
+required        NONE
+below        
+maxlength        0
+left        
+Page: implicit_page_presvote16post
+presvote16post- Show if not pdl.presvote16post and birthyr <= 1998
+	SINGLE CHOICE
+	Who did you vote for in the election for President in 2016?
+	
+
+pii        False
+chart_layout        1
+varlabel        2016 President Vote Post Election
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        used_in_US_Omni_Survey_Template
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize
+1
+	○
+	Hillary Clinton
+	
+
+	2
+	○
+	Donald Trump
+	
+
+	3
+	○
+	Gary Johnson
+	Not randomized
+	4
+	○
+	Jill Stein
+	Not randomized
+	5
+	○
+	Evan McMullin
+	Not randomized
+	6
+	○
+	Other (open [presvote16post_t])
+	Not randomized
+	7
+	○
+	Did not vote for President
+	Not randomized
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_industry
+industry- Show if employ in [1,2,5] or hadjob in [1]
+	SINGLE CHOICE
+	$employtext
+	
+
+pii        False
+chart_layout        1
+varlabel        Industry
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Agriculture, forestry, fishing, and hunting
+	
+
+	2
+	○
+	Mining
+	
+
+	3
+	○
+	Utilities
+	
+
+	4
+	○
+	Construction
+	
+
+	5
+	○
+	Manufacturing
+	
+
+	6
+	○
+	Professional and business services
+	
+
+	7
+	○
+	Educational services
+	
+
+	8
+	○
+	Health care and social assistance
+	
+
+	9
+	○
+	Leisure and hospitality
+	
+
+	10
+	○
+	Other services
+	
+
+	11
+	○
+	Wholesale trade
+	
+
+	12
+	○
+	Retail trade
+	
+
+	13
+	○
+	Transportation and warehousing
+	
+
+	14
+	○
+	Information
+	
+
+	15
+	○
+	Financial activities
+	
+
+	16
+	○
+	Federal government
+	
+
+	17
+	○
+	State and local government
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_jobnum
+jobnum- Show if employ in [1,2]
+	SINGLE CHOICE
+	How many jobs do you have?
+	
+
+pii        False
+chart_layout        1
+varlabel        Number of jobs
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	1
+	
+
+	2
+	○
+	2
+	
+
+	3
+	○
+	3 or more
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: sex
+sexuality- Show if not pdl.sexuality or (pdl.sexuality.last > months(6))
+	SINGLE CHOICE
+	Which of the following best describes your sexuality?
+	
+
+pii        False
+chart_layout        1
+varlabel        Sexual Orientation
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        core, GlobalVars_7, Profile_Codebook, GV_US, equivalent_spd_sex, US_GV_Mini_demographics, Profile_Codebook_Demographics, US_GV_Survey_1, Profile_Codebook_Core, Profile_Basic_Info, check_for_coding, used_in_US_Omni_Survey_Template
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Heterosexual / straight
+	
+
+	2
+	○
+	Lesbian / gay woman
+	
+
+	3
+	○
+	Gay man
+	
+
+	4
+	○
+	Bisexual
+	
+
+	5
+	○
+	Other
+	
+
+	6
+	○
+	Prefer not to say
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+transgender- Show if not pdl.transgender or (pdl.transgender.last > months(6))
+	SINGLE CHOICE
+	Do you identify as transgender?
+	
+
+pii        False
+chart_layout        1
+varlabel        Transgender
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes
+	
+
+	2
+	○
+	No
+	
+
+	3
+	○
+	Prefer not to say
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked

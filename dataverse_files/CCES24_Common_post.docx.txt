@@ -1,0 +1,5284 @@
+﻿Questionnaire
+	  
+
+	
+
+  
+
+
+
+Page: page_testzip
+testzip- Show if testing/required
+	OPEN INTEGER TEXTBOX
+	Test zip code
+	
+
+pii        False
+right        
+prompt        
+dk_text        Don't know
+filter_text        
+cols        5
+topic        
+required_text        Please provide a valid 5-digit zip code
+dk        False
+rows        1
+subtext        
+min        501
+minlength        0
+access        
+width        
+above        
+varlabel        
+description        
+spd_category        
+tags        
+max        99999
+required        HARD
+below        
+maxlength        0
+left        
+testreg- Show if testing
+	SINGLE CHOICE
+	Test - Was R registered in Wave 1?
+	
+
+pii        False
+chart_layout        1
+varlabel        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes
+	
+
+	2
+	○
+	No
+	
+
+	3
+	○
+	DK
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_regzip_confirm
+regzip_confirm- Show if w1commonzip and w1registered == 1/required
+	SINGLE CHOICE
+	Our records show that you currently are registered to vote in the following zip code: $w1commonzip.  &nbsp;Is that information correct?
+	
+
+pii        False
+chart_layout        1
+varlabel        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes
+	
+
+	2
+	○
+	No
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_reszip_confirm
+reszip_confirm- Show if w1commonzip and (w1registered != 1 or not w1registered)/required
+	SINGLE CHOICE
+	Our records show that you currently live in the following zip code: $w1commonzip.  &nbsp;Is that information correct?
+	
+
+pii        False
+chart_layout        1
+varlabel        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes
+	
+
+	2
+	○
+	No
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_inputzip
+inputzip- Show if regzip_confirm == 2 or reszip_confirm == 2 or (not regzip_confirm and not reszip_confirm)/required
+	OPEN INTEGER TEXTBOX
+	So that we can ask you about the news and events in your area, in what zip code do you currently reside?
+	
+
+pii        False
+right        
+prompt        
+dk_text        Don't know
+filter_text        
+cols        5
+topic        
+required_text        Please provide a valid 5-digit zip code
+dk        False
+rows        1
+subtext        
+min        501
+minlength        0
+access        
+width        
+above        
+varlabel        
+description        
+spd_category        
+tags        
+max        99999
+required        HARD
+below        
+maxlength        0
+left        
+Page: implicit_page_votereg
+votereg- Show if (w1registered != 1 or not w1registered or regzip_confirm == 2)/required
+	SINGLE CHOICE
+	Are you registered to vote?
+	
+
+pii        False
+chart_layout        1
+varlabel        Voter Registration Status
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, core, Profile_Political, profile_core, vote, Profile_Codebook_Demographics, Profile_Codebook_Core, used_in_US_Omni_Survey_Template, Profile_Codebook
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes
+	
+
+	2
+	○
+	No
+	
+
+	3
+	○
+	Don't know
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_votereg_f
+votereg_f- Show if votereg == 1 and regzip_confirm !=1/required
+	SINGLE CHOICE
+	Is $izip the zip code where you are registered to vote?
+	
+
+pii        False
+chart_layout        1
+varlabel        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes
+	
+
+	2
+	○
+	No (open-intrange [regzip])
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_inputstate
+inputstate- Show if False
+	DROPDOWN
+	State
+	
+
+pii        False
+chart_layout        1
+filter_text        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+required_text        Please choose an answer
+min_columns        1
+subtext        
+sample_type        
+access        
+autoadvance        False
+varlabel        
+default_text        
+as_banner        False
+description        
+spd_category        
+tags        
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+client        
+order        as-is
+1
+	○
+	Alabama
+	
+
+	2
+	○
+	Alaska
+	
+
+	4
+	○
+	Arizona
+	
+
+	5
+	○
+	Arkansas
+	
+
+	6
+	○
+	California
+	
+
+	8
+	○
+	Colorado
+	
+
+	9
+	○
+	Connecticut
+	
+
+	10
+	○
+	Delaware
+	
+
+	11
+	○
+	District of Columbia
+	
+
+	12
+	○
+	Florida
+	
+
+	13
+	○
+	Georgia
+	
+
+	15
+	○
+	Hawaii
+	
+
+	16
+	○
+	Idaho
+	
+
+	17
+	○
+	Illinois
+	
+
+	18
+	○
+	Indiana
+	
+
+	19
+	○
+	Iowa
+	
+
+	20
+	○
+	Kansas
+	
+
+	21
+	○
+	Kentucky
+	
+
+	22
+	○
+	Louisiana
+	
+
+	23
+	○
+	Maine
+	
+
+	24
+	○
+	Maryland
+	
+
+	25
+	○
+	Massachusetts
+	
+
+	26
+	○
+	Michigan
+	
+
+	27
+	○
+	Minnesota
+	
+
+	28
+	○
+	Mississippi
+	
+
+	29
+	○
+	Missouri
+	
+
+	30
+	○
+	Montana
+	
+
+	31
+	○
+	Nebraska
+	
+
+	32
+	○
+	Nevada
+	
+
+	33
+	○
+	New Hampshire
+	
+
+	34
+	○
+	New Jersey
+	
+
+	35
+	○
+	New Mexico
+	
+
+	36
+	○
+	New York
+	
+
+	37
+	○
+	North Carolina
+	
+
+	38
+	○
+	North Dakota
+	
+
+	39
+	○
+	Ohio
+	
+
+	40
+	○
+	Oklahoma
+	
+
+	41
+	○
+	Oregon
+	
+
+	42
+	○
+	Pennsylvania
+	
+
+	44
+	○
+	Rhode Island
+	
+
+	45
+	○
+	South Carolina
+	
+
+	46
+	○
+	South Dakota
+	
+
+	47
+	○
+	Tennessee
+	
+
+	48
+	○
+	Texas
+	
+
+	49
+	○
+	Utah
+	
+
+	50
+	○
+	Vermont
+	
+
+	51
+	○
+	Virginia
+	
+
+	53
+	○
+	Washington
+	
+
+	54
+	○
+	West Virginia
+	
+
+	55
+	○
+	Wisconsin
+	
+
+	56
+	○
+	Wyoming
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: demosfront1 if not testing
+birthyr- Show if not invalid and getbirthyr/required
+	OPEN INTEGER TEXTBOX
+	In what year were you born?
+	
+
+pii        False
+right        
+prompt        
+dk_text        Don't know
+filter_text        
+cols        4
+topic        
+required_text        
+dk        False
+rows        1
+subtext        
+min        1900
+minlength        0
+access        
+width        
+above        
+varlabel        
+description        
+spd_category        
+tags        
+max        2010
+required        HARD
+below        
+maxlength        0
+left        
+gender4- Show if not pdl.gender4/required
+	SINGLE CHOICE
+	What is your gender?
+	
+
+pii        False
+chart_layout        1
+varlabel        Gender
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Man
+	
+
+	2
+	○
+	Woman
+	
+
+	3
+	○
+	Non-binary
+	Not randomized
+	4
+	○
+	Other (open [gender4_t])
+	Not randomized
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: demosfront2
+educ- Show if not pdl.educ or pdl.educ.last > months(6)/required
+	SINGLE CHOICE
+	What is the highest level of education you have completed?
+	
+
+pii        False
+chart_layout        1
+varlabel        Education
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        core, core codebook, Profile_Codebook_Education, Profile_Codebook, profile_core, GV_US, cbs, Profile_Codebook_Demographics, US_GV_GL_Mini_LocalDemos, US_GV_Survey_1, profile, election2014, check_for_coding, coresampling, Profile_Basic_Info, used_in_US_Omni_Survey_Template, nytimes, core_survey, scripting_template
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Did not graduate from high school
+	
+
+	2
+	○
+	High school graduate
+	
+
+	3
+	○
+	Some college, but no degree (yet)
+	
+
+	4
+	○
+	2-year college degree
+	
+
+	5
+	○
+	4-year college degree
+	
+
+	6
+	○
+	Postgraduate degree (MA, MBA, MD, JD, PhD, etc.)
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+race- Show if not pdl.race or pdl.race.last > months(6) or check_flag == 1/required
+	SINGLE CHOICE
+	What racial or ethnic group best describes you?
+	
+
+pii        False
+chart_layout        1
+varlabel        Race
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        core, Profile_Codebook, GlobalVars_7, equivalent_spd_race, profile_core, GV_US, cbs, Profile_Codebook_Demographics, US_GV_GL_Mini_LocalDemos, US_GV_Survey_1, profile, election2014, Profile_Codebook_Core, coresampling, Profile_Basic_Info, used_in_US_Omni_Survey_Template, nytimes, scripting_template
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	White
+	
+
+	2
+	○
+	Black or African-American
+	
+
+	3
+	○
+	Hispanic or Latino
+	
+
+	4
+	○
+	Asian or Asian-American
+	
+
+	5
+	○
+	Native American
+	
+
+	8
+	○
+	Middle Eastern
+	
+
+	6
+	○
+	Two or more races
+	
+
+	7
+	○
+	Other (open [race_other])
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: p_hispanic if race != 3
+hispanic- Show if not pdl.hispanic or pdl.hispanic.last >= months(6) or check_flag == 1/required
+	SINGLE CHOICE
+	Are you of Spanish, Latino, or Hispanic origin or descent?
+	
+
+pii        False
+chart_layout        1
+varlabel        Hispanic
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        hispanic, race, Profile_Basic_Info
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes
+	
+
+	2
+	○
+	No
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Module: implicit_module_1
+Page: implicit_page_multrace
+multrace- Show if race == 6
+	MULTIPLE CHOICE
+	Please indicate the racial or ethnic groups that best describe you. (select all that apply)
+	
+
+pii        False
+chart_layout        1
+displaymax        
+varlabel        mixed race
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+required_text        Please choose an answer
+min_columns        1
+min        
+sample_type        
+access        
+autoadvance        False
+columns        1
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        profile, core, core codebook, core_survey, Profile_Codebook_Demographics, biracial, Profile_Codebook_Core, race, mixedrace, multrace, equivalent_spd_race, Profile_Codebook
+max        3
+exactly        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	□
+	White
+	
+
+	2
+	□
+	Black or African-American
+	
+
+	3
+	□
+	Hispanic or Latino
+	
+
+	4
+	□
+	Asian or Asian-American
+	
+
+	5
+	□
+	Native American
+	
+
+	8
+	□
+	Middle Eastern
+	
+
+	97
+	□
+	Other
+	Show if 0
+	98
+	□
+	Don't know
+	Exclude other punches
+	99
+	□
+	None of these
+	Show if 0
+	
+
+Page: implicit_page_CC24_433a
+CC24_433a- required
+	SINGLE CHOICE
+	Generally speaking, do you think of yourself as a ... ?
+	
+
+pii        False
+chart_layout        1
+varlabel        3 pt party ID
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Democrat
+	
+
+	2
+	○
+	Republican
+	
+
+	3
+	○
+	Independent
+	
+
+	4
+	○
+	Other (open [CC24_433_t])
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_433_dem
+CC24_433_dem- Show if CC24_433a==1/required
+	SINGLE CHOICE
+	Would you call yourself a strong Democrat or not so strong Democrat?
+	
+
+pii        False
+chart_layout        1
+varlabel        Party ID Dem strength
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Strong Democrat
+	
+
+	2
+	○
+	Not so strong Democrat
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_433_rep
+CC24_433_rep- Show if CC24_433a==2/required
+	SINGLE CHOICE
+	Would you call yourself a strong Republican or not so strong Republican?
+	
+
+pii        False
+chart_layout        1
+varlabel        Party ID Rep strength
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Strong Republican
+	
+
+	2
+	○
+	Not so strong Republican
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_433b
+CC24_433b- Show if CC24_433a in [3,4]/required
+	SINGLE CHOICE
+	Do you think of yourself as closer to the Democratic or the Republican party?
+	
+
+pii        False
+chart_layout        1
+varlabel        Party ID lean
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	The Democratic Party
+	
+
+	2
+	○
+	The Republican Party
+	
+
+	3
+	○
+	Neither
+	
+
+	8
+	○
+	Not sure
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+
+
+Module: common_core_post
+Page: implicit_page_CC24_401
+CC24_401- Show if askvote == 1 or inputstate == 38/required
+	SINGLE CHOICE
+	Which of the following statements best describes you?
+	
+
+pii        False
+chart_layout        1
+varlabel        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        HARD
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	I did not vote in the election this November.
+	
+
+	2
+	○
+	I thought about voting this time – but didn't.
+	
+
+	3
+	○
+	I usually vote, but didn't this time.
+	
+
+	4
+	○
+	I attempted to vote but did not or could not.
+	
+
+	5
+	○
+	I definitely voted in the November 2024 General Election.
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_402a
+CC24_402a- Show if CC24_401 != 5 or not askvote
+	SINGLE CHOICE
+	What was the main reason you did not vote?
+	
+
+pii        False
+chart_layout        1
+varlabel        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize($reasonrand)
+1
+	○
+	I forgot
+	
+
+	2
+	○
+	I'm not interested
+	
+
+	3
+	○
+	Too busy
+	
+
+	4
+	○
+	Did not like the candidates
+	
+
+	5
+	○
+	I am not registered
+	
+
+	6
+	○
+	I did not have the correct form of identification
+	
+
+	7
+	○
+	Out of town
+	
+
+	8
+	○
+	Sick or disabled
+	
+
+	9
+	○
+	Transportation
+	
+
+	10
+	○
+	Bad weather
+	
+
+	11
+	○
+	The line at the polls was too long
+	
+
+	12
+	○
+	I was not allowed to vote at the polls, even though I tried
+	
+
+	13
+	○
+	I requested but did not receive an absentee ballot
+	
+
+	14
+	○
+	I did not know where to vote
+	
+
+	15
+	○
+	I did not feel that I knew enough about the choices
+	
+
+	16
+	○
+	I was afraid I might expose myself to the coronavirus
+	
+
+	17
+	○
+	Other (open [CC24_402a_t])
+	Not randomized
+	55
+	○
+	Don't know
+	Not randomized
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_402b
+CC24_402b- Show if CC24_402a and CC24_402a != 55 and (CC24_401 != 5 or not askvote)
+	SINGLE CHOICE
+	Was there any other reason you did not vote?
+	
+
+pii        False
+chart_layout        1
+varlabel        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize($reasonrand)
+1
+	○
+	I forgot
+	Show if cc24_402a != 1
+	2
+	○
+	I'm not interested
+	Show if cc24_402a != 2
+	3
+	○
+	Too busy
+	Show if cc24_402a != 3
+	4
+	○
+	Did not like the candidates
+	Show if cc24_402a != 4
+	5
+	○
+	I am not registered
+	Show if cc24_402a != 5
+	6
+	○
+	I did not have the correct form of identification
+	Show if cc24_402a != 6
+	7
+	○
+	Out of town
+	Show if cc24_402a != 7
+	8
+	○
+	Sick or disabled
+	Show if cc24_402a != 8
+	9
+	○
+	Transportation
+	Show if cc24_402a != 9
+	10
+	○
+	Bad weather
+	Show if cc24_402a != 10
+	11
+	○
+	The line at the polls was too long
+	Show if cc24_402a != 11
+	12
+	○
+	I was not allowed to vote at the polls, even though I tried
+	Show if cc24_402a != 12
+	13
+	○
+	I requested but did not receive an absentee ballot
+	Show if cc24_402a != 13
+	14
+	○
+	I did not know where to vote
+	Show if cc24_402a != 14
+	15
+	○
+	I did not feel that I knew enough about the choices
+	Show if cc24_402a != 15
+	16
+	○
+	I was afraid I might expose myself to the coronavirus
+	Show if cc24_402a != 16
+	17
+	○
+	Other (open [CC24_402b_t])
+	Not randomized
+	55
+	○
+	Don't know
+	Not randomized
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_402c
+CC24_402c- Show if CC24_401 == 5
+	SINGLE CHOICE
+	The vast majority of eligible citizens do not vote in every national election. The last time you did not vote, what would you say was your main reason for not voting?
+	
+
+pii        False
+chart_layout        1
+varlabel        Main reason no past vote
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize($reasonrand)
+1
+	○
+	I forgot
+	
+
+	2
+	○
+	I was not interested
+	
+
+	3
+	○
+	Too busy
+	
+
+	4
+	○
+	Did not like the candidates
+	
+
+	5
+	○
+	I was not registered
+	
+
+	6
+	○
+	I did not have the correct form of identification
+	
+
+	7
+	○
+	Out of town
+	
+
+	8
+	○
+	Sick or disabled
+	
+
+	9
+	○
+	Transportation
+	
+
+	10
+	○
+	Bad weather
+	
+
+	11
+	○
+	The line at the polls was too long
+	
+
+	12
+	○
+	I was not allowed to vote at the polls, even though I tried
+	
+
+	13
+	○
+	I requested but did not receive an absentee ballot
+	
+
+	14
+	○
+	I did not know where to vote
+	
+
+	15
+	○
+	I did not feel that I knew enough about the choices
+	
+
+	16
+	○
+	I was afraid I might expose myself to the coronavirus
+	
+
+	17
+	○
+	I was not eligible to vote
+	
+
+	18
+	○
+	Other (open [CC24_402c_t])
+	Not randomized
+	55
+	○
+	Don't know
+	Not randomized
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_403
+CC24_403- Show if CC24_401 in [4,5]
+	SINGLE CHOICE
+	Did you vote in person _on_ Election Day, in person _before_ Election Day, or by mail (that is, absentee or vote by mail)?
+	
+
+pii        False
+chart_layout        1
+varlabel        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	In person on election day (Did you vote at a precinct polling place or at a vote center? [CC24_403b])
+	
+
+	2
+	○
+	In person before election day (early)
+	
+
+	3
+	○
+	Voted by mail (or absentee)
+	
+
+	4
+	○
+	Don't know
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_403c
+CC24_403c- Show if CC24_403 == 3
+	SINGLE CHOICE
+	Which of the following statements most accurately describes where your ballot was returned?
+	
+
+pii        False
+chart_layout        1
+varlabel        Where absentee ballot returned
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Post office box at a U.S. Postal Service location
+	
+
+	2
+	○
+	Official post office box not at a U.S. Postal Service location
+	
+
+	3
+	○
+	Picked up by the postal worker who delivers mail to my home
+	
+
+	4
+	○
+	Drop box used only for ballots, not located at an election office or polling place
+	
+
+	5
+	○
+	Main election office
+	
+
+	6
+	○
+	Neighborhood polling place
+	
+
+	7
+	○
+	Voting center, not a neighborhood polling place
+	
+
+	8
+	○
+	Other (open [CC24_403c_t])
+	
+
+	9
+	○
+	I don't know
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_403d
+CC24_403d- Show if CC24_403 == 3 and CC24_403c in [1,2,4,5,6,7]
+	SINGLE CHOICE
+	Once you got to where you dropped off your ballot, how long did you have to wait before you could deposit your ballot and leave?
+	
+
+pii        False
+chart_layout        1
+varlabel        How long it took to return mail ballot
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Not at all
+	
+
+	2
+	○
+	Less than 10 minutes
+	
+
+	3
+	○
+	10 - 30 minutes
+	
+
+	4
+	○
+	31 minutes – 1 hour
+	
+
+	5
+	○
+	More than 1 hour (open [CC24_403d_t])
+	
+
+	9
+	○
+	I don't know
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_404
+CC24_404- Show if CC24_401 in [4,5] and CC24_403 in [1,2]
+	SINGLE CHOICE
+	Approximately, how long did you have to wait in line to vote?
+	
+
+pii        False
+chart_layout        1
+varlabel        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Not at all
+	
+
+	2
+	○
+	Less than 10 minutes
+	
+
+	3
+	○
+	10 - 30 minutes
+	
+
+	4
+	○
+	31 minutes - 1 hour
+	
+
+	5
+	○
+	More than 1 hour (open [CC24_404_t])
+	
+
+	6
+	○
+	Don't know
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_405
+CC24_405- Show if CC24_401 in [4,5] and inputstate in [6,8,9,11,15,16,17,19,23,24,26,27,30,32,33,35,37,49,50,51,53,55,56]
+	SINGLE CHOICE
+	Did you register to vote at the polls or city office on Election Day this year?
+	
+
+pii        False
+chart_layout        1
+varlabel        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes
+	
+
+	2
+	○
+	No
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_406a
+CC24_406a- Show if CC24_401 in [4,5]
+	SINGLE CHOICE
+	Was there a problem with your voter registration or voter identification when you tried to vote?
+	
+
+pii        False
+chart_layout        1
+varlabel        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	No
+	
+
+	2
+	○
+	Yes
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_406b
+CC24_406b- Show if CC24_406a == 2
+	MULTIPLE CHOICE
+	What was the problem? Check all that apply.
+	
+
+pii        False
+chart_layout        1
+displaymax        
+varlabel        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+required_text        Please choose an answer
+min_columns        1
+min        
+sample_type        
+access        
+autoadvance        False
+columns        1
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+max        
+exactly        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	□
+	ID
+	
+
+	2
+	□
+	Registration
+	
+
+	3
+	□
+	Wrong place
+	
+
+	4
+	□
+	Other (open [CC24_406b_t])
+	
+
+	
+
+Page: implicit_page_CC24_406c
+CC24_406c- Show if CC24_406a == 2
+	SINGLE CHOICE
+	Were you allowed to vote?
+	
+
+pii        False
+chart_layout        1
+varlabel        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	No, I was not allowed to vote
+	
+
+	2
+	○
+	I was allowed to vote using a provisional ballot
+	
+
+	3
+	○
+	I voted
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Module: voters if voted == 1
+Page: implicit_page_CC24_410
+CC24_410- Show if not pdl.CC24_410
+	SINGLE CHOICE
+	Who did you vote for in the election for President in 2024?
+	
+
+pii        False
+chart_layout        1
+varlabel        2024 President Vote Post Election
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Kamala Harris
+	
+
+	2
+	○
+	Donald Trump
+	
+
+	3
+	○
+	Robert F. Kennedy, Jr.
+	
+
+	4
+	○
+	Jill Stein
+	
+
+	5
+	○
+	Cornel West
+	
+
+	6
+	○
+	Chase Oliver
+	
+
+	8
+	○
+	Other (open [CC24_410_t])
+	
+
+	9
+	○
+	Did not vote for President
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_411
+CC24_411- Show if (SenCand1Name or SenCand2Name or SenCand3Name)
+	SINGLE CHOICE
+	For whom did you vote for U.S. Senator?
+	
+
+pii        False
+chart_layout        1
+varlabel        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize
+1
+	○
+	$SenCand1Name ($SenCand1Party)
+	Show if sencand1name
+	2
+	○
+	$SenCand2Name ($SenCand2Party)
+	Show if sencand2name
+	3
+	○
+	$SenCand3Name ($SenCand3Party)
+	Show if sencand3name
+	5
+	○
+	Other (open [CC24_411_t])
+	Not randomized
+	6
+	○
+	I did not vote in this race
+	Not randomized
+	7
+	○
+	I did not vote
+	Not randomized
+	8
+	○
+	Not sure
+	Not randomized
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_411b
+CC24_411b- Show if (SenCand1Name2 or SenCand2Name2)
+	SINGLE CHOICE
+	For whom did you vote for in the special election for U.S. Senate?
+	
+
+pii        False
+chart_layout        1
+varlabel        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize
+1
+	○
+	$SenCand1Name2 ($SenCand1Party2)
+	Show if sencand1name2
+	2
+	○
+	$SenCand2Name2 ($SenCand2Party2)
+	Show if sencand2name2
+	7
+	○
+	Other (open [CC24_411b_t])
+	Not randomized
+	8
+	○
+	I did not vote in this race
+	Not randomized
+	9
+	○
+	I did not vote
+	Not randomized
+	10
+	○
+	Not sure
+	Not randomized
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_412
+CC24_412- Show if (HouseCand1Name or HouseCand2Name or HouseCand3Name)
+	SINGLE CHOICE
+	For whom did you vote for U.S. House?
+	
+
+pii        False
+chart_layout        1
+varlabel        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize
+1
+	○
+	$HouseCand1Name ($HouseCand1Party)
+	Show if housecand1name
+	2
+	○
+	$HouseCand2Name ($HouseCand2Party)
+	Show if housecand2name
+	3
+	○
+	$HouseCand3Name ($HouseCand3Party)
+	Show if housecand3name
+	4
+	○
+	$HouseCand4Name ($HouseCand4Party)
+	Show if housecand4name
+	5
+	○
+	$HouseCand5Name ($HouseCand5Party)
+	Show if housecand5name
+	10
+	○
+	Other (open [CC24_412_t])
+	Not randomized
+	11
+	○
+	I did not vote in this race
+	Not randomized
+	12
+	○
+	I did not vote
+	Not randomized
+	13
+	○
+	Not sure
+	Not randomized
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_413
+CC24_413- Show if GovCand1Name or GovCand2Name
+	SINGLE CHOICE
+	For whom did you vote for Governor?
+	
+
+pii        False
+chart_layout        1
+varlabel        
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize
+1
+	○
+	$GovCand1Name ($GovCand1Party)
+	Show if govcand1name
+	2
+	○
+	$GovCand2Name ($GovCand2Party)
+	Show if govcand2name
+	3
+	○
+	$GovCand3Name ($GovCand3Party)
+	Show if govcand3name
+	4
+	○
+	Other (open [CC24_413_t])
+	Not randomized
+	5
+	○
+	I did not vote in this race
+	Not randomized
+	6
+	○
+	I did not vote
+	Not randomized
+	7
+	○
+	Not sure
+	Not randomized
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+end module: voters if voted == 1
+Module: nonvoters if voted == 2
+Page: implicit_page_CC24_410_nv
+CC24_410_nv
+	SINGLE CHOICE
+	In the election for President of the United States, which candidate did you prefer?
+	
+
+pii        False
+chart_layout        1
+varlabel        President prefer
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Kamala Harris
+	
+
+	2
+	○
+	Donald Trump
+	
+
+	3
+	○
+	Robert F. Kennedy, Jr.
+	
+
+	4
+	○
+	Jill Stein
+	
+
+	5
+	○
+	Cornel West
+	
+
+	6
+	○
+	Chase Oliver
+	
+
+	8
+	○
+	Other (open [CC24_410_nv_t])
+	
+
+	9
+	○
+	Not sure
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_411_nv
+CC24_411_nv- Show if (SenCand1Name or SenCand2Name or SenCand3Name)
+	SINGLE CHOICE
+	In the race for U.S. Senator in your state, which candidate did you prefer?
+	
+
+pii        False
+chart_layout        1
+varlabel        Senator prefer
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize
+1
+	○
+	$SenCand1Name ($SenCand1Party)
+	Show if sencand1name
+	2
+	○
+	$SenCand2Name ($SenCand2Party)
+	Show if sencand2name
+	3
+	○
+	$SenCand3Name ($SenCand3Party)
+	Show if sencand3name
+	5
+	○
+	Other (open [CC24_411_nv_t])
+	Not randomized
+	7
+	○
+	Not sure
+	Not randomized
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_411b_nv
+CC24_411b_nv- Show if (SenCand1Name2 or SenCand2Name2)
+	SINGLE CHOICE
+	In the other race for U.S. Senator in your state, who did you prefer?
+	
+
+pii        False
+chart_layout        1
+varlabel        Senator prefer 2nd race
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize
+1
+	○
+	$SenCand1Name2 ($SenCand1Party2)
+	Show if sencand1name2
+	2
+	○
+	$SenCand2Name2 ($SenCand2Party2)
+	Show if sencand2name2
+	7
+	○
+	Other (open [CC24_411b_nv_t])
+	Not randomized
+	8
+	○
+	I did not vote in this race
+	Not randomized
+	9
+	○
+	I did not vote
+	Not randomized
+	10
+	○
+	Not sure
+	Not randomized
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_412_nv
+CC24_412_nv- Show if (HouseCand1Name or HouseCand2Name or HouseCand3Name)
+	SINGLE CHOICE
+	In the race for U.S. House in your district, which candidate did you prefer?
+	
+
+pii        False
+chart_layout        1
+varlabel        House prefer
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize
+1
+	○
+	$HouseCand1Name ($HouseCand1Party)
+	Show if housecand1name
+	2
+	○
+	$HouseCand2Name ($HouseCand2Party)
+	Show if housecand2name
+	3
+	○
+	$HouseCand3Name ($HouseCand3Party)
+	Show if housecand3name
+	4
+	○
+	$HouseCand4Name ($HouseCand4Party)
+	Show if housecand4name
+	5
+	○
+	$HouseCand5Name ($HouseCand5Party)
+	Show if housecand5name
+	10
+	○
+	Other (open [CC24_412_nv_t])
+	Not randomized
+	11
+	○
+	Not sure
+	Not randomized
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_413_nv
+CC24_413_nv- Show if GovCand1Name or GovCand2Name or GovCand3Name
+	SINGLE CHOICE
+	In the race for Governor in your state, which candidate did you prefer?
+	
+
+pii        False
+chart_layout        1
+varlabel        Governor prefer
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize
+1
+	○
+	$GovCand1Name ($GovCand1Party)
+	Show if govcand1name
+	2
+	○
+	$GovCand2Name ($GovCand2Party)
+	Show if govcand2name
+	3
+	○
+	$GovCand3Name ($GovCand3Party)
+	Show if govcand3name
+	7
+	○
+	Other (open [CC24_413_nv_t])
+	Not randomized
+	9
+	○
+	Not sure
+	Not randomized
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+end module: nonvoters if voted == 2
+Page: implicit_page_CC24_414a
+CC24_414a- Show if AttCand1Name or AttCand2Name
+	SINGLE CHOICE
+	In the race for Attorney General in $inputstate, which candidate did you prefer?
+	
+
+pii        False
+chart_layout        1
+varlabel        State Vote - AG
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize
+1
+	○
+	$AttCand1Name ($AttCand1Party)
+	Show if attcand1name
+	2
+	○
+	$AttCand2Name ($AttCand2Party)
+	Show if attcand2name
+	3
+	○
+	$AttCand3Name ($AttCand3Party)
+	Show if attcand3name
+	4
+	○
+	Other
+	Not randomized
+	5
+	○
+	Not sure
+	Not randomized
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_414b
+CC24_414b- Show if voted and (SecCand1Name or SecCand2Name)
+	SINGLE CHOICE
+	In the race for Secretary of State in $inputstate, which candidate did you prefer?
+	
+
+pii        False
+chart_layout        1
+varlabel        State Vote - SOS
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize
+1
+	○
+	$SecCand1Name ($SecCand1Party)
+	Show if seccand1name
+	2
+	○
+	$SecCand2Name ($SecCand2Party)
+	Show if seccand2name
+	3
+	○
+	$SecCand3Name ($SecCand3Party)
+	Show if seccand3name
+	4
+	○
+	Other
+	Not randomized
+	5
+	○
+	Not sure
+	Not randomized
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_415_grid
+CC24_415_grid- Show if voted == 1 and inputstate != 11/prompt once on skip
+	GRID
+	For whom did you vote for in the elections for state legislature in $inputstate?
+	
+
+collapsible        0
+dk_text        Don't know
+chart_layout        1
+displaymax        
+filter_text        
+custom_colorder        
+custom_roworder        
+topic        
+header_alignment        center
+chart_color        green
+chart_type        bar
+rowsample        
+crossbreak        Total
+is_rating        False
+roworder        as-is
+required_text        
+dk        False
+unique        False
+collapse_expanded        False
+rowsum        
+sample_type        
+access        
+width        0
+dk_missing        False
+widget        
+varlabel        Vote State legislature
+as_banner        False
+description        
+spd_category        
+tags        
+transpose        False
+stripes        False
+sticky_header        False
+splitlabels        False
+offset        0
+visible_rows        
+grid_chart_type        stacked_bar
+sort_order        none
+colsum        
+slide_title        
+required        SOFT
+collapse_width        575
+client        
+colsample        
+colorder        as-is
+ROWS
+CC24_415c- Show if inputstate not in [1,22,24,26,27,28,34,51]
+	$inputstate State Senate
+	CC24_415d- Show if LowerChamberName and inputstate not in [1,22,24,28,31,34,51]
+	$LowerChamberName
+	COLUMNS
+1
+	○
+	Democratic candidate
+	
+
+	2
+	○
+	Republican candidate
+	
+
+	3
+	○
+	Other 
+candidate
+	
+
+	4
+	○
+	Did not vote in this race
+	
+
+	5
+	○
+	There was no race for this office
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_416_grid
+CC24_416_grid- Show if HouseCand1Name or HouseCand2Name or CurrentHouseName
+	GRID
+	What is the race or ethnicity of the following candidates or politicians?
+	
+
+collapsible        True
+dk_text        Don't know
+chart_layout        1
+displaymax        
+filter_text        
+custom_colorder        
+custom_roworder        
+topic        
+header_alignment        center
+chart_color        green
+chart_type        bar
+rowsample        
+crossbreak        Total
+is_rating        False
+roworder        as-is
+required_text        
+dk        False
+unique        False
+collapse_expanded        False
+rowsum        
+sample_type        
+access        
+width        0
+dk_missing        False
+widget        
+varlabel        Race/ethnicity politicians
+as_banner        False
+description        
+spd_category        
+tags        
+transpose        False
+stripes        False
+sticky_header        False
+splitlabels        False
+offset        0
+visible_rows        
+grid_chart_type        stacked_bar
+sort_order        none
+colsum        
+slide_title        
+required        NONE
+collapse_width        575
+client        
+colsample        
+colorder        as-is
+ROWS
+CC24_416a- Show if HouseCand1Name
+	$HouseCand1Name
+	CC24_416b- Show if HouseCand2Name
+	$HouseCand2Name
+	CC24_416c- Show if CurrentHouseName and (not HouseCand1IncumbentNum) and (not HouseCand2IncumbentNum)
+	$CurrentHouseName
+	COLUMNS
+1
+	○
+	White
+	
+
+	2
+	○
+	Black
+	
+
+	3
+	○
+	Hispanic
+	
+
+	4
+	○
+	Asian
+	
+
+	5
+	○
+	Other
+	
+
+	6
+	○
+	Not sure
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_416a_other
+CC24_416a_other- Show if CC24_416a == 5 and HouseCand1Name
+	OPEN TEXTBOX
+	What race or ethnicity is $HouseCand1Name?
+	
+
+pii        False
+right        
+prompt        
+dk_text        Don't know
+filter_text        
+cols        30
+topic        
+required_text        
+dk        False
+rows        1
+subtext        
+minlength        0
+access        
+above        
+varlabel        Race/ethnicity politicians - HouseCand1Name - open
+description        
+spd_category        
+tags        
+required        NONE
+below        
+maxlength        0
+left        
+Page: implicit_page_CC24_416b_other
+CC24_416b_other- Show if CC24_416b == 5 and HouseCand2Name
+	OPEN TEXTBOX
+	What race or ethnicity is $HouseCand2Name?
+	
+
+pii        False
+right        
+prompt        
+dk_text        Don't know
+filter_text        
+cols        30
+topic        
+required_text        
+dk        False
+rows        1
+subtext        
+minlength        0
+access        
+above        
+varlabel        Race/ethnicity politicians - HouseCand2Name - open
+description        
+spd_category        
+tags        
+required        NONE
+below        
+maxlength        0
+left        
+Page: implicit_page_CC24_416c_other
+CC24_416c_other- Show if CC24_416c == 5 and CurrentHouseName
+	OPEN TEXTBOX
+	What race or ethnicity is $CurrentHouseName?
+	
+
+pii        False
+right        
+prompt        
+dk_text        Don't know
+filter_text        
+cols        30
+topic        
+required_text        
+dk        False
+rows        1
+subtext        
+minlength        0
+access        
+above        
+varlabel        Race/ethnicity politicians - CurrentHouseName - open
+description        
+spd_category        
+tags        
+required        NONE
+below        
+maxlength        0
+left        
+Page: implicit_page_CC24_420
+We'd now like to ask you about some issues facing the country.
+CC24_420
+	MULTIPLE CHOICE
+	Would you approve of the use of U.S. military troops in order to ... ? (Please check all that apply)
+	
+
+pii        False
+chart_layout        1
+displaymax        
+varlabel        Use U.S. military troops
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+required_text        Please choose an answer
+min_columns        1
+min        
+sample_type        
+access        
+autoadvance        False
+columns        1
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+max        
+exactly        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        randomize
+1
+	□
+	Ensure the supply of oil
+	
+
+	2
+	□
+	Destroy a terrorist camp
+	
+
+	3
+	□
+	Intervene in a region where there is genocide or a civil war
+	
+
+	4
+	□
+	Assist the spread of democracy
+	
+
+	5
+	□
+	Protect American allies under attack by foreign nations
+	
+
+	6
+	□
+	Help the United Nations uphold international law
+	
+
+	7
+	□
+	None of the above
+	Not randomized,exclude other punches
+	
+
+Page: implicit_page_CC24_421_grid
+CC24_421_grid- prompt once on skip
+	GRID
+	Do you agree or disagree with the following statements?
+	
+
+collapsible        True
+dk_text        Don't know
+chart_layout        1
+displaymax        
+filter_text        
+custom_colorder        
+custom_roworder        
+topic        
+header_alignment        center
+chart_color        green
+chart_type        bar
+rowsample        
+crossbreak        Total
+is_rating        False
+roworder        as-is
+required_text        
+dk        False
+unique        False
+collapse_expanded        True
+rowsum        
+sample_type        
+access        
+width        0
+dk_missing        False
+widget        
+varlabel        Election fairn
+as_banner        False
+description        
+spd_category        
+tags        
+transpose        False
+stripes        False
+sticky_header        False
+splitlabels        False
+offset        0
+visible_rows        
+grid_chart_type        stacked_bar
+sort_order        none
+colsum        
+slide_title        
+required        SOFT
+collapse_width        575
+client        
+colsample        
+colorder        as-is
+ROWS
+CC24_421_1
+	Elections in the U.S. are fair
+	CC24_421_2
+	Your state or local government conducted a fair and accurate election in 2024
+	COLUMNS
+1
+	○
+	Strongly agree
+	
+
+	2
+	○
+	Somewhat agree
+	
+
+	3
+	○
+	Neither agree nor disagree
+	
+
+	4
+	○
+	Somewhat disagree
+	
+
+	5
+	○
+	Strongly disagree
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_423
+CC24_423
+	SINGLE CHOICE
+	How much trust do you have in the federal government in Washington when it comes to handling the nation's problems?
+	
+
+pii        False
+chart_layout        1
+varlabel        trustfed
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	A great deal
+	
+
+	2
+	○
+	A fair amount
+	
+
+	3
+	○
+	Not very much
+	
+
+	8
+	○
+	None at all
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_424
+CC24_424
+	SINGLE CHOICE
+	How much trust do you have in the government of the state where you live when it comes to handling the state's problems?
+	
+
+pii        False
+chart_layout        1
+varlabel        truststate
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	A great deal
+	
+
+	2
+	○
+	A fair amount
+	
+
+	3
+	○
+	Not very much
+	
+
+	8
+	○
+	None at all
+	
+
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_430a
+CC24_430a
+	MULTIPLE CHOICE
+	During the past year did you ... (Check all that apply)
+	
+
+pii        False
+chart_layout        1
+displaymax        
+varlabel        Past year
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+required_text        Please choose an answer
+min_columns        1
+min        
+sample_type        
+access        
+autoadvance        False
+columns        1
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+max        
+exactly        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	□
+	Attend local political meetings (such as school board or city council)
+	
+
+	2
+	□
+	Put up a political sign (such as a lawn sign or bumper sticker)
+	
+
+	3
+	□
+	Work for a candidate or campaign
+	
+
+	4
+	□
+	Attend a political protest, march or demonstration
+	
+
+	5
+	□
+	Contact a public official
+	
+
+	6
+	□
+	Donate money to a candidate, campaign, or political organization
+	
+
+	7
+	□
+	Donate blood
+	
+
+	8
+	□
+	None of these
+	Not randomized,exclude other punches
+	
+
+Page: implicit_page_CC24_430b
+CC24_430b- Show if 6 in CC24_430a
+	MULTIPLE CHOICE
+	Please indicate to which of the following groups or people you donated money. Select all that apply.
+	
+
+pii        False
+chart_layout        1
+displaymax        
+varlabel        Donate money
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+required_text        Please choose an answer
+min_columns        1
+min        
+sample_type        
+access        
+autoadvance        False
+columns        1
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+max        
+exactly        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	□
+	Candidate for President
+	
+
+	2
+	□
+	Candidate for U.S. Senate in my state
+	
+
+	3
+	□
+	Candidate for U.S. Senate in another state
+	
+
+	4
+	□
+	Candidate for U.S. House in my state
+	
+
+	5
+	□
+	Candidate for U.S. House in another state
+	
+
+	6
+	□
+	Candidate for state office
+	
+
+	7
+	□
+	Political party committee (such as the DNC or RNC)
+	
+
+	8
+	□
+	Political action committee at work (such as corporate or union PAC)
+	
+
+	9
+	□
+	Political group (not at your work)
+	
+
+	10
+	□
+	Other (open [CC24_430b_t])
+	
+
+	
+
+Page: implicit_page_CC24_430c
+CC24_430c- Show if 6 in CC24_430a
+	OPEN INTEGER TEXTBOX
+	Approximately how much did you contribute to all candidates and committees over the last year?
+	
+
+pii        False
+right        
+prompt        
+dk_text        Don't know
+filter_text        
+cols        30
+topic        
+required_text        
+dk        False
+rows        1
+subtext        
+min        1
+minlength        0
+access        
+width        
+above        
+varlabel        Amount contribute to all candidates/committees
+description        
+spd_category        
+tags        
+max        1000000
+required        NONE
+below        
+maxlength        0
+left        &dollar;
+Page: implicit_page_CC24_431a
+CC24_431a
+	SINGLE CHOICE
+	Did a candidate or political campaign organization contact you during the 2024 election?
+	
+
+pii        False
+chart_layout        1
+varlabel        Contacted by candidate or political campaign
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes
+	
+
+	2
+	○
+	No
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_431b
+CC24_431b- Show if CC24_431a == 1
+	MULTIPLE CHOICE
+	How did these candidates or campaigns contact you? Check all that apply.
+	
+
+pii        False
+chart_layout        1
+displaymax        
+varlabel        Candidate contact method
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+required_text        Please choose an answer
+min_columns        1
+min        
+sample_type        
+access        
+autoadvance        False
+columns        1
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+max        
+exactly        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	□
+	In person
+	
+
+	2
+	□
+	Phone call
+	
+
+	3
+	□
+	Email or text message
+	
+
+	4
+	□
+	Letter or post card
+	
+
+	
+
+Page: implicit_page_CC24_432a
+CC24_432a
+	SINGLE CHOICE
+	Have you ever run for elective office at any level of government (local, state or federal)?
+	
+
+pii        False
+chart_layout        1
+varlabel        Ever run for elective office
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes
+	
+
+	2
+	○
+	No
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_432b
+CC24_432b- Show if CC24_432a == 1
+	MULTIPLE CHOICE
+	Which of the following offices have you run for? Select all that apply.
+	
+
+pii        False
+chart_layout        1
+displaymax        
+varlabel        Run for office
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+required_text        Please choose an answer
+min_columns        1
+min        
+sample_type        
+access        
+autoadvance        False
+columns        1
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+max        
+exactly        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	□
+	School Board
+	
+
+	2
+	□
+	Other local board or commission (e.g. zoning commission)
+	
+
+	3
+	□
+	City Council
+	
+
+	4
+	□
+	Mayor
+	
+
+	5
+	□
+	City or District Attorney
+	
+
+	6
+	□
+	Countywide office (e.g. supervisor)
+	
+
+	7
+	□
+	State legislature
+	
+
+	8
+	□
+	Statewide office
+	
+
+	9
+	□
+	Federal legislature (U.S. House or Senate)
+	
+
+	10
+	□
+	Judge
+	
+
+	11
+	□
+	Other (open [CC24_432b_t])
+	
+
+	
+
+Page: implicit_page_CC24_440_grid
+CC24_440_grid
+	DYNAMIC GRID
+	Do you agree or disagree with the following statements?
+	
+
+collapsible        True
+row_align        
+color        teal
+chart_layout        1
+filter_text        
+topic        
+chart_color        green
+chart_type        bar
+rowsample        
+crossbreak        Total
+wrap        True
+is_rating        False
+roworder        as-is
+horizontal        True
+required_text        
+min_columns        1
+collapse_expanded        False
+rowsum        
+sample_type        
+access        
+wrap_break        -<br />
+columns        0
+varlabel        Racial/Sexual agreement
+as_banner        False
+description        
+spd_category        
+tags        
+transpose        False
+visible_rows        
+grid_chart_type        stacked_bar
+sort_order        none
+colsum        
+slide_title        
+required        NONE
+collapse_width        575
+client        
+colsample        
+autoadvance        True
+colorder        as-is
+ROWS
+CC24_440a
+	White people in the U.S. have certain advantages because of the color of their skin.
+	CC24_440b
+	Racial problems in the U.S. are rare, isolated situations.
+	CC24_440c
+	Women seek to gain power by getting control over men.
+	CC24_440d
+	Women are too easily offended.
+	COLUMNS
+1
+	○
+	Strongly 
+agree
+	
+
+	2
+	○
+	Somewhat 
+agree
+	
+
+	3
+	○
+	Neither agree 
+nor disagree
+	
+
+	4
+	○
+	Somewhat 
+disagree
+	
+
+	5
+	○
+	Strongly 
+disagree
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_441_grid
+CC24_441_grid- prompt once on skip
+	GRID
+	How much do you agree or disagree with the following statements?
+	
+
+collapsible        True
+dk_text        Don't know
+chart_layout        1
+displaymax        
+filter_text        
+custom_colorder        
+custom_roworder        
+topic        
+header_alignment        center
+chart_color        green
+chart_type        bar
+rowsample        
+crossbreak        Total
+is_rating        False
+roworder        as-is
+required_text        
+dk        False
+unique        False
+collapse_expanded        True
+rowsum        
+sample_type        
+access        
+width        0
+dk_missing        False
+widget        
+varlabel        Racial Resentment
+as_banner        False
+description        
+spd_category        
+tags        
+transpose        False
+stripes        False
+sticky_header        False
+splitlabels        False
+offset        0
+visible_rows        
+grid_chart_type        stacked_bar
+sort_order        none
+colsum        
+slide_title        
+required        SOFT
+collapse_width        575
+client        
+colsample        
+colorder        as-is
+ROWS
+CC24_441a
+	Irish, Italians, Jewish and many other minorities overcame prejudice and worked their way up. Blacks should do the same without any special favors.
+	CC24_441b
+	Generations of slavery and discrimination have created conditions that make it difficult for Blacks to work their way out of the lower class.
+	CC24_441e- Show if race != 1
+	I resent when Whites deny the existence of racial discrimination.
+	CC24_441f- Show if race != 1
+	Whites get away with offenses that African Americans would never get away with.
+	CC24_441g- Show if race != 1
+	Whites do not go to great lengths to understand the problems African Americans face.
+	COLUMNS
+1
+	○
+	Strongly 
+agree
+	
+
+	2
+	○
+	Somewhat 
+agree
+	
+
+	3
+	○
+	Neither agree 
+nor disagree
+	
+
+	4
+	○
+	Somewhat 
+disagree
+	
+
+	5
+	○
+	Strongly 
+disagree
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_443
+CC24_443- prompt once on skip
+	GRID
+	State legislatures must make choices when making spending decisions on important state programs.  How would you like your legislature to spend money on each of the five areas below?
+	
+
+collapsible        True
+dk_text        Don't know
+chart_layout        1
+displaymax        
+filter_text        
+custom_colorder        
+custom_roworder        
+topic        
+header_alignment        center
+chart_color        green
+chart_type        bar
+rowsample        
+crossbreak        Total
+is_rating        False
+roworder        as-is
+required_text        
+dk        False
+unique        False
+collapse_expanded        True
+rowsum        
+sample_type        
+access        
+width        0
+dk_missing        False
+widget        
+varlabel        State legislature spending
+as_banner        False
+description        
+spd_category        
+tags        
+transpose        False
+stripes        False
+sticky_header        False
+splitlabels        False
+offset        0
+visible_rows        
+grid_chart_type        stacked_bar
+sort_order        none
+colsum        
+slide_title        
+required        SOFT
+collapse_width        575
+client        
+colsample        
+colorder        as-is
+ROWS
+CC24_443_1
+	Welfare
+	CC24_443_2
+	Health Care
+	CC24_443_3
+	Education
+	CC24_443_4
+	Law Enforcement
+	CC24_443_5
+	Transportation/Infrastructure
+	COLUMNS
+1
+	○
+	Greatly increase
+	
+
+	2
+	○
+	Slightly increase
+	
+
+	3
+	○
+	Maintain
+	
+
+	4
+	○
+	Slightly decrease
+	
+
+	5
+	○
+	Greatly decrease
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_444
+CC24_444- prompt once on skip
+	GRID
+	Some states are considering the following policies.  If this came up in your state, would you support or oppose the proposal?
+	
+
+collapsible        True
+dk_text        Don't know
+chart_layout        1
+displaymax        
+filter_text        
+custom_colorder        
+custom_roworder        
+topic        
+header_alignment        center
+chart_color        green
+chart_type        bar
+rowsample        
+crossbreak        Total
+is_rating        False
+roworder        as-is
+required_text        
+dk        False
+unique        False
+collapse_expanded        True
+rowsum        
+sample_type        
+access        
+width        150
+dk_missing        False
+widget        
+varlabel        State policies
+as_banner        False
+description        
+spd_category        
+tags        
+transpose        False
+stripes        False
+sticky_header        False
+splitlabels        False
+offset        0
+visible_rows        
+grid_chart_type        stacked_bar
+sort_order        none
+colsum        
+slide_title        
+required        SOFT
+collapse_width        575
+client        
+colsample        
+colorder        as-is
+ROWS
+CC24_444a
+	Preventing gender transition surgery for minors experiencing gender dysphoria.
+	CC24_444b
+	Requiring parental consent before teachers could address their child using a name or pronoun other than the name or gender under which they are enrolled in school.
+	CC24_444c
+	Prohibiting receiving abortion-inducing drugs through the mail.
+	CC24_444d
+	Prohibiting women from traveling to another state to receive an abortion when such services are not legal in their state.
+	CC24_444e
+	Instituting age verification laws that require users to verify their age to access adult content on the web, particularly pornography.
+	CC24_444f
+	School voucher subsidies for families to send their children to private or charter schools other than their local public school.
+	COLUMNS
+1
+	○
+	Support
+	
+
+	2
+	○
+	Oppose
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_CC24_445
+CC24_445- prompt once on skip
+	GRID
+	Do you agree or disagree with each of the following decisions of the Supreme Court of the United States?
+	
+
+collapsible        True
+dk_text        Don't know
+chart_layout        1
+displaymax        
+filter_text        
+custom_colorder        
+custom_roworder        
+topic        
+header_alignment        center
+chart_color        green
+chart_type        bar
+rowsample        
+crossbreak        Total
+is_rating        False
+roworder        as-is
+required_text        
+dk        False
+unique        False
+collapse_expanded        True
+rowsum        
+sample_type        
+access        
+width        150
+dk_missing        False
+widget        
+varlabel        Supreme Court decisions
+as_banner        False
+description        
+spd_category        
+tags        
+transpose        False
+stripes        False
+sticky_header        False
+splitlabels        False
+offset        0
+visible_rows        
+grid_chart_type        stacked_bar
+sort_order        none
+colsum        
+slide_title        
+required        SOFT
+collapse_width        575
+client        
+colsample        
+colorder        as-is
+ROWS
+CC24_445a
+	The use of race in university admissions violates Equal Protection under the Constitution and is illegal.
+	CC24_445b
+	The United States Constitution does not protect a woman’s right to have an abortion.  <i>Roe v. Wade</i> is overruled, and individual states can make their own laws governing abortion, including outlawing abortion.
+	COLUMNS
+1
+	○
+	Agree
+	
+
+	2
+	○
+	Disagree
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_gunown
+gunown
+	SINGLE CHOICE
+	Do you or does anyone in your household own a gun?
+	
+
+pii        False
+chart_layout        1
+varlabel        Personal gun ownership
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        Profile_Political
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        reverse
+1
+	○
+	Personally own a gun
+	
+
+	2
+	○
+	Don't personally own a gun, but someone in the household owns a gun
+	
+
+	3
+	○
+	No one in the household owns a gun
+	
+
+	8
+	○
+	Not sure
+	Not randomized
+	98
+	
+
+	Skipped
+	
+
+	99
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_numchildren
+numchildren
+	OPEN INTEGER TEXTBOX
+	How many children have you ever had? Please count all that were born alive at any time (including any you had from a previous marriage).
+	
+
+pii        False
+right        
+prompt        
+dk_text        Don't know
+filter_text        
+cols        4
+topic        
+required_text        
+dk        False
+rows        1
+subtext        
+min        0
+minlength        0
+access        
+width        
+above        
+varlabel        Number children
+description        
+spd_category        
+tags        
+max        100
+required        NONE
+below        
+maxlength        0
+left        
+Page: implicit_page_gigwork
+gigwork
+	SINGLE CHOICE
+	In the last year, have you earned money by taking on jobs through a website or mobile app (for example, by driving someone from one place to another, cleaning someone’s home, or doing online tasks)?
+	
+
+pii        False
+chart_layout        1
+varlabel        Gig work
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes
+	
+
+	2
+	○
+	No
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_edloan
+edloan
+	SINGLE CHOICE
+	Are you currently responsible for paying off a student loan? (Please indicate yes even if your student loan is currently in deferment.)
+	
+
+pii        False
+chart_layout        1
+varlabel        Student debtor
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        student debtor, student loan
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Yes
+	
+
+	2
+	○
+	No
+	
+
+	97
+	○
+	Other
+	Show if 0
+	98
+	○
+	Don't know
+	Show if 0
+	99
+	○
+	None of these
+	Show if 0
+	998
+	
+
+	Skipped
+	
+
+	999
+	
+
+	Not Asked
+	
+
+	
+
+Page: implicit_page_student
+student- Show if birthyr <= 2006 and birthyr >= 1999
+	SINGLE CHOICE
+	Are you enrolled in school as a full-time or part-time student?
+	
+
+pii        False
+chart_layout        1
+varlabel        Student Full or Part-time
+topic        
+chart_color        green
+chart_type        bar
+crossbreak        Total
+wrap        True
+is_rating        False
+required_text        Please choose an answer
+min_columns        1
+sample_type        
+access        
+autoadvance        False
+columns        1
+widget        
+filter_text        
+as_banner        False
+description        
+spd_category        
+tags        
+horizontal        False
+grid_chart_type        stacked_bar
+sort_order        none
+sample        
+slide_title        
+set_active        
+required        NONE
+mask        
+custom_order        
+client        
+order        as-is
+1
+	○
+	Full-time
+	
+
+	2
+	○
+	Part-time
+	
+
+	3
+	○
+	I am not enrolled in school
+	
+
+	8
+	
+
+	Skipped
+	
+
+	9
+	
+
+	Not Asked
+	
+
+	
+
+end module: common_core_post

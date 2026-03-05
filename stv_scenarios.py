@@ -13,17 +13,17 @@ Scenarios
 STV run. Their voters' weights flow immediately to the next-ranked active party,
 exactly as if that party had been the first eliminated in every race.
 
-Outputs (each scenario gets its own subdirectory):
-  stv_outputs/scenario_a_dissolve_c7/
-    district_apportionment.csv          (symlinked / copied — unchanged)
+Outputs (each scenario gets its own subdirectory under Claude/outputs/):
+  Claude/outputs/scenario_a/
+    district_apportionment.csv          (copied — unchanged from baseline)
     stv_results_by_district.csv
     transfer_matrix_10party.csv
     transfer_matrix_directed.csv
     stv_seat_summary.csv
-  stv_outputs/scenario_b_dissolve_c7_c2/
+  Claude/outputs/scenario_b/
     (same set)
 
-  stv_outputs/scenario_comparison.csv  — side-by-side seat counts + deltas
+  Claude/outputs/scenario_comparison.csv  — side-by-side seat counts + deltas
 """
 
 import os
@@ -32,7 +32,7 @@ import time
 import numpy as np
 import pandas as pd
 
-from stv_config import OUTPUT_DIR, PARTY_LABELS, N_PARTIES
+from stv_config import OUTPUT_DIR, SCENARIOS_ROOT, PARTY_LABELS, N_PARTIES
 from stv_step3  import run_all_districts, results_to_dataframe
 from stv_step4  import build_transfer_matrices, save_transfer_matrices
 from stv_step5  import build_seat_summary, print_seat_summary
@@ -41,11 +41,11 @@ from stv_step5  import build_seat_summary, print_seat_summary
 # ── Scenario definitions ──────────────────────────────────────────────────────
 
 SCENARIOS = {
-    "scenario_a_dissolve_c7": {
+    "scenario_a": {
         "label":         "Scenario A — dissolve C7 (Blue Dogs)",
         "pre_dissolved": [7],
     },
-    "scenario_b_dissolve_c7_c2": {
+    "scenario_b": {
         "label":         "Scenario B — dissolve C7 (Blue Dogs) + C2 (Solidarity)",
         "pre_dissolved": [7, 2],
     },
@@ -95,12 +95,12 @@ def run_scenario(
 ) -> dict:
     """
     Run a full STV simulation with the specified pre_dissolved parties.
-    Saves all outputs to OUTPUT_DIR / name /
+    Saves all outputs to SCENARIOS_ROOT / name /
     Returns the seat summary DataFrame for comparison.
     """
     label         = config["label"]
     pre_dissolved = config["pre_dissolved"]
-    out_dir       = OUTPUT_DIR / name
+    out_dir       = SCENARIOS_ROOT / name
     os.makedirs(out_dir, exist_ok=True)
 
     print(f"\n{'─'*65}")
@@ -249,14 +249,14 @@ def main():
     print(f"  Baseline loaded: {baseline['NATIONAL'].sum()} total seats")
 
     # Run scenarios
-    summary_a = run_scenario("scenario_a_dissolve_c7",       SCENARIOS["scenario_a_dissolve_c7"],       apportionment, df)
-    summary_b = run_scenario("scenario_b_dissolve_c7_c2",    SCENARIOS["scenario_b_dissolve_c7_c2"],    apportionment, df)
+    summary_a = run_scenario("scenario_a", SCENARIOS["scenario_a"], apportionment, df)
+    summary_b = run_scenario("scenario_b", SCENARIOS["scenario_b"], apportionment, df)
 
     # Comparison table
     comparison = build_comparison(baseline, summary_a, summary_b)
     print_comparison(comparison)
 
-    out_path = OUTPUT_DIR / "scenario_comparison.csv"
+    out_path = SCENARIOS_ROOT / "scenario_comparison.csv"
     comparison.to_csv(out_path, index=False)
     print(f"\n  Comparison table saved: {out_path}")
 

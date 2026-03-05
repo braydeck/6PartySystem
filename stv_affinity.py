@@ -40,9 +40,9 @@ from numpy.linalg import inv
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
 BASE_DIR        = Path("/Users/bdecker/Documents/STV")
-CHECKPOINT_PATH = BASE_DIR / "Claude" / "stv_outputs" / "ballots_checkpoint.parquet"
-AFFINITY_DIR    = BASE_DIR / "Claude" / "stv_outputs" / "affinity"
-SCENARIO_A_DIR  = BASE_DIR / "Claude" / "stv_outputs" / "scenario_a_dissolve_c7"
+CHECKPOINT_PATH = BASE_DIR / "Claude" / "outputs" / "baseline" / "ballots_checkpoint.parquet"
+AFFINITY_DIR    = BASE_DIR / "Claude" / "outputs" / "affinity"
+SCENARIO_A_DIR  = BASE_DIR / "Claude" / "outputs" / "scenario_a"
 
 PARTIES_9 = [0, 1, 2, 3, 4, 5, 6, 8, 9]   # C7 excluded
 PARTY_LABELS = {

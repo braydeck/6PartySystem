@@ -7,10 +7,12 @@ Shared constants for the 10-party STV simulation.
 from pathlib import Path
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
-BASE_DIR      = Path("/Users/bdecker/Documents/STV")
-TYPOLOGY_PATH = BASE_DIR / "Claude" / "typology_cluster_assignments.csv"
-DTA_PATH      = BASE_DIR / "2024 CES Base" / "CCES24_Common_OUTPUT_vv_topost_final.dta"
-OUTPUT_DIR    = BASE_DIR / "Claude" / "stv_outputs"
+BASE_DIR       = Path("/Users/bdecker/Documents/STV")
+DTA_PATH       = BASE_DIR / "2024 CES Base" / "CCES24_Common_OUTPUT_vv_topost_final.dta"
+TYPOLOGY_PATH  = BASE_DIR / "Claude" / "data" / "typology_cluster_assignments.csv"
+EFA_SCORES_PATH = BASE_DIR / "Claude" / "data" / "efa_factor_scores.csv"
+OUTPUT_DIR     = BASE_DIR / "Claude" / "outputs" / "baseline"   # baseline STV run
+SCENARIOS_ROOT = BASE_DIR / "Claude" / "outputs"                # parent for all scenarios
 
 # ── Party labels ───────────────────────────────────────────────────────────────
 PARTY_LABELS = {

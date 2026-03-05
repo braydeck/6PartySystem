@@ -37,8 +37,8 @@ except ImportError:
 # ── Paths & constants ─────────────────────────────────────────────────────────
 BASE_DIR      = Path("/Users/bdecker/Documents/STV")
 DTA_PATH      = BASE_DIR / "2024 CES Base" / "CCES24_Common_OUTPUT_vv_topost_final.dta"
-TYPO_PATH     = BASE_DIR / "Claude" / "typology_cluster_assignments.csv"
-OUTPUT_DIR    = BASE_DIR / "Claude" / "stv_outputs" / "cluster_profiles"
+TYPO_PATH     = BASE_DIR / "Claude" / "data" / "typology_cluster_assignments.csv"
+OUTPUT_DIR    = BASE_DIR / "Claude" / "outputs" / "profiles"
 
 # From stv_config — replicate ITEMS_24 inline to avoid import path issues
 ITEMS_24 = [
@@ -180,8 +180,8 @@ ITEM_META = {
     },
     # ── Abortion ──────────────────────────────────────────────────────────────
     "CC24_325": {
-        "q": "Abortion: how many weeks should it be legal (mean raw weeks)",
-        "domain": "Abortion", "type": "weeks", "heatmap_stat": "mean",
+        "q": "Abortion: how many weeks should it be legal",
+        "domain": "Abortion", "type": "continuous", "heatmap_stat": "median",
         "missing": {998},
     },
     "CC24_324b": {
@@ -474,6 +474,128 @@ ITEM_META = {
         "cats": {1:"Northeast",2:"Midwest",3:"South",4:"West"},
         "heatmap_stat": None, "missing": {98, 99},
     },
+    # ── Demographics (expanded) ───────────────────────────────────────────────
+    "age": {
+        "q": "Age (years, derived from birth year)",
+        "domain": "Demographics", "type": "continuous", "heatmap_stat": "median",
+        "missing": set(),   # NaN already set for out-of-range in load_data
+    },
+    "faminc_new": {
+        "q": "Family income",
+        "domain": "Demographics", "type": "ordinal", "heatmap_stat": "mean",
+        "cats": {1:"<$10k",2:"$10k–20k",3:"$20k–30k",4:"$30k–40k",5:"$40k–50k",
+                 6:"$50k–60k",7:"$60k–70k",8:"$70k–80k",9:"$80k–100k",
+                 10:"$100k–120k",11:"$120k–150k",12:"$150k–200k",
+                 13:"$200k–250k",14:"$250k–350k",15:"$350k–500k",16:"$500k+"},
+        "missing": {97, 998, 999},
+    },
+    "marstat": {
+        "q": "Marital status",
+        "domain": "Demographics", "type": "categorical",
+        "cats": {1:"Married",2:"Separated",3:"Divorced",4:"Widowed",
+                 5:"Never married",6:"Domestic/civil partnership"},
+        "heatmap_stat": None, "missing": {8, 9},
+    },
+    "child18": {
+        "q": "Children under 18 in household",
+        "domain": "Demographics", "type": "binary", "heatmap_stat": "pct1",
+        "missing": {8, 9},
+    },
+    "numchildren": {
+        "q": "Number of children",
+        "domain": "Demographics", "type": "continuous", "heatmap_stat": None,
+        "missing": {998},
+    },
+    "ownhome": {
+        "q": "Home ownership",
+        "domain": "Demographics", "type": "categorical",
+        "cats": {1:"Own",2:"Rent",3:"Other"},
+        "heatmap_stat": None, "missing": {8, 9},
+    },
+    "immstat": {
+        "q": "Immigration background",
+        "domain": "Demographics", "type": "categorical",
+        "cats": {1:"Immigrant, naturalized",2:"Immigrant, not citizen",
+                 3:"US-born, parent immigrant",4:"US-born, grandparent immigrant",
+                 5:"3+ gen US-born"},
+        "heatmap_stat": None, "missing": {8, 9},
+    },
+    "sexuality": {
+        "q": "Sexual orientation",
+        "domain": "Demographics", "type": "categorical",
+        "cats": {1:"Heterosexual/straight",2:"Lesbian/gay woman",3:"Gay man",
+                 4:"Bisexual",5:"Other",6:"Prefer not to say"},
+        "heatmap_stat": None, "missing": {8, 9},
+    },
+    # ── Employment & Labor ────────────────────────────────────────────────────
+    "employ": {
+        "q": "Employment status",
+        "domain": "Employment & Labor", "type": "categorical",
+        "cats": {1:"Full-time",2:"Part-time",3:"Temporarily laid off",
+                 4:"Unemployed",5:"Retired",6:"Permanently disabled",
+                 7:"Homemaker",8:"Student",9:"Other"},
+        "heatmap_stat": None, "missing": {98, 99},
+    },
+    "union": {
+        "q": "Labor union membership",
+        "domain": "Employment & Labor", "type": "categorical",
+        "cats": {1:"Current member",2:"Former member",3:"Never member"},
+        "heatmap_stat": None, "missing": {8, 9},
+    },
+    "unionhh": {
+        "q": "Household union membership",
+        "domain": "Employment & Labor", "type": "categorical",
+        "cats": {1:"Currently member",2:"Formerly member",
+                 3:"Never member",4:"Not sure"},
+        "heatmap_stat": None, "missing": {8, 9},
+    },
+    "hadjob": {
+        "q": "Had a job in the past 5 years (% Yes)",
+        "domain": "Employment & Labor", "type": "binary", "heatmap_stat": "pct1",
+        "missing": {8, 9},
+    },
+    "gigwork": {
+        "q": "Gig / freelance work (% Yes)",
+        "domain": "Employment & Labor", "type": "binary", "heatmap_stat": "pct1",
+        "missing": {8, 9},
+    },
+    "investor": {
+        "q": "Owns stocks or mutual funds (% Yes)",
+        "domain": "Employment & Labor", "type": "binary", "heatmap_stat": "pct1",
+        "missing": {99, 998, 999},
+    },
+    # ── Military ─────────────────────────────────────────────────────────────
+    "milstat_1": {
+        "q": "Currently serving in military (% Yes)",
+        "domain": "Demographics", "type": "binary", "heatmap_stat": "pct1",
+        "missing": {8, 9},
+    },
+    "milstat_3": {
+        "q": "Previously served in military (% Yes)",
+        "domain": "Demographics", "type": "binary", "heatmap_stat": "pct1",
+        "missing": {8, 9},
+    },
+    # ── Voting History ────────────────────────────────────────────────────────
+    "presvote20post": {
+        "q": "2020 Presidential vote",
+        "domain": "Voting History", "type": "categorical",
+        "cats": {1:"Biden",2:"Trump",3:"Jorgensen",4:"Hawkins",
+                 5:"Other",6:"Did not vote"},
+        "heatmap_stat": None, "missing": {8, 9},
+    },
+    "presvote16post": {
+        "q": "2016 Presidential vote",
+        "domain": "Voting History", "type": "categorical",
+        "cats": {1:"Clinton",2:"Trump",3:"Johnson",4:"Stein",
+                 5:"McMullin",6:"Other",7:"Did not vote"},
+        "heatmap_stat": None, "missing": {98, 99},
+    },
+    "gunown": {
+        "q": "Personal gun ownership",
+        "domain": "Demographics", "type": "categorical",
+        "cats": {1:"Personally owns",2:"HH owns, not me",3:"No one in HH"},
+        "heatmap_stat": None, "missing": {8, 98, 99},
+    },
 }
 
 # ── Items for the heatmap (those with a scalar heatmap_stat) ─────────────────
@@ -483,7 +605,8 @@ HEATMAP_ITEMS = [v for v, m in ITEM_META.items() if m.get("heatmap_stat") is not
 DOMAIN_ORDER = [
     "Taxes & Economy", "Immigration", "Police & Guns", "Abortion",
     "Civil Liberties", "Environment & Climate", "Healthcare & Housing",
-    "Racial & Gender", "Elections & Trust", "Approval", "Religion", "Demographics",
+    "Racial & Gender", "Elections & Trust", "Approval", "Religion",
+    "Employment & Labor", "Demographics", "Voting History",
 ]
 
 # ── Stats helpers ─────────────────────────────────────────────────────────────
@@ -534,6 +657,7 @@ def load_data():
     for v in ITEM_META:
         wanted.add(v)
     wanted.add("commonpostweight")
+    wanted.add("birthyr")    # for age derivation
 
     # Filter to those that exist in DTA
     missing_cols = wanted - available
@@ -560,6 +684,11 @@ def load_data():
     for col in ["CC24_423", "CC24_424"]:
         if col in df.columns:
             df[col] = df[col].replace(8, 4)
+
+    # Derive age from birth year (survey year 2024)
+    if "birthyr" in df.columns:
+        df["age"] = (2024 - df["birthyr"]).astype(float)
+        df.loc[(df["age"] < 18) | (df["age"] > 110), "age"] = np.nan
 
     # Load cluster assignments
     print("  Loading cluster assignments...")
@@ -652,16 +781,43 @@ def compute_stats(df):
             result["overall"] = overall_mean
             result["clusters"] = by_cluster_mean
 
-        elif itype == "weeks":
-            week_missing = meta["missing"]
-            overall_mean = wmean(s, w, week_missing)
-            by_cluster_mean = [
-                wmean(s[df["cluster_id"] == k], w[df["cluster_id"] == k], week_missing)
-                for k in range(N_CLUSTERS)
-            ]
-            result["stat_label"] = "Mean weeks"
-            result["overall"] = overall_mean
-            result["clusters"] = by_cluster_mean
+        elif itype == "continuous":
+            cont_miss = meta["missing"]
+
+            def _wquantile(series, weight, q):
+                """Weighted quantile via sorted cumulative weight interpolation."""
+                mask = _clean(series, cont_miss) & series.notna()
+                sv = series[mask].astype(float).values
+                wv = weight[mask].values
+                if len(sv) == 0 or wv.sum() < 1e-9:
+                    return np.nan
+                idx = np.argsort(sv)
+                sv, wv = sv[idx], wv[idx]
+                cum_w = np.cumsum(wv) / wv.sum()
+                return float(np.interp(q, cum_w, sv))
+
+            overall_med  = _wquantile(s, w, 0.50)
+            overall_q25  = _wquantile(s, w, 0.25)
+            overall_q75  = _wquantile(s, w, 0.75)
+            overall_mean = wmean(s, w, cont_miss)
+
+            by_cl_med = []
+            by_cl_q25 = []
+            by_cl_q75 = []
+            for k in range(N_CLUSTERS):
+                mask_k = df["cluster_id"] == k
+                by_cl_med.append(_wquantile(s[mask_k], w[mask_k], 0.50))
+                by_cl_q25.append(_wquantile(s[mask_k], w[mask_k], 0.25))
+                by_cl_q75.append(_wquantile(s[mask_k], w[mask_k], 0.75))
+
+            result["stat_label"]   = "Median (IQR: Q25–Q75)"
+            result["overall"]      = overall_med    # heatmap + CSV primary stat
+            result["overall_q25"]  = overall_q25
+            result["overall_q75"]  = overall_q75
+            result["overall_mean"] = overall_mean
+            result["clusters"]     = by_cl_med      # heatmap uses this list
+            result["clusters_q25"] = by_cl_q25
+            result["clusters_q75"] = by_cl_q75
 
         elif itype == "categorical":
             overall_dist = wdist(s, w, cats.keys(), missing)
@@ -691,7 +847,7 @@ def build_stats_csv(stats, cluster_n):
     rows = []
     for var, res in stats.items():
         itype = res["type"]
-        if itype in ("binary", "binary_agree", "likert5", "ordinal", "trust", "approval4", "weeks"):
+        if itype in ("binary", "binary_agree", "likert5", "ordinal", "trust", "approval4"):
             row = {
                 "variable": var,
                 "domain": res["domain"],
@@ -705,10 +861,9 @@ def build_stats_csv(stats, cluster_n):
                 row[f"c{k}"] = round(v, 4) if v is not None and not np.isnan(v) else None
             rows.append(row)
 
-            # Add distribution rows for items that have them
+            # Add distribution rows for items that have them (likert5, ordinal with cats)
             if "overall_dist" in res:
-                cats = res["cats"]
-                for cat_code, cat_label in cats.items():
+                for cat_code, cat_label in res["cats"].items():
                     drow = {
                         "variable": var,
                         "domain": res["domain"],
@@ -721,6 +876,24 @@ def build_stats_csv(stats, cluster_n):
                         v = res["clusters_dist"][k].get(cat_code, np.nan)
                         drow[f"c{k}"] = round(v, 2) if not np.isnan(v) else None
                     rows.append(drow)
+
+        elif itype == "continuous":
+            for stat_key, label in [("clusters", "Median"), ("clusters_q25", "Q25"), ("clusters_q75", "Q75")]:
+                overall_key = {"clusters": "overall", "clusters_q25": "overall_q25", "clusters_q75": "overall_q75"}[stat_key]
+                ov = res.get(overall_key)
+                row = {
+                    "variable": var,
+                    "domain": res["domain"],
+                    "type": itype,
+                    "stat_label": label,
+                    "question": res["q"],
+                    "overall": round(ov, 4) if ov is not None and not np.isnan(ov) else None,
+                }
+                vals = res.get(stat_key, [None] * N_CLUSTERS)
+                for k in range(N_CLUSTERS):
+                    v = vals[k]
+                    row[f"c{k}"] = round(v, 4) if v is not None and not np.isnan(v) else None
+                rows.append(row)
 
         elif itype == "categorical":
             cats = res["cats"]
@@ -1164,7 +1337,9 @@ def _make_weeks_chart(stats, all_cluster_ids):
 
 
 def _make_demo_chart(stats, cluster_id, var):
-    """Stacked horizontal bar for one categorical/ordinal demographic variable."""
+    """Stacked horizontal bar for one categorical/ordinal demographic variable.
+    Uses one trace per category segment so colours stack correctly in Plotly.
+    """
     if var not in stats:
         return None
     res = stats[var]
@@ -1180,56 +1355,115 @@ def _make_demo_chart(stats, cluster_id, var):
     else:
         return None
 
-    labels = list(cats.values())
-    vals_c = [dist_c.get(k, 0) or 0 for k in cats.keys()]
-    vals_o = [dist_o.get(k, 0) or 0 for k in cats.keys()]
-
     palette = [
         "#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd",
-        "#8c564b","#e377c2","#7f7f7f",
+        "#8c564b","#e377c2","#7f7f7f","#bcbd22","#17becf",
+        "#aec7e8","#ffbb78",
     ]
 
     fig = go.Figure()
-    fig.add_trace(go.Bar(
-        x=vals_c, y=["Cluster"], orientation="h",
-        marker_color=palette[:len(labels)],
-        text=[f"{v:.0f}%" for v in vals_c],
-        textposition="inside",
-        hovertext=[f"{l}: {v:.1f}%" for l, v in zip(labels, vals_c)],
-        hoverinfo="text",
-        showlegend=False,
-    ))
-    fig.add_trace(go.Bar(
-        x=vals_o, y=["National"], orientation="h",
-        marker_color=palette[:len(labels)],
-        text=[f"{v:.0f}%" for v in vals_o],
-        textposition="inside",
-        opacity=0.5,
-        showlegend=False,
-        hovertext=[f"{l}: {v:.1f}%" for l, v in zip(labels, vals_o)],
-        hoverinfo="text",
-    ))
-
-    # Legend annotations
-    annotations = []
-    for j, label in enumerate(labels):
-        annotations.append(dict(
-            x=1.01, y=j / max(len(labels), 1),
-            xref="paper", yref="paper",
-            text=f"<span style='color:{palette[j % len(palette)]}'> ■</span> {label}",
-            showarrow=False, font_size=10, xanchor="left",
+    for j, (cat_code, cat_label) in enumerate(cats.items()):
+        val_c = dist_c.get(cat_code, 0) or 0
+        val_o = dist_o.get(cat_code, 0) or 0
+        color = palette[j % len(palette)]
+        # Show text only if bar segment is wide enough to fit label
+        texts = [f"{val_c:.0f}%" if val_c >= 7 else "",
+                 f"{val_o:.0f}%" if val_o >= 7 else ""]
+        fig.add_trace(go.Bar(
+            x=[val_c, val_o],
+            y=["Cluster", "National"],
+            name=cat_label,
+            orientation="h",
+            marker_color=color,
+            text=texts,
+            textposition="inside",
+            insidetextanchor="middle",
+            showlegend=True,
+            hovertemplate=f"{cat_label}: %{{x:.1f}}%<extra></extra>",
         ))
+
+    # Dynamically size height to give the legend room
+    n_cats = len(cats)
+    legend_h = max(130, 20 + n_cats * 18)
 
     fig.update_layout(
         barmode="stack",
         title=dict(text=ITEM_META[var]["q"][:70], font_size=11),
-        height=130, width=780,
-        margin=dict(l=80, r=180, t=35, b=5),
+        height=legend_h, width=820,
+        margin=dict(l=80, r=10, t=35, b=5),
         xaxis=dict(ticksuffix="%", range=[0, 105]),
+        yaxis=dict(autorange="reversed"),
+        legend=dict(
+            orientation="h", yanchor="bottom", y=1.02,
+            xanchor="left", x=0, font_size=10,
+            traceorder="normal",
+        ),
+        plot_bgcolor="#fafafa",
+        paper_bgcolor="#fafafa",
+    )
+    return fig
+
+
+def _make_continuous_chart(stats, cluster_id, var):
+    """IQR range bar (Q25–Q75) + median marker for a continuous variable.
+    Shows cluster vs national side-by-side.
+    """
+    if var not in stats:
+        return None
+    res = stats[var]
+    if "clusters_q25" not in res:
+        return None
+
+    med_c = res["clusters"][cluster_id]
+    q25_c = res["clusters_q25"][cluster_id]
+    q75_c = res["clusters_q75"][cluster_id]
+    med_o = res["overall"]
+    q25_o = res["overall_q25"]
+    q75_o = res["overall_q75"]
+
+    def safe(v):
+        return v if (v is not None and not np.isnan(v)) else None
+
+    med_c, q25_c, q75_c = safe(med_c), safe(q25_c), safe(q75_c)
+    med_o, q25_o, q75_o = safe(med_o), safe(q25_o), safe(q75_o)
+
+    fig = go.Figure()
+
+    # IQR bars (base = Q25, width = Q75-Q25)
+    for row_label, q25, q75, med, color in [
+        ("Cluster", q25_c, q75_c, med_c, "#1f77b4"),
+        ("National", q25_o, q75_o, med_o, "#ff7f0e"),
+    ]:
+        if q25 is not None and q75 is not None:
+            fig.add_trace(go.Bar(
+                x=[q75 - q25], y=[row_label],
+                base=[q25],
+                orientation="h",
+                marker=dict(color=color, opacity=0.45),
+                showlegend=False,
+                hovertemplate=f"IQR: {q25:.1f}–{q75:.1f}<extra>{row_label}</extra>",
+            ))
+        if med is not None:
+            fig.add_trace(go.Scatter(
+                x=[med], y=[row_label],
+                mode="markers+text",
+                marker=dict(size=11, color=color, symbol="diamond",
+                            line=dict(color="white", width=1)),
+                text=[f"  Median: {med:.1f}"],
+                textposition="middle right",
+                textfont=dict(size=10),
+                showlegend=False,
+                hovertemplate=f"Median: {med:.1f}<extra>{row_label}</extra>",
+            ))
+
+    fig.update_layout(
+        barmode="overlay",
+        title=dict(text=ITEM_META[var]["q"][:70], font_size=11),
+        height=140, width=820,
+        margin=dict(l=80, r=140, t=35, b=5),
         yaxis=dict(autorange="reversed"),
         plot_bgcolor="#fafafa",
         paper_bgcolor="#fafafa",
-        annotations=annotations,
     )
     return fig
 
@@ -1237,9 +1471,24 @@ def _make_demo_chart(stats, cluster_id, var):
 def build_report_html(stats, cluster_n, cluster_wn, total_n):
     """Build self-contained static report HTML with one section per cluster."""
 
-    DEMO_VARS = ["ideo5", "CC24_330a", "pid3", "gender4", "race", "educ",
-                 "urbancity", "region"]
-    POLICY_DOMAINS = [d for d in DOMAIN_ORDER if d != "Demographics"]
+    DEMO_VARS = [
+        # Identity & ideology
+        "ideo5", "CC24_330a", "pid3", "gender4", "race", "educ",
+        "urbancity", "region",
+        # Socioeconomic / family
+        "age", "faminc_new", "marstat", "child18", "numchildren", "ownhome",
+        "immstat", "sexuality",
+        # Military
+        "milstat_1", "milstat_3",
+        # Employment & labor
+        "employ", "union", "unionhh", "hadjob", "gigwork", "investor",
+        # Gun ownership
+        "gunown",
+        # Voting history
+        "presvote20post", "presvote16post",
+    ]
+    POLICY_DOMAINS = [d for d in DOMAIN_ORDER
+                      if d not in ("Demographics", "Employment & Labor", "Voting History")]
 
     figures_js = []  # collected plotly div + JS
     cluster_sections = []
@@ -1290,44 +1539,25 @@ def build_report_html(stats, cluster_n, cluster_wn, total_n):
                 div_id = f"fig_lik_c{k}_{domain.replace(' ', '_').replace('&','')}"
                 section_divs.append(fig_to_div(fig_lik, div_id))
 
-        # Abortion weeks chart (shown once per cluster separately)
+        # Abortion weeks chart — now uses continuous IQR chart
         if "CC24_325" in stats:
-            fig_weeks = _make_weeks_chart(stats, [k])
-            if fig_weeks:
-                div_id = f"fig_weeks_c{k}"
-                # simple single bar — show mean weeks for this cluster vs national
-                res = stats["CC24_325"]
-                cluster_val = res["clusters"][k]
-                overall_val = res["overall"]
-                fig_wk = go.Figure()
-                fig_wk.add_trace(go.Bar(
-                    x=[cluster_val or 0],
-                    y=[f"C{k} {name[:20]}"],
-                    orientation="h",
-                    marker_color="#1f77b4",
-                    text=[f"{cluster_val:.1f} wks" if cluster_val and not np.isnan(cluster_val) else "N/A"],
-                    textposition="outside",
-                ))
-                if overall_val is not None and not np.isnan(overall_val):
-                    fig_wk.add_vline(x=overall_val, line_dash="dash", line_color="gray",
-                                     annotation_text=f"Natl avg: {overall_val:.1f}")
-                fig_wk.update_layout(
-                    title="Abortion: Mean weeks legal",
-                    height=130, width=780,
-                    margin=dict(l=200, r=120, t=40, b=10),
-                    xaxis=dict(title="Weeks", range=[0, 44]),
-                    plot_bgcolor="#fafafa", paper_bgcolor="#fafafa",
-                )
-                section_divs.append(fig_to_div(fig_wk, div_id))
+            fig_wk = _make_continuous_chart(stats, k, "CC24_325")
+            if fig_wk:
+                section_divs.append(fig_to_div(fig_wk, f"fig_weeks_c{k}"))
 
         # Demographics
         section_divs.append('<h3>Demographics</h3>')
         for var in DEMO_VARS:
-            if var in stats:
+            if var not in stats:
+                continue
+            itype = ITEM_META[var]["type"]
+            if itype == "continuous":
+                fig_d = _make_continuous_chart(stats, k, var)
+            else:
                 fig_d = _make_demo_chart(stats, k, var)
-                if fig_d:
-                    div_id = f"fig_demo_c{k}_{var}"
-                    section_divs.append(fig_to_div(fig_d, div_id))
+            if fig_d:
+                div_id = f"fig_demo_c{k}_{var}"
+                section_divs.append(fig_to_div(fig_d, div_id))
 
         section_divs.append("</div>")  # end cluster-section
         cluster_sections.append("\n".join(section_divs))
@@ -1381,12 +1611,15 @@ function showCluster(k) {{
   document.querySelectorAll('.tab-btn').forEach(function(el) {{
     el.classList.remove('active');
   }});
-  document.getElementById('cluster-' + k).classList.add('visible');
+  var section = document.getElementById('cluster-' + k);
+  section.classList.add('visible');
   document.getElementById('tab-' + k).classList.add('active');
-  // Trigger plotly resize for any hidden charts now visible
+  // Force Plotly to recalculate dimensions for charts that were hidden at render time
   setTimeout(function() {{
-    window.dispatchEvent(new Event('resize'));
-  }}, 100);
+    section.querySelectorAll('.js-plotly-plot').forEach(function(div) {{
+      if (window.Plotly) {{ Plotly.Plots.resize(div); }}
+    }});
+  }}, 50);
 }}
 // Show first cluster by default
 showCluster(0);

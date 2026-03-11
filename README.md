@@ -1,140 +1,284 @@
-# STV Electoral System Simulation
+# American Multi-Party Electoral Simulation
 
-A comprehensive simulation of alternative electoral systems using real survey data from the 2024 Cooperative Election Study (CES).
+A full-stack simulation of what American politics might look like under proportional representation, using real ideological data from the **2024 Cooperative Election Study (CES)** — 60,000+ respondents, 45,707 after listwise deletion.
 
-## Overview
-
-This project explores what American politics might look like under different electoral rules:
-- **Multi-party proportional representation** instead of winner-take-all
-- **Single Transferable Vote (STV)** for multi-member districts
-- **A rolling presidential primary** with geographic balance
-- **Condorcet-based general elections** with proportional elector allocation
-
-## Key Findings
-
-### 1. Six Natural Political Clusters
-
-Using K-Means clustering on 37 policy questions, we identified **6 distinct political groupings** that better represent American ideological diversity than the current two-party system:
-
-| Cluster | Description | ~% of Electorate |
-|---------|-------------|------------------|
-| **The Left** | Progressive on all issues, strong support for abortion rights, climate action, wealth redistribution | ~15% |
-| **Liberals** | Socially liberal, moderate on economics, educated suburban voters | ~18% |
-| **Working Families** | Economically populist, moderate on social issues, union-friendly | ~17% |
-| **Security Centrists** | Moderate across the board, pragmatic, swing voters | ~16% |
-| **Conservatives** | Traditional conservative values, pro-business, religious | ~17% |
-| **MAGA** | Nationalist populist, anti-immigration, anti-establishment | ~17% |
-
-### 2. Proportional House Representation
-
-Simulated a **"Doubled House"** (870 seats instead of 435) with multi-member districts:
-- **5-seat districts** preferred (best proportionality)
-- **3-seat districts** to fill gaps
-- **2-seat statewide districts** only for small states
-
-**Result**: All 6 clusters win meaningful representation in nearly every state, compared to winner-take-all where ~40% of voters have no representative aligned with their views.
-
-### 3. Rolling Presidential Primary ("The American Mosaic")
-
-A 4-round primary system designed to test candidates across diverse regions:
-
-| Round | Format | Purpose |
-|-------|--------|---------|
-| **Round 1 (May)** | 6 small "Retail" states from different cultural regions | Tests retail politics, winnows 24→12 |
-| **Round 2 (June)** | One geographic Pod (with major anchor state) | Tests scalability, 12→10 |
-| **Round 3 (July)** | Another Pod | Tests broad appeal, 10→8 |
-| **Round 4 (August)** | Final two Pods together | The finale, 8→5 finalists |
-
-**Key insight**: STV naturally winnows out pure ideologues in favor of candidates with broader appeal. The "Final 5" typically includes 1-2 ideological voices (for representation) but is dominated by candidates near the median voter.
-
-### 4. Condorcet General Election
-
-Simulated **"Bottom-Up Condorcet with Proportional Runoff"**:
-
-1. **Build pairwise matrices**: For each state, calculate head-to-head preferences between all Final 5 candidates
-2. **Sum nationally**: Create a national pairwise matrix weighted by population
-3. **Find Top 2**: Use Copeland method (count pairwise victories) to identify finalists
-4. **Proportional allocation**: Each state splits its electors proportionally based on the Top 2 head-to-head margin
-
-**Result**: The Condorcet winner (candidate who would beat any other head-to-head) almost always wins. Electoral inversions become nearly impossible because proportional allocation eliminates the "efficiency gap."
-
-## Methodology
-
-### Data Source
-- **2024 Cooperative Election Study (CES)** - 60,000+ respondents
-- 37 policy questions covering abortion, immigration, guns, climate, economics, healthcare, etc.
-- Weighted to be nationally representative
-
-### Clustering
-- **Weighted K-Means** (approximated via resampling)
-- Questions coded as Support (1) or Oppose (2)
-- Cluster support rates calculated directly from weighted survey responses
-
-### Vote Simulation
-- **"Base + Appeal" model**: Candidates scored on 12 key polarizing questions
-- Alignment calculated as: how well does candidate position match cluster majority?
-- Transformed via `tanh` to create realistic vote share distributions (5-95% range)
-
-### STV Implementation
-- Full Droop quota calculation
-- Vote transfers based on position similarity between candidates
-- Round-by-round elimination with detailed tracking
-
-## Visualizations
-
-The notebook includes interactive Plotly visualizations:
-- **Pairwise heatmaps**: Head-to-head margins between candidates
-- **Choropleth maps**: State-by-state electoral allocation
-- **Sankey diagrams**: Electoral vote flows from regions to candidates
-- **Radar charts**: Candidate ideological profiles across clusters
-- **Parliament semicircles**: Seat distribution by party
-
-## Files
-
-| File | Description |
-|------|-------------|
-| `five_member_proportional.ipynb` | Main analysis notebook |
-| `DemRep.ipynb` | Baseline Democratic/Republican analysis |
-| `ces_questions_VERIFIED.md` | Documentation of policy questions used |
-| `dataverse_files/` | CES survey data |
-
-## Key Takeaways
-
-1. **America is not binary**: Six distinct political clusters exist, but the two-party system forces them into uncomfortable coalitions.
-
-2. **STV produces centrist winners**: Multi-round elimination naturally favors broadly acceptable candidates over factional champions.
-
-3. **Proportional allocation fixes the Electoral College**: When states split electors proportionally, the national popular vote winner almost always wins.
-
-4. **Representation vs. Governance tradeoff**: More parties = better representation but potentially harder coalition-building. The 6-cluster system might naturally form 2-3 governing coalitions.
-
-5. **Geographic pods ensure cultural balance**: No single region can dominate a primary when states are grouped to offset each other's biases.
-
-## Requirements
-
-```
-pandas
-numpy
-scikit-learn
-plotly
-```
-
-## Usage
-
-Run the Jupyter notebook cells in order. The analysis builds progressively:
-1. Data loading and cleaning
-2. Cluster analysis
-3. State-level party share calculations
-4. Seat allocation simulation
-5. Presidential primary simulation
-6. Condorcet general election simulation
-
-## License
-
-For educational and research purposes.
+> For the full technical reference (agent/developer guide), see [`docs/AGENTS.md`](docs/AGENTS.md).
+> For detailed EFA factor loadings, see [`docs/EFA_FACTORS.md`](docs/EFA_FACTORS.md).
 
 ---
 
-*"The test of a first-rate intelligence is the ability to hold two opposed ideas in mind at the same time and still retain the ability to function."* — F. Scott Fitzgerald
+## Pipeline at a Glance
 
-This simulation holds six.
+```
+2024 CES Survey (N=45,707)
+        │
+        ▼
+  Exploratory Factor Analysis (EFA)
+  24 policy items → 5 latent ideological dimensions (F1–F5)
+        │
+        ▼
+  DPGMM Clustering
+  Factor scores → 10 voter typology clusters (C0–C9)
+        │
+        ├──────────────────────────────────────┐
+        ▼                                      ▼
+  House STV Simulation                   Senate Simulation
+  873 seats / 180 districts              51 senators (one per state)
+  Droop quota + Gregory surplus          STV primary → Ranked Pairs Condorcet
+  Canonical: No_C7_canonical/            Condorcet + IRV scenarios
+        │                                      │
+        └──────────────┬───────────────────────┘
+                       ▼
+             Chamber Vote Model
+             37 binary policy items
+             Sum-of-Binomials → P(pass)
+                       │
+                       ▼
+           Cross-Chamber Coalition Analysis
+           23 types × 5 factors
+           Per-factor alignment (k=2 poles + absolute tiers)
+```
+
+---
+
+## The 10-Party Typology
+
+Produced by **Dirichlet Process Gaussian Mixture Model (DPGMM)** clustering on 5 EFA factor scores. C7 is **permanently dissolved** — never competes for seats; their ballots transfer to next-ranked active party.
+
+| ID | Abbrev | Name | Character | ~Electorate |
+|----|--------|------|-----------|-------------|
+| C0 | CON | Conservative | Mainstream center-right; pro-law enforcement, economically traditional | ~15% |
+| C1 | SD | Social Democrat | Center-left institutionalist; supports safety net, moderate on social issues | ~18% |
+| C2 | STY | Solidarity | Disaffected working-class left; skeptical of institutions, pro-labor | ~17% |
+| C3 | NAT | Nationalist | Populist right; strong on immigration, anti-establishment, very high F5 | ~5% |
+| C4 | LIB | Liberal | College-educated progressive; socially liberal, moderate-left economics | ~12% |
+| C5 | REF | Reform | Right-of-center reformists; skeptical of elections, high F2 + F5 | ~10% |
+| C6 | CTR | Center | True centrists; cross-pressured, low electoral skepticism | ~10% |
+| C7 | — | Blue Dogs *(dissolved)* | Conservative Democrats; pre-eliminated in all simulations, 0 seats | ~5% |
+| C8 | DSA | DSA | Progressive left; far left on security, high electoral skepticism | ~4% |
+| C9 | PRG | Progressive | Progressive elite; urban, far left across most dimensions | ~4% |
+
+**House seat counts (canonical):** CON=164, SD=166, STY=160, REF=125, CTR=102, LIB=100, DSA=26, NAT=22, PRG=8, C7=0
+
+---
+
+## The 5 Ideological Factors (EFA)
+
+Factor scores are standardized to the survey population (mean≈0, SD≈1). Absolute tier thresholds reflect position relative to the full electorate:
+
+| Tier | Score Range |
+|------|-------------|
+| Very High | > +0.75 |
+| High | +0.25 to +0.75 |
+| Medium | −0.25 to +0.25 |
+| Low | −0.75 to −0.25 |
+| Very Low | < −0.75 |
+
+### F1 — Security & Order
+**High** = pro-law enforcement, pro-border security, pro-surveillance
+**Low** = civil libertarian, anti-enforcement
+*Top items: support increased police (+0.73), increase border patrols (+0.71), deny asylum (+0.66), oppose decreasing police (+0.65)*
+
+### F2 — Electoral Skepticism
+**High** = believes elections are NOT run fairly; distrusts voting systems
+**Low** = trusts electoral institutions
+*Top items: state/local elections not fair (+0.90), US elections not fair (+0.73)*
+Note: Near-orthogonal to partisan ID — STY, REF, and DSA all score High despite being ideologically distant on F1/F5.
+
+### F3 — Government Distrust
+**High** = low trust in federal and state government
+**Low** = trusts government institutions
+*Top items: distrust federal govt (+0.66), distrust state govt (+0.48)*
+**Key finding: All 23 winning coalition types score Medium on F3 (range −0.21 to +0.13) — this axis does not differentiate winning coalitions at all.**
+
+### F4 — Religious Traditionalism
+**High** = traditional religious values; conservative on abortion and same-sex marriage
+**Low** = secular, socially progressive
+*Top items: church attendance (+0.69), abortion week limits (+0.69), oppose same-sex marriage recognition (+0.65)*
+
+### F5 — Populist Conservatism
+**High** = populist-right; anti-immigration, fiscal conservatism, racial traditionalism
+**Low** = progressive-left
+*Top items (negative-loaded): racial resentment (−0.62), oppose police reform (−0.56), oppose Dreamers (−0.54), oppose tax hike on $400k+ (−0.53)*
+NAT is the extreme high end (+1.51); PRG (−0.99) and LIB (−0.95) are the extreme low end.
+
+---
+
+## House STV Simulation
+
+**Scripts:** `busy-ramanujan/stv_main.py` and supporting `stv_step1.py`–`stv_step5.py`
+**Canonical output:** `Claude/outputs/No_C7_canonical/`
+
+- **873 seats** across **180 multi-member districts** (Urban / Suburban / Rural tiers per state)
+- Apportionment: Hamilton method, ~380,000 pop/seat from 2020 Census
+- **Droop quota:** `⌊ total_weight / (seats + 1) ⌋ + 1`
+- **Gregory surplus transfer:** fractional weight redistribution when a candidate exceeds quota
+- **C7 pre-dissolved:** their voters' ballots skip to next-ranked active party before Round 1
+- Ballots derived from DPGMM soft cluster probabilities via Plackett-Luce ranking
+
+**Seat results (canonical):**
+
+| Party | Seats | % | Urban | Suburban | Rural |
+|-------|-------|---|-------|----------|-------|
+| SD | 166 | 19.0% | 87 | 59 | 20 |
+| CON | 164 | 18.8% | 78 | 60 | 26 |
+| STY | 160 | 18.3% | 86 | 55 | 19 |
+| REF | 125 | 14.3% | 65 | 41 | 19 |
+| CTR | 102 | 11.7% | 58 | 32 | 12 |
+| LIB | 100 | 11.5% | 65 | 28 | 7 |
+| DSA | 26 | 3.0% | 24 | 2 | 0 |
+| NAT | 22 | 2.5% | 12 | 5 | 5 |
+| PRG | 8 | 0.9% | 8 | 0 | 0 |
+
+---
+
+## Senate Simulation
+
+**Scripts:** `charming-johnson/run_senate_simulation.py` (Condorcet), `charming-johnson/run_senate_irv.py` (IRV)
+**Output:** `Claude/outputs/senate/`
+
+- **51 senators** — one per state (50 states + DC)
+- **Candidate generation per state:** up to 18 candidates
+  - *Pure* candidates: any cluster with ≥5% weighted share in that state
+  - *Co-occurrence straddlers*: blend candidates based on within-state top-2 cluster co-occurrence rates
+  - *Wild card cross-aisle*: two clusters each ≥15% state share AND factor-space distance ≥1.40
+- **Primary:** STV elimination → 5 finalists
+- **General:** Ranked Pairs Condorcet → 1 senator (or IRV alternative)
+
+Senate candidate factor positions use linear interpolation: `blend = w × pure_primary + (1−w) × pure_secondary`.
+
+**Top seat types (IRV scenario):**
+
+| Type | Seats | Description |
+|------|-------|-------------|
+| SD/STY | 10 | Social Democrat–Solidarity |
+| CON/SD | 6 | Conservative–Social Democrat centrist |
+| CON/STY | 5 | Conservative–Solidarity working-class right |
+| STY/SD | 5 | Solidarity–Social Democrat |
+| CON/REF | 4 | Conservative–Reform populist right |
+| SD/LIB | 4 | Social Democrat–Liberal |
+| CON/CTR | 4 | Conservative–Center moderate |
+
+---
+
+## Chamber Vote Model
+
+**Script:** `charming-johnson/chamber_vote_model.py`
+**Outputs:** `Claude/outputs/senate/senate_vote_model.csv`, `Claude/outputs/house_vote_model.csv`
+
+For each of **37 binary CC24\_ policy items**, models the probability of a bill passing a floor vote.
+
+**Method — Sum-of-Independent-Binomials → Normal approximation:**
+```
+E[Y]    = Σᵢ nᵢ · pᵢ                               (expected yes votes)
+σ²[Y]   = Σᵢ nᵢ · pᵢ · (1 − pᵢ)
+P(pass) = 1 − Φ((majority − 0.5 − E[Y]) / σ[Y])    (continuity correction)
+```
+where `nᵢ` = seats held by type `i`, `pᵢ` = that type's % supporting / 100.
+
+**Verdict thresholds:** PASS ≥67% | TOSS-UP 33–67% | FAIL ≤33%
+**Results (both chambers):** 29 PASS / 1 TOSS-UP / 7 FAIL
+
+These chambers are cross-cutting — they simultaneously pass both tax cuts AND tax hikes, both border enforcement AND Dreamer protections. Different majority coalitions form for each vote. This is expected behavior for proportional multi-party representation.
+
+---
+
+## Coalition Analysis
+
+**Script:** `charming-johnson/cross_chamber_coalitions.py`
+**Output:** `Claude/outputs/coalitions/`
+
+Shows where senate and house party types align **within** each of the 5 factor dimensions — revealing issue-specific coalition partners rather than overall ideological proximity.
+
+**23 types:** 20 senate types (blends + pure) + 3 house-only pure types not in senate (NAT, DSA, PRG).
+
+**Per-factor analysis:**
+- `k=2` poles: 1D k-means on the 23 winner types → which "side" each type falls on
+- Absolute tiers: fixed EFA scale thresholds → position relative to the full electorate
+
+| Output File | Contents |
+|-------------|----------|
+| `coalition_type_profiles.csv` | 23 rows: F1–F5 scores, chamber tag, seat counts |
+| `coalition_factor_alignment.csv` | 115 rows: per-(factor × type) rank, k=2 pole, absolute tier |
+| `coalition_pairwise.csv` | 253 pairs: per-factor distances, normalized alignment scores (0–1) |
+
+---
+
+## Output Files Reference
+
+All outputs are under `/Users/bdecker/Documents/STV/Claude/outputs/`.
+
+| File | Description |
+|------|-------------|
+| `No_C7_canonical/stv_seat_summary.csv` | House seat totals by party and density tier |
+| `No_C7_canonical/stv_results_by_district.csv` | Per-district STV results with round-by-round elimination |
+| `No_C7_canonical/transfer_matrix_directed.csv` | Vote transfer % when each party is eliminated |
+| `affinity/second_choice_row_pct.csv` | % of each party's voters ranking each other party 2nd |
+| `affinity/mean_rank_proximity.csv` | Full preference ordering proximity (0=far, 1=close) |
+| `affinity/factor_mahalanobis.csv` | Mahalanobis distance between cluster centroids in 5D factor space |
+| `profiles/cluster_stats.csv` | Per-item statistics for all 10 clusters (policy + demographics) |
+| `profiles/blend_stats.csv` | Same stats for senate blend candidate types |
+| `senate/senate_composition.csv` | One row per state: Condorcet senator type + vote shares |
+| `senate/senate_irv_composition.csv` | One row per state: IRV winner + runner-up |
+| `senate/senate_chamber_profile.csv` | Policy/demographic profiles for 18 senate types + aggregates |
+| `senate/senate_vote_model.csv` | 37-item bill passage probability (senate) |
+| `senate/senate_voting_blocs.csv` | Ward clustering of senate types in 5D factor space |
+| `senate/candidate_proximity.csv` | Pairwise Euclidean distance between senate candidate types |
+| `house_chamber_profile.csv` | Policy/demographic profiles for house (canonical scenario) |
+| `house_vote_model.csv` | 37-item bill passage probability (house) |
+| `coalitions/coalition_type_profiles.csv` | 23 types with factor positions and seat counts |
+| `coalitions/coalition_factor_alignment.csv` | Per-factor pole and tier assignments |
+| `coalitions/coalition_pairwise.csv` | Pairwise factor alignment scores |
+
+---
+
+## Running the Pipeline
+
+All scripts use hardcoded absolute paths. Run from the respective worktree root.
+
+```bash
+# ── STV House (from busy-ramanujan/) ───────────────────────────────────────
+python3 stv_main.py                       # Full run steps 1–5 (~3.5s)
+python3 stv_main.py --steps 3,4,5        # Resume from ballot checkpoint
+python3 stv_affinity.py                   # Inter-party affinity matrices
+python3 cluster_profile_viz.py            # HTML cluster profile reports
+
+# ── Senate & Analysis (from charming-johnson/) ─────────────────────────────
+python3 run_senate_simulation.py          # Condorcet senate (~30s)
+python3 run_senate_irv.py                 # IRV senate alternative
+python3 generate_candidate_profiles.py    # Candidate factor centroids
+python3 generate_blend_stats.py           # Blend candidate policy profiles
+python3 senate_chamber_profile.py         # Senate chamber policy aggregate
+python3 house_chamber_profile.py          # House chamber policy aggregate
+python3 senate_voting_blocs.py            # Hierarchical voting bloc clustering
+python3 chamber_vote_model.py             # Bill passage probabilities
+python3 cross_chamber_coalitions.py       # Cross-chamber coalition analysis
+```
+
+---
+
+## Dependencies
+
+```
+python3 >= 3.10
+numpy
+pandas
+scipy
+scikit-learn
+pyreadstat      # Stata .dta reading
+pyarrow         # Parquet I/O for ballot checkpoint
+plotly          # HTML cluster profile visualizations
+```
+
+---
+
+## Data Sources
+
+| Dataset | Description | Path |
+|---------|-------------|------|
+| 2024 CES | ~60,000 respondents, 2024 Cooperative Election Study | `DataSets/2024 CES Base/CCES24_Common_OUTPUT_vv_topost_final.dta` |
+| Typology | DPGMM cluster assignments (45,707 rows) | `Claude/data/typology_cluster_assignments.csv` |
+| EFA scores | 5 factor scores per respondent | `Claude/data/efa_factor_scores.csv` |
+| Polychoric matrix | 24×24 polychoric correlation matrix | `Claude/data/polychoric_matrix.csv` |
+
+**Analysis sample:** N=45,707 after listwise deletion (24 items + `commonpostweight` non-missing).

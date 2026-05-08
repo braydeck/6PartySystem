@@ -5,6 +5,14 @@ A full-stack simulation of what American politics might look like under proporti
 > For the full technical reference (agent/developer guide), see [`docs/AGENTS.md`](docs/AGENTS.md).
 > For detailed EFA factor loadings, see [`docs/EFA_FACTORS.md`](docs/EFA_FACTORS.md).
 
+## Overview
+
+This project explores what American politics might look like under different electoral rules:
+- **Multi-party proportional representation** instead of winner-take-all
+- **Single Transferable Vote (STV)** primaries with Droop quota surplus transfers
+- **A rolling presidential primary** with geographic balance across 4 rounds
+- **Instant Runoff Voting (IRV)** for senate general elections
+- **Condorcet/Copeland general elections** with proportional elector allocation
 ---
 
 ## Pipeline at a Glance

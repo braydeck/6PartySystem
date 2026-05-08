@@ -1,0 +1,56 @@
+variable_name,question_label,survey_wave,n_valid,pct_missing,weighted_variance,modal_share_pct,partyID_r2,ideology_r2,final_action,drop_reason
+CC24_330a,Ideology self-placement (VL=1 to VC=7),pre,56924,5.1,3.5027,26.1,0.5682,0.8187,DROP,Partisan proxy: ideology self-placement (PID R²=0.568); dominates Factor 1
+pew_churatd,Church attendance frequency,pre,59008,1.7,2.9575,34.1,0.0598,0.1086,KEEP,
+pew_religimp,Importance of religion in life,pre,59989,0.0,1.411,37.5,0.1105,0.1874,DROP,Redundant with pew_churatd (r=0.82); higher PID R²
+pew_prayer,Prayer frequency,pre,58480,2.5,5.7847,28.3,0.0859,0.1569,DROP,"Dropped by user: reduces N by ~1,520; redundant with pew_churatd"
+pew_bornagain,Born-again/evangelical identity (binary),pre,59970,0.0,0.221,67.0,0.0775,0.1207,DROP,Redundant with pew_religimp (r=0.77); binary with 67% modal share
+CC24_301,National economy: better or worse past year,pre,58452,2.6,1.7609,34.9,0.3375,0.2613,DROP,Partisan proxy: economy retrospective (PID R²=0.338); Biden approval proxy in 2024
+CC24_302,Household income: change past year,pre,59913,0.1,0.9007,49.7,0.0602,0.047,KEEP,
+CC24_303,Perceived price change past year (rev: high=inflation),pre,59874,0.2,0.6787,55.3,0.1094,0.0932,KEEP,
+CC24_309d_8,Financial fragility: can't cover $400 emergency [binary],pre,60000,0.0,0.1443,82.5,0.0002,0.0001,DROP,Dropped by user: binary from multi-select; low variance (82.5% = 0); CC24_309e preferred
+CC24_341a,Support extend 2017 tax cuts,pre,59546,0.8,0.2337,62.8,0.1445,0.1537,KEEP,
+CC24_341b,Oppose raise corporate tax to 28% [rev],pre,59816,0.3,0.2455,56.7,0.2199,0.2188,DROP,Redundant with CC24_341a (r>0.70); dropped by user
+CC24_341c,Oppose allow $400k+ tax rates to rise [rev],pre,59788,0.4,0.2288,64.6,0.1702,0.1775,KEEP,
+CC24_341d,Oppose $150B infrastructure spending [rev],pre,59737,0.4,0.1619,79.7,0.0588,0.0581,KEEP,
+CC24_323a,Oppose grant legal status to working immigrants [rev],pre,59998,0.0,0.242,59.0,0.2136,0.2066,KEEP,
+CC24_323b,Support increase border patrols,pre,59999,0.0,0.1642,79.3,0.0862,0.1379,KEEP,
+CC24_323d,Oppose Dreamers pathway to citizenship [rev],pre,59991,0.0,0.2074,70.6,0.1854,0.1833,KEEP,
+CC24_321b,Support easier concealed carry permits,pre,59998,0.0,0.2389,60.5,0.1836,0.1781,KEEP,
+CC24_321c,Oppose background checks on all gun sales [rev; ceiling],pre,59997,0.0,0.0722,92.2,0.023,0.0308,DROP,Ceiling effect: 93% Support background checks; near-zero variance
+CC24_321d,Support increase police by 10%,pre,59998,0.0,0.245,57.1,0.1371,0.1827,KEEP,
+CC24_321e,Oppose decrease police by 10% [rev],pre,59991,0.0,0.1953,73.4,0.1064,0.159,KEEP,
+CC24_325,Abortion weeks limit reversed (40-weeks; high=restrictive),pre,57958,3.4,149.9186,11.2,0.2353,0.2996,KEEP,
+CC24_324b,Support permit abortion only rape/incest/life danger,pre,59969,0.1,0.2496,52.0,0.0963,0.1088,KEEP,
+CC24_324c,Support make abortion illegal ALL circumstances [floor],pre,59964,0.1,0.1106,87.3,0.0322,0.0574,DROP,Floor effect: 89% Oppose making abortion illegal in all circumstances
+CC24_324d,Oppose expand abortion access [rev],pre,59964,0.1,0.2412,59.4,0.3183,0.3248,DROP,Dropped by user: highly redundant with immigration/ideology cluster (r>0.79 with 6 items)
+CC24_340a,Oppose prohibit contraceptive restrictions [rev],pre,59846,0.3,0.2058,71.0,0.0278,0.0459,KEEP,
+CC24_340b,Oppose prohibit abortion service restrictions [rev],pre,59791,0.3,0.2352,62.2,0.1055,0.1288,KEEP,
+CC24_340c,Oppose require same-sex marriage recognition [rev],pre,59688,0.5,0.2305,64.0,0.193,0.2368,KEEP,
+CC24_340e,Support renew post-9/11 surveillance programs,pre,59776,0.4,0.2266,65.3,0.0002,0.0006,KEEP,
+CC24_340f,Support deny asylum at border,pre,59812,0.3,0.2325,63.2,0.2152,0.2458,KEEP,
+CC24_440a,Disagree: white people have advantages [high=conservative],post,49270,17.9,2.1805,27.3,0.3676,0.3503,DROP,Dropped by user: redundant with CC24_440b (r=0.71); higher PID R²
+CC24_440b,Agree: racial problems are rare/isolated,post,48836,18.6,1.7286,28.1,0.2411,0.2463,KEEP,
+CC24_440c,Agree: women seek to gain power over men,post,49253,17.9,1.6268,33.1,0.1643,0.1802,KEEP,
+CC24_440d,Agree: women are too easily offended,post,49267,17.9,1.8476,25.5,0.2514,0.2642,DROP,Dropped by user: redundant with CC24_440c (r=0.77)
+CC24_441a,Agree: Blacks should work up like other minorities,post,49430,17.6,2.0993,28.6,0.3275,0.355,DROP,Dropped by user: racial resentment item; collinearity concern vs Factor 1
+CC24_441b,Disagree: slavery created conditions [high=conservative],post,49428,17.6,2.2503,24.1,0.3507,0.359,DROP,Dropped by user: racial resentment item; collinearity concern vs Factor 1
+CC24_420_1,Mil. intervention: ensure oil supply [binary],post,49432,17.6,0.1609,79.9,0.0408,0.0394,DROP,Compositional/check-all-that-apply: mutual exclusivity creates structurally invalid polychoric correlations
+CC24_420_2,Mil. intervention: destroy terrorist camp [binary],post,49432,17.6,0.2474,55.1,0.0282,0.0374,DROP,Compositional/check-all-that-apply: mutual exclusivity creates structurally invalid polychoric correlations
+CC24_420_3,Mil. intervention: genocide/civil war [binary],post,49432,17.6,0.2305,64.0,0.0328,0.0412,DROP,Compositional/check-all-that-apply: mutual exclusivity creates structurally invalid polychoric correlations
+CC24_420_4,Mil. intervention: spread democracy [binary],post,49432,17.6,0.1395,83.2,0.013,0.0041,DROP,Compositional/check-all-that-apply: mutual exclusivity creates structurally invalid polychoric correlations
+CC24_420_5,Mil. intervention: protect allies [binary],post,49432,17.6,0.2174,68.1,0.0014,0.0008,DROP,Compositional/check-all-that-apply: mutual exclusivity creates structurally invalid polychoric correlations
+CC24_420_6,Mil. intervention: UN/intl law [binary],post,49432,17.6,0.2448,57.2,0.0958,0.1054,DROP,Compositional/check-all-that-apply: mutual exclusivity creates structurally invalid polychoric correlations
+CC24_420_7,Mil. intervention: NONE/isolationist [exclusive-none],post,49432,17.6,0.1157,86.6,0.0002,0.0004,DROP,Compositional exclusive-none: near-perfect artificial negative correlations with items 1-6
+CC24_421_1,Disagree: U.S. elections are fair [high=distrust],post,49429,17.6,1.3189,38.1,0.0182,0.0118,KEEP,
+CC24_421_2,Disagree: state/local election in 2024 was fair [high=distrust],post,49430,17.6,1.081,45.8,0.012,0.0127,KEEP,
+CC24_423,Low trust: federal government [4-pt; high=less trust],post,49347,17.8,0.6182,47.2,0.0265,0.0154,KEEP,
+CC24_424,Low trust: state government [4-pt; high=less trust],post,49340,17.8,0.771,42.5,0.0072,0.0032,KEEP,
+CC24_312a,Approve Biden [partisan proxy],pre,58405,2.7,1.3453,47.2,0.5682,0.3558,DROP,Partisan proxy: Biden approval (PID R²=0.568); r=0.977 with CC24_312i
+CC24_312b,Approve U.S. Congress [11.9% Not sure],pre,52863,11.9,0.6448,43.3,0.0007,0.0008,DROP,"Dropped by user: 11.9% missing (4,947 ""Not sure"" post-completers drag down N)"
+CC24_312c,Approve U.S. Supreme Court,pre,54121,9.8,1.1288,37.7,0.2787,0.2873,DROP,"Dropped by user: SCOTUS approval loaded on partisan axis, not cross-cutting"
+CC24_312d,Approve Governor [direction varies by state],pre,55126,8.1,1.2897,31.6,0.0084,0.004,DROP,Direction inconsistent: partisan valence varies by state governor party
+CC24_312e,Approve State legislature [direction varies by state],pre,47684,20.5,0.9806,39.8,0.0003,0.0003,DROP,Direction inconsistent: partisan valence varies by state legislature; 20.5% missing
+CC24_312f,Approve House rep [direction varies; 30% Not sure],pre,42163,29.7,1.2687,33.1,0.0004,0.0026,DROP,Direction inconsistent: direction varies by rep; 29.7% Not sure → NaN
+CC24_312g,Approve Senator 1 [direction varies; 22% Not sure],pre,46531,22.4,1.3151,32.2,0.0305,0.0183,DROP,Direction inconsistent: direction varies by senator; 22.4% Not sure → NaN
+CC24_312h,Approve Senator 2 [direction varies; 25% Not sure],pre,45021,25.0,1.4098,34.0,0.0034,0.0016,DROP,Direction inconsistent: direction varies by senator; 25.0% Not sure → NaN
+CC24_312i,Approve Harris [partisan proxy],pre,57352,4.4,1.5635,46.3,0.6296,0.4063,DROP,Partisan proxy: Harris approval (PID R²=0.630); r=0.977 with CC24_312a

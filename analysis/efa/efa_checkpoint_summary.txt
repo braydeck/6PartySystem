@@ -1,0 +1,145 @@
+EFA PIPELINE CHECKPOINT — CES 2024 POLITICAL TYPOLOGY ANALYSIS
+Steps 1–4 Complete (v4). Final item set confirmed. Ready for EFA.
+========================================================================
+
+ITEM COUNTS
+-----------
+  KEEP:     25 items (EFA item pool)
+  DROP:     30 items
+  TOTAL:    55 original candidates
+
+SAMPLE SIZE
+-----------
+  Original N:                 60,000
+  Post-survey completers:     49,432 (tookpost=Yes)
+  After listwise deletion:    45,143 (75.2% of full sample)
+  Weighted N (commonpostweight): 44,834
+  Primary driver of exclusion: 10,568 pre-survey-only respondents
+    (all post-survey items require post-completion)
+
+FINAL EFA ITEM SET (25 items)
+-----------------------------
+  Religion:
+    pew_churatd         PID R²=0.059  Church attendance frequency
+  Econ Perception:
+    CC24_302            PID R²=0.059  Household income: change past year
+    CC24_303            PID R²=0.116  Perceived price change past year (rev: high=inflation)
+  Tax/Fiscal:
+    CC24_341a           PID R²=0.152  Support extend 2017 tax cuts
+    CC24_341c           PID R²=0.182  Oppose allow $400k+ tax rates to rise [rev]
+    CC24_341d           PID R²=0.066  Oppose $150B infrastructure spending [rev]
+  Immigration:
+    CC24_323a           PID R²=0.237  Oppose grant legal status to working immigrants [rev]
+    CC24_323b           PID R²=0.097  Support increase border patrols
+    CC24_323d           PID R²=0.204  Oppose Dreamers pathway to citizenship [rev]
+  Guns/Policing:
+    CC24_321b           PID R²=0.195  Support easier concealed carry permits
+    CC24_321d           PID R²=0.152  Support increase police by 10%
+    CC24_321e           PID R²=0.118  Oppose decrease police by 10% [rev]
+  Abortion:
+    CC24_325            PID R²=0.253  Abortion weeks limit reversed (40-weeks; high=restrictive)
+    CC24_324b           PID R²=0.109  Support permit abortion only rape/incest/life danger
+  Civil Rights:
+    CC24_340a           PID R²=0.029  Oppose prohibit contraceptive restrictions [rev]
+    CC24_340b           PID R²=0.111  Oppose prohibit abortion service restrictions [rev]
+    CC24_340c           PID R²=0.198  Oppose require same-sex marriage recognition [rev]
+    CC24_340e           PID R²=0.000  Support renew post-9/11 surveillance programs
+    CC24_340f           PID R²=0.230  Support deny asylum at border
+  Racial/Gender:
+    CC24_440b           PID R²=0.231  Agree: racial problems are rare/isolated
+    CC24_440c           PID R²=0.154  Agree: women seek to gain power over men
+  Election Trust:
+    CC24_421_1          PID R²=0.011  Disagree: U.S. elections are fair [high=distrust]
+    CC24_421_2          PID R²=0.007  Disagree: state/local election in 2024 was fair [high=distrust]
+  Govt Trust:
+    CC24_423            PID R²=0.022  Low trust: federal government [4-pt; high=less trust]
+    CC24_424            PID R²=0.005  Low trust: state government [4-pt; high=less trust]
+
+DROPPED ITEMS SUMMARY
+---------------------
+  Partisan proxies (dominate Factor 1):
+    CC24_330a           Partisan proxy: ideology self-placement (PID R²=0.568); dominates Fact
+    CC24_301            Partisan proxy: economy retrospective (PID R²=0.338); Biden approval p
+    CC24_312a           Partisan proxy: Biden approval (PID R²=0.568); r=0.977 with CC24_312i
+    CC24_312i           Partisan proxy: Harris approval (PID R²=0.630); r=0.977 with CC24_312a
+  Compositional/invalid for polychoric EFA:
+    CC24_420_1          Compositional/check-all-that-apply: mutual exclusivity creates structu
+    CC24_420_2          Compositional/check-all-that-apply: mutual exclusivity creates structu
+    CC24_420_3          Compositional/check-all-that-apply: mutual exclusivity creates structu
+    CC24_420_4          Compositional/check-all-that-apply: mutual exclusivity creates structu
+    CC24_420_5          Compositional/check-all-that-apply: mutual exclusivity creates structu
+    CC24_420_6          Compositional/check-all-that-apply: mutual exclusivity creates structu
+    CC24_420_7          Compositional exclusive-none: near-perfect artificial negative correla
+  Direction inconsistent across respondents:
+    CC24_312d           Direction inconsistent: partisan valence varies by state governor part
+    CC24_312e           Direction inconsistent: partisan valence varies by state legislature; 
+    CC24_312f           Direction inconsistent: direction varies by rep; 29.7% Not sure → NaN
+    CC24_312g           Direction inconsistent: direction varies by senator; 22.4% Not sure → 
+    CC24_312h           Direction inconsistent: direction varies by senator; 25.0% Not sure → 
+  Ceiling/floor effects:
+    CC24_321c           Ceiling effect: 93% Support background checks; near-zero variance
+    CC24_324c           Floor effect: 89% Oppose making abortion illegal in all circumstances
+  Redundant (r>0.70) — lower-signal item retained:
+    pew_religimp        Redundant with pew_churatd (r=0.82); higher PID R²
+    pew_bornagain       Redundant with pew_religimp (r=0.77); binary with 67% modal share
+    CC24_341b           Redundant with CC24_341a (r>0.70); dropped by user
+    CC24_324d           Dropped by user: highly redundant with immigration/ideology cluster (r
+    CC24_440a           Dropped by user: redundant with CC24_440b (r=0.71); higher PID R²
+    CC24_440d           Dropped by user: redundant with CC24_440c (r=0.77)
+  Racial resentment (user decision — collinearity concern):
+    CC24_441a           Dropped by user: racial resentment item; collinearity concern vs Facto
+    CC24_441b           Dropped by user: racial resentment item; collinearity concern vs Facto
+  High missingness / user decision:
+    CC24_309d_8         Dropped by user: binary from multi-select; low variance (82.5% = 0); C
+    CC24_312b           Dropped by user: 11.9% missing (4,947 "Not sure" post-completers drag 
+    CC24_312c           Dropped by user: SCOTUS approval loaded on partisan axis, not cross-cu
+    pew_prayer          Dropped by user: reduces N by ~1,520; redundant with pew_churatd
+
+POLYCHORIC CORRELATION NOTES
+----------------------------
+  Pairs with |r| > 0.70 remaining in final set:
+    CC24_323a × CC24_323d  r=+0.8145
+    CC24_323b × CC24_340f  r=+0.7030
+    CC24_321d × CC24_321e  r=+0.7699
+    CC24_340a × CC24_340b  r=+0.7017
+    CC24_421_1 × CC24_421_2  r=+0.7448
+
+  TOP 10 POLYCHORIC CORRELATIONS:
+    CC24_323a          × CC24_323d           r=+0.8145
+    CC24_321d          × CC24_321e           r=+0.7699
+    CC24_421_1         × CC24_421_2          r=+0.7448
+    CC24_323b          × CC24_340f           r=+0.7030
+    CC24_340a          × CC24_340b           r=+0.7017
+    CC24_323d          × CC24_340f           r=+0.6680
+    CC24_323a          × CC24_340f           r=+0.6618
+    CC24_325           × CC24_340c           r=+0.6150
+    CC24_323b          × CC24_321d           r=+0.6005
+    CC24_321d          × CC24_340f           r=+0.5987
+
+  ITEMS WITH HIGHEST PID R² (most partisan — monitor in EFA):
+    CC24_325            PID R²=0.2527  Abortion weeks limit reversed (40-weeks; high=restricti
+    CC24_323a           PID R²=0.2366  Oppose grant legal status to working immigrants [rev]
+    CC24_440b           PID R²=0.2309  Agree: racial problems are rare/isolated
+    CC24_340f           PID R²=0.2302  Support deny asylum at border
+    CC24_323d           PID R²=0.2037  Oppose Dreamers pathway to citizenship [rev]
+    CC24_340c           PID R²=0.1978  Oppose require same-sex marriage recognition [rev]
+
+  ITEMS WITH LOWEST PID R² (most cross-partisan):
+    CC24_340a           PID R²=0.0287  Oppose prohibit contraceptive restrictions [rev]
+    CC24_423            PID R²=0.0216  Low trust: federal government [4-pt; high=less trust]
+    CC24_421_1          PID R²=0.0107  Disagree: U.S. elections are fair [high=distrust]
+    CC24_421_2          PID R²=0.0072  Disagree: state/local election in 2024 was fair [high=d
+    CC24_424            PID R²=0.0054  Low trust: state government [4-pt; high=less trust]
+    CC24_340e           PID R²=0.0000  Support renew post-9/11 surveillance programs
+
+SAVED FILES
+-----------
+  1. /Users/bdecker/Documents/STV/Claude/efa_variable_list.csv
+  2. /Users/bdecker/Documents/STV/Claude/polychoric_matrix.csv
+  3. /Users/bdecker/Documents/STV/Claude/efa_checkpoint_summary.txt
+  4. /Users/bdecker/Documents/STV/Claude/polychoric_heatmap_v4.png
+
+NEXT STEP: Proceed to EFA (Step 5).
+  Recommended: PAF + Oblimin, parallel analysis for k, solutions k=3/4/5.
+  Weight: commonpostweight. Input: polychoric_matrix.csv, N=45143
+========================================================================

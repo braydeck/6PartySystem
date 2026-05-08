@@ -1,0 +1,26 @@
+Variable,Label,Domain,Factor(s)_loaded,Primary_Factor,Primary_Loading,h2,Partisan_Item_R2,Factor_Partisan_V,Ideology_R2_est,Recommend,Reason
+pew_churatd,Church attendance frequency,Religion,F5=0.44,F5,0.44,0.255,0.059,0.4,0.088,REVIEW,"Moderate partisan load (item R²=0.059, F-V≈0.400); cross-tab by cluster before including"
+CC24_302,HH income: change past year,Econ,max=-0.243<0.30,F2,-0.243,0.153,0.059,0.147,0.088,DROP,Near-zero communality (h²=0.153) and/or no clean factor loading (max |λ|=0.243); does not contribute signal to any dimension
+CC24_303,Perceived price change past year (high=inflation),Econ,max=-0.245<0.30,F2,-0.245,0.252,0.116,0.147,0.174,KEEP,Low partisan collinearity (R²=0.116); loads on F2 (λ=-0.245); h²=0.252
+CC24_341a,Support extend 2017 tax cuts,Tax,F5=0.538,F5,0.538,0.489,0.152,0.4,0.228,REVIEW,"Moderate partisan load (item R²=0.152, F-V≈0.400); cross-tab by cluster before including"
+CC24_341c,Oppose allow $400k+ tax rates to rise [rev],Tax,F4=0.355; F5=0.484,F5,0.484,0.556,0.182,0.4,0.273,REVIEW,"Moderate partisan load (item R²=0.182, F-V≈0.400); cross-tab by cluster before including"
+CC24_341d,Oppose $150B infrastructure spending [rev],Tax,F5=0.365,F5,0.365,0.291,0.066,0.4,0.099,REVIEW,"Moderate partisan load (item R²=0.066, F-V≈0.400); cross-tab by cluster before including"
+CC24_323a,Oppose grant legal status to immigrants [rev],Immigration,F1=0.473; F4=0.476,F4,0.476,0.724,0.237,0.345,0.355,REVIEW,"Moderate partisan load (item R²=0.237, F-V≈0.345); cross-tab by cluster before including"
+CC24_323b,Support increase border patrols,Immigration,F1=0.769,F1,0.769,0.613,0.097,0.388,0.146,REVIEW,"Moderate partisan load (item R²=0.097, F-V≈0.388); cross-tab by cluster before including"
+CC24_323d,Oppose Dreamers citizenship pathway [rev],Immigration,F1=0.458; F4=0.429,F1,0.458,0.719,0.204,0.388,0.306,REVIEW,"Moderate partisan load (item R²=0.204, F-V≈0.388); cross-tab by cluster before including"
+CC24_321b,Support easier concealed carry permits,Guns,F5=0.474,F5,0.474,0.506,0.195,0.4,0.292,REVIEW,"Moderate partisan load (item R²=0.195, F-V≈0.400); cross-tab by cluster before including"
+CC24_321d,Support increase police by 10%,Policing,F1=0.767,F1,0.767,0.671,0.152,0.388,0.228,REVIEW,"Moderate partisan load (item R²=0.152, F-V≈0.388); cross-tab by cluster before including"
+CC24_321e,Oppose decrease police by 10% [rev],Policing,F1=0.723,F1,0.723,0.595,0.118,0.388,0.177,REVIEW,"Moderate partisan load (item R²=0.118, F-V≈0.388); cross-tab by cluster before including"
+CC24_325,Abortion weeks limit (high=restrictive),Abortion,F5=0.493,F5,0.493,0.514,0.253,0.4,0.38,REVIEW,"Moderate partisan load (item R²=0.253, F-V≈0.400); cross-tab by cluster before including"
+CC24_324b,Support permit abortion only rape/incest/life,Abortion,F5=0.358,F5,0.358,0.366,0.109,0.4,0.164,REVIEW,"Moderate partisan load (item R²=0.109, F-V≈0.400); cross-tab by cluster before including"
+CC24_340a,Oppose prohibit contraceptive restrictions [rev],CivRights,F3=-0.947,F3,-0.947,0.837,0.029,0.27,0.044,KEEP,Low partisan collinearity (R²=0.029); loads on F3 (λ=-0.947); h²=0.837
+CC24_340b,Oppose prohibit abortion restrictions [rev],CivRights,F3=-0.672,F3,-0.672,0.664,0.111,0.27,0.167,KEEP,Low partisan collinearity (R²=0.111); loads on F3 (λ=-0.672); h²=0.664
+CC24_340c,Oppose require same-sex marriage recognition [rev],CivRights,F5=0.482,F5,0.482,0.591,0.198,0.4,0.297,REVIEW,"Moderate partisan load (item R²=0.198, F-V≈0.400); cross-tab by cluster before including"
+CC24_340e,Support renew post-9/11 surveillance programs,CivRights,F1=0.419; F4=-0.518,F4,-0.518,0.333,0.0,0.345,0.0,KEEP,Cross-cutting (PID R²=0.000); genuinely orthogonal dimension; h²=0.333
+CC24_340f,Support deny asylum at border,CivRights,F1=0.741,F1,0.741,0.739,0.23,0.388,0.345,REVIEW,"Moderate partisan load (item R²=0.230, F-V≈0.388); cross-tab by cluster before including"
+CC24_440b,Agree: racial problems are rare/isolated,Racial/Gender,F5=0.475,F5,0.475,0.469,0.231,0.4,0.347,REVIEW,"Moderate partisan load (item R²=0.231, F-V≈0.400); cross-tab by cluster before including"
+CC24_440c,Agree: women seek power over men,Racial/Gender,F5=0.429,F5,0.429,0.35,0.154,0.4,0.231,REVIEW,"Moderate partisan load (item R²=0.154, F-V≈0.400); cross-tab by cluster before including"
+CC24_421_1,Disagree: U.S. elections are fair (distrust),Elect Trust,F2=-0.785,F2,-0.785,0.635,0.011,0.147,0.017,KEEP,Cross-cutting (PID R²=0.011); genuinely orthogonal dimension; h²=0.635
+CC24_421_2,Disagree: state/local election fair (distrust),Elect Trust,F2=-0.861,F2,-0.861,0.731,0.007,0.147,0.011,KEEP,Cross-cutting (PID R²=0.007); genuinely orthogonal dimension; h²=0.731
+CC24_423,Low trust: federal government,Govt Trust,F2=-0.538; F4=0.387,F2,-0.538,0.503,0.022,0.147,0.033,KEEP,Cross-cutting (PID R²=0.022); genuinely orthogonal dimension; h²=0.503
+CC24_424,Low trust: state government,Govt Trust,F2=-0.603,F2,-0.603,0.462,0.005,0.147,0.007,KEEP,Cross-cutting (PID R²=0.005); genuinely orthogonal dimension; h²=0.462

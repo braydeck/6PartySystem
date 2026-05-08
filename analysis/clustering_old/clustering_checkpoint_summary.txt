@@ -1,0 +1,392 @@
+CLUSTERING CHECKPOINT — CES 2024 POLITICAL TYPOLOGY ANALYSIS
+DPGMM Phase Complete. 10 clusters profiled. Ready for naming/aggregation.
+Prepared: 2026-03-02
+========================================================================
+
+SESSION OVERVIEW
+----------------
+  Phase:         Clustering (typology construction)
+  Method:        Dirichlet Process Gaussian Mixture Model (DPGMM)
+  Input:         efa_factor_scores.csv (N=45,707)
+  Primary output: typology_cluster_assignments.csv (N=45,707)
+  Profile outputs: clustering_outputs/cluster_profiles_raw.csv
+                   clustering_outputs/cluster_item_means.csv
+                   clustering_outputs/cluster_item_means_readable.md
+                   clustering_outputs/cluster_mahal_distances.csv
+
+INPUTS
+------
+  File:         efa_factor_scores.csv
+  N:            45,707 rows (listwise-complete on 24 EFA items + weight)
+  Weighted N:   45,631.1 (sum of commonpostweight)
+  Columns used: FS_F1, FS_F2, FS_F3, FS_F4_resid, FS_F5_resid
+  Weight var:   commonpostweight
+
+  FACTOR SCORE INPUTS (all standardized; direction: HIGH = conservative/distrust):
+    FS_F1         Enforcement Orientation  (border, policing, surveillance)
+    FS_F2         Election Distrust        (disagrees U.S./state elections are fair)
+    FS_F3         Government Trust         (high = low trust in fed/state govt)
+    FS_F4_resid   Repro Rights / Religion  (F4 residualized on F1; β=0.2229)
+    FS_F5_resid   Values Conservatism      (F5 residualized on F1; β=0.5651)
+
+  Note: F4 and F5 were residualized on F1 prior to clustering to reduce collinearity
+  (raw F1×F4=+0.354, F1×F5=+0.508). Condition number dropped from 5.50 to 3.19.
+
+DPGMM MODEL SPECIFICATION
+--------------------------
+  Class:         sklearn.mixture.BayesianGaussianMixture (sklearn v1.8.0)
+  n_components:  10 (upper bound; effective k determined by data)
+  covariance_type: full
+  weight_concentration_prior_type: dirichlet_process
+  n_init:        5
+  max_iter:      500
+  random_state:  42
+  Converged:     True
+  Lower bound:   19048.1830
+
+  SAMPLE WEIGHT NOTE: BayesianGaussianMixture.fit() does not accept
+  sample_weight in any sklearn version (including 1.8.0). The model was fit
+  unweighted on standardized factor scores. This is defensible because:
+  (1) Factor scores were derived from a weighted Thomson regression on a
+      weighted polychoric matrix, so weights are embedded in the score space.
+  (2) commonpostweight is applied to ALL post-fit reporting (cluster sizes,
+      factor score means, cross-tabs, item means). All reported statistics
+      are population-representative.
+
+EFFECTIVE CLUSTER COUNT
+-----------------------
+  All 10 components survived the weight > 0.01 threshold.
+  Component weights (sorted descending):
+    Component 1:  0.174
+    Component 4:  0.161
+    Component 9:  0.117
+    Component 3:  0.115
+    Component 0:  0.088
+    Component 7:  0.085
+    Component 6:  0.082
+    Component 8:  0.064
+    Component 5:  0.058
+    Component 2:  0.057
+  Weight spread (max−min = 0.117) indicates moderate differentiation across
+  components; no single dominant cluster and no trivially small singletons.
+
+CLUSTER SIZE AND ASSIGNMENT CONFIDENCE
+---------------------------------------
+  Cluster labels remapped 0→9 by descending weighted N.
+
+  Cl  Unwtd N  Wtd N    Wtd%   Mean Max-P  Median Max-P
+  --  -------  -------  -----  ----------  ------------
+   0    8,603    8,767  19.2%      0.737        0.754
+   1    6,988    6,430  14.1%      0.752        0.786
+   2    4,424    5,657  12.4%      0.800        0.848
+   3    4,149    4,448   9.8%      0.801        0.843
+   4    5,528    4,203   9.2%      0.757        0.793
+   5    3,331    4,109   9.0%      0.804        0.856
+   6    3,483    3,914   8.6%      0.650        0.638   ← softest
+   7    3,537    2,815   6.2%      0.699        0.714   ← soft
+   8    2,607    2,735   6.0%      0.813        0.869
+   9    3,057    2,553   5.6%      0.765        0.800
+  ---
+  Overall mean max-probability: 0.755
+  Fraction with max-prob > 0.70: 63.9%
+  Fraction with max-prob > 0.90: 25.0%
+  Clusters 6 and 7 have notably lower confidence (0.65/0.70) — these sit
+  in overlapping regions of the factor space and are candidates for scrutiny
+  during aggregation decisions.
+
+CLUSTER PROFILES: FACTOR SCORE MEANS
+--------------------------------------
+  (All scores: standardized; HIGH = conservative/distrust direction)
+  Cl   WtdN     F1(Enf)  F2(ElDis)  F3(GovTru)  F4r(RepRel)  F5r(ValCon)
+  --  ------  ---------  ---------  ----------  -----------  -----------
+   0   8,767    +0.767     -0.024      +0.111       +0.048       +0.009
+   1   6,430    -0.414     -0.032      +0.092       -0.252       -0.330
+   2   5,657    -0.446     +0.658      +0.133       +0.264       +0.190
+   3   4,448    +0.737     +0.428      -0.208       +0.293       +1.094
+   4   4,203    -0.462     -0.744      -0.086       -0.220       -0.689
+   5   4,109    +0.202     +0.759      -0.206       +0.102       +0.876
+   6   3,914    +0.266     -0.817      -0.174       +0.070       -0.112
+   7   2,815    +0.724     -0.628      +0.291       -0.294       -1.093
+   8   2,735    -1.303     +0.504      +0.076       -0.097       -0.137
+   9   2,553    -1.260     -0.634      -0.206       -0.106       -0.278
+
+  F1 summary: C8 and C9 are the strongly anti-enforcement left end (-1.30, -1.26);
+    C0, C3, C7 are the enforcement-oriented right (+0.72–0.77).
+  F2 summary: C5 and C2 are the high-election-distrust clusters (+0.76, +0.66);
+    C6 and C4 trust elections most (-0.82, -0.74). C4/C6 are mirror image of C5/C2.
+  F3 summary: Near-zero for most clusters; C7 slightly high (+0.29), confirming
+    government trust is largely orthogonal to partisan structure.
+  F4r summary: C3 highest (+0.29), moderate across others; C7 lowest (-0.29).
+  F5r summary: C3 extreme high (+1.09), C7 extreme low (-1.09) — these are
+    the clearest values-conservative vs. values-liberal poles, independent of F1.
+
+CLUSTER PROFILES: PARTY ID AND IDEOLOGY
+-----------------------------------------
+  pid3: 1=Democrat, 2=Republican, 3=Independent, 4+5=Other/Not Sure
+  ideo5: 1=VLib, 2=Lib, 3=Mod, 4=Con, 5=VCon
+
+  Cl  WtdN    Dem%   Rep%   Ind%  Oth%  VLib%  Lib%   Mod%   Con%  VCon%
+  --  ------  -----  -----  ----  ----  -----  -----  -----  ----  -----
+   0   8,767   10.3   58.3  25.1   6.2    1.1    3.0   30.5  38.5   21.6
+   1   6,430   54.0    7.0  29.8   9.2   12.9   31.5   40.1   6.2    1.6
+   2   5,657   35.9   17.0  29.4  17.7    6.3   14.8   41.9  14.0    4.5
+   3   4,448    1.2   59.7  30.6   8.6    0.5    0.5   18.0  38.1   41.0
+   4   4,203   68.9    3.6  24.1   3.3   21.4   40.2   33.6   2.4    0.5
+   5   4,109    9.7   45.8  32.7  11.8    2.6    3.2   31.8  31.6   21.4
+   6   3,914   25.3   43.8  26.9   4.0    4.1    8.9   39.6  29.9   12.6
+   7   2,815   44.7   26.3  25.4   3.5    4.9   19.7   47.8  16.9    6.1
+   8   2,735   61.8    0.0  24.8  13.4   54.5   28.7   11.2   0.7    0.4
+   9   2,553   74.5    0.2  19.7   5.6   51.0   35.6   12.2   0.2    0.1
+
+  Cluster 2 has a notably high "Other/Not Sure" party rate (17.7%) —
+  the highest of any cluster. Combined with its cross-partisan composition
+  (36% Dem / 17% Rep) and high election distrust, this is a genuinely
+  unusual segment.
+
+  Cluster 7 is the most ideologically moderate cluster (48% Moderate),
+  yet skews toward Democrats (45%) and has high F1 (enforcement-oriented).
+  This combination — enforcement-leaning but ideologically moderate
+  Democrats/Independents — is substantively distinctive.
+
+MAHALANOBIS DISTANCES BETWEEN CLUSTER CENTROIDS
+-------------------------------------------------
+  (Using overall sample covariance of 5-factor input space)
+
+       C0     C1     C2     C3     C4     C5     C6     C7     C8     C9
+  C0   ---   1.664  1.882  1.485  1.903  1.631  1.150  1.521  2.815  2.652
+  C1  1.664   ---   1.381  2.452  0.967  1.896  1.620  1.902  1.396  1.338
+  C2  1.882  1.381   ---   2.149  1.997  1.527  2.142  2.692  1.350  1.956
+  C3  1.485  2.452  2.149   ---   2.890  0.979  2.017  2.986  3.174  3.172
+  C4  1.903  0.967  1.997  2.890   ---   2.565  1.305  1.649  1.975  1.157
+  C5  1.631  1.896  1.527  0.979  2.565   ---   2.151  2.963  2.374  2.675
+  C6  1.150  1.620  2.142  2.017  1.305  2.151   ---   1.613  2.763  2.028
+  C7  1.521  1.902  2.692  2.986  1.649  2.963  1.613   ---   3.169  2.776
+  C8  2.815  1.396  1.350  3.174  1.975  2.374  2.763  3.169   ---   1.430
+  C9  2.652  1.338  1.956  3.172  1.157  2.675  2.028  2.776  1.430   ---
+
+  TEN CLOSEST PAIRS (aggregation candidates — not decided yet):
+    Rank  Pair    Distance  Key difference
+       1  C1-C4    0.967   F2: C4 trusts elections (−0.74), C1 neutral (−0.03)
+       2  C3-C5    0.979   F2: C5 distrusts elections (+0.76), C3 moderate (+0.43)
+       3  C0-C6    1.150   F2: C6 trusts elections (−0.82), C0 neutral (−0.02)
+       4  C4-C9    1.157   F1: C9 strongly anti-enforcement (−1.26); F5 larger gap
+       5  C4-C6    1.305   Both trust elections; differ on F1 (+0.27 vs −0.46)
+       6  C1-C9    1.338   F1/F5: C9 more anti-enforcement; more VLib
+       7  C2-C8    1.350   F2: C2 higher distrust; C8 more extreme on F1
+       8  C1-C2    1.381   F2: C2 distrusts elections (C1 neutral); C2 more diverse
+       9  C1-C8    1.396   F1: C8 far more anti-enforcement; both Democratic-leaning
+      10  C8-C9    1.430   F2: C9 trusts elections; C8 distrusts; C8 younger
+
+ITEM-LEVEL PROFILES: TOP DIFFERENTIATORS
+------------------------------------------
+  Source: clustering_outputs/cluster_item_means.csv
+  (Range = max cluster mean − min cluster mean across 10 clusters)
+
+  Rank  Variable            Domain           Overall   Range
+    1   pew_bornagain_pct   Religion          31.3%    43.4 pp
+    2   race_white_pct      Demographics      67.3%    37.8 pp
+    3   employ_retired_pct  Demographics      22.8%    34.1 pp
+    4   gender_man_pct      Demographics      48.6%    30.8 pp
+    5   race_black_pct      Demographics      11.6%    26.2 pp
+    6   gender_woman_pct    Demographics      50.7%    25.3 pp
+    7   CC24_325 (abortion  Abortion           23.9    22.7 units
+    8   region_south_pct    Demographics      38.9%    22.4 pp
+    9   employ_ft_pct       Demographics      38.3%    16.3 pp
+   10   region_ne_pct       Demographics      16.9%    12.4 pp
+   11   employ_other_pct    Demographics      20.0%    12.1 pp
+   12   employ_unemp_pct    Demographics       8.1%    11.7 pp
+   13   region_west_pct     Demographics      23.3%    11.3 pp
+   14   race_hispanic_pct   Demographics       9.6%     9.8 pp
+   15   race_other_pct      Demographics       7.2%     7.4 pp
+
+  Note: Born-again identity (43.4 pp) is the single most differentiating
+  variable — more discriminating than any individual policy item.
+  Clusters C8 and C9 are the secular pole (7.3% / 4.3% born-again);
+  C3 and C5 are the religious pole (47.7% / 39.9%).
+
+KEY SUBSTANTIVE OBSERVATIONS (pre-naming)
+------------------------------------------
+  These are structural patterns for the analyst to consider — not cluster names.
+
+  1. The election distrust axis (F2) creates near-perfect partisan mirror pairs:
+       C0 (Republican, trust elections) ↔ C6 (Republican, trust elections) — both F2-low
+       C3 (Republican, distrust)        ↔ C5 (Republican, distrust) — both F2-high
+       C1 (Democrat, trust)             ↔ C4 (Democrat, trust) — both F2-low
+       C2 (Democrat/cross-partisan, distrust) — Democratic-leaning but election-skeptical
+     Within each "trust/distrust" pair, the distinguishing dimension is F5 (values conservatism).
+
+  2. C3 is the most extreme cluster on F5r (values conservatism = +1.09), most
+     socially conservative (79% Con/VCon, 41% VCon, 60% Republican, 1.2% Democrat),
+     highest income (17.9 on 1–16 scale), highest born-again rate (47.7%), and
+     ALSO distrusts elections (F2=+0.43). Furthest from C8 and C9 (Mahal. dist. 3.17).
+
+  3. C7 is structurally anomalous: high F1 (enforcement, +0.72) combined with
+     extreme low F5r (values = −1.09), 45% Democrat, 48% Moderate, and F2-negative
+     (trusts elections). Also the oldest cluster (40% retired, median age implied high).
+     This is not simply "hawk Democrat" — the very low values conservatism alongside
+     high enforcement is an unusual combination requiring careful labeling.
+
+  4. C8 and C9 are the liberal-secular poles (C8: 55% VLib, 5.8% non-binary, 62% Dem,
+     very young — only 5.7% retired, 15% unemployed; C9: 75% Dem, 51% VLib, highly
+     educated, high income, 25% Northeast). Both have near-zero abortion restriction
+     scores (12.4 / 9.5 on the 40-pt scale). They differ primarily on F2 (C8 distrusts
+     elections; C9 trusts) and demographics (C8 younger/lower-income/more diverse;
+     C9 older/more educated/higher-income/whiter/more Northeast).
+
+  5. Government trust (F3) is nearly flat across all clusters (range ~0.50 on a
+     standardized scale), confirming its near-orthogonality to the partisan structure.
+     The govt_trust_imputed flag concentrates most heavily in C3 (42.8%) and C5 (37.0%)
+     — the two Republican-leaning election-distrust clusters. These clusters have the
+     highest rates of "Not Sure" on govt trust items, suggesting genuine ambivalence
+     about institutional trust (or strategic evasion).
+
+  6. Cluster 2 has markedly elevated racial diversity (27.3% Black, 15.1% Hispanic,
+     vs. 11.6% / 9.6% overall), high born-again rate (37.7%), moderate ideology
+     (42% Moderate), and high election distrust (F2=+0.66). It straddles partisan
+     lines (36% Dem, 17% Rep, 29% Ind, 18% Other). This is the most compositionally
+     heterogeneous cluster and its election skepticism appears to have a different
+     character than the Republican-leaning C3/C5 election distrust.
+
+GOVT_TRUST_IMPUTED FLAG DISTRIBUTION
+--------------------------------------
+  (N=10,526 total imputed; 23% of analytic sample)
+  Clusters with notably high imputed rates:
+    C3:  42.8%  (election-distrust, hard-right conservatives)
+    C5:  37.0%  (election-distrust, values-conservative Republicans)
+    C8:  32.4%  (progressive secular left)
+  Clusters with notably low imputed rates:
+    C7:   6.3%
+    C6:   8.0%
+    C4:  10.8%
+  This pattern is consistent with the pre-clustering finding of a U-shaped
+  ideology distribution in the imputed group (not missing at random).
+
+FILES CREATED THIS SESSION
+----------------------------
+  ROOT (active):
+    dpgmm_clustering.py              DPGMM fitting script
+    cluster_profiles.py              Cluster comparison table + Mahalanobis distances
+    cluster_item_profiles.py         Item-level profiles (24 EFA items + demographics)
+    typology_cluster_assignments.csv PRIMARY: 45,707 rows; hard cluster label +
+                                     prob_cluster_0 through prob_cluster_9
+
+  clustering_outputs/:
+    cluster_profiles_raw.csv         10-row profile table (factor means, PID%, ideo%, confidence)
+    cluster_mahal_distances.csv      10×10 Mahalanobis distance matrix
+    cluster_item_means.csv           46 items × 16 cols (variable, label, scale, domain,
+                                     overall, c0–c9, range)
+    cluster_item_means_readable.md   Same data as Markdown, grouped by policy domain
+                                     with per-cluster deviations from overall mean
+
+  Root (checkpoints/briefs):
+    clustering_checkpoint_summary.txt  THIS FILE
+    clustering_session_brief.md       Session brief (brought in from prior session)
+    efa_checkpoint_summary.txt        EFA phase checkpoint (prior session)
+
+FILE ORGANIZATION
+-----------------
+  /Users/bdecker/Documents/STV/Claude/
+  ├── [ROOT — active scripts and primary data files]
+  │   ├── efa_update.py                   Final EFA production pipeline
+  │   ├── dpgmm_clustering.py             DPGMM fitting (this session)
+  │   ├── cluster_profiles.py             Cluster comparison table (this session)
+  │   ├── cluster_item_profiles.py        Item-level profiles (this session)
+  │   ├── polychoric_matrix.csv           25×25 polychoric matrix (DO NOT RECOMPUTE)
+  │   ├── efa_factor_scores.csv           Primary EFA output (N=45,707; 12 cols)
+  │   ├── typology_cluster_assignments.csv Primary clustering output (21 cols)
+  │   ├── clustering_session_brief.md     Briefing document
+  │   ├── efa_checkpoint_summary.txt      EFA phase checkpoint
+  │   └── clustering_checkpoint_summary.txt  This file
+  │
+  ├── efa_outputs/                        EFA diagnostic outputs (23 files)
+  │   ├── efa_loadings_k[3-7].csv         Pattern matrices for k=3 through k=7
+  │   ├── efa_loadings_k5_final.csv       FINAL 24-item k=5 pattern matrix
+  │   ├── efa_phi_k[3-7].csv              Inter-factor phi matrices
+  │   ├── efa_phi_k5_final.csv            FINAL phi matrix
+  │   ├── efa_cramersv_actual.csv         Actual vs approximated Cramér's V
+  │   ├── efa_factor_partisan_summary.csv
+  │   ├── efa_parallel_analysis.csv       Parallel analysis eigenvalue table
+  │   ├── efa_recommendation_table.csv    Item keep/review/drop decisions
+  │   ├── efa_variable_list.csv/.numbers  Full variable list with PID R²
+  │   ├── efa_variance_summary.csv        Variance explained by factor/k
+  │   ├── redundant_pairs.csv             Polychoric pairs with |r|>0.70
+  │   └── polychoric_heatmap*.png         Correlation matrix visualizations
+  │
+  ├── clustering_outputs/                 Cluster profile outputs (4 files)
+  │   ├── cluster_profiles_raw.csv        Per-cluster profile table
+  │   ├── cluster_mahal_distances.csv     10×10 Mahalanobis distance matrix
+  │   ├── cluster_item_means.csv          Item means by cluster (tidy CSV)
+  │   └── cluster_item_means_readable.md  Same data as formatted Markdown
+  │
+  ├── docs/                               Narrative documentation
+  │   └── efa_narrative_interpretation.md  EFA factor interpretation narrative
+  │
+  └── scripts_archive/                    Superseded scripts (do not re-run)
+      ├── efa_pipeline_steps1to4.py
+      ├── efa_pipeline_step4.py
+      ├── efa_pipeline_v4.py
+      ├── efa_preprocess_v3.py
+      └── run_efa.py
+
+TECHNICAL NOTES
+---------------
+  1. BayesianGaussianMixture sample_weight limitation (sklearn v1.8.0):
+     fit() does not accept sample_weight. Fitting is unweighted.
+     See dpgmm_clustering.py line 64–70 for full rationale.
+     All reporting uses commonpostweight.
+
+  2. Row alignment between efa_factor_scores.csv and cluster assignments:
+     Verified via commonpostweight comparison (max abs diff = 8.85e-17).
+     Both files are derived from the same DTA read + listwise deletion in
+     the same order. Row index is 1:1.
+
+  3. Proportion variables in cluster_item_means.csv are stored as 0–100
+     (percentage points), not 0–1. The ×100 conversion was applied in
+     cluster_item_profiles.py after wmean() on 0/1 binary indicators.
+     This was corrected from an initial 0–1 display bug.
+
+  4. CC24_325 (abortion weeks): encoded as 40−raw in EFA recoding.
+     A mean of 23.9 overall ≈ respondent supports allowing abortion up to
+     ~16 weeks (40−23.9=16.1). C9 mean of 9.5 ≈ ~30 weeks; C3 mean of
+     32.1 ≈ ~8 weeks or near-total restriction.
+
+  5. pew_bornagain coding verified: 1=Yes (born-again), 2=No.
+     Weighted % yes = 32.6% in full sample; 31.3% in analytic subsample.
+     Confirmed correct.
+
+  6. Cluster label ordering: labels 0–9 are sorted by DESCENDING weighted N
+     (C0 = largest cluster). This remapping was applied after DPGMM prediction.
+
+NEXT STEPS
+----------
+  1. REVIEW cluster_item_means_readable.md and cluster_profiles_raw.csv
+     side by side. Use all 46 item profiles to develop cluster names/labels.
+
+  2. AGGREGATION DECISION: Decide whether any clusters should be merged.
+     Primary candidates (Mahalanobis < 1.20):
+       C1-C4 (0.967): Both Democratic-leaning F1-negative; differ on F2/F5
+       C3-C5 (0.979): Both high F1+F5 Republican; differ on election distrust
+       C0-C6 (1.150): Both F1-moderate Republican; differ on election trust
+     Consider: substantive distinctiveness vs. parsimony. Key question for
+     C3-C5 and C0-C6 is whether election distrust justifies separate segments.
+
+  3. NAME CLUSTERS using the full item profile table. Suggested approach:
+     (a) Identify the 3–5 most distinctive items per cluster
+     (b) Cross-reference with demographics (race, age/retirement, income, region)
+     (c) Check whether any cluster is primarily a demographic segment vs.
+         a genuine attitudinal segment
+
+  4. VALIDATION ANALYSES to run after naming:
+     (a) 2024 presidential vote choice by cluster
+     (b) News media consumption patterns by cluster (if available)
+     (c) Weighted cross-tab of cluster × ideo5 within each party
+     (d) Concentration of govt_trust_imputed in C3/C5/C8 — does their
+         cluster assignment differ from non-imputed respondents?
+
+  5. DO NOT re-run EFA or recompute polychoric matrix.
+  6. DO NOT re-fit DPGMM unless specifically requested — assignments are saved.
+  7. USE typology_cluster_assignments.csv for all downstream work.
+     All probability columns (prob_cluster_0..9) are available for
+     soft-assignment analyses and confidence-weighted summaries.
+
+========================================================================

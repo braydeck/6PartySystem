@@ -1,0 +1,11 @@
+party,party_name,URBAN,SUBURBAN,RURAL,NATIONAL,pct_national,pct_urban,pct_suburban,pct_rural
+1,Christian Democrat,91,62,26,179,20.5,18.84,21.99,24.07
+0,Mainstream Conservative,84,59,26,169,19.36,17.39,20.92,24.07
+5,RW Populist,86,54,22,162,18.56,17.81,19.15,20.37
+6,Pragmatic Traditionalist,75,44,16,135,15.46,15.53,15.6,14.81
+4,Institutionalist Liberal,70,40,8,118,13.52,14.49,14.18,7.41
+8,Progressive Activist,39,12,1,52,5.96,8.07,4.26,0.93
+3,Nationalist Conservative,17,9,9,35,4.01,3.52,3.19,8.33
+9,Progressive Elite,21,2,0,23,2.63,4.35,0.71,0.0
+2,Disaffected Outsider,0,0,0,0,0.0,0.0,0.0,0.0
+7,Blue Dogs,0,0,0,0,0.0,0.0,0.0,0.0

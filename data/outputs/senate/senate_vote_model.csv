@@ -1,0 +1,38 @@
+variable,domain,question,overall_pct,cond_expected_yes,cond_sigma,cond_prob_pass,cond_verdict,irv_expected_yes,irv_sigma,irv_prob_pass,irv_verdict
+CC24_341a,Taxes & Economy,Extend the 2017 tax cuts,62.9096,33.26,3.32,0.9903,PASS,32.93,3.27,0.9884,PASS
+CC24_341b,Taxes & Economy,Raise corporate income tax from 21% to 28%,57.6828,28.97,3.42,0.8448,PASS,29.8,3.33,0.902,PASS
+CC24_341c,Taxes & Economy,Allow rates on $400k+ earners to rise to 35%,65.3484,32.98,3.31,0.9881,PASS,34.01,3.2,0.9961,PASS
+CC24_341d,Taxes & Economy,Spend $150B/yr on infrastructure,80.4546,40.31,2.86,1.0,PASS,41.28,2.76,1.0,PASS
+CC24_323a,Immigration,Grant legal status to long-term undocumented immigrants,59.2294,30.54,3.26,0.9391,PASS,30.64,3.12,0.9501,PASS
+CC24_323b,Immigration,Increase border patrols,79.5714,40.81,2.76,1.0,PASS,41.56,2.67,1.0,PASS
+CC24_323d,Immigration,Permanent status/pathway for Dreamers,70.4041,38.7,2.82,1.0,PASS,38.79,2.7,1.0,PASS
+CC24_323f,Immigration,Forgive up to $20k of student loan debt per person,54.1862,29.12,3.34,0.8606,PASS,28.84,3.24,0.8488,PASS
+CC24_340f,Immigration,Deny asylum for illegal border crossings,63.1681,31.45,3.18,0.9692,PASS,31.97,3.04,0.9832,PASS
+CC24_321a,Police & Guns,Ban assault rifles,59.5554,30.54,3.37,0.9326,PASS,31.07,3.28,0.9553,PASS
+CC24_321b,Police & Guns,Easier concealed-carry permits,38.9291,19.89,3.38,0.0485,FAIL,19.29,3.3,0.0299,FAIL
+CC24_321c,Police & Guns,Require background checks on all gun sales,92.5023,47.37,1.81,1.0,PASS,47.83,1.7,1.0,PASS
+CC24_321d,Police & Guns,Increase police by 10%,56.7169,27.11,3.26,0.6891,PASS,28.51,3.14,0.8311,PASS
+CC24_321e,Police & Guns,"Decrease police by 10%, increase other funding",26.7993,13.55,3.05,0.0,FAIL,12.86,2.95,0.0,FAIL
+CC24_321f,Police & Guns,Increase spending on mental health & school safety,86.4629,44.86,2.28,1.0,PASS,45.32,2.2,1.0,PASS
+CC24_324b,Abortion,Permit abortion only in rape/incest/life danger cases,51.3964,28.13,3.48,0.7754,PASS,27.53,3.45,0.7224,PASS
+CC24_340b,Abortion,Prohibit restrictions on abortion access (Congress bill),63.0207,31.06,3.4,0.949,PASS,32.11,3.32,0.9766,PASS
+CC24_444c,Abortion,Prohibit abortion-inducing drugs by mail,41.2474,21.76,3.43,0.1374,FAIL,21.32,3.35,0.1062,FAIL
+CC24_444d,Abortion,Prohibit women traveling to another state for abortion,18.4855,10.61,2.87,0.0,FAIL,9.93,2.79,0.0,FAIL
+CC24_340c,Civil Liberties,Federal recognition of same-sex & interracial marriages,66.0666,33.31,3.23,0.9922,PASS,34.62,3.1,0.9984,PASS
+CC24_340d,Civil Liberties,Ban TikTok unless China sells to a US company,55.4871,27.05,3.5,0.6711,PASS,27.92,3.47,0.757,PASS
+CC24_340e,Civil Liberties,Renew post-9/11 surveillance programs,34.0178,18.55,3.41,0.0207,FAIL,19.12,3.44,0.0316,FAIL
+CC24_444a,Civil Liberties,Prevent gender transition surgery for minors,60.1484,32.28,3.38,0.9775,PASS,31.77,3.36,0.9691,PASS
+CC24_444b,Civil Liberties,Parental consent for name/pronoun changes at school,62.7367,33.59,3.28,0.9932,PASS,33.02,3.24,0.9898,PASS
+CC24_444e,Civil Liberties,Age verification for adult web content,78.7779,40.86,2.84,1.0,PASS,40.96,2.82,1.0,PASS
+CC24_444f,Civil Liberties,School voucher subsidies,56.1512,30.19,3.46,0.9124,PASS,29.41,3.44,0.8717,PASS
+CC24_326a,Environment & Climate,Give EPA power to regulate CO2 emissions,62.3942,32.55,3.26,0.9846,PASS,32.95,3.14,0.9912,PASS
+CC24_326b,Environment & Climate,Require 20% renewable electricity,66.1221,35.24,3.15,0.999,PASS,35.27,3.05,0.9993,PASS
+CC24_326c,Environment & Climate,Strengthen Clean Air/Water Act enforcement (even if it costs jobs),55.1936,28.15,3.4,0.7824,PASS,28.43,3.3,0.813,PASS
+CC24_326d,Environment & Climate,Increase fossil fuel production in the U.S.,56.953,29.5,3.38,0.8813,PASS,29.37,3.3,0.8796,PASS
+CC24_326e,Environment & Climate,Halt new oil and gas leases on federal lands,44.7229,22.63,3.42,0.2002,FAIL,22.85,3.34,0.213,FAIL
+CC24_326f,Environment & Climate,Prevent government from banning gas stoves,67.4904,34.63,3.31,0.9971,PASS,34.75,3.29,0.9975,PASS
+CC24_328a,Healthcare & Housing,Relax local zoning laws to allow more apartments/condos,50.2392,25.51,3.56,0.5008,TOSS-UP,25.51,3.55,0.5015,TOSS-UP
+CC24_328b,Healthcare & Housing,Expand federal tax incentives for affordable housing,72.447,37.74,3.07,1.0,PASS,37.84,3.02,1.0,PASS
+CC24_328c,Healthcare & Housing,Require able-bodied Medicaid recipients under 64 to work,53.2651,27.69,3.52,0.7326,PASS,27.82,3.5,0.7458,PASS
+CC24_328d,Healthcare & Housing,Repeal the Affordable Care Act,38.4834,19.45,3.32,0.0342,FAIL,19.03,3.21,0.0219,FAIL
+CC24_328e,Healthcare & Housing,Expand Medicaid (income <$25k individual / <$40k family),78.6882,41.31,2.75,1.0,PASS,41.32,2.71,1.0,PASS

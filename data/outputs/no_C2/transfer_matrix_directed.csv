@@ -1,0 +1,11 @@
+from_party,C0 Mainstream Conserv,C1 Christian Democrat,C2 Disaffected Outsid,C3 Nationalist Conser,C4 Institutionalist L,C5 RW Populist,C6 Pragmatic Traditio,C7 Blue Dogs,C8 Progressive Activi,C9 Progressive Elite
+C0 Mainstream Conserv,0.0,1.0738,0.0,2.7488,0.4938,5.5934,4.8012,0.0,0.4936,0.2106
+C1 Christian Democrat,1.3654,0.0,0.0,0.2944,4.2268,4.9822,2.888,0.0,3.3665,0.4618
+C2 Disaffected Outsid,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+C3 Nationalist Conser,2.3313,0.1367,0.0,0.0,2.2439,2.0632,1.5468,0.0,1.7291,1.0644
+C4 Institutionalist L,0.1995,1.0036,0.0,1.0509,0.0,0.4879,2.2068,0.0,2.831,1.3172
+C5 RW Populist,2.7362,1.9753,0.0,2.763,1.0962,0.0,3.3635,0.0,1.348,0.4783
+C6 Pragmatic Traditio,1.3281,1.5524,0.0,2.2443,3.1792,3.4464,0.0,0.0,1.4617,0.4909
+C7 Blue Dogs,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+C8 Progressive Activi,0.0219,1.6367,0.0,1.307,3.4654,0.9374,1.3777,0.0,0.0,1.3747
+C9 Progressive Elite,0.0174,0.2989,0.0,0.4396,4.5069,0.007,1.0523,0.0,2.881,0.0

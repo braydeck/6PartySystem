@@ -7,7 +7,7 @@ import os
 from pathlib import Path
 from collections import defaultdict
 
-OUTPUTS = Path(__file__).parent.parent.parent / "Claude" / "outputs"
+OUTPUTS = Path(__file__).parent.parent.parent / "data" / "outputs"
 DATA_OUT = Path(__file__).parent.parent / "src" / "data"
 DATA_OUT.mkdir(parents=True, exist_ok=True)
 

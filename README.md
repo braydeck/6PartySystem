@@ -114,8 +114,8 @@ NAT is the extreme high end (+1.51); PRG (−0.99) and LIB (−0.95) are the ext
 
 ## House STV Simulation
 
-**Scripts:** `busy-ramanujan/stv_main.py` and supporting `stv_step1.py`–`stv_step5.py`
-**Canonical output:** `Claude/outputs/No_C7_canonical/`
+**Scripts:** `pipeline/stv_main.py` and supporting `pipeline/stv_step1.py`–`pipeline/stv_step5.py`
+**Canonical output:** `data/outputs/No_C7_canonical/`
 
 - **873 seats** across **180 multi-member districts** (Urban / Suburban / Rural tiers per state)
 - Apportionment: Hamilton method, ~380,000 pop/seat from 2020 Census
@@ -142,8 +142,8 @@ NAT is the extreme high end (+1.51); PRG (−0.99) and LIB (−0.95) are the ext
 
 ## Senate Simulation
 
-**Scripts:** `charming-johnson/run_senate_simulation.py` (Condorcet), `charming-johnson/run_senate_irv.py` (IRV)
-**Output:** `Claude/outputs/senate/`
+**Scripts:** `pipeline/run_senate_simulation.py` (Condorcet), `pipeline/run_senate_irv.py` (IRV)
+**Output:** `data/outputs/senate/`
 
 - **51 senators** — one per state (50 states + DC)
 - **Candidate generation per state:** up to 18 candidates
@@ -171,8 +171,8 @@ Senate candidate factor positions use linear interpolation: `blend = w × pure_p
 
 ## Chamber Vote Model
 
-**Script:** `charming-johnson/chamber_vote_model.py`
-**Outputs:** `Claude/outputs/senate/senate_vote_model.csv`, `Claude/outputs/house_vote_model.csv`
+**Script:** `pipeline/chamber_vote_model.py`
+**Outputs:** `data/outputs/senate/senate_vote_model.csv`, `data/outputs/house_vote_model.csv`
 
 For each of **37 binary CC24\_ policy items**, models the probability of a bill passing a floor vote.
 
@@ -193,8 +193,8 @@ These chambers are cross-cutting — they simultaneously pass both tax cuts AND 
 
 ## Coalition Analysis
 
-**Script:** `charming-johnson/cross_chamber_coalitions.py`
-**Output:** `Claude/outputs/coalitions/`
+**Script:** `pipeline/cross_chamber_coalitions.py`
+**Output:** `data/outputs/coalitions/`
 
 Shows where senate and house party types align **within** each of the 5 factor dimensions — revealing issue-specific coalition partners rather than overall ideological proximity.
 
@@ -214,7 +214,7 @@ Shows where senate and house party types align **within** each of the 5 factor d
 
 ## Output Files Reference
 
-All outputs are under `/Users/bdecker/Documents/STV/Claude/outputs/`.
+All outputs are under `data/outputs/`.
 
 | File | Description |
 |------|-------------|
@@ -242,25 +242,30 @@ All outputs are under `/Users/bdecker/Documents/STV/Claude/outputs/`.
 
 ## Running the Pipeline
 
-All scripts use hardcoded absolute paths. Run from the respective worktree root.
+All scripts live in `pipeline/` and use relative paths anchored to the project root.
 
 ```bash
-# ── STV House (from busy-ramanujan/) ───────────────────────────────────────
-python3 stv_main.py                       # Full run steps 1–5 (~3.5s)
-python3 stv_main.py --steps 3,4,5        # Resume from ballot checkpoint
-python3 stv_affinity.py                   # Inter-party affinity matrices
-python3 cluster_profile_viz.py            # HTML cluster profile reports
+# ── STV House ──────────────────────────────────────────────────────────────
+python3 pipeline/stv_main.py                       # Full run steps 1–5 (~3.5s)
+python3 pipeline/stv_main.py --steps 3,4,5        # Resume from ballot checkpoint
+python3 pipeline/stv_affinity.py                   # Inter-party affinity matrices
+python3 pipeline/cluster_profile_viz.py            # HTML cluster profile reports
 
-# ── Senate & Analysis (from charming-johnson/) ─────────────────────────────
-python3 run_senate_simulation.py          # Condorcet senate (~30s)
-python3 run_senate_irv.py                 # IRV senate alternative
-python3 generate_candidate_profiles.py    # Candidate factor centroids
-python3 generate_blend_stats.py           # Blend candidate policy profiles
-python3 senate_chamber_profile.py         # Senate chamber policy aggregate
-python3 house_chamber_profile.py          # House chamber policy aggregate
-python3 senate_voting_blocs.py            # Hierarchical voting bloc clustering
-python3 chamber_vote_model.py             # Bill passage probabilities
-python3 cross_chamber_coalitions.py       # Cross-chamber coalition analysis
+# ── Senate & Analysis ──────────────────────────────────────────────────────
+python3 pipeline/run_senate_simulation.py          # Condorcet senate (~30s)
+python3 pipeline/run_senate_irv.py                 # IRV senate alternative
+python3 pipeline/generate_candidate_profiles.py    # Candidate factor centroids
+python3 pipeline/generate_blend_stats.py           # Blend candidate policy profiles
+python3 pipeline/senate_chamber_profile.py         # Senate chamber policy aggregate
+python3 pipeline/house_chamber_profile.py          # House chamber policy aggregate
+python3 pipeline/senate_voting_blocs.py            # Hierarchical voting bloc clustering
+python3 pipeline/chamber_vote_model.py             # Bill passage probabilities
+python3 pipeline/cross_chamber_coalitions.py       # Cross-chamber coalition analysis
+
+# ── Visualization ──────────────────────────────────────────────────────────
+cd viz && python3 scripts/prepare_data.py          # Regenerate JSON from outputs
+npm run dev                                        # Dev server
+npm run build                                      # Production build → dist/
 ```
 
 ---
@@ -284,9 +289,9 @@ plotly          # HTML cluster profile visualizations
 
 | Dataset | Description | Path |
 |---------|-------------|------|
-| 2024 CES | ~60,000 respondents, 2024 Cooperative Election Study | `DataSets/2024 CES Base/CCES24_Common_OUTPUT_vv_topost_final.dta` |
-| Typology | DPGMM cluster assignments (45,707 rows) | `Claude/data/typology_cluster_assignments.csv` |
-| EFA scores | 5 factor scores per respondent | `Claude/data/efa_factor_scores.csv` |
-| Polychoric matrix | 24×24 polychoric correlation matrix | `Claude/data/polychoric_matrix.csv` |
+| 2024 CES | ~60,000 respondents, 2024 Cooperative Election Study | `data/raw/2024 CES Base/CCES24_Common_OUTPUT_vv_topost_final.dta` |
+| Typology | DPGMM cluster assignments (45,707 rows) | `data/processed/typology_cluster_assignments.csv` |
+| EFA scores | 5 factor scores per respondent | `data/processed/efa_factor_scores.csv` |
+| Polychoric matrix | 24×24 polychoric correlation matrix | `data/processed/polychoric_matrix.csv` |
 
 **Analysis sample:** N=45,707 after listwise deletion (24 items + `commonpostweight` non-missing).

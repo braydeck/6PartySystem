@@ -12,7 +12,7 @@ Five underlying dimensions replace the single left-right axis that dominates Ame
 
 No party holds a majority. The simulation allocates 873 total seats across the House and Senate, and the three largest parties — Social Democrat (166 seats, 19%), Conservative (164 seats, 18.8%), and Solidarity (160 seats, 18.3%) — collectively hold just over half. Every legislative majority requires coalition-building across parties that disagree on at least two or three fundamental issues. That is the design. The system forces the negotiation that the current two-party structure conceals behind partisan loyalty.
 
-These parties do not map cleanly onto Democrat or Republican. The Reform Party supports raising the corporate tax rate above what most Democrats have managed to pass. Solidarity has near-MAGA-level distrust of elections but supports labor unions, DACA, and opposes increased police funding. The Liberal Party supports universal background checks and has the highest gun ownership rate of any left-leaning party. The Center Party voted for Biden at about the same rate as Trump — yet it is the most trusting of elections of any party in the entire system. The coalitions are real. They are just new.
+These parties do not map cleanly onto Democrat or Republican. The Reform Party supports raising the corporate tax rate above what most Democrats have managed to pass. Solidarity has near-MAGA-level distrust of elections but supports labor unions, DACA, and opposes increased police funding. The Liberal Party supports universal background checks and has the highest gun ownership rate of any left-leaning party. The Center Party voted for Trump by a plurality (41.9% Trump, 33.2% Biden) — yet it is the most trusting of elections of any party in the entire system. The coalitions are real. They are just new.
 
 ---
 
@@ -25,9 +25,9 @@ These parties do not map cleanly onto Democrat or Republican. The Reform Party s
 Progressives are the smallest party in the system, but they are not an outlier — they are a pole. They sit at the extreme end of nearly every dimension: the most anti-enforcement, the most secular, the most economically redistributive, the most permissive on immigration. What animates them is not just policy positions but a coherent worldview in which government's primary function is to actively reduce inequality — in income, in race, in gender, in access to healthcare. They want federal power used aggressively and unapologetically toward those ends. The fact that only 8 House seats correspond to this profile reflects not that these views are rare, but that they are concentrated: young, urban, highly educated, and dispersed across districts that already elect other left-leaning candidates.
 
 **Who they are:**
-- Median age 36 · 53.0% male · 63.7% white · 56.5% 4-yr degree · 57.1% urban
-- Median income: upper-middle bracket · 32.0% married · 19.4% gun owners · 22.9% LGBTQ+ · 4.2% born-again evangelical
-- 15.5% union members · 5.0% veterans
+- Median age 41 · 53.1% male · 76.3% white · 60.2% 4-yr+ degree · 32.6% city
+- Income: upper-middle ($70–80k) · 43.9% married · 11.4% own a gun · 28.1% LGBTQ+ · 4.3% born-again evangelical
+- 9.3% current union members · 4.3% veterans
 
 **Where they stand:**
 - Support DACA/Dreamer pathway: 96.9%
@@ -38,18 +38,18 @@ Progressives are the smallest party in the system, but they are not an outlier �
 
 **Unusually for American politics:**
 - Only 23.8% say national elections are run unfairly — the most institutionally trusting of any far-left party. Despite holding radical positions on nearly every policy issue, Progressives show a deep commitment to the democratic process itself, distinguishing them sharply from DSA, where electoral skepticism runs twice as high.
-- Despite averaging age 36 and being 22.9% LGBTQ+, PRG is 53% male — a reminder that progressive politics draws heavily from young educated men alongside its more visible feminist and queer constituencies.
+- Despite averaging age 41 and being 28.1% LGBTQ+, PRG is 53% male — a reminder that progressive politics draws heavily from educated men alongside its more visible feminist and queer constituencies.
 
 ---
 
 ### Democratic Socialists (DSA) — 26 House Seats (3.0%)
 
-The Democratic Socialists are ideologically close to Progressives on economic and social policy, but they come from a different cultural place. DSA has the highest LGBTQ+ share of any party — nearly four in ten members identify as LGBTQ+ — and the most racially diverse base of any left-leaning party. What distinguishes DSA from PRG is not what they want from government but how they feel about the government they have. DSA members are deeply skeptical that American elections are run fairly, a sentiment that sits in sharp tension with their progressive politics but makes sense when you consider a community with long experience of disenfranchisement and structural exclusion. They want universal healthcare, aggressive redistribution, and an end to immigration enforcement — and they do not trust the current system to deliver any of it.
+The Democratic Socialists are ideologically close to Progressives on economic and social policy, but they come from a different cultural place. DSA has the highest LGBTQ+ share of any party — nearly four in ten members identify as LGBTQ+ — and the youngest median age (33) in the system. What distinguishes DSA from PRG is not what they want from government but how they feel about the government they have. DSA members are deeply skeptical that American elections are run fairly, a sentiment that sits in sharp tension with their progressive politics but makes sense when you consider a community with long experience of disenfranchisement and structural exclusion. They want universal healthcare, aggressive redistribution, and an end to immigration enforcement — and they do not trust the current system to deliver any of it.
 
 **Who they are:**
-- Median age 36 · 32.8% male · 44.3% white · 47.0% 4-yr degree · 54.3% urban
-- Median income: lower-middle bracket · 26.4% married · 19.0% gun owners · 38.9% LGBTQ+ · 5.1% born-again evangelical
-- 20.0% union members · 4.5% veterans
+- Median age 33 · 32.8% male · 65.9% white · 42.7% 4-yr+ degree · 30.0% city
+- Income: middle ($60–70k) · 29.0% married · 9.8% own a gun · 38.6% LGBTQ+ · 7.3% born-again evangelical
+- 7.1% current union members · 3.0% veterans
 
 **Where they stand:**
 - Support DACA/Dreamer pathway: 93.1%
@@ -59,19 +59,19 @@ The Democratic Socialists are ideologically close to Progressives on economic an
 - Assault rifle ban: 79.4%
 
 **Unusually for American politics:**
-- 52.7% say national elections are not run fairly — the highest of any explicitly left-wing party, putting DSA in the same bracket as Nationalist (63.1%) and Reform (61.6%). Electoral distrust is not a right-wing monopoly; for a party that is 38.9% LGBTQ+ and 44% non-white, there are independent reasons to doubt whether the system delivers equal treatment.
-- DSA has the highest union membership rate of any party (20.0%) and the second-lowest marriage rate (26.4%), a combination that reflects a working-class left base with non-traditional household structures.
+- 52.7% say national elections are not run fairly — the highest of any explicitly left-wing party, putting DSA in the same bracket as Nationalist (63.1%) and Reform (61.6%). Electoral distrust is not a right-wing monopoly; for a party that is 38.6% LGBTQ+ and 34.1% non-white, there are independent reasons to doubt whether the system delivers equal treatment.
+- DSA has the lowest marriage rate of any party (29.0%) and among the highest non-voting rates in 2020 (27.5% did not vote), a combination that reflects a young, non-traditional left base that remains substantially disengaged from electoral participation despite deep political conviction.
 
 ---
 
 ### Liberal (LIB) — 100 House Seats (11.5%)
 
-Liberals are the third-largest left-leaning party, and in many ways the most surprising. They are older, whiter, more male, and more rural than their ideological neighbors — more likely to own a gun than any other left-leaning party, and the least LGBTQ+ of the non-conservative parties. What unifies them is a civil libertarian streak: they want government out of the bedroom and the boardroom alike, they trust electoral institutions, and they are skeptical of both police power and immigration enforcement. Their economics are genuinely left — support for taxing high earners, EPA regulation, renewable mandates — but they are also the most ambivalent left-leaning party on a range of social issues, from transgender policy to abortion access. They are the liberal wing of gun country: pro-background-checks, pro-DACA, pro-Medicaid, and more likely to have a firearm in the house than most Republicans you'd meet.
+Liberals are the third-largest left-leaning party, and in many ways the most surprising. They are the oldest left-leaning party (median age 55), whiter and more male than their ideological neighbors, and the least LGBTQ+ of the non-conservative parties. Their urban share (29.7% city) is nearly identical to Social Democrat (30.7%) — LIB is not particularly rural, just suburban and spread across smaller metros rather than dense urban cores. What unifies them is a civil libertarian streak: they want government out of the bedroom and the boardroom alike, they trust electoral institutions, and they are skeptical of both police power and immigration enforcement. Their economics are genuinely left — support for taxing high earners, EPA regulation, renewable mandates — but they are also the most ambivalent left-leaning party on a range of social issues, from transgender policy to abortion access. They are older, relatively prosperous, and more likely to personally own a gun than PRG or DSA, while still supporting background checks at 86.5%.
 
 **Who they are:**
-- Median age 47 · 61.6% male · 70.0% white · 52.4% 4-yr degree · 33.3% urban
-- Median income: upper-middle bracket · 52.6% married · 38.5% gun owners · 14.2% LGBTQ+ · 7.9% born-again evangelical
-- 8.9% union members · 10.4% veterans
+- Median age 55 · 52.0% male · 69.4% white · 48.5% 4-yr+ degree · 29.7% city
+- Income: upper-middle ($70–80k) · 49.1% married · 17.0% own a gun · 14.3% LGBTQ+ · 14.1% born-again evangelical
+- 8.0% current union members · 8.0% veterans
 
 **Where they stand:**
 - Universal background checks: 86.5%
@@ -81,7 +81,7 @@ Liberals are the third-largest left-leaning party, and in many ways the most sur
 - Medicaid expansion: 71.7%
 
 **Unusually for American politics:**
-- 86.5% support universal background checks, and 38.5% own guns themselves — the most gun-owning left-leaning party in the system by a wide margin. Their libertarianism is real but it cuts both ways: they trust individuals with firearms while also trusting elections (only 24.2% say national elections are unfair, the lowest of any non-CTR party).
+- 86.5% support universal background checks, and 17.0% personally own guns — the most gun-owning left-leaning party in the system by a wide margin, and notably higher than PRG (11.4%) or DSA (9.8%). Their libertarianism is real but it cuts both ways: they trust individuals with firearms while also trusting elections (only 24.2% say national elections are unfair, the lowest of any non-CTR party).
 - Only 29.9% support gender-transition surgery for minors — far below the PRG (68%) and DSA (57.5%) levels — reflecting a genuine social conservatism on gender issues that coexists with broadly progressive economics.
 
 ---
@@ -91,9 +91,9 @@ Liberals are the third-largest left-leaning party, and in many ways the most sur
 Social Democrats are the largest party in the system and, in many ways, the most recognizable to European observers of American politics. They want an expanded welfare state, regulated markets, labor protections, and immigration reform — the European center-left platform, applied to American conditions. They are disproportionately Black, Hispanic, and working-class, with a median age matching the national center and ideological self-placement of 2.9 on a 7-point scale. They trust elections more than most parties, support Medicaid expansion at near-universal rates, and are the strongest backers of clean energy in the system. What makes them politically complicated is their working-class base, which produces genuine ambivalence on immigration — not hostility, but a calculation about labor market competition and community change that distinguishes them from their left-leaning neighbors.
 
 **Who they are:**
-- Median age 47 · 42.0% male · 57.8% white · 35.2% 4-yr degree · 38.8% urban
-- Median income: lower-middle bracket · 41.7% married · 26.4% gun owners · 12.1% LGBTQ+ · 11.7% born-again evangelical
-- 17.4% union members · 8.0% veterans
+- Median age 43 · 44.6% male · 56.7% white · 35.1% 4-yr+ degree · 30.7% city
+- Income: middle ($60–70k) · 37.5% married · 18.2% own a gun · 14.6% LGBTQ+ · 19.2% born-again evangelical
+- 6.4% current union members · 6.7% veterans
 
 **Where they stand:**
 - Medicaid expansion: 93.5%
@@ -104,18 +104,18 @@ Social Democrats are the largest party in the system and, in many ways, the most
 
 **Unusually for American politics:**
 - 43.2% support increasing border patrols — nearly half — reflecting a working-class base more ambivalent on immigration than a "liberal" label would suggest. SD simultaneously supports DACA at 89.5% while backing border enforcement at nearly the same rate as Center (65.9%), a combination that makes sense as a labor-protection rather than nativist position.
-- Only 4.3% voted Trump in 2020, yet 11.7% identify as born-again evangelical — SD carries a meaningful religious constituency that aligns its faith with economic justice rather than cultural conservatism.
+- SD has the highest combined union affiliation of any party — 6.4% currently active, with an additional 15.8% who are former union members (22.2% total union household experience) — yet only 4.3% voted Trump in 2020. SD's labor identity is real and shapes its economic politics even among members who no longer hold active membership.
 
 ---
 
 ### Solidarity (STY) — 160 House Seats (18.3%)
 
-Solidarity is the most politically disorienting party in the system, and arguably the most important one to understand. Its members sit at the ideological center on economics — supporting infrastructure spending and Medicaid expansion but skeptical of corporate tax hikes and immigration. They skew toward the South and rural areas, have significant Black representation (27% of the party), are heavily working-class, and lean modestly toward women. What makes them genuinely novel is their combination of labor-left economics with deep institutional distrust: 55.8% say national elections are not run fairly, putting them in the same bracket as the Nationalist Party. They are pro-DACA and anti-police-expansion while also being skeptical that elections deliver what they're supposed to. They are the party of the working-class voter who feels the system is rigged but whose diagnosis focuses on economic power, not immigration.
+Solidarity is the most politically disorienting party in the system, and arguably the most important one to understand. They are the youngest working-class party (median age 38), majority female (60.7%), majority non-white (56.6%), lowest household income of any party in the system, and — most surprisingly — 37.7% born-again evangelical. Their economics lean center-left: they support infrastructure spending and Medicaid expansion, but express ambivalence on immigration and are more skeptical of corporate tax hikes than their left-leaning neighbors. What makes STY genuinely novel is their combination of economic marginalization with deep institutional distrust: 55.8% say national elections are not run fairly, a level matching Nationalist and Reform. Nearly half (44%) didn't vote in 2020. They are the party of Americans most left behind by the economy — low income, limited education, religiously conservative, and alienated from both political parties.
 
 **Who they are:**
-- Median age 46 · 57.0% male · 65.7% white · 25.2% 4-yr degree · 38.1% urban
-- Median income: lower-lower-middle bracket · 45.6% married · 36.4% gun owners · 8.6% LGBTQ+ · 12.7% born-again evangelical
-- 19.3% union members · 10.4% veterans
+- Median age 38 · 39.3% male · 43.4% white · 23.0% 4-yr+ degree · 36.3% city
+- Income: working-class ($40–50k) · 34.2% married · 18.8% own a gun · 11.7% LGBTQ+ · 37.7% born-again evangelical
+- 4.4% current union members · 5.5% veterans
 
 **Where they stand:**
 - Universal background checks: 89.4%
@@ -125,19 +125,19 @@ Solidarity is the most politically disorienting party in the system, and arguabl
 - Oppose increasing police funding: 63.4%
 
 **Unusually for American politics:**
-- 55.8% say national elections are not run fairly, putting them in the same bracket as Nationalist (63.1%) and Reform (61.6%) — yet Solidarity is pro-labor, pro-DACA, and opposed to increased police funding. Electoral distrust is not a right-wing monopoly; for a disproportionately Black and working-class party, skepticism about fair treatment by institutions has different roots than right-wing election denialism.
-- Only 19.0% voted for Trump in 2020, despite the party's rural skew, gun ownership (36.4%), and high electoral skepticism — Solidarity voters are estranged from both parties, not secretly Republican.
+- Despite 55.8% believing elections aren't fair — a rate matching Nationalist (63.1%) and Reform (61.6%) — STY voted 88% for non-Trump candidates in 2020 and has a 44% non-voting rate. Only 16.3% voted Trump. STY's electoral skepticism comes from the left, not the right: for a majority non-white, lowest-income, female-majority party, distrust of institutions reflects lived experience of exclusion rather than election denialism.
+- STY is the only party that combines majority non-white membership, majority female membership, the lowest income in the system, and 37.7% born-again evangelical identity — a demographic profile that fits no existing political coalition and explains why they are estranged from both parties rather than firmly attached to either.
 
 ---
 
 ### Center (CTR) — 102 House Seats (11.7%)
 
-The Center Party occupies a genuinely unusual political position: moderate on almost everything, deeply religious, and the most trusting of elections of any party in the entire system. Its members describe themselves as slightly conservative (3.6 on the 7-point scale) and split nearly evenly between Biden (51.1%) and Trump (24.1%) in 2020, making them the most genuinely swing constituency in the simulation. They are significantly evangelical (20% born-again), older (median age 49), homeowning, and married — the suburban religious moderate who is economically pragmatic, culturally traditional without being extreme, and genuinely uncertain which major party speaks to them. They support background checks, Medicaid expansion, and infrastructure spending, but also back border enforcement and are split on abortion.
+The Center Party occupies a genuinely unusual political position: moderate on almost everything, deeply religious, and the most trusting of elections of any party in the entire system. Its members describe themselves as slightly conservative (3.6 on the 7-point scale) and voted 41.9% for Trump and 33.2% for Biden in 2020 — making them a Trump-plurality party that nonetheless trusts elections more than any other constituency in the simulation. They are significantly evangelical (43% born-again), older (median age 51), homeowning, and married — the religious moderate who is economically pragmatic, culturally traditional without being extreme, and the genuine swing-right voter the two-party system has long fought over. They support background checks, Medicaid expansion, and infrastructure spending, but also back border enforcement and are split on abortion.
 
 **Who they are:**
-- Median age 49 · 53.1% male · 62.5% white · 32.4% 4-yr degree · 33.0% urban
-- Median income: middle bracket · 50.3% married · 36.1% gun owners · 8.4% LGBTQ+ · 20.0% born-again evangelical
-- 11.5% union members · 10.2% veterans
+- Median age 51 · 54.4% male · 66.2% white · 29.0% 4-yr+ degree · 27.2% city
+- Income: lower-middle ($50–60k) · 47.5% married · 29.0% own a gun · 5.5% LGBTQ+ · 43.0% born-again evangelical
+- 5.4% current union members · 8.7% veterans
 
 **Where they stand:**
 - Universal background checks: 89.4%
@@ -147,19 +147,19 @@ The Center Party occupies a genuinely unusual political position: moderate on al
 - Support same-sex marriage: 77.7%
 
 **Unusually for American politics:**
-- CTR has the lowest electoral skepticism in the entire system — only 17.5% say national elections are not run fairly, lower even than Social Democrat (19.7%). Yet 24.1% voted for Trump in 2020 and only 51.1% for Biden. They are not Democrat-coded; they just trust the process regardless of outcome.
-- Despite being 20% born-again evangelical and favoring stricter abortion limits (median 16 weeks), 77.7% support federal recognition of same-sex marriage — suggesting a religious conservatism focused on reproductive rather than sexual ethics.
+- CTR has the lowest electoral skepticism in the entire system — only 17.5% say national elections are not run fairly, lower even than Social Democrat (19.7%). Yet 41.9% voted for Trump in 2020 and only 33.2% for Biden, making CTR the most genuinely swing-right party in the system, not the "reluctant Democrat" the two-party framing would suggest. They lean Trump but trust the elections Biden won — a combination that is genuinely unusual.
+- Despite being 43% born-again evangelical and favoring stricter abortion limits (median 16 weeks), 77.7% support federal recognition of same-sex marriage — suggesting a religious conservatism focused on reproductive rather than sexual ethics.
 
 ---
 
 ### Conservative (CON) — 164 House Seats (18.8%)
 
-Conservatives are the second-largest party and the dominant force on the center-right. They are high on Security & Order and Religious Traditionalism, low on Electoral Skepticism, and sitting at a moderate +0.46 on Populist Conservatism — meaningfully right but not at the populist extreme. They are older, whiter, more male, and more married than the national average, with above-average incomes. Their politics are recognizable as the Eisenhower-to-Reagan Republican tradition: law enforcement, border security, religious values, low taxes, and a belief that American institutions basically work. They are hawkish on immigration and police funding, opposed to most climate regulation, and split nearly in half on some social issues. What distinguishes them from NAT is not just intensity but institutional orientation — Conservatives trust elections and, to a striking degree, trust background checks.
+Conservatives are the second-largest party and the dominant force on the center-right. They are high on Security & Order and Religious Traditionalism, low on Electoral Skepticism, and sitting at a moderate +0.46 on Populist Conservatism — meaningfully right but not at the populist extreme. They are older, whiter, and more married than the national average, with above-average incomes, and near gender parity (49% male). Their politics are recognizable as the Eisenhower-to-Reagan Republican tradition: law enforcement, border security, religious values, low taxes, and a belief that American institutions basically work. They are hawkish on immigration and police funding, opposed to most climate regulation, and split nearly in half on some social issues. What distinguishes them from NAT is not just intensity but institutional orientation — Conservatives trust elections and, to a striking degree, trust background checks.
 
 **Who they are:**
-- Median age 52 · 61.3% male · 79.0% white · 27.0% 4-yr degree · 30.8% urban
-- Median income: middle-upper bracket · 59.7% married · 54.5% gun owners · 4.3% LGBTQ+ · 35.2% born-again evangelical
-- 11.1% union members · 14.8% veterans
+- Median age 59 · 49.0% male · 78.4% white · 30.3% 4-yr+ degree · 20.5% city
+- Income: middle ($60–70k) · 56.2% married · 39.2% own a gun · 3.4% LGBTQ+ · 42.6% born-again evangelical
+- 4.1% current union members · 13.6% veterans
 
 **Where they stand:**
 - Extend 2017 tax cuts: 89.2%
@@ -169,19 +169,19 @@ Conservatives are the second-largest party and the dominant force on the center-
 - ACA repeal: 73.9%
 
 **Unusually for American politics:**
-- 72.3% of Conservatives support universal background checks on gun sales — nearly three in four. This is the signature cross-cutting finding for CON: a party that is 54.5% gun-owning and 91.2% pro-border-patrol nonetheless supports a policy their partisan analog in the two-party system has blocked for decades. Their gun politics are about ownership and rights, not about blocking all regulation.
+- 72.3% of Conservatives support universal background checks on gun sales — nearly three in four. This is the signature cross-cutting finding for CON: a party that is 39.2% gun-owning and 91.2% pro-border-patrol nonetheless supports a policy their partisan analog in the two-party system has blocked for decades. Their gun politics are about ownership and rights, not about blocking all regulation.
 - Only 31.7% say national elections are unfair — nearly identical to the overall national average — reflecting an institutional conservatism that CON shares with CTR but not with REF (61.6%) or NAT (63.1%).
 
 ---
 
 ### Reform (REF) — 125 House Seats (14.3%)
 
-Reform is the Tea Party and MAGA populism stripped of the Republican establishment — economically skeptical of concentrated corporate power, deeply suspicious that elections are run fairly, intensely restrictionist on immigration, and socially conservative without being particularly evangelical. Reform members are older (median age 54), heavily male (60.5%), rural, and low-education relative to income. They feel economically left behind — among the highest perceived inflation of any party — and they channel that anxiety into distrust of both elections and elites. What makes Reform genuinely different from Conservative is their populist skepticism: 61.6% say national elections are unfair, and their support for corporate taxation runs higher than most centrist parties. They are not pro-business. They are pro-themselves, against a system they believe is rigged by people who are not like them.
+Reform is the Tea Party and MAGA populism stripped of the Republican establishment — economically skeptical of concentrated corporate power, deeply suspicious that elections are run fairly, intensely restrictionist on immigration, and socially conservative without being particularly evangelical. Reform members are older (median age 46), majority male (51.2%), rural, and low-education relative to income. They feel economically left behind — among the highest perceived inflation of any party — and they channel that anxiety into distrust of both elections and elites. What makes Reform genuinely different from Conservative is their populist skepticism: 61.6% say national elections are unfair, and their support for corporate taxation runs higher than most centrist parties. They are not pro-business. They are pro-themselves, against a system they believe is rigged by people who are not like them.
 
 **Who they are:**
-- Median age 54 · 60.5% male · 74.8% white · 24.0% 4-yr degree · 29.8% urban
-- Median income: lower-middle bracket · 56.4% married · 47.9% gun owners · 6.5% LGBTQ+ · 24.9% born-again evangelical
-- 12.1% union members · 12.2% veterans
+- Median age 46 · 51.2% male · 70.2% white · 25.8% 4-yr+ degree · 23.1% city
+- Income: lower-middle ($50–60k) · 45.5% married · 37.3% own a gun · 7.1% LGBTQ+ · 39.9% born-again evangelical
+- 4.6% current union members · 9.5% veterans
 
 **Where they stand:**
 - Increase border patrols: 88.9%
@@ -198,12 +198,12 @@ Reform is the Tea Party and MAGA populism stripped of the Republican establishme
 
 ### Nationalist (NAT) — 22 House Seats (2.5%)
 
-The Nationalist Party is the populist far-right pole of the system. At +1.51 on Populist Conservatism — a full standard deviation above the next highest type — they are an outlier even within a system designed to find outliers. They are the oldest (median age 58), most male (70.5%), least educated (16.3% four-year degree), most rural, most gun-owning (57.5%), and most nativist party in the simulation. They believe elections are not run fairly (63.1%), are deeply religious by the standards of the right (35.2% born-again), and hold near-universal positions on immigration restriction. They feel economically precarious — among the lowest education and income levels of any party — and their politics reflect a profound sense that the country's direction is wrong and that the institutions meant to address it cannot be trusted.
+The Nationalist Party is the populist far-right pole of the system. At +1.51 on Populist Conservatism — a full standard deviation above the next highest type — they are an outlier even within a system designed to find outliers. They are the oldest party (median age 60), the most male (63.6%), the most rural (only 15.9% city), and the most evangelical (47.7% born-again) — but they are also the second highest income party in the simulation, and more college-educated (39.3%) than Conservative (30.3%) or Reform (25.8%). NAT is not the economically precarious working class; it is prosperous older white rural Christians who have organized their politics around immigration restriction and cultural anxiety rather than economic grievance. They want borders enforced, firearms secured, tradition maintained, and a specific vision of American national identity preserved. Their 89.4% Trump support in 2020 and near-universal immigration restriction coexist with household incomes that benefit substantially from the tax cuts they demand.
 
 **Who they are:**
-- Median age 58 · 70.5% male · 80.3% white · 16.3% 4-yr degree · 30.3% urban
-- Median income: lower-middle bracket · 60.5% married · 57.5% gun owners · 4.2% LGBTQ+ · 34.9% born-again evangelical
-- 13.8% union members · 15.8% veterans
+- Median age 60 · 63.6% male · 81.2% white · 39.3% 4-yr+ degree · 15.9% city
+- Income: upper-middle ($70–80k) · 63.1% married · 54.9% own a gun · 3.3% LGBTQ+ · 47.7% born-again evangelical
+- 5.5% current union members · 18.1% veterans
 
 **Where they stand:**
 - Increase border patrols: 97.1%
@@ -213,7 +213,7 @@ The Nationalist Party is the populist far-right pole of the system. At +1.51 on 
 - Elections not fair (national): 63.1%
 
 **Unusually for American politics:**
-- 93.8% support extending the 2017 tax cuts, which primarily benefit high earners and corporations — yet Nationalist members have the lowest college-education rate (16.3%) and among the lowest income levels in the system. NAT's median income bracket sits below both CON and REF, making their near-universal support for upper-bracket tax policy a striking case of economic voting against self-interest, driven by cultural alignment with the policy's political champions.
+- Despite being the most evangelical party (47.7% born-again) and the most rural (15.9% city), NAT ranks second in household income — a profile of prosperous older white rural Christians, not the economically precarious working class its anti-establishment rhetoric might suggest. NAT is more college-educated (39.3%) than Conservative (30.3%) or Reform (25.8%), and their near-universal support for the 2017 tax cuts aligns with their actual economic position rather than contradicting it.
 - 63.3% support universal background checks — a majority, even in the most nativist and gun-owning party in the system.
 
 ---

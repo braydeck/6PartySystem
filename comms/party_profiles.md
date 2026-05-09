@@ -16,6 +16,18 @@ These parties do not map cleanly onto Democrat or Republican. The Reform Party s
 
 ---
 
+## The Presidency
+
+**Both IRV and Condorcet elect the same president: an SD/CON coalition candidate.**
+
+Under both runoff methods the winner is a Social Democrat whose coalition must also speak to Conservative voters to assemble a national majority. SD/CON is the Condorcet winner — it beats every other candidate in a head-to-head matchup — because neither SD nor CON is ideologically extreme enough to drive away coalition partners, and together they cover nearly 38% of the electorate before counting second-choice support. No ideologically purer position can build a wider national coalition in a nine-party system.
+
+The SD/CON president sits at the genuine center of the factor space: Medium on Security & Order, trusting of elections, moderately religious, near-zero on Populist Conservatism. In practice this president signs Medicaid expansion, DACA reform, the $150B infrastructure bill, and universal background checks. They also sign increased border patrol funding, asylum denial at the border, and broad continuation of the 2017 tax structure. They veto any bill repealing the ACA or rolling back EPA authority, and decline to sign either the post-9/11 surveillance renewal or the gas stove ban. Progressives call it capitulation; Nationalists call it betrayal. The multi-party arithmetic calls it the only governing position with majority support.
+
+**Factor profile:** Medium F1 · Medium F2 (trusts elections) · Medium F4 · Near-zero F5 (true centrist)
+
+---
+
 ## Part I: The Nine Parties
 
 ---
@@ -220,13 +232,14 @@ The Nationalist Party is the populist far-right pole of the system. At +1.51 on 
 
 ## Part II: Senate Coalition Types
 
-Senate candidates in this simulation emerge when two voter clusters co-occur frequently enough within a state that a politician must credibly appeal to both simultaneously. A CON/SD senator, for example, represents a state where enough voters hold a mixture of conservative and social-democratic views that no pure-party candidate can win. The first-named party is the dominant orientation, carrying roughly 55–67% of the weight; the second names the constituency that pulls the candidate toward positions their base party would not normally hold. These 14 blend types represent political coalitions that are effectively impossible to build in the current two-party system — senators who must hold positions that no existing party platform accommodates. That is not a flaw in the simulation. It is the point.
+Senate candidates in this simulation emerge when two voter clusters co-occur frequently enough within a state that a politician must credibly appeal to both simultaneously. A CON/SD senator represents a state where enough voters hold a mixture of conservative and social-democratic views that no pure-party candidate can win. The first-named party is the dominant orientation, carrying roughly 55–67% of the weight; the second names the constituency that pulls the candidate toward positions their base party would not normally hold. Each blend type is listed with seat counts under both the IRV and Condorcet runoff methods; the two methods produce meaningfully different outcomes in 17 states. Several states also elect pure single-party senators — those are listed at the end of this section. The presidency (SD/CON) is addressed in its own section above.
 
 ---
 
-### SD/STY — 10 IRV Seats
+### SD/STY — IRV: 10 seats · Condorcet: 11 seats
 
-*States won: California, DC, Hawaii, Indiana, Maryland, Massachusetts, Minnesota, Nebraska, New York, Wisconsin*
+*IRV: California, DC, Hawaii, Indiana, Maryland, Massachusetts, Minnesota, Nebraska, New York, Wisconsin*
+*Condorcet: California, Connecticut, DC, Hawaii, Maryland, Massachusetts, Minnesota, Nebraska, New York, Vermont, Wisconsin*
 
 The SD/STY senator represents the dominant coalitional type on the center-left: a Social Democrat whose base is large enough that they must also speak to Solidarity voters — more working-class, more religiously observant, more skeptical that elections are fair. Compared to a pure SD candidate, the SD/STY blend is noticeably less likely to support same-sex marriage recognition (the biggest policy shift), more skeptical of elections (17 points of range shift toward distrust), and more ambivalent on abortion restrictions. Economically, the blend moves slightly toward fiscal caution — less support for the full $150B infrastructure package, slightly less support for upper-bracket tax increases. What remains stable is the core: immigration reform, labor support, and climate policy. This is the senator who wins California or Minnesota by holding together educated liberals and working-class voters of color.
 
@@ -236,9 +249,10 @@ The surprising combination: despite moving toward Solidarity on nearly every cul
 
 ---
 
-### CON/SD — 6 IRV Seats
+### CON/SD — IRV: 6 seats · Condorcet: 7 seats
 
-*States won: Georgia, Nevada, New Jersey, North Dakota, Pennsylvania, Virginia*
+*IRV: Georgia, Nevada, New Jersey, North Dakota, Pennsylvania, Virginia*
+*Condorcet: Georgia, Nevada, New Jersey, North Dakota, Pennsylvania, Virginia, West Virginia*
 
 The CON/SD senator is the most counterintuitive type in the system: a Conservative who must also speak to Social Democrats in a purple-to-blue-leaning state. The blend moves CON dramatically toward SD on police funding (the largest single shift: +30.5% of range toward more police skepticism), same-sex marriage recognition (CON moves −29 points toward SD's near-universal support), church attendance, abortion timing, and Dreamer support. Electoral skepticism stays essentially unchanged — neither CON nor SD is particularly skeptical about elections, so the blend inherits that stability. The result is a Conservative who sounds like a mainstream Republican on immigration and taxes but who breaks sharply with the right on social and policing issues. This is the senator who can win Pennsylvania or Virginia by running culturally conservative on economics and culturally moderate on social issues.
 
@@ -248,9 +262,10 @@ The surprising combination: CON/SD is the most significant cross-ideological ble
 
 ---
 
-### CON/STY — 5 IRV Seats
+### CON/STY — IRV: 5 seats · Condorcet: 5 seats
 
-*States won: Alabama, Arkansas, Florida, Missouri, South Dakota*
+*IRV: Alabama, Arkansas, Florida, Missouri, South Dakota*
+*Condorcet: Alabama, Florida, Missouri, South Dakota, Tennessee*
 
 The CON/STY senator holds the dominant center-right coalition in Southern and border states: a Conservative who must also speak to Solidarity voters — the working-class, electorally skeptical, Black-and-rural constituency that makes up a substantial part of the Southern electorate. Compared to pure CON, this blend is more skeptical of elections (the second-largest shift, +22.7% on local election fairness), more supportive of police skepticism, more attentive to immigration enforcement (moving slightly toward STY's ambivalence on asylum), and more focused on economic anxiety. The blend is meaningfully less evangelical than pure CON, reflecting Solidarity's more secular working-class base. This is the senator who wins Alabama or Florida by sounding tough on immigration and crime while acknowledging that the system has not always worked fairly for everyone.
 
@@ -260,9 +275,10 @@ The surprising combination: CON/STY registers the highest electoral skepticism s
 
 ---
 
-### STY/SD — 5 IRV Seats
+### STY/SD — IRV: 5 seats · Condorcet: 3 seats
 
-*States won: Louisiana, North Carolina, South Carolina, Texas, Utah*
+*IRV: Louisiana, North Carolina, South Carolina, Texas, Utah*
+*Condorcet: South Carolina, Texas, Utah*
 
 The STY/SD senator is Solidarity-dominant but pulled toward Social Democrat — the mirror image of SD/STY, representing states where the working-class populist base is larger than the educated progressive base. The blend's most significant shifts from pure STY are secular (church attendance moves up by 28.5% of range — STY/SD is more religious than pure STY) and less skeptical of elections (election distrust drops 26 points as SD's institutional trust moderates the blend). This is a Solidarity senator who had to earn Social Democrat votes by softening on abortion, spending more on infrastructure, and reducing their anti-establishment rhetoric. What stays fixed is the economic core: labor support, immigration ambivalence, police skepticism. Texas and North Carolina produce this type — states where the working-class multi-racial coalition is large but the Black and Hispanic SD vote requires accommodation.
 
@@ -272,9 +288,10 @@ The surprising combination: STY/SD is *more* religious than pure STY, reflecting
 
 ---
 
-### CON/CTR — 4 IRV Seats
+### CON/CTR — IRV: 4 seats · Condorcet: 6 seats
 
-*States won: Iowa, Kentucky, Ohio, West Virginia*
+*IRV: Iowa, Kentucky, Ohio, West Virginia*
+*Condorcet: Iowa, Kentucky, Louisiana, Michigan, Ohio, Oklahoma*
 
 The CON/CTR senator is the institutional center-right — a Conservative who must also speak to Center Party voters, who are the most trusting of elections of any constituency in the system. The defining feature of this blend is what disappears: compared to pure CON, the CON/CTR senator is dramatically less likely to say the government is untrustworthy, less skeptical of elections (−18 points on fairness), and more likely to support police funding (the CTR base brings its law-and-order sensibility). The result is a Conservative who sounds more mainstream, more institutionalist, and less populist — a Midwestern senator who will oppose Medicaid expansion and EPA regulation but will not say the 2020 election was stolen. This is the Republican who survived in Ohio when Trumpism peaked.
 
@@ -284,9 +301,10 @@ The surprising combination: the top differentiators for this blend are entirely 
 
 ---
 
-### CON/REF — 4 IRV Seats
+### CON/REF — IRV: 4 seats · Condorcet: 1 seat
 
-*States won: Colorado, Idaho, Kansas, Michigan*
+*IRV: Colorado, Idaho, Kansas, Michigan*
+*Condorcet: Idaho*
 
 The CON/REF senator combines Conservative institutional conservatism with Reform's populist economic grievance and deep electoral skepticism. This is the blend that most closely resembles Trump-era Republicanism: high F1 (security and enforcement), elevated F2 (doubts about elections), strongly conservative on F5. Compared to pure CON, CON/REF moves substantially toward border hardness, immigration restriction, and concealed carry, while also absorbing Reform's greater sense of economic anxiety. Church attendance stays nearly identical. Electoral distrust increases meaningfully — this blend will express doubts about election integrity that pure CON would not. Colorado and Michigan produce this type: states where the suburban Conservative base must be held together with the exurban Reform voter who feels left behind.
 
@@ -296,9 +314,10 @@ The surprising combination: CON/REF sits at a notably higher F5 than CON alone, 
 
 ---
 
-### SD/LIB — 4 IRV Seats
+### SD/LIB — IRV: 4 seats · Condorcet: 1 seat
 
-*States won: Illinois, New Mexico, Vermont, Washington*
+*IRV: Illinois, New Mexico, Vermont, Washington*
+*Condorcet: Washington*
 
 The SD/LIB senator is the most institutionally trusting left-wing type in the system. SD/LIB combines Social Democrat's economic program with Liberal's deep trust in elections, skepticism of government surveillance, and civil libertarian streak. The dominant policy shifts from pure SD are all about institutional trust: election skepticism drops 26 points, state and local government distrust drops 24 points, and federal government distrust drops 14 points. The blend is slightly more permissive on abortion, slightly higher on income (reflecting LIB's professional-class skew), and almost unchanged on immigration. This senator wins in states where the educated liberal professional community is large enough to moderate the Social Democrat base's working-class skepticism. Vermont and Washington are natural homes; Illinois and New Mexico require appealing to Latino and Black SD voters who also have LIB-compatible civil libertarian instincts.
 
@@ -308,9 +327,10 @@ The surprising combination: the defining feature of SD/LIB is not any policy shi
 
 ---
 
-### STY/REF — 2 IRV Seats
+### STY/REF — IRV: 2 seats · Condorcet: 4 seats
 
-*States won: Alaska, Connecticut*
+*IRV: Alaska, Connecticut*
+*Condorcet: Alaska, Indiana, Montana, North Carolina*
 
 The STY/REF senator pairs Solidarity's working-class economics and deep electoral skepticism with Reform's immigration restrictionism and fiscal conservatism. The result is the highest F2 score of any left-leaning-dominant blend — electoral skepticism near the maximum — combined with a sharp rightward shift on immigration (opposing legal status for undocumented workers increases by 28 points, Dreamer opposition rises 27 points). The blend remains skeptical of police expansion, reflects above-average concern about inflation, and sits at lower concealed-carry support than pure REF. Alaska and Connecticut seem like odd companions, but both have electorates with significant working-class populist constituencies that combine labor instincts with immigration ambivalence and a distrust of how elections are administered.
 
@@ -320,9 +340,10 @@ The surprising combination: STY/REF has higher F2 (electoral skepticism) than ev
 
 ---
 
-### SD/CON — 2 IRV Seats
+### SD/CON — IRV: 2 seats · Condorcet: 3 seats
 
-*States won: Delaware, Rhode Island*
+*IRV: Delaware, Rhode Island*
+*Condorcet: Delaware, New Mexico, Rhode Island*
 
 The SD/CON senator is the mirror of CON/SD: Social Democrat-dominant but obligated to speak to Conservative voters in an unusual state configuration. The blend represents a center-left candidate who has absorbed Conservative views on police (dropping 33 points toward pro-police), asylum (dropping 29 points toward denial), and church attendance (dropping 31 points toward more frequent attendance). Electoral skepticism is essentially unchanged — neither SD nor CON is particularly skeptical, so the blend inherits their shared trust in institutions. Delaware and Rhode Island are small states where the SD coalition is large enough to anchor the ticket but where enough Conservative voters exist to require real accommodation on culture and policing.
 
@@ -332,9 +353,10 @@ The surprising combination: SD/CON and CON/SD have nearly identical factor score
 
 ---
 
-### CON/NAT — 1 IRV Seat
+### CON/NAT — IRV: 1 seat · Condorcet: 0 seats
 
-*States won: Arizona*
+*IRV: Arizona*
+*Condorcet: none — Arizona flips to REF/STY under Condorcet*
 
 The CON/NAT senator is the hardest-right winning type in the senate simulation, combining Conservative's institutional conservatism with Nationalist's populist extremism. F4 (Religious Traditionalism) spikes to High, F5 (Populist Conservatism) reaches near-Nationalist levels (+0.97), and both immigration restriction and economic populism are near-universal. Arizona produces this blend — a border state where the most conservative electorate in the system is also sensitive to immigration as a lived daily reality. What distinguishes CON/NAT from a pure NAT senator is the maintenance of Conservative institutional trust (F2 stays medium) and the slightly higher education and income level of the CON base.
 
@@ -344,9 +366,10 @@ The surprising combination: CON/NAT maintains moderate electoral skepticism (F2 
 
 ---
 
-### LIB/CTR — 1 IRV Seat
+### LIB/CTR — IRV: 1 seat · Condorcet: 0 seats
 
-*States won: Maine*
+*IRV: Maine*
+*Condorcet: none — Maine flips to pure Solidarity under Condorcet*
 
 The LIB/CTR senator is the most institutionally trusting type in the entire system — combining Liberal's distrust of government surveillance with Center's deep confidence in elections. Maine's independent political culture produces this type: a center-left senator with a libertarian streak who is moderate on social issues, trusts the voting system, and sits comfortably in the low-F2 corner of the political map. LIB/CTR opposes post-9/11 surveillance programs, supports background checks, and holds moderate positions on abortion and immigration. The blend's most distinctive feature is its distance from electoral grievance — in a system full of electorally skeptical types, LIB/CTR stands at the opposite pole.
 
@@ -356,9 +379,10 @@ The surprising combination: LIB/CTR is the only winning blend type that scores V
 
 ---
 
-### SD/CTR — 1 IRV Seat
+### SD/CTR — IRV: 1 seat · Condorcet: 2 seats
 
-*States won: New Hampshire*
+*IRV: New Hampshire*
+*Condorcet: Illinois, New Hampshire*
 
 The SD/CTR senator represents New Hampshire's unusual political identity: a small-government New England Democrat who is more religious than pure SD, more trusting of elections than pure SD, but economically left. The blend's defining shifts from pure SD are heavily about trust and religion: church attendance drops 37 points, institutional trust drops dramatically (state trust −33 points, federal trust −32 points) — meaning SD/CTR is more secular and trusts government *less* than pure SD, pulled by Center's combination of religious observance without government confidence. Election skepticism drops sharply as well, reflecting CTR's institutional confidence moderating SD's mild ambivalence.
 
@@ -368,9 +392,10 @@ The surprising combination: SD/CTR is simultaneously *less* religious (CTR is le
 
 ---
 
-### STY/CON — 1 IRV Seat
+### STY/CON — IRV: 1 seat · Condorcet: 1 seat
 
-*States won: Mississippi*
+*IRV: Mississippi*
+*Condorcet: Mississippi*
 
 The STY/CON senator represents the Southern cross-pressure type: a Solidarity-dominant senator who must speak to Conservative voters in the most Republican-leaning state that produced a Solidarity winner. Compared to pure STY, the blend moves toward police skepticism (−26.5% — less pro-police than pure STY, as CON's police skepticism moderates STY's), less skeptical of elections (−22 points), and more restrictionist on immigration. Mississippi's Black working-class majority produces a Solidarity base large enough to anchor the ticket, but the CON constituency requires movement toward immigration restriction and away from STY's most anti-establishment positions.
 
@@ -380,13 +405,158 @@ The surprising combination: STY/CON moves *away* from police support compared to
 
 ---
 
-### REF/STY — 0 IRV Seats (2 Condorcet Seats)
+### REF/STY — IRV: 0 seats · Condorcet: 2 seats
 
-REF/STY wins zero seats under Instant Runoff Voting but captures 2 seats under the Condorcet method, which selects the candidate who would beat all others in head-to-head matchups. This technical distinction matters: REF/STY represents a position that many voters find acceptable as a second choice even if they would not rank it first. The blend is Reform-dominant but pulled toward Solidarity's working-class economics — high electoral skepticism (the defining Reform trait), but with somewhat less immigration restriction and more attentiveness to economic precarity than pure REF. REF/STY senators would represent constituencies where the most electorally distrustful voters are also economically vulnerable enough to benefit from Solidarity's labor-protection policies. The fact that IRV does not elect them but Condorcet does suggests they occupy a genuine compromise position that emerges only when second-choice preferences are counted.
+*Condorcet: Arizona, Colorado*
+
+REF/STY wins zero seats under Instant Runoff Voting but captures 2 seats under the Condorcet method, which selects the candidate who would beat all others in head-to-head matchups. This technical distinction matters: REF/STY represents a position that many voters find acceptable as a second choice even if they would not rank it first. The blend is Reform-dominant but pulled toward Solidarity's working-class economics — high electoral skepticism (the defining Reform trait), but with somewhat less immigration restriction and more attentiveness to economic precarity than pure REF. REF/STY senators represent constituencies where the most electorally distrustful voters are also economically vulnerable enough to benefit from Solidarity's labor-protection policies. The fact that IRV does not elect them but Condorcet does suggests they occupy a genuine compromise position that emerges only when second-choice preferences are counted.
 
 The surprising combination: REF/STY moves *away* from REF's anti-asylum, anti-immigration restrictionism when pulled toward STY — but maintains near-maximum electoral skepticism. The combination of high election distrust with moderated immigration restriction defines a voter type that feels the system is rigged economically, not just demographically.
 
 **Factor profile:** Medium F1, Very High F2 (near-maximum election skepticism), Medium F4, High F5 (populist-conservative).
+
+---
+
+### Single-Party Senate Seats
+
+Several states elect a senator from a single party with no co-occurrence blend required — meaning one party holds enough of a plurality in that state that a pure candidate wins without needing to appeal to a second cluster.
+
+**Solidarity (STY)** — IRV: 0 seats · Condorcet: 3 seats *(Arkansas, Kansas, Maine)*
+Under Condorcet, three states surface a pure STY winner: rural, working-class, majority non-white electorates where Solidarity's combination of economic populism and institutional distrust commands an outright plurality when all head-to-head matchups are resolved. Under IRV, the same states produce blend winners (CON/STY for Arkansas, CON/REF for Kansas, LIB/CTR for Maine) as second-choice transfers reallocate to the candidate with the broadest first-preference coalition.
+
+**Social Democrat (SD)** — IRV: 2 seats *(Montana, Oregon)* · Condorcet: 1 seat *(Oregon)*
+Oregon returns a pure SD senator under both methods. Montana, where STY and SD voters split the electorate, returns a pure SD under IRV — as SD second-choice transfers accumulate — but flips to STY/REF under Condorcet, where the head-to-head matchup favors the more electorally skeptical working-class candidate.
+
+**Conservative (CON)** — IRV: 2 seats *(Oklahoma, Tennessee)* · Condorcet: 0 seats
+Oklahoma and Tennessee elect a pure Conservative senator under IRV, where CON holds a dominant first-preference plurality. Under Condorcet, both states produce blend candidates (CON/CTR for Oklahoma, CON/STY for Tennessee), because the Condorcet method surfaces the candidate with the broadest second-choice appeal — in both states, a CON-dominant blend rather than a pure party nominee.
+
+**Reform (REF)** — IRV: 1 seat · Condorcet: 1 seat *(Wyoming)*
+Wyoming returns a pure REF senator under both methods — the only state where Reform's electoral skepticism, immigration restrictionism, and fiscal populism command an outright majority regardless of how the counting proceeds.
+
+---
+
+## Electoral Breakdown
+
+### Senate Seat Totals by Method
+
+| Type | IRV | Condorcet | Difference |
+|------|-----|-----------|------------|
+| SD/STY | 10 | 11 | +1 Condorcet |
+| CON/SD | 6 | 7 | +1 Condorcet |
+| CON/STY | 5 | 5 | — |
+| STY/SD | 5 | 3 | +2 IRV |
+| CON/CTR | 4 | 6 | +2 Condorcet |
+| CON/REF | 4 | 1 | +3 IRV |
+| SD/LIB | 4 | 1 | +3 IRV |
+| STY/REF | 2 | 4 | +2 Condorcet |
+| SD/CON | 2 | 3 | +1 Condorcet |
+| CON/NAT | 1 | 0 | IRV only |
+| LIB/CTR | 1 | 0 | IRV only |
+| SD/CTR | 1 | 2 | +1 Condorcet |
+| STY/CON | 1 | 1 | — |
+| REF/STY | 0 | 2 | Condorcet only |
+| STY (pure) | 0 | 3 | Condorcet only |
+| SD (pure) | 2 | 1 | +1 IRV |
+| CON (pure) | 2 | 0 | IRV only |
+| REF (pure) | 1 | 1 | — |
+
+The Condorcet method produces systematically more centrist outcomes. CON/NAT (Arizona) and LIB/CTR (Maine) disappear entirely, replaced by REF/STY and pure STY. CON/REF drops from 4 to 1 as Colorado, Kansas, and Michigan shift to more centrist blends; SD/LIB drops from 4 to 1 as Illinois, New Mexico, and Vermont shift similarly. The Condorcet senate gives more weight to CON/CTR and SD/STY types, and surfaces three pure STY seats that IRV does not produce.
+
+### State-by-State Senate Comparison
+
+States where the two methods agree are shown in plain text. The 17 states where outcomes differ are **bold**.
+
+| State | IRV | Condorcet |
+|-------|-----|-----------|
+| Alabama | CON/STY | CON/STY |
+| Alaska | STY/REF | STY/REF |
+| **Arizona** | **CON/NAT** | **REF/STY** |
+| **Arkansas** | **CON/STY** | **STY** |
+| California | SD/STY | SD/STY |
+| **Colorado** | **CON/REF** | **REF/STY** |
+| **Connecticut** | **STY/REF** | **SD/STY** |
+| Delaware | SD/CON | SD/CON |
+| DC | SD/STY | SD/STY |
+| Florida | CON/STY | CON/STY |
+| Georgia | CON/SD | CON/SD |
+| Hawaii | SD/STY | SD/STY |
+| Idaho | CON/REF | CON/REF |
+| **Illinois** | **SD/LIB** | **SD/CTR** |
+| **Indiana** | **SD/STY** | **STY/REF** |
+| Iowa | CON/CTR | CON/CTR |
+| **Kansas** | **CON/REF** | **STY** |
+| Kentucky | CON/CTR | CON/CTR |
+| **Louisiana** | **STY/SD** | **CON/CTR** |
+| **Maine** | **LIB/CTR** | **STY** |
+| Maryland | SD/STY | SD/STY |
+| Massachusetts | SD/STY | SD/STY |
+| **Michigan** | **CON/REF** | **CON/CTR** |
+| Minnesota | SD/STY | SD/STY |
+| Mississippi | STY/CON | STY/CON |
+| Missouri | CON/STY | CON/STY |
+| **Montana** | **SD** | **STY/REF** |
+| Nebraska | SD/STY | SD/STY |
+| Nevada | CON/SD | CON/SD |
+| New Hampshire | SD/CTR | SD/CTR |
+| New Jersey | CON/SD | CON/SD |
+| **New Mexico** | **SD/LIB** | **SD/CON** |
+| New York | SD/STY | SD/STY |
+| **North Carolina** | **STY/SD** | **STY/REF** |
+| North Dakota | CON/SD | CON/SD |
+| Ohio | CON/CTR | CON/CTR |
+| **Oklahoma** | **CON** | **CON/CTR** |
+| Oregon | SD | SD |
+| Pennsylvania | CON/SD | CON/SD |
+| Rhode Island | SD/CON | SD/CON |
+| South Carolina | STY/SD | STY/SD |
+| South Dakota | CON/STY | CON/STY |
+| **Tennessee** | **CON** | **CON/STY** |
+| Texas | STY/SD | STY/SD |
+| Utah | STY/SD | STY/SD |
+| **Vermont** | **SD/LIB** | **SD/STY** |
+| Virginia | CON/SD | CON/SD |
+| Washington | SD/LIB | SD/LIB |
+| **West Virginia** | **CON/CTR** | **CON/SD** |
+| Wisconsin | SD/STY | SD/STY |
+| Wyoming | REF | REF |
+
+---
+
+## Legislative Outlook
+
+The vote simulation models 37 binary policy items across both senate configurations and the House. No item changes verdict between IRV and Condorcet — the senate composition is similar enough that every majority holds under both methods. The more significant divides are between Senate and House, though those also agree in all but a few close items. The most striking finding is how many apparently contradictory policies the same congress passes simultaneously.
+
+### What Passes
+
+**Taxes** — The congress simultaneously extends the 2017 tax cuts, raises the corporate rate from 21% to 28%, and allows top-bracket rates on incomes over $400k to rise to 35%. All three pass the House and both senate configurations. In a two-party system these are mutually exclusive party platforms; in a proportional congress they represent three separate majority coalitions forming around the same vote schedule.
+
+**Immigration** — The congress grants legal status to long-term undocumented immigrants (PASS), passes permanent DACA pathway for Dreamers (PASS), increases border patrols (PASS), and denies asylum for illegal border crossings (PASS). The DACA and legal-status majorities are led by SD, STY, CTR, and CON/SD-type senators; the asylum-denial and border-enforcement majorities include CON, REF, NAT, and the CON-dominant blends. Different majorities, same congress, same session.
+
+**Environment** — EPA authority to regulate CO2 (PASS), 20% renewable electricity requirement (PASS), strengthening the Clean Air and Water Act even at some job cost (PASS), increasing fossil fuel production (PASS), and preventing the government from banning gas stoves (PASS) all clear both chambers. The renewable mandate and the gas stove protection pass through entirely different party coalitions — and both pass.
+
+**Police & Public Safety** — A 10% increase in police funding passes; a 10% cut fails. Mental health and school safety spending also passes. The assault rifle ban passes. Universal background check requirement passes with near-certainty (near-100% probability). Easier concealed carry permits fail.
+
+**Healthcare** — Medicaid expansion passes. ACA repeal fails clearly. Work requirements for able-bodied Medicaid recipients under 64 also pass — that majority is anchored by CON/CTR and CON/STY senate types who support Medicaid's existence but favor conditionality.
+
+**Social Issues** — Federal recognition of same-sex and interracial marriages passes (66.1% global support). Congressional protection of abortion access passes; restrictions on abortion-inducing drugs by mail and interstate travel bans for abortion both fail. Preventing gender transition surgery for minors passes (60.1% global support, majority in all chambers). Parental consent requirements for school name/pronoun changes passes. Age verification for adult web content passes. School voucher subsidies pass.
+
+**Civil Liberties** — Conditional TikTok ban passes. Post-9/11 surveillance program renewal fails. Student loan forgiveness up to $20k passes.
+
+### What Fails
+
+The items that fail share a common structure: they represent the maximum position of a single ideological bloc that cannot find coalition partners.
+
+- **Easier concealed carry** — fails in all chambers; even CON and NAT senators face gun-owning constituencies that support background checks
+- **Decrease police 10%** — no cross-party coalition reaches majority; DSA and PRG cannot build one alone
+- **Halt new oil/gas leases on federal lands** — the SD/LIB/PRG coalition is too small; CON and STY-dominant types cannot support it
+- **ACA repeal** — fails clearly; even REF and NAT senators represent constituents who rely on Medicaid
+- **Renew surveillance programs** — LIB, DSA, and PRG provide the opposition margin, and STY's institutional distrust reinforces it
+- **Prohibit abortion-inducing drugs by mail** — the majority willing to restrict abortion access cannot reach 50% even with CON and NAT support
+- **Restrict interstate abortion travel** — fails decisively; even CON senators will not restrict citizens' physical movement across state lines
+
+### The One Toss-Up
+
+Relaxing local zoning laws to allow more apartments and condos sits at almost exactly 50/50 across all three chamber configurations (global support: 50.2%). This is the rare item where the electorate is genuinely split rather than cross-pressured — urban SD and LIB types support it, rural CON and REF types oppose it, and the suburban swing types (CTR, CON/CTR) are evenly divided. Neither majority can hold.
 
 ---
 

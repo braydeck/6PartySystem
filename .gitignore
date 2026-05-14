@@ -11,3 +11,9 @@ __pycache__/
 
 # OS files
 .DS_Store
+
+# Large CES raw survey files (too big for GitHub — keep locally only)
+data/raw/2024 CES Base/CCES24_Common_OUTPUT_vv_topost_final.dta
+data/raw/2024 CES Base/CCES24_Common_OUTPUT_vv_topost_final.csv
+data/raw/2020 CES Base/CES20_Common_OUTPUT_vv.dta
+data/raw/2020 CES Base/CES20_Common_OUTPUT_vv.csv

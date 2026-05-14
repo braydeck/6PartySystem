@@ -653,41 +653,59 @@ States where IRV and Condorcet agree are shown in plain text. The 13 states wher
 
 ## Legislative Outlook
 
-The vote simulation models 37 binary policy items across both senate configurations and the House. No item changes verdict between IRV and Condorcet — the senate composition is similar enough that every majority holds under both methods. The more significant divides are between Senate and House, though those also agree in all but a few close items. The most striking finding is how many apparently contradictory policies the same congress passes simultaneously.
+The vote simulation models 37 binary policy items across all four scenarios (mixed/pure × Condorcet/IRV). Within each pipeline, IRV and Condorcet produce identical legislative outcomes — the senate compositions are similar enough that every majority holds under both counting methods. The dividing line is not Condorcet vs. IRV; it is **mixed vs. pure**, which produce different presidents who diverge on exactly five bills.
 
-The CON/SD president (the IRV general election winner; the Condorcet winner SD/CON would govern nearly identically) signs bills that reflect the cross-aisle governing coalition: they sign border enforcement, tax-cut extensions, infrastructure spending, universal background checks, and permanent DACA reform. They veto outright ACA repeal — the SD coalition partner will not support dismantling coverage — and decline to renew the post-9/11 surveillance programs. The result is a conservative-leaning governing posture on security and fiscal issues combined with real accommodation on immigration pathways, infrastructure, and healthcare preservation.
+**Mixed pipeline (CON/SD president):** Signs border enforcement, police expansion, Medicaid work requirements, and the TikTok ban. Vetoes student loan forgiveness. Governs center-right on security with a cross-aisle accommodation on immigration pathways, infrastructure, and healthcare preservation.
 
-### What Passes
+**Pure-party pipeline (STY president):** Signs student loan forgiveness, legal status for undocumented immigrants, and the full progressive economic package. Vetoes asylum denial at the border, the police funding increase, Medicaid work requirements, and the TikTok ban. Governs center-left, anchored by the working-class multi-racial coalition that dominates the pure-party senate.
 
-**Taxes** — The congress simultaneously extends the 2017 tax cuts, raises the corporate rate from 21% to 28%, and allows top-bracket rates on incomes over $400k to rise to 35%. All three pass the House and both senate configurations. In a two-party system these are mutually exclusive party platforms; in a proportional congress they represent three separate majority coalitions forming around the same vote schedule.
+Thirty-two of the 37 bills produce the same outcome in all four scenarios. The five that differ are driven entirely by presidential signature, not by senate composition.
 
-**Immigration** — The congress grants legal status to long-term undocumented immigrants (PASS), passes permanent DACA pathway for Dreamers (PASS), increases border patrols (PASS), and denies asylum for illegal border crossings (PASS). The DACA and legal-status majorities are led by SD, STY, CTR, and CON/SD-type senators; the asylum-denial and border-enforcement majorities include CON, REF, NAT, and the CON-dominant blends. Different majorities, same congress, same session.
+### What Passes in All Four Scenarios
 
-**Environment** — EPA authority to regulate CO2 (PASS), 20% renewable electricity requirement (PASS), strengthening the Clean Air and Water Act even at some job cost (PASS), increasing fossil fuel production (PASS), and preventing the government from banning gas stoves (PASS) all clear both chambers. The renewable mandate and the gas stove protection pass through entirely different party coalitions — and both pass.
+**Taxes** — The congress simultaneously extends the 2017 tax cuts, raises the corporate rate from 21% to 28%, and allows top-bracket rates on incomes over $400k to rise to 35%. All three pass the House and all four senate configurations. In a two-party system these are mutually exclusive party platforms; in a proportional congress they represent three separate majority coalitions forming around the same vote schedule.
 
-**Police & Public Safety** — A 10% increase in police funding passes; a 10% cut fails. Mental health and school safety spending also passes. The assault rifle ban passes. Universal background check requirement passes with near-certainty (near-100% probability). Easier concealed carry permits fail.
+**Immigration** — Legal status for long-term undocumented immigrants (PASS all scenarios), permanent DACA pathway for Dreamers (PASS all scenarios), and increased border patrols (PASS all scenarios) all pass both chambers and are signed by both presidents. Denying asylum at the border passes both chambers in all scenarios but is signed only by CON/SD — STY vetoes it (see presidential split below).
 
-**Healthcare** — Medicaid expansion passes. ACA repeal fails clearly — the CON/SD president would veto it, and neither would the SD/CON Condorcet winner; it cannot pass both chambers in any case. Work requirements for able-bodied Medicaid recipients under 64 also pass — that majority is anchored by CON/CTR and CON/STY senate types who support Medicaid's existence but favor conditionality.
+**Environment** — EPA authority to regulate CO2 (PASS), 20% renewable electricity requirement (PASS), strengthening the Clean Air and Water Act even at some job cost (PASS), increasing fossil fuel production (PASS), and preventing the government from banning gas stoves (PASS) all clear both chambers under both presidents. The renewable mandate and the gas stove protection pass through entirely different party coalitions — and both pass.
 
-**Social Issues** — Federal recognition of same-sex and interracial marriages passes (66.1% global support). Congressional protection of abortion access passes; restrictions on abortion-inducing drugs by mail and interstate travel bans for abortion both fail. Preventing gender transition surgery for minors passes (60.1% global support, majority in all chambers). Parental consent requirements for school name/pronoun changes passes. Age verification for adult web content passes. School voucher subsidies pass.
+**Police & Public Safety** — The 10% police funding increase passes both chambers in all scenarios and is signed by CON/SD; STY vetoes it (see below). A 10% cut fails in all chambers. Mental health and school safety spending passes. The assault rifle ban passes. Universal background checks pass with near-certainty. Easier concealed carry fails.
 
-**Civil Liberties** — Conditional TikTok ban passes. Post-9/11 surveillance program renewal fails. Student loan forgiveness up to $20k passes.
+**Healthcare** — Medicaid expansion passes in all four scenarios. ACA repeal fails clearly — it cannot pass either chamber, and both presidents would veto it in any case. Work requirements for able-bodied Medicaid recipients pass both chambers in all scenarios but are signed only by CON/SD — STY vetoes them (see below).
 
-### What Fails
+**Social Issues** — Federal recognition of same-sex and interracial marriages passes (66.1% global support). Congressional protection of abortion access passes in all four scenarios; restrictions on abortion-inducing drugs by mail and interstate travel bans for abortion both fail in all four. Preventing gender transition surgery for minors passes (60.1% global support). Parental consent requirements for school name/pronoun changes passes. Age verification for adult web content passes. School voucher subsidies pass.
+
+**Civil Liberties** — The conditional TikTok ban passes both chambers in all scenarios but is signed only by CON/SD — STY vetoes it (see below). Post-9/11 surveillance renewal fails in all four scenarios. Affordable housing tax incentives pass in all four.
+
+### Where the President Decides (the Five Split Bills)
+
+These bills pass both chambers in all four scenarios. Whether they become law depends entirely on which president sits in the Oval Office.
+
+| Bill | CON/SD (mixed) | STY (pure) |
+|------|---------------|------------|
+| Deny asylum at the border | **Signs → Law** | Vetoes → Fails |
+| Increase police funding 10% | **Signs → Law** | Vetoes → Fails |
+| Medicaid work requirements | **Signs → Law** | Vetoes → Fails |
+| Conditional TikTok ban | **Signs → Law** | Vetoes → Fails |
+| Student loan forgiveness up to $20k | Vetoes → Fails | **Signs → Law** |
+
+The asymmetry is revealing. CON/SD signs four enforcement/conditionality bills and vetoes the redistributive one. STY signs the redistributive bill and vetoes all four enforcement measures. Both presidents sign everything else — the two governing coalitions are further apart on security and labor conditions than they are on taxes, immigration pathways, healthcare coverage, environment, or social issues.
+
+### What Fails in All Four Scenarios
 
 The items that fail share a common structure: they represent the maximum position of a single ideological bloc that cannot find coalition partners.
 
 - **Easier concealed carry** — fails in all chambers; even CON and NAT senators face gun-owning constituencies that support background checks
 - **Decrease police 10%** — no cross-party coalition reaches majority; DSA and PRG cannot build one alone
-- **Halt new oil/gas leases on federal lands** — the SD/LIB/PRG coalition is too small; CON and STY-dominant types cannot support it
-- **ACA repeal** — fails clearly; even REF and NAT senators represent constituents who rely on Medicaid, and both the CON/SD (IRV) and SD/CON (Condorcet) presidents would veto it
-- **Renew surveillance programs** — LIB, DSA, and PRG provide the opposition margin, and STY's institutional distrust reinforces it
-- **Prohibit abortion-inducing drugs by mail** — the majority willing to restrict abortion access cannot reach 50% even with CON and NAT support
-- **Restrict interstate abortion travel** — fails decisively; even CON senators will not restrict citizens' physical movement across state lines
+- **Halt new oil/gas leases on federal lands** — the SD/LIB/PRG coalition is too small; CON and STY-dominant types cannot support it (though STY would sign it if it passed)
+- **ACA repeal** — fails clearly in all chambers; even REF and NAT senators represent constituents who rely on Medicaid, and both presidents veto it
+- **Renew post-9/11 surveillance programs** — LIB, DSA, and PRG provide the opposition margin; STY's institutional distrust reinforces it; both presidents veto it
+- **Prohibit abortion-inducing drugs by mail** — the majority willing to restrict abortion access cannot reach 50% even with CON and NAT support; both presidents veto it
+- **Restrict interstate abortion travel** — fails decisively; even CON senators will not restrict citizens' physical movement across state lines; both presidents veto it
 
 ### The One Toss-Up
 
-Relaxing local zoning laws to allow more apartments and condos sits at almost exactly 50/50 across all three chamber configurations (global support: 50.2%). This is the rare item where the electorate is genuinely split rather than cross-pressured — urban SD and LIB types support it, rural CON and REF types oppose it, and the suburban swing types (CTR, CON/CTR) are evenly divided. Neither majority can hold.
+Relaxing local zoning laws to allow more apartments and condos sits at almost exactly 50/50 across all four scenarios (global support: 50.2%). This is the rare item where the electorate is genuinely split rather than cross-pressured — urban SD and LIB types support it, rural CON and REF types oppose it, and the suburban swing types (CTR, CON/CTR) are evenly divided. The CON/SD president would veto it; STY would sign it — but it never clears the senate to reach either desk.
 
 ---
 

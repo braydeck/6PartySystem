@@ -11,9 +11,12 @@ import { LegislationTab } from './tabs/LegislationTab';
 import primaryData from './data/primary.json';
 import primaryStateWinnersData from './data/primaryStateWinners.json';
 import presidentialElectionData from './data/presidentialElection.json';
+import presidentialElectionPureData from './data/presidentialElectionPure.json';
 import primarySankeyData from './data/primarySankey.json';
 import senateCondorcetData from './data/senateCondorcet.json';
 import senateIRVData from './data/senateIRV.json';
+import senateCondorcetPureData from './data/senateCondorcetPure.json';
+import senateIRVPureData from './data/senateIRVPure.json';
 import senateVoteModelData from './data/senateVoteModel.json';
 import houseSeatsData from './data/houseSeats.json';
 import houseVoteModelData from './data/houseVoteModel.json';
@@ -82,12 +85,17 @@ export default function App() {
           />
         )}
         {tab === 'presidential' && (
-          <PresidentialTab data={presidentialElectionData as unknown as PresidentialElection} />
+          <PresidentialTab
+            mixed={presidentialElectionData as unknown as PresidentialElection}
+            pure={presidentialElectionPureData as unknown as PresidentialElection}
+          />
         )}
         {tab === 'senate' && (
           <SenateTab
-            condorcet={senateCondorcetData as SenateSeat[]}
-            irv={senateIRVData as SenateSeat[]}
+            condorcetMixed={senateCondorcetData as SenateSeat[]}
+            irvMixed={senateIRVData as SenateSeat[]}
+            condorcetPure={senateCondorcetPureData as SenateSeat[]}
+            irvPure={senateIRVPureData as SenateSeat[]}
             voteModel={senateVoteModelData as VoteModelRow[]}
           />
         )}

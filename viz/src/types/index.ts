@@ -31,17 +31,35 @@ export interface SenateSeat {
   secondaryCluster: string;
 }
 
+export type SenateScenario = 'condMixed' | 'irvMixed' | 'condPure' | 'irvPure';
+export type PresidentialScenario = 'mixed' | 'pure';
+
 export interface VoteModelRow {
   variable: string;
   domain: string;
   question: string;
   overallPct: number;
+  // House (houseVoteModel.json)
+  probPass?: number;
+  verdict?: string;
+  // Mixed senate scenarios
+  condMixedProbPass?: number;
+  condMixedVerdict?: string;
+  irvMixedProbPass?: number;
+  irvMixedVerdict?: string;
+  // Pure senate scenarios
+  condPureProbPass?: number;
+  condPureVerdict?: string;
+  irvPureProbPass?: number;
+  irvPureVerdict?: string;
+  // Presidential sign
+  presMixedSigns?: string;
+  presPureSigns?: string;
+  // Legacy aliases (UnifiedBillTable in LegislationTab)
   condProbPass?: number;
   condVerdict?: string;
   irvProbPass?: number;
   irvVerdict?: string;
-  probPass?: number;
-  verdict?: string;
 }
 
 export interface HouseSeat {

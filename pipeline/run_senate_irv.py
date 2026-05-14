@@ -51,6 +51,12 @@ MAX_CANDIDATES       = 18
 STV_SURVIVORS        = 5
 MIN_RESPONDENTS      = 10
 
+# Positional scoring: candidates have positions in 5-D factor space, voters
+# score by Gaussian proximity to their own factor scores. See companion
+# documentation in run_senate_simulation.py:score_candidates.
+FACTOR_COLS      = ["FS_F1", "FS_F2", "FS_F3", "FS_F4", "FS_F5"]
+POSITIONAL_SIGMA = 1.5
+
 
 # ═════════════════════════════════════════════════════════════════════════════
 # 1 — Cluster centroid computation  (unchanged)
@@ -179,15 +185,21 @@ def generate_state_candidates(prob_matrix, weights, cluster_centroids):
 # 3 — Ballot generation  (unchanged)
 # ═════════════════════════════════════════════════════════════════════════════
 
-def score_candidates(prob_matrix, candidates):
-    N, M = len(prob_matrix), len(candidates)
-    scores = np.zeros((N, M), dtype=np.float64)
-    for j, c in enumerate(candidates):
-        s = c["w_primary"] * prob_matrix[:, c["primary_cluster"]]
-        if c["secondary_cluster"] is not None:
-            s = s + c["w_secondary"] * prob_matrix[:, c["secondary_cluster"]]
-        scores[:, j] = s
-    return scores
+def candidate_position(c, cluster_centroids):
+    p = c["primary_cluster"]
+    pos = c["w_primary"] * cluster_centroids[p]
+    s = c["secondary_cluster"]
+    if s is not None:
+        pos = pos + c["w_secondary"] * cluster_centroids[int(s)]
+    return pos
+
+
+def score_candidates(voter_factors, candidates, cluster_centroids, sigma=POSITIONAL_SIGMA):
+    """Gaussian proximity in 5-D factor space; see run_senate_simulation.py."""
+    cand_positions = np.stack([candidate_position(c, cluster_centroids) for c in candidates])
+    diff = voter_factors[:, None, :] - cand_positions[None, :, :]
+    dist_sq = (diff ** 2).sum(axis=2)
+    return np.exp(-dist_sq / (2.0 * sigma ** 2))
 
 
 def generate_state_ballots(scores, cand_codes, rng):
@@ -348,7 +360,7 @@ def irv_winner(ballots_arr: np.ndarray, weights: np.ndarray,
 # 6 — Per-state election runner  (IRV variant)
 # ═════════════════════════════════════════════════════════════════════════════
 
-def run_state_election(state_fips, prob_matrix, weights, cluster_centroids, rng):
+def run_state_election(state_fips, prob_matrix, voter_factors, weights, cluster_centroids, rng):
     state_abbr = FIPS_TO_ABBR.get(int(state_fips), f"FIPS{int(state_fips)}")
     N = len(prob_matrix)
     if N < MIN_RESPONDENTS:
@@ -362,7 +374,7 @@ def run_state_election(state_fips, prob_matrix, weights, cluster_centroids, rng)
     cand_names = {c["cand_code"]: c["cand_label"] for c in cands}
     M = len(cands)
 
-    scores  = score_candidates(prob_matrix, cands)
+    scores  = score_candidates(voter_factors, cands, cluster_centroids)
     ballots = generate_state_ballots(scores, cand_codes, rng)
 
     target = min(STV_SURVIVORS, M)
@@ -480,9 +492,10 @@ def main():
     efa      = pd.read_csv(EFA_SCORES_PATH)
     assert len(typology) == len(efa)
 
-    prob_matrix = typology[PROB_COLS].values.astype(np.float64)
-    inputstate  = efa["inputstate"].values.astype(int)
-    weights     = efa["commonpostweight"].values.astype(np.float64)
+    prob_matrix   = typology[PROB_COLS].values.astype(np.float64)
+    voter_factors = efa[FACTOR_COLS].values.astype(np.float64)
+    inputstate    = efa["inputstate"].values.astype(int)
+    weights       = efa["commonpostweight"].values.astype(np.float64)
 
     print("Computing cluster centroids…")
     cluster_centroids = compute_cluster_centroids(efa, typology)
@@ -499,12 +512,13 @@ def main():
     all_composition = []
 
     for state_fips in run_states:
-        mask          = inputstate == state_fips
-        state_probs   = prob_matrix[mask]
-        state_weights = weights[mask]
+        mask           = inputstate == state_fips
+        state_probs    = prob_matrix[mask]
+        state_factors  = voter_factors[mask]
+        state_weights  = weights[mask]
 
         result = run_state_election(
-            state_fips, state_probs, state_weights, cluster_centroids, rng
+            state_fips, state_probs, state_factors, state_weights, cluster_centroids, rng
         )
 
         abbr = FIPS_TO_ABBR.get(int(state_fips), f"FIPS{state_fips}")

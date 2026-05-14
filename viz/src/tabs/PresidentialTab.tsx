@@ -1,4 +1,5 @@
-import type { PresidentialElection } from '../types';
+import { useState } from 'react';
+import type { PresidentialElection, PresidentialScenario } from '../types';
 import { PresidentialMap } from '../components/presidential/PresidentialMap';
 import { CondorcetTable } from '../components/presidential/CondorcetTable';
 import { IRVRoundsChart } from '../components/presidential/IRVRoundsChart';
@@ -6,18 +7,43 @@ import { IRVSankey } from '../components/presidential/IRVSankey';
 import { getBlendColor } from '../constants/parties';
 
 interface Props {
-  data: PresidentialElection;
+  mixed: PresidentialElection;
+  pure:  PresidentialElection;
 }
 
-export function PresidentialTab({ data }: Props) {
+const PRES_LABELS: Record<PresidentialScenario, string> = {
+  mixed: 'Mixed (CON/SD)',
+  pure:  'Pure (STY)',
+};
+
+export function PresidentialTab({ mixed, pure }: Props) {
+  const [scenario, setScenario] = useState<PresidentialScenario>('mixed');
+  const data = scenario === 'mixed' ? mixed : pure;
+
   return (
     <div className="space-y-8">
       <div>
         <h2 className="text-2xl font-bold text-white mb-1">2028 Presidential Election</h2>
         <p className="text-slate-400 text-sm">
-          General election results using IRV and Condorcet methods. The Condorcet winner beats every
-          other candidate head-to-head; the IRV winner emerges through successive elimination rounds.
+          General election results using IRV and Condorcet methods. Mixed scenario includes blended
+          coalition candidates; pure scenario uses only the 9 core party types.
         </p>
+      </div>
+
+      <div className="flex flex-wrap gap-2">
+        {(Object.keys(PRES_LABELS) as PresidentialScenario[]).map(s => (
+          <button
+            key={s}
+            onClick={() => setScenario(s)}
+            className={`px-4 py-1.5 rounded text-sm font-medium transition-colors ${
+              scenario === s
+                ? 'bg-teal-600 text-white'
+                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+            }`}
+          >
+            {PRES_LABELS[s]}
+          </button>
+        ))}
       </div>
 
       <div className="grid md:grid-cols-2 gap-4">

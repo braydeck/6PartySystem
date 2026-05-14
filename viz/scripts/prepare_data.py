@@ -7,7 +7,9 @@ import os
 from pathlib import Path
 from collections import defaultdict
 
-OUTPUTS = Path(__file__).parent.parent.parent / "data" / "outputs"
+OUTPUTS  = Path(__file__).parent.parent.parent / "data" / "outputs"
+PURE_DIR = OUTPUTS / "pure_only"
+RESULTS  = Path(__file__).parent.parent.parent / "results"
 DATA_OUT = Path(__file__).parent.parent / "src" / "data"
 DATA_OUT.mkdir(parents=True, exist_ok=True)
 
@@ -148,45 +150,53 @@ def build_primary_state_winners():
 
 
 # ---------- senate*.json ----------
+def _extract_senate_condorcet(rows):
+    out = []
+    for r in rows:
+        out.append({
+            "stateFips": r["state_fips"].zfill(2),
+            "stateAbbr": r["state_abbr"],
+            "senatorCode": r.get("senator_code", ""),
+            "senatorLabel": r.get("senator_label", ""),
+            "senatorType": r.get("senator_type", ""),
+            "primaryCluster": r.get("primary_cluster", ""),
+            "secondaryCluster": r.get("secondary_cluster", ""),
+        })
+    return out
+
+
+def _extract_senate_irv(rows):
+    out = []
+    for r in rows:
+        out.append({
+            "stateFips": r["state_fips"].zfill(2),
+            "stateAbbr": r["state_abbr"],
+            "senatorCode": r.get("winner_code", ""),
+            "senatorLabel": r.get("winner_label", ""),
+            "senatorType": r.get("winner_type", ""),
+            "primaryCluster": r.get("winner_primary_cluster", ""),
+            "secondaryCluster": r.get("winner_secondary_cluster", ""),
+        })
+    return out
+
+
 def build_senate():
     cond_rows = read_csv(OUTPUTS / "senate" / "senate_composition.csv")
-    irv_rows = read_csv(OUTPUTS / "senate" / "senate_irv_composition.csv")
+    irv_rows  = read_csv(OUTPUTS / "senate" / "senate_irv_composition.csv")
+    write_json(_extract_senate_condorcet(cond_rows), "senateCondorcet.json")
+    write_json(_extract_senate_irv(irv_rows), "senateIRV.json")
 
-    def extract(rows):
-        out = []
-        for r in rows:
-            out.append({
-                "stateFips": r["state_fips"].zfill(2),
-                "stateAbbr": r["state_abbr"],
-                "senatorCode": r.get("senator_code", ""),
-                "senatorLabel": r.get("senator_label", ""),
-                "senatorType": r.get("senator_type", ""),
-                "primaryCluster": r.get("primary_cluster", ""),
-                "secondaryCluster": r.get("secondary_cluster", ""),
-            })
-        return out
 
-    def extract_irv(rows):
-        out = []
-        for r in rows:
-            out.append({
-                "stateFips": r["state_fips"].zfill(2),
-                "stateAbbr": r["state_abbr"],
-                "senatorCode": r.get("winner_code", ""),
-                "senatorLabel": r.get("winner_label", ""),
-                "senatorType": r.get("winner_type", ""),
-                "primaryCluster": r.get("winner_primary_cluster", ""),
-                "secondaryCluster": r.get("winner_secondary_cluster", ""),
-            })
-        return out
-
-    write_json(extract(cond_rows), "senateCondorcet.json")
-    write_json(extract_irv(irv_rows), "senateIRV.json")
+def build_senate_pure():
+    cond_rows = read_csv(PURE_DIR / "senate" / "senate_composition.csv")
+    irv_rows  = read_csv(PURE_DIR / "senate" / "senate_irv_composition.csv")
+    write_json(_extract_senate_condorcet(cond_rows), "senateCondorcetPure.json")
+    write_json(_extract_senate_irv(irv_rows), "senateIRVPure.json")
 
 
 # ---------- senateVoteModel.json ----------
 def build_senate_vote_model():
-    rows = read_csv(OUTPUTS / "senate" / "senate_vote_model.csv")
+    rows = read_csv(RESULTS / "vote_model.csv")
     out = []
     for r in rows:
         out.append({
@@ -194,10 +204,24 @@ def build_senate_vote_model():
             "domain": r["domain"],
             "question": r["question"],
             "overallPct": float(r["overall_pct"]),
-            "condProbPass": float(r["cond_prob_pass"]),
-            "condVerdict": r["cond_verdict"],
-            "irvProbPass": float(r["irv_prob_pass"]),
-            "irvVerdict": r["irv_verdict"],
+            # Mixed senate scenarios (new keys + legacy aliases for UnifiedBillTable)
+            "condMixedProbPass": float(r["senate_cond_prob_pass"]),
+            "condMixedVerdict": r["senate_cond_verdict"],
+            "irvMixedProbPass": float(r["senate_irv_prob_pass"]),
+            "irvMixedVerdict": r["senate_irv_verdict"],
+            # Legacy aliases (UnifiedBillTable reads these)
+            "condProbPass": float(r["senate_cond_prob_pass"]),
+            "condVerdict": r["senate_cond_verdict"],
+            "irvProbPass": float(r["senate_irv_prob_pass"]),
+            "irvVerdict": r["senate_irv_verdict"],
+            # Pure senate scenarios (new)
+            "condPureProbPass": float(r["senate_cond_pure_prob_pass"]),
+            "condPureVerdict": r["senate_cond_pure_verdict"],
+            "irvPureProbPass": float(r["senate_irv_pure_prob_pass"]),
+            "irvPureVerdict": r["senate_irv_pure_verdict"],
+            # Presidential sign (new)
+            "presMixedSigns": r["pres_mixed_signs"],
+            "presPureSigns": r["pres_pure_signs"],
         })
     write_json(out, "senateVoteModel.json")
 
@@ -668,6 +692,95 @@ def build_presidential_election():
     }, "presidentialElection.json")
 
 
+# ---------- presidentialElectionPure.json ----------
+def build_presidential_election_pure():
+    # IRV national rounds
+    irv_rows = read_csv(PURE_DIR / "irv" / "irv_presidential_national_2028.csv")
+    rounds_by_num = defaultdict(list)
+    for r in irv_rows:
+        rounds_by_num[int(r["round"])].append(r)
+
+    irv_rounds = []
+    irv_winner = None
+    for rnum in sorted(rounds_by_num.keys()):
+        candidates = []
+        for r in rounds_by_num[rnum]:
+            code = normalize_candidate_code(r["candidate_code"])
+            eliminated = r["eliminated"].strip().lower() == "true"
+            winner = r["winner"].strip().lower() == "true"
+            if winner and not eliminated:
+                irv_winner = code
+            candidates.append({
+                "code": code,
+                "name": normalize_candidate_code(r["candidate_name"]),
+                "pct": round(float(r["vote_pct"]), 2),
+                "votes": round(float(r["vote_total"]), 0),
+                "eliminated": eliminated,
+                "winner": winner,
+            })
+        irv_rounds.append({"round": rnum, "candidates": candidates})
+
+    # Condorcet matchups from pure primary_diagnostics
+    diag_rows = read_csv(PURE_DIR / "primary_diagnostics_2028.csv")
+    condorcet_matchups = []
+    condorcet_winner = None
+    for r in diag_rows:
+        if r.get("diagnostic") != "condorcet":
+            continue
+        a = normalize_candidate_code(r["candidate_a"])
+        b = normalize_candidate_code(r["candidate_b"])
+        votes_a = float(r["votes_a_beats_b"])
+        votes_b = float(r["votes_b_beats_a"])
+        total = votes_a + votes_b
+        a_wins_pct = round(votes_a / total * 100, 3) if total > 0 else 50.0
+        winner = normalize_candidate_code(r["winner"])
+        margin_pct = round(float(r["margin_pct"]), 3)
+        condorcet_matchups.append({
+            "candidateA": a,
+            "candidateB": b,
+            "aWinsPct": a_wins_pct,
+            "margin": margin_pct,
+            "winner": winner,
+        })
+        if r.get("rp_winner_overall"):
+            condorcet_winner = normalize_candidate_code(r["rp_winner_overall"])
+
+    # State winners + shares
+    state_rows = read_csv(PURE_DIR / "irv" / "irv_presidential_states_2028.csv")
+    pod_rows = read_csv(OUTPUTS / "state_pod_assignments.csv")
+    pod_by_fips = {r["state_fips"].zfill(2): r["pod"] for r in pod_rows}
+
+    irv_state_winners = {}
+    for r in state_rows:
+        fips = r["state_fips"].zfill(2)
+        winner = normalize_candidate_code(r["winner_code"])
+        r1_cols = [k for k in r.keys() if k.startswith("r1_pct_")]
+        raw_shares = {}
+        for col in r1_cols:
+            raw_code = col.replace("r1_pct_", "")
+            code = normalize_candidate_code(raw_code)
+            val = float(r.get(col) or 0)
+            if val > 0:
+                raw_shares[code] = raw_shares.get(code, 0) + val
+        total = sum(raw_shares.values())
+        shares = {k: round(v / total, 4) for k, v in raw_shares.items()} if total > 0 else {}
+        irv_state_winners[fips] = {
+            "stateAbbr": r["state_abbr"],
+            "winner": winner,
+            "pod": pod_by_fips.get(fips, "D"),
+            "nRespondents": int(r["n_respondents"]),
+            "shares": shares,
+        }
+
+    write_json({
+        "irvRounds": irv_rounds,
+        "irvWinner": irv_winner,
+        "condorcetMatchups": condorcet_matchups,
+        "condorcetWinner": condorcet_winner,
+        "irvStateWinners": irv_state_winners,
+    }, "presidentialElectionPure.json")
+
+
 # ---------- primaryTransfers.json ----------
 def build_primary_transfers():
     diag_rows = read_csv(OUTPUTS / "primary_diagnostics_2028.csv")
@@ -830,9 +943,11 @@ if __name__ == "__main__":
     build_primary()
     build_primary_state_winners()
     build_presidential_election()
+    build_presidential_election_pure()
     build_primary_transfers()
     build_primary_sankey()
     build_senate()
+    build_senate_pure()
     build_senate_vote_model()
     build_house_seats()
     build_house_vote_model()

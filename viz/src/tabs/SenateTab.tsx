@@ -1,16 +1,25 @@
-import type { SenateSeat, VoteModelRow } from '../types';
+import { useState } from 'react';
+import type { SenateSeat, VoteModelRow, SenateScenario } from '../types';
 import { SenateMap } from '../components/senate/SenateMap';
 import { VoteModelTable } from '../components/senate/VoteModelTable';
 import { getBlendColor } from '../constants/parties';
 
 interface Props {
-  condorcet: SenateSeat[];
-  irv: SenateSeat[];
-  voteModel: VoteModelRow[];
+  condorcetMixed: SenateSeat[];
+  irvMixed:       SenateSeat[];
+  condorcetPure:  SenateSeat[];
+  irvPure:        SenateSeat[];
+  voteModel:      VoteModelRow[];
 }
 
+const SCENARIO_LABELS: Record<SenateScenario, string> = {
+  condMixed: 'Mixed · Condorcet',
+  irvMixed:  'Mixed · IRV',
+  condPure:  'Pure · Condorcet',
+  irvPure:   'Pure · IRV',
+};
+
 function SeatSummary({ seats, label }: { seats: SenateSeat[]; label: string }) {
-  // Count by full senator_code (preserve blended identities)
   const counts: Record<string, number> = {};
   for (const s of seats) {
     counts[s.senatorCode] = (counts[s.senatorCode] ?? 0) + 1;
@@ -39,25 +48,48 @@ function SeatSummary({ seats, label }: { seats: SenateSeat[]; label: string }) {
   );
 }
 
-export function SenateTab({ condorcet, irv, voteModel }: Props) {
+export function SenateTab({ condorcetMixed, irvMixed, condorcetPure, irvPure, voteModel }: Props) {
+  const [scenario, setScenario] = useState<SenateScenario>('condMixed');
+
+  const SEAT_MAP: Record<SenateScenario, SenateSeat[]> = {
+    condMixed: condorcetMixed,
+    irvMixed,
+    condPure:  condorcetPure,
+    irvPure,
+  };
+  const activeSeats = SEAT_MAP[scenario];
+
   return (
     <div className="space-y-8">
       <div>
         <h2 className="text-2xl font-bold text-white mb-1">Senate</h2>
         <p className="text-slate-400 text-sm">
-          State-level senate simulation. Most senators are blended — they bridge two parties
-          to win over cross-coalition voters. Condorcet selects the candidate who beats all
-          others head-to-head; IRV uses instant runoff elimination.
+          State-level senate simulation. Mixed scenarios include blended coalition candidates;
+          pure scenarios use only the 9 core party types. Condorcet selects the head-to-head
+          winner; IRV uses instant runoff elimination.
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-4">
-        <SeatSummary seats={condorcet} label="Condorcet" />
-        <SeatSummary seats={irv} label="IRV" />
+      <div className="flex flex-wrap gap-2">
+        {(Object.keys(SCENARIO_LABELS) as SenateScenario[]).map(s => (
+          <button
+            key={s}
+            onClick={() => setScenario(s)}
+            className={`px-4 py-1.5 rounded text-sm font-medium transition-colors ${
+              scenario === s
+                ? 'bg-teal-600 text-white'
+                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+            }`}
+          >
+            {SCENARIO_LABELS[s]}
+          </button>
+        ))}
       </div>
 
+      <SeatSummary seats={activeSeats} label={SCENARIO_LABELS[scenario]} />
+
       <div className="bg-slate-800/50 rounded-xl p-4">
-        <SenateMap condorcet={condorcet} irv={irv} />
+        <SenateMap seats={activeSeats} />
       </div>
 
       <div className="bg-slate-800/50 rounded-xl p-4">
@@ -65,9 +97,9 @@ export function SenateTab({ condorcet, irv, voteModel }: Props) {
           Senate Vote Model — 37 Bills
         </h3>
         <p className="text-xs text-slate-500 mb-4">
-          Highlighted rows show bills where Condorcet and IRV chambers would vote differently.
+          Highlighted rows show bills the senate passes but the president vetoes.
         </p>
-        <VoteModelTable rows={voteModel} />
+        <VoteModelTable rows={voteModel} scenario={scenario} />
       </div>
     </div>
   );

@@ -77,20 +77,48 @@ CAND_CODES    = [c["code"] for c in CANDIDATES]
 CAND_IDX      = {c["code"]: i for i, c in enumerate(CANDIDATES)}
 
 
-def compute_candidate_scores(prob_matrix: np.ndarray) -> np.ndarray:
+FACTOR_COLS      = ["FS_F1", "FS_F2", "FS_F3", "FS_F4", "FS_F5"]
+POSITIONAL_SIGMA = 1.5
+
+
+def compute_cluster_centroids(efa_df: pd.DataFrame, typology_df: pd.DataFrame) -> np.ndarray:
+    """Weighted mean of FS_F1–FS_F5 per cluster (0–9). Returns (10, 5)."""
+    weights  = efa_df["commonpostweight"].values
+    clusters = typology_df["cluster"].values.astype(int)
+    centroids = np.zeros((10, 5), dtype=np.float64)
+    for k in range(10):
+        mask = clusters == k
+        w_k  = weights[mask]
+        if w_k.sum() > 0:
+            for f, col in enumerate(FACTOR_COLS):
+                centroids[k, f] = np.average(efa_df[col].values[mask], weights=w_k)
+    return centroids
+
+
+def candidate_position(cand: dict, cluster_centroids: np.ndarray) -> np.ndarray:
+    """Candidate's location in 5-D factor space (weighted blend of centroids)."""
+    pos = cand["w_primary"] * cluster_centroids[cand["primary"]]
+    if cand["secondary"] is not None:
+        pos = pos + cand["w_secondary"] * cluster_centroids[int(cand["secondary"])]
+    return pos
+
+
+def compute_candidate_scores(voter_factors: np.ndarray,
+                              cluster_centroids: np.ndarray,
+                              sigma: float = POSITIONAL_SIGMA) -> np.ndarray:
+    """Gaussian proximity in 5-D factor space.
+
+    score[i, j] = exp(-‖voter_factors[i] - cand_position[j]‖² / (2 σ²))
+
+    Replaces cluster-membership scoring (w_p·p_primary + w_s·p_secondary).
+    See run_senate_simulation.py for design discussion — pure candidates no
+    longer get a 1.0 multiplier on their own cluster, so coalition candidates
+    can compete for first-preference votes on actual factor-space proximity.
     """
-    Build (N, 18) score matrix.
-    score[i, j] = w_primary[j] * prob[primary[j]][i]
-                + w_secondary[j] * prob[secondary[j]][i]
-    """
-    N = len(prob_matrix)
-    scores = np.zeros((N, N_CANDIDATES), dtype=np.float64)
-    for j, cand in enumerate(CANDIDATES):
-        s = cand["w_primary"] * prob_matrix[:, cand["primary"]]
-        if cand["secondary"] is not None:
-            s = s + cand["w_secondary"] * prob_matrix[:, cand["secondary"]]
-        scores[:, j] = s
-    return scores
+    cand_positions = np.stack([candidate_position(c, cluster_centroids) for c in CANDIDATES])
+    diff = voter_factors[:, None, :] - cand_positions[None, :, :]
+    dist_sq = (diff ** 2).sum(axis=2)
+    return np.exp(-dist_sq / (2.0 * sigma ** 2))
 
 
 def generate_ballots(scores: np.ndarray, rng: np.random.Generator) -> np.ndarray:
@@ -178,18 +206,23 @@ def main():
     )
     N = len(typology)
 
-    prob_matrix = typology[PROB_COLS].values.astype(np.float64)
-    inputstate  = efa["inputstate"].values
-    weights     = efa["commonpostweight"].values
+    prob_matrix   = typology[PROB_COLS].values.astype(np.float64)
+    voter_factors = efa[FACTOR_COLS].values.astype(np.float64)
+    inputstate    = efa["inputstate"].values
+    weights       = efa["commonpostweight"].values
 
     # ── Check for Puerto Rico ──────────────────────────────────────────────────
     unique_states = sorted(np.unique(inputstate))
     pr_count = int((inputstate == 72).sum()) if 72 in unique_states else 0
     print(f"\n  States found: {len(unique_states)}  |  PR (FIPS 72) respondents: {pr_count}")
 
-    # ── Candidate scores ───────────────────────────────────────────────────────
-    print("\nComputing candidate scores…")
-    scores = compute_candidate_scores(prob_matrix)
+    # ── Cluster centroids in 5-D factor space ─────────────────────────────────
+    print("\nComputing cluster centroids…")
+    cluster_centroids = compute_cluster_centroids(efa, typology)
+
+    # ── Candidate scores (positional / Gaussian proximity) ────────────────────
+    print(f"\nComputing candidate scores (positional, σ={POSITIONAL_SIGMA})…")
+    scores = compute_candidate_scores(voter_factors, cluster_centroids)
     print(f"  scores matrix shape: {scores.shape}  min={scores.min():.4f}  max={scores.max():.4f}")
 
     # ── Plackett-Luce ballots ──────────────────────────────────────────────────

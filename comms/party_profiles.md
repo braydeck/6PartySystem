@@ -687,17 +687,17 @@ Thirty-two of the 37 bills produce the same outcome across all four scenarios. T
 
 ### Where the President Decides (the Five Split Bills)
 
-These bills pass both chambers in all four scenarios. Whether they become law depends entirely on which president sits in the Oval Office. The mixed column uses CON/SD as reference; SD/CON would govern nearly identically but the starred bills (★) represent positions where an SD-leading president might plausibly diverge.
+These bills pass both chambers in all four scenarios. Whether they become law depends on which president signs them. The model ran one mixed-pipeline presidential reference (CON/SD); the SD/CON column below is an inference from the mixed-electorate support percentages and the candidates' factor profiles — not modeled directly.
 
-| Bill | CON/SD ref (mixed) | STY (pure) |
-|------|-------------------|------------|
-| Deny asylum at the border | **Signs → Law** | Vetoes → Fails |
-| Increase police funding 10% | **Signs → Law** ★ | Vetoes → Fails |
-| Medicaid work requirements | **Signs → Law** ★ | Vetoes → Fails |
-| Conditional TikTok ban | **Signs → Law** ★ | Vetoes → Fails |
-| Student loan forgiveness up to $20k | Vetoes → Fails ★ | **Signs → Law** |
+| Bill | Mixed support | CON/SD (mixed IRV) | SD/CON (mixed Condorcet) | STY (pure) |
+|------|:-------------:|--------------------|--------------------------|------------|
+| Deny asylum at the border | 72.9% | **Signs → Law** | Likely signs → Law | Vetoes → Fails |
+| Increase police funding 10% | 69.3% | **Signs → Law** | Likely signs → Law | Vetoes → Fails |
+| Conditional TikTok ban | 60.6% | **Signs → Law** | Likely signs → Law | Vetoes → Fails |
+| Medicaid work requirements | 58.4% | **Signs → Law** | Likely vetoes → Fails | Vetoes → Fails |
+| Student loan forgiveness $20k | 49.7% | Vetoes → Fails | Likely signs → Law | **Signs → Law** |
 
-The asymmetry is revealing. CON/SD signs four enforcement/conditionality bills and vetoes the redistributive one. STY signs the redistributive bill and vetoes all four enforcement measures. The starred bills are where an SD/CON president's center-left identity might flip the outcome — but the model does not resolve this, and the policy distance between the two mixed presidents is small enough that the chamber majorities would likely hold in any case.
+Asylum denial and police funding have enough cross-party support (69–73%) that even an SD-leading president would sign; the CON/SD vs. SD/CON distinction is unlikely to matter there. Work requirements (58.4%) and student loans (49.7%) sit close enough to each SD president's identity threshold to plausibly flip. If those inferences hold, SD/CON produces a notably different legislative record from CON/SD on the two bills that most directly define the center-left economic agenda — and STY vetoes all four enforcement measures regardless.
 
 ### What Fails in All Four Scenarios
 

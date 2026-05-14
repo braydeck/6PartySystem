@@ -653,13 +653,21 @@ States where IRV and Condorcet agree are shown in plain text. The 13 states wher
 
 ## Legislative Outlook
 
-The vote simulation models 37 binary policy items across all four scenarios (mixed/pure × Condorcet/IRV). Within each pipeline, IRV and Condorcet produce identical legislative outcomes — the senate compositions are similar enough that every majority holds under both counting methods. The dividing line is not Condorcet vs. IRV; it is **mixed vs. pure**, which produce different presidents who diverge on exactly five bills.
+The vote simulation models 37 binary policy items across all four scenarios (mixed/pure × Condorcet/IRV). Senate composition alone does not determine what becomes law — the president's signature is decisive on five bills, and the two pipelines elect different presidents.
 
-**Mixed pipeline (CON/SD president):** Signs border enforcement, police expansion, Medicaid work requirements, and the TikTok ban. Vetoes student loan forgiveness. Governs center-right on security with a cross-aisle accommodation on immigration pathways, infrastructure, and healthcare preservation.
+**Four distinct presidents across the scenarios:**
+- Mixed IRV → **CON/SD** (Conservative/Social Democrat; IRV accumulates CON first-choice votes)
+- Mixed Condorcet → **SD/CON** (Social Democrat/Conservative; wins more head-to-head matchups)
+- Pure Condorcet → **STY** (Solidarity; spatial median of the nine-party field)
+- Pure IRV → **STY** (same result under both methods in the pure scenario)
 
-**Pure-party pipeline (STY president):** Signs student loan forgiveness, legal status for undocumented immigrants, and the full progressive economic package. Vetoes asylum denial at the border, the police funding increase, Medicaid work requirements, and the TikTok ban. Governs center-left, anchored by the working-class multi-racial coalition that dominates the pure-party senate.
+CON/SD and SD/CON are different candidates from different parties, though their factor profiles are nearly identical — both sit at the genuine cross-aisle centroid, separated by less than 0.1 on every dimension. The vote model uses **CON/SD as the presidential reference for both mixed scenarios**, since the two would likely govern indistinguishably on most legislation; a full separation would require running separate bill-signing models for each. Bills where a CON-leaning vs. SD-leaning instinct might plausibly diverge are flagged below.
 
-Thirty-two of the 37 bills produce the same outcome in all four scenarios. The five that differ are driven entirely by presidential signature, not by senate composition.
+**Mixed pipeline president (CON/SD as reference):** Signs border enforcement, police expansion, Medicaid work requirements, and the TikTok ban. Vetoes student loan forgiveness. Governs center-right on security with cross-aisle accommodation on immigration pathways, infrastructure, and healthcare preservation. An SD/CON president would likely sign the same set, though the work requirements and TikTok ban represent the margin calls most likely to flip under an SD-leading identity.
+
+**Pure-party pipeline president (STY):** Signs student loan forgiveness, legal status for undocumented immigrants, and the full progressive economic package. Vetoes asylum denial at the border, the police funding increase, Medicaid work requirements, and the TikTok ban. Governs center-left, anchored by the working-class multi-racial coalition that dominates the pure-party senate.
+
+Thirty-two of the 37 bills produce the same outcome across all four scenarios. The five that differ are driven entirely by the presidential signature difference between the mixed and pure pipelines, not by senate composition — senate verdicts are identical within each pipeline regardless of counting method.
 
 ### What Passes in All Four Scenarios
 
@@ -679,17 +687,17 @@ Thirty-two of the 37 bills produce the same outcome in all four scenarios. The f
 
 ### Where the President Decides (the Five Split Bills)
 
-These bills pass both chambers in all four scenarios. Whether they become law depends entirely on which president sits in the Oval Office.
+These bills pass both chambers in all four scenarios. Whether they become law depends entirely on which president sits in the Oval Office. The mixed column uses CON/SD as reference; SD/CON would govern nearly identically but the starred bills (★) represent positions where an SD-leading president might plausibly diverge.
 
-| Bill | CON/SD (mixed) | STY (pure) |
-|------|---------------|------------|
+| Bill | CON/SD ref (mixed) | STY (pure) |
+|------|-------------------|------------|
 | Deny asylum at the border | **Signs → Law** | Vetoes → Fails |
-| Increase police funding 10% | **Signs → Law** | Vetoes → Fails |
-| Medicaid work requirements | **Signs → Law** | Vetoes → Fails |
-| Conditional TikTok ban | **Signs → Law** | Vetoes → Fails |
-| Student loan forgiveness up to $20k | Vetoes → Fails | **Signs → Law** |
+| Increase police funding 10% | **Signs → Law** ★ | Vetoes → Fails |
+| Medicaid work requirements | **Signs → Law** ★ | Vetoes → Fails |
+| Conditional TikTok ban | **Signs → Law** ★ | Vetoes → Fails |
+| Student loan forgiveness up to $20k | Vetoes → Fails ★ | **Signs → Law** |
 
-The asymmetry is revealing. CON/SD signs four enforcement/conditionality bills and vetoes the redistributive one. STY signs the redistributive bill and vetoes all four enforcement measures. Both presidents sign everything else — the two governing coalitions are further apart on security and labor conditions than they are on taxes, immigration pathways, healthcare coverage, environment, or social issues.
+The asymmetry is revealing. CON/SD signs four enforcement/conditionality bills and vetoes the redistributive one. STY signs the redistributive bill and vetoes all four enforcement measures. The starred bills are where an SD/CON president's center-left identity might flip the outcome — but the model does not resolve this, and the policy distance between the two mixed presidents is small enough that the chamber majorities would likely hold in any case.
 
 ### What Fails in All Four Scenarios
 

@@ -24,7 +24,7 @@ export function IRVRoundsChart({ rounds, irvWinner }: Props) {
             className={`px-3 py-1.5 rounded text-xs font-medium transition-colors ${
               selectedRound === i
                 ? 'bg-amber-600 text-white'
-                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
             }`}
           >
             Round {r.round}
@@ -48,8 +48,8 @@ export function IRVRoundsChart({ rounds, irvWinner }: Props) {
           <ReferenceLine x={50} stroke="#f59e0b" strokeDasharray="4 2" strokeWidth={1.5} label={{ value: '50%', position: 'right', fill: '#f59e0b', fontSize: 10 }} />
           <Tooltip
             formatter={(value) => [`${Number(value).toFixed(2)}%`, 'Vote share']}
-            contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #334155', borderRadius: 6, fontSize: 12 }}
-            labelStyle={{ color: '#e2e8f0' }}
+            contentStyle={{ backgroundColor: '#ffffff', border: '1px solid #e2e8f0', borderRadius: 6, fontSize: 12 }}
+            labelStyle={{ color: '#0f172a' }}
           />
           <Bar dataKey="pct" radius={[0, 3, 3, 0]}>
             {data.map((entry, i) => (
@@ -63,7 +63,7 @@ export function IRVRoundsChart({ rounds, irvWinner }: Props) {
         </BarChart>
       </ResponsiveContainer>
 
-      <p className="text-xs text-slate-600 mt-2 text-center">
+      <p className="text-xs text-slate-500 mt-2 text-center">
         Yellow line = 50% threshold. Gray bars = eliminated candidates.
       </p>
     </div>

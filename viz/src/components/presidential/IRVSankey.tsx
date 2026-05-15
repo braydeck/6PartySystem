@@ -213,7 +213,7 @@ export function IRVSankey({ rounds, irvWinner }: Props) {
       <div className="relative">
         {tooltip && (
           <div
-            className="absolute z-10 bg-slate-800 border border-slate-600 rounded px-3 py-2 text-xs pointer-events-none"
+            className="absolute z-10 bg-white border border-slate-300 rounded px-3 py-2 text-xs pointer-events-none text-slate-700 shadow-sm"
             style={{ left: tooltip.x + 12, top: tooltip.y - 8, maxWidth: 220 }}
           >
             {tooltip.text}
@@ -221,7 +221,7 @@ export function IRVSankey({ rounds, irvWinner }: Props) {
         )}
         <svg ref={svgRef} className="w-full" style={{ height: 280 }} />
       </div>
-      <p className="text-xs text-slate-600 mt-1 text-center">
+      <p className="text-xs text-slate-500 mt-1 text-center">
         Carry-forward votes flow straight across. Eliminated candidates&apos; votes fan out to remaining candidates.
       </p>
     </div>

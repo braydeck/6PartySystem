@@ -18,7 +18,7 @@ export function SenateMap({ seats }: Props) {
     <div>
       <div className="relative">
         {tooltip && (
-          <div className="absolute top-2 left-2 bg-slate-800 border border-slate-600 rounded px-3 py-2 text-sm z-10 pointer-events-none max-w-xs">
+          <div className="absolute top-2 left-2 bg-white border border-slate-300 rounded px-3 py-2 text-sm text-slate-900 z-10 pointer-events-none max-w-xs shadow-sm">
             {tooltip}
           </div>
         )}
@@ -30,14 +30,14 @@ export function SenateMap({ seats }: Props) {
                 const seat = seatByFips[fips];
                 const fill = seat
                   ? getBlendColor(seat.senatorCode) + 'cc'
-                  : '#1e293b';
+                  : '#e2e8f0';
 
                 return (
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
                     fill={fill}
-                    stroke="#334155"
+                    stroke="#cbd5e1"
                     strokeWidth={1}
                     style={{
                       default: { outline: 'none' },

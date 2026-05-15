@@ -52,9 +52,13 @@ export interface VoteModelRow {
   condPureVerdict?: string;
   irvPureProbPass?: number;
   irvPureVerdict?: string;
-  // Presidential sign
-  presMixedSigns?: string;
-  presPureSigns?: string;
+  // Presidential sign + support %
+  presMixedSigns?: string;      // CON/SD (IRV winner)
+  presMixedPct?: number;
+  presMixedCondSigns?: string;  // SD/CON (Condorcet winner)
+  presMixedCondPct?: number;
+  presPureSigns?: string;       // STY (pure IRV winner)
+  presPurePct?: number;
   // Legacy aliases (UnifiedBillTable in LegislationTab)
   condProbPass?: number;
   condVerdict?: string;
@@ -141,6 +145,13 @@ export interface KeyPosition {
   diffPp: number;
 }
 
+export interface BlendVariable {
+  pct: number;
+  question: string;
+  domain: string;
+  diffPp: number;
+}
+
 export interface BlendProfile {
   code: string;
   isPure?: boolean;
@@ -152,6 +163,7 @@ export interface BlendProfile {
   F4: number;
   F5: number;
   keyPositions: KeyPosition[];
+  variables: Record<string, BlendVariable>;
 }
 
 export interface PresidentialCandidate {
@@ -218,4 +230,11 @@ export interface PrimarySankeyData {
   stageLabels: string[];
   nodes: PrimarySankeyNode[];
   links: PrimarySankeyLink[];
+}
+
+export interface ConstellationNode {
+  id: string;
+  label: string;
+  seats: number;
+  F1: number; F2: number; F3: number; F4: number; F5: number;
 }

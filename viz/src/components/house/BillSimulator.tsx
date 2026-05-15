@@ -10,7 +10,7 @@ function ProbBar({ prob }: { prob: number }) {
   const color = prob > 0.7 ? '#22c55e' : prob > 0.3 ? '#f59e0b' : '#ef4444';
   return (
     <div className="flex items-center gap-2 min-w-[120px]">
-      <div className="flex-1 h-2 bg-slate-700 rounded-full overflow-hidden">
+      <div className="flex-1 h-2 bg-slate-200 rounded-full overflow-hidden">
         <div className="h-full rounded-full" style={{ width: `${pct}%`, backgroundColor: color }} />
       </div>
       <span className="text-xs font-mono w-8 text-right" style={{ color }}>{pct}%</span>
@@ -20,9 +20,9 @@ function ProbBar({ prob }: { prob: number }) {
 
 function VerdictBadge({ verdict }: { verdict: string }) {
   const cls =
-    verdict === 'PASS' ? 'bg-green-900/60 text-green-300 border-green-700' :
-    verdict === 'FAIL' ? 'bg-red-900/60 text-red-300 border-red-700' :
-    'bg-yellow-900/60 text-yellow-300 border-yellow-700';
+    verdict === 'PASS' ? 'bg-green-50 text-green-700 border-green-300' :
+    verdict === 'FAIL' ? 'bg-red-50 text-red-700 border-red-300' :
+    'bg-yellow-50 text-yellow-700 border-yellow-300';
   return (
     <span className={`text-xs font-bold px-2 py-0.5 rounded border whitespace-nowrap ${cls}`}>
       {verdict}
@@ -49,7 +49,7 @@ export function BillSimulator({ rows }: Props) {
             className={`px-3 py-1 rounded text-xs font-medium transition-colors ${
               domain === d
                 ? 'bg-indigo-600 text-white'
-                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
             }`}
           >
             {d}
@@ -61,9 +61,9 @@ export function BillSimulator({ rows }: Props) {
         {filtered.map(row => (
           <div
             key={row.variable}
-            className="flex items-center gap-3 py-2 px-3 rounded bg-slate-800/60 hover:bg-slate-800"
+            className="flex items-center gap-3 py-2 px-3 rounded bg-white border border-slate-100 hover:bg-slate-50"
           >
-            <div className="flex-1 text-sm text-slate-300 min-w-0">
+            <div className="flex-1 text-sm text-slate-700 min-w-0">
               <span>{row.question}</span>
               <span className="text-xs text-slate-500 ml-2">{row.domain}</span>
             </div>

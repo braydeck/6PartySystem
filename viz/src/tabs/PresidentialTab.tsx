@@ -1,32 +1,37 @@
 import { useState } from 'react';
-import type { PresidentialElection, PresidentialScenario } from '../types';
+import type { PresidentialElection, PresidentialScenario, ClusterProfile, BlendProfile, VoteModelRow } from '../types';
 import { PresidentialMap } from '../components/presidential/PresidentialMap';
 import { CondorcetTable } from '../components/presidential/CondorcetTable';
 import { IRVRoundsChart } from '../components/presidential/IRVRoundsChart';
 import { IRVSankey } from '../components/presidential/IRVSankey';
-import { getBlendColor } from '../constants/parties';
+import { WinnerCard } from '../components/presidential/WinnerCard';
+import { PresidentialComparison } from '../components/presidential/PresidentialComparison';
 
 interface Props {
   mixed: PresidentialElection;
   pure:  PresidentialElection;
+  clusters: ClusterProfile[];
+  blendProfiles: BlendProfile[];
+  senateVotes: VoteModelRow[];
 }
 
 const PRES_LABELS: Record<PresidentialScenario, string> = {
-  mixed: 'Mixed (CON/SD)',
-  pure:  'Pure (STY)',
+  mixed: 'Blended (CON/SD · SD/CON)',
+  pure:  'Raw (STY)',
 };
 
-export function PresidentialTab({ mixed, pure }: Props) {
+export function PresidentialTab({ mixed, pure, clusters, blendProfiles, senateVotes }: Props) {
   const [scenario, setScenario] = useState<PresidentialScenario>('mixed');
   const data = scenario === 'mixed' ? mixed : pure;
 
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-2xl font-bold text-white mb-1">2028 Presidential Election</h2>
-        <p className="text-slate-400 text-sm">
-          General election results using IRV and Condorcet methods. Mixed scenario includes blended
-          coalition candidates; pure scenario uses only the 9 core party types.
+        <h2 className="text-2xl font-bold text-slate-900 mb-1">2028 Presidential General Election</h2>
+        <p className="text-slate-500 text-sm">
+          General election results using IRV and Condorcet methods. Blended scenario
+          has CON/SD winning via IRV and SD/CON winning via Condorcet — compare how the
+          method changes the outcome. Raw scenario uses only the 9 core party types.
         </p>
       </div>
 
@@ -38,7 +43,7 @@ export function PresidentialTab({ mixed, pure }: Props) {
             className={`px-4 py-1.5 rounded text-sm font-medium transition-colors ${
               scenario === s
                 ? 'bg-teal-600 text-white'
-                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
             }`}
           >
             {PRES_LABELS[s]}
@@ -46,41 +51,23 @@ export function PresidentialTab({ mixed, pure }: Props) {
         ))}
       </div>
 
-      <div className="grid md:grid-cols-2 gap-4">
-        <div className="rounded-xl bg-slate-800/60 border border-slate-700 px-5 py-4 flex items-center gap-4">
-          <div className="text-3xl font-bold" style={{ color: getBlendColor(data.irvWinner) }}>
-            {data.irvWinner}
-          </div>
-          <div>
-            <div className="text-xs text-slate-500 uppercase tracking-widest">IRV Winner</div>
-            <div className="text-sm text-slate-300">Instant Runoff Voting</div>
-          </div>
-        </div>
-        <div className="rounded-xl bg-slate-800/60 border border-slate-700 px-5 py-4 flex items-center gap-4">
-          <div className="text-3xl font-bold" style={{ color: getBlendColor(data.condorcetWinner) }}>
-            {data.condorcetWinner}
-          </div>
-          <div>
-            <div className="text-xs text-slate-500 uppercase tracking-widest">Condorcet Winner</div>
-            <div className="text-sm text-slate-300">Beats all opponents 1-on-1</div>
-          </div>
-        </div>
-      </div>
+      {/* Dual winner comparison cards */}
+      <WinnerCard data={data} clusters={clusters} blendProfiles={blendProfiles} />
 
-      {/* State map — full width */}
-      <div className="bg-slate-800/50 rounded-xl p-4">
-        <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-widest mb-1">
-          State Results (IRV)
+      {/* State map with IRV/Plurality toggle */}
+      <div className="bg-white rounded-xl p-4 border border-slate-200">
+        <h3 className="text-sm font-semibold text-slate-600 uppercase tracking-widest mb-1">
+          State Results
         </h3>
         <p className="text-xs text-slate-500 mb-3">
-          Gradient shows R1 candidate vote share per state. Hover for details.
+          Toggle between IRV winner and 1st-choice plurality winner per state to see where the method matters.
         </p>
         <PresidentialMap stateWinners={data.irvStateWinners} />
       </div>
 
       {/* IRV vote flow Sankey */}
-      <div className="bg-slate-800/50 rounded-xl p-4">
-        <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-widest mb-1">
+      <div className="bg-white rounded-xl p-4 border border-slate-200">
+        <h3 className="text-sm font-semibold text-slate-600 uppercase tracking-widest mb-1">
           IRV Vote Flow
         </h3>
         <p className="text-xs text-slate-500 mb-3">
@@ -89,10 +76,23 @@ export function PresidentialTab({ mixed, pure }: Props) {
         <IRVSankey rounds={data.irvRounds} irvWinner={data.irvWinner} />
       </div>
 
+      {/* Three-way presidential comparison */}
+      <div className="bg-white rounded-xl p-4 border border-slate-200">
+        <h3 className="text-sm font-semibold text-slate-600 uppercase tracking-widest mb-1">
+          Presidential Policy Comparison — CON/SD · SD/CON · STY
+        </h3>
+        <p className="text-xs text-slate-500 mb-4">
+          How likely each potential president would sign or veto major legislation.
+          Amber rows highlight where the presidents disagree. % = fraction of the president&apos;s
+          voter coalition that supports the bill.
+        </p>
+        <PresidentialComparison rows={senateVotes} />
+      </div>
+
       {/* IRV rounds + Condorcet table */}
       <div className="grid lg:grid-cols-2 gap-8">
-        <div className="bg-slate-800/50 rounded-xl p-4">
-          <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-widest mb-3">
+        <div className="bg-white rounded-xl p-4 border border-slate-200">
+          <h3 className="text-sm font-semibold text-slate-600 uppercase tracking-widest mb-3">
             IRV Rounds Detail
           </h3>
           <p className="text-xs text-slate-500 mb-3">
@@ -101,8 +101,8 @@ export function PresidentialTab({ mixed, pure }: Props) {
           <IRVRoundsChart rounds={data.irvRounds} irvWinner={data.irvWinner} />
         </div>
 
-        <div className="bg-slate-800/50 rounded-xl p-4">
-          <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-widest mb-3">
+        <div className="bg-white rounded-xl p-4 border border-slate-200">
+          <h3 className="text-sm font-semibold text-slate-600 uppercase tracking-widest mb-3">
             Head-to-Head Matchups (Condorcet)
           </h3>
           <p className="text-xs text-slate-500 mb-3">

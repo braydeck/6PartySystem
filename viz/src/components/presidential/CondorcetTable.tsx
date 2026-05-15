@@ -37,7 +37,7 @@ export function CondorcetTable({ matchups, condorcetWinner }: Props) {
       <div className="overflow-x-auto">
         <table className="w-full text-xs">
           <thead>
-            <tr className="text-slate-500 border-b border-slate-700">
+            <tr className="text-slate-500 border-b border-slate-200">
               <th className="text-left py-2 pr-3">Candidate A</th>
               <th className="text-left py-2 pr-3">Candidate B</th>
               <th className="text-left py-2 pr-3">Winner</th>
@@ -51,7 +51,7 @@ export function CondorcetTable({ matchups, condorcetWinner }: Props) {
               return (
                 <tr
                   key={i}
-                  className={`border-b border-slate-800 ${isWinnerRow ? 'bg-slate-800/40' : ''}`}
+                  className={`border-b border-slate-100 ${isWinnerRow ? 'bg-slate-50' : ''}`}
                 >
                   <td className="py-2 pr-3 font-mono" style={{ color: getBlendColor(m.candidateA) }}>
                     {m.candidateA}
@@ -70,10 +70,10 @@ export function CondorcetTable({ matchups, condorcetWinner }: Props) {
                       {m.winner}
                     </span>
                   </td>
-                  <td className="py-2 pr-3 text-right font-mono text-slate-300">
+                  <td className="py-2 pr-3 text-right font-mono text-slate-700">
                     {m.aWinsPct.toFixed(1)}%
                   </td>
-                  <td className="py-2 text-right font-mono text-slate-400">
+                  <td className="py-2 text-right font-mono text-slate-500">
                     {m.margin.toFixed(2)}pp
                   </td>
                 </tr>

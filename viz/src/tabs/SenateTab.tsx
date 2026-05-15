@@ -1,8 +1,12 @@
 import { useState } from 'react';
-import type { SenateSeat, VoteModelRow, SenateScenario } from '../types';
+import type { SenateSeat, VoteModelRow, SenateScenario, BlendProfile, ConstellationNode } from '../types';
 import { SenateMap } from '../components/senate/SenateMap';
 import { VoteModelTable } from '../components/senate/VoteModelTable';
-import { getBlendColor } from '../constants/parties';
+import { IdeologicalConstellation } from '../components/house/IdeologicalConstellation';
+import { MiniPartyCard } from '../components/shared/MiniPartyCard';
+import { ParliamentChart } from '../components/shared/ParliamentChart';
+import type { ParliamentSegment } from '../components/shared/ParliamentChart';
+import { FACTOR_LABELS } from '../constants/parties';
 
 interface Props {
   condorcetMixed: SenateSeat[];
@@ -10,46 +14,20 @@ interface Props {
   condorcetPure:  SenateSeat[];
   irvPure:        SenateSeat[];
   voteModel:      VoteModelRow[];
+  blendProfiles:  BlendProfile[];
 }
 
 const SCENARIO_LABELS: Record<SenateScenario, string> = {
-  condMixed: 'Mixed · Condorcet',
-  irvMixed:  'Mixed · IRV',
-  condPure:  'Pure · Condorcet',
-  irvPure:   'Pure · IRV',
+  condMixed: 'Blended · Condorcet',
+  irvMixed:  'Blended · IRV',
+  condPure:  'Raw · Condorcet',
+  irvPure:   'Raw · IRV',
 };
 
-function SeatSummary({ seats, label }: { seats: SenateSeat[]; label: string }) {
-  const counts: Record<string, number> = {};
-  for (const s of seats) {
-    counts[s.senatorCode] = (counts[s.senatorCode] ?? 0) + 1;
-  }
-  const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
 
-  return (
-    <div className="bg-slate-800/50 rounded-xl p-4">
-      <div className="text-xs text-slate-500 uppercase tracking-widest mb-3">{label} Composition</div>
-      <div className="flex flex-wrap gap-2">
-        {sorted.map(([code, count]) => {
-          const color = getBlendColor(code);
-          return (
-            <div
-              key={code}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded text-sm font-mono"
-              style={{ backgroundColor: color + '22', border: `1px solid ${color}55`, color }}
-            >
-              <span className="font-bold">{code}</span>
-              <span className="text-slate-400 font-sans">{count}</span>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-export function SenateTab({ condorcetMixed, irvMixed, condorcetPure, irvPure, voteModel }: Props) {
+export function SenateTab({ condorcetMixed, irvMixed, condorcetPure, irvPure, voteModel, blendProfiles }: Props) {
   const [scenario, setScenario] = useState<SenateScenario>('condMixed');
+  const [parliamentFactor, setParliamentFactor] = useState('F5');
 
   const SEAT_MAP: Record<SenateScenario, SenateSeat[]> = {
     condMixed: condorcetMixed,
@@ -59,13 +37,41 @@ export function SenateTab({ condorcetMixed, irvMixed, condorcetPure, irvPure, vo
   };
   const activeSeats = SEAT_MAP[scenario];
 
+  // Derive mini card data
+  const seatCounts: Record<string, number> = {};
+  for (const s of activeSeats) {
+    seatCounts[s.senatorCode] = (seatCounts[s.senatorCode] ?? 0) + 1;
+  }
+  const miniCardCodes = Object.entries(seatCounts)
+    .sort((a, b) => b[1] - a[1])
+    .map(([code]) => code);
+
+  // Derive parliament chart segments
+  const blendByCode = Object.fromEntries(blendProfiles.map(p => [p.code, p]));
+  const parliamentSegments: ParliamentSegment[] = Object.entries(seatCounts)
+    .map(([code, seats]) => {
+      const bp = blendByCode[code];
+      const fVal = (bp as unknown as Record<string, number>)?.[parliamentFactor] ?? 0;
+      return { code, seats, fVal };
+    })
+    .sort((a, b) => a.fVal - b.fVal);
+  const constellationNodes: ConstellationNode[] = Object.entries(seatCounts)
+    .map(([code, seats]) => {
+      const bp = blendByCode[code];
+      return {
+        id: code, label: code, seats,
+        F1: bp?.F1 ?? 0, F2: bp?.F2 ?? 0, F3: bp?.F3 ?? 0,
+        F4: bp?.F4 ?? 0, F5: bp?.F5 ?? 0,
+      };
+    });
+
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-2xl font-bold text-white mb-1">Senate</h2>
-        <p className="text-slate-400 text-sm">
-          State-level senate simulation. Mixed scenarios include blended coalition candidates;
-          pure scenarios use only the 9 core party types. Condorcet selects the head-to-head
+        <h2 className="text-2xl font-bold text-slate-900 mb-1">Senate</h2>
+        <p className="text-slate-500 text-sm">
+          State-level senate simulation. Blended scenarios include coalition candidates;
+          raw scenarios use only the 9 core party types. Condorcet selects the head-to-head
           winner; IRV uses instant runoff elimination.
         </p>
       </div>
@@ -78,7 +84,7 @@ export function SenateTab({ condorcetMixed, irvMixed, condorcetPure, irvPure, vo
             className={`px-4 py-1.5 rounded text-sm font-medium transition-colors ${
               scenario === s
                 ? 'bg-teal-600 text-white'
-                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
             }`}
           >
             {SCENARIO_LABELS[s]}
@@ -86,20 +92,64 @@ export function SenateTab({ condorcetMixed, irvMixed, condorcetPure, irvPure, vo
         ))}
       </div>
 
-      <SeatSummary seats={activeSeats} label={SCENARIO_LABELS[scenario]} />
+      {/* Parliament fan chart replaces SeatSummary */}
+      <div className="bg-white rounded-xl p-4 border border-slate-200">
+        <div className="flex flex-wrap items-center gap-2 mb-3">
+          <span className="text-xs text-slate-600 uppercase tracking-widest">Order by</span>
+          {(['F1','F2','F3','F4','F5'] as const).map(f => (
+            <button
+              key={f}
+              onClick={() => setParliamentFactor(f)}
+              title={FACTOR_LABELS[f]}
+              className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
+                parliamentFactor === f
+                  ? 'bg-teal-600 text-white'
+                  : 'bg-slate-200 text-slate-600 hover:bg-slate-300'
+              }`}
+            >
+              {f} · {FACTOR_LABELS[f]}
+            </button>
+          ))}
+        </div>
+        <ParliamentChart
+          segments={parliamentSegments}
+          factor={parliamentFactor}
+        />
+      </div>
 
-      <div className="bg-slate-800/50 rounded-xl p-4">
+      <div className="bg-white rounded-xl p-4 border border-slate-200">
         <SenateMap seats={activeSeats} />
       </div>
 
-      <div className="bg-slate-800/50 rounded-xl p-4">
-        <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-widest mb-4">
-          Senate Vote Model — 37 Bills
-        </h3>
-        <p className="text-xs text-slate-500 mb-4">
-          Highlighted rows show bills the senate passes but the president vetoes.
-        </p>
-        <VoteModelTable rows={voteModel} scenario={scenario} />
+      {/* Mini party cards below map */}
+      <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2">
+        {miniCardCodes.map(code => (
+          <MiniPartyCard
+            key={code}
+            code={code}
+            seats={seatCounts[code]}
+            positions={blendByCode[code]?.keyPositions?.slice(0, 2)}
+          />
+        ))}
+      </div>
+
+      <div className="grid lg:grid-cols-2 gap-6">
+        <div className="bg-white rounded-xl p-4 border border-slate-200">
+          <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-3">
+            Ideological Constellation
+          </h3>
+          <IdeologicalConstellation nodes={constellationNodes} />
+        </div>
+
+        <div className="bg-white rounded-xl p-4 border border-slate-200">
+          <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-4">
+            Senate Vote Model — 37 Bills
+          </h3>
+          <p className="text-xs text-slate-500 mb-4">
+            Highlighted rows show bills the senate passes but the president vetoes.
+          </p>
+          <VoteModelTable rows={voteModel} scenario={scenario} />
+        </div>
       </div>
     </div>
   );

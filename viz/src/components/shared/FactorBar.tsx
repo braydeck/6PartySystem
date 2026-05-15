@@ -21,12 +21,12 @@ export function FactorBar({ factor, value }: Props) {
   return (
     <div className="mb-2">
       <div className="flex justify-between text-xs mb-1">
-        <span className="text-slate-400">{label}</span>
+        <span className="text-slate-600">{label}</span>
         <span style={{ color }} className="font-mono font-semibold">
           {value >= 0 ? '+' : ''}{value.toFixed(2)}
         </span>
       </div>
-      <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
+      <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
         <div
           className="h-full rounded-full transition-all"
           style={{ width: `${pct}%`, backgroundColor: color }}

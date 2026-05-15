@@ -31,12 +31,12 @@ export function IdeologicalScatter({ candidates, stage }: Props) {
       .attr('transform', `translate(0,${iH})`)
       .call(d3.axisBottom(xScale).ticks(5))
       .call(ax => ax.selectAll('text').style('fill', '#94a3b8').style('font-size', '11px'))
-      .call(ax => ax.selectAll('line,path').style('stroke', '#334155'));
+      .call(ax => ax.selectAll('line,path').style('stroke', '#e2e8f0'));
 
     g.append('g')
       .call(d3.axisLeft(yScale).ticks(5))
       .call(ax => ax.selectAll('text').style('fill', '#94a3b8').style('font-size', '11px'))
-      .call(ax => ax.selectAll('line,path').style('stroke', '#334155'));
+      .call(ax => ax.selectAll('line,path').style('stroke', '#e2e8f0'));
 
     // Axis labels
     g.append('text')

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
-import { PARTY_COLORS, PARTY_NAMES } from '../../constants/parties';
+import { PARTY_COLORS, PARTY_NAMES, F5_ORDER } from '../../constants/parties';
 import type { HouseStateEntry } from '../../types';
 
 const GEO_URL = './topojson/states-10m.json';
@@ -16,14 +16,16 @@ export function HouseMap({ stateMap }: Props) {
     <div>
       <div className="relative">
         {tooltip && (
-          <div className="absolute top-2 left-2 bg-slate-800 border border-slate-600 rounded px-3 py-2 text-sm z-10 pointer-events-none max-w-sm">
+          <div className="absolute top-2 left-2 bg-white border border-slate-300 rounded px-3 py-2 text-sm text-slate-900 z-10 pointer-events-none max-w-sm shadow-sm">
             {tooltip}
           </div>
         )}
         <ComposableMap projection="geoAlbersUsa" style={{ width: '100%', height: 'auto' }}>
           <defs>
             {Object.entries(stateMap).map(([fips, entry]) => {
-              const sorted = Object.entries(entry.seats).sort((a, b) => b[1] - a[1]);
+              const sorted = Object.entries(entry.seats).sort(
+                (a, b) => F5_ORDER.indexOf(a[0] as typeof F5_ORDER[number]) - F5_ORDER.indexOf(b[0] as typeof F5_ORDER[number])
+              );
               const total = entry.totalSeats;
               let cum = 0;
               const stops: { offset: number; color: string }[] = [];
@@ -47,14 +49,14 @@ export function HouseMap({ stateMap }: Props) {
               geographies.map(geo => {
                 const fips = geo.id?.toString().padStart(2, '0') ?? '';
                 const entry = stateMap[fips];
-                const fill = entry ? `url(#hgrad-${fips})` : '#1e293b';
+                const fill = entry ? `url(#hgrad-${fips})` : '#e2e8f0';
 
                 return (
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
                     fill={fill}
-                    stroke="#0f172a"
+                    stroke="#cbd5e1"
                     strokeWidth={0.8}
                     style={{
                       default: { outline: 'none' },
@@ -93,7 +95,7 @@ export function HouseMap({ stateMap }: Props) {
         ))}
       </div>
 
-      <p className="text-xs text-slate-600 mt-2 text-center">
+      <p className="text-xs text-slate-500 mt-2 text-center">
         Gradient shows seat share per party. Hover for full breakdown.
       </p>
     </div>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
-import { getBlendColor } from '../../constants/parties';
+import { getBlendColor, F5_ORDER, getPrimaryParty } from '../../constants/parties';
 import type { PrimaryStateWinner } from '../../types';
 
 const GEO_URL = './topojson/states-10m.json';
@@ -36,14 +36,18 @@ export function PrimaryStateMap({ stateWinners, stage }: Props) {
     <div>
       <div className="relative">
         {tooltip && (
-          <div className="absolute top-2 left-2 bg-slate-800 border border-slate-600 rounded px-3 py-2 text-sm z-10 pointer-events-none max-w-xs">
+          <div className="absolute top-2 left-2 bg-white border border-slate-300 rounded px-3 py-2 text-sm text-slate-900 z-10 pointer-events-none max-w-xs shadow-sm">
             {tooltip}
           </div>
         )}
         <ComposableMap projection="geoAlbersUsa" style={{ width: '100%', height: 'auto' }}>
           <defs>
             {activeEntries.map(([fips, sw]) => {
-              const sorted = Object.entries(sw.shares).sort((a, b) => b[1] - a[1]);
+              const sorted = Object.entries(sw.shares).sort((a, b) => {
+                const rA = F5_ORDER.indexOf(getPrimaryParty(a[0]) as typeof F5_ORDER[number]);
+                const rB = F5_ORDER.indexOf(getPrimaryParty(b[0]) as typeof F5_ORDER[number]);
+                return (rA === -1 ? 99 : rA) - (rB === -1 ? 99 : rB);
+              });
               let cum = 0;
               const stops: { offset: number; color: string }[] = [];
               for (const [code, share] of sorted) {
@@ -67,8 +71,8 @@ export function PrimaryStateMap({ stateWinners, stage }: Props) {
                 const fips = geo.id?.toString().padStart(2, '0') ?? '';
                 const entry = stateWinners[fips];
                 const hasVoted = entry && activePods.has(entry.pod);
-                const fill = hasVoted ? `url(#pgrad-${fips})` : '#1e293b';
-                const stroke = hasVoted ? '#0f172a' : '#334155';
+                const fill = hasVoted ? `url(#pgrad-${fips})` : '#e2e8f0';
+                const stroke = hasVoted ? '#cbd5e1' : '#cbd5e1';
 
                 return (
                   <Geography
@@ -117,13 +121,13 @@ export function PrimaryStateMap({ stateWinners, stage }: Props) {
               }}
             >
               {code}
-              <span className="bg-slate-700 text-slate-300 rounded px-1">{count}</span>
+              <span className="bg-slate-100 text-slate-600 rounded px-1">{count}</span>
             </div>
           ))}
         </div>
       )}
 
-      <p className="text-xs text-slate-600 mt-2 text-center">
+      <p className="text-xs text-slate-500 mt-2 text-center">
         Gray states haven't voted yet in this stage. Gradient shows candidate share. Hover for details.
       </p>
     </div>

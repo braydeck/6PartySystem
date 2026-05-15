@@ -4,14 +4,47 @@ import type { VoteModelRow } from '../../types';
 interface Props {
   houseRows: VoteModelRow[];
   senateRows: VoteModelRow[];
+  pipeline: 'blended' | 'raw';
+  senateMethod: 'condorcet' | 'irv';
 }
+
+const SENATE_PROB_FIELD: Record<string, keyof VoteModelRow> = {
+  'blended+condorcet': 'condMixedProbPass',
+  'blended+irv':       'irvMixedProbPass',
+  'raw+condorcet':     'condPureProbPass',
+  'raw+irv':           'irvPureProbPass',
+};
+
+const SENATE_VERDICT_FIELD: Record<string, keyof VoteModelRow> = {
+  'blended+condorcet': 'condMixedVerdict',
+  'blended+irv':       'irvMixedVerdict',
+  'raw+condorcet':     'condPureVerdict',
+  'raw+irv':           'irvPureVerdict',
+};
+
+// President is determined by both pipeline AND senate method:
+// blended+irv → CON/SD (IRV winner), blended+condorcet → SD/CON (Condorcet winner)
+// raw+irv → STY, raw+condorcet → STY (same president in pure scenario)
+const PRES_SIGNS_FIELD: Record<string, keyof VoteModelRow> = {
+  'blended+irv':       'presMixedSigns',
+  'blended+condorcet': 'presMixedCondSigns',
+  'raw+irv':           'presPureSigns',
+  'raw+condorcet':     'presPureSigns',
+};
+
+const PRES_LABEL: Record<string, string> = {
+  'blended+irv':       'CON/SD',
+  'blended+condorcet': 'SD/CON',
+  'raw+irv':           'STY',
+  'raw+condorcet':     'STY',
+};
 
 function ProbBar({ prob }: { prob: number }) {
   const pct = Math.round(prob * 100);
   const color = prob > 0.7 ? '#22c55e' : prob > 0.3 ? '#f59e0b' : '#ef4444';
   return (
     <div className="flex items-center gap-2 min-w-[90px]">
-      <div className="flex-1 h-1.5 bg-slate-700 rounded-full overflow-hidden">
+      <div className="flex-1 h-1.5 bg-slate-200 rounded-full overflow-hidden">
         <div className="h-full rounded-full" style={{ width: `${pct}%`, backgroundColor: color }} />
       </div>
       <span className="text-xs font-mono w-7 text-right" style={{ color }}>{pct}%</span>
@@ -21,9 +54,9 @@ function ProbBar({ prob }: { prob: number }) {
 
 function VerdictBadge({ verdict }: { verdict: string }) {
   const cls =
-    verdict === 'PASS' ? 'bg-green-900/60 text-green-300 border-green-700' :
-    verdict === 'FAIL' ? 'bg-red-900/60 text-red-300 border-red-700' :
-    'bg-yellow-900/60 text-yellow-300 border-yellow-700';
+    verdict === 'PASS' ? 'bg-green-50 text-green-700 border-green-300' :
+    verdict === 'FAIL' ? 'bg-red-50 text-red-700 border-red-300' :
+    'bg-yellow-50 text-yellow-700 border-yellow-300';
   return (
     <span className={`text-xs font-bold px-1.5 py-0.5 rounded border whitespace-nowrap ${cls}`}>
       {verdict}
@@ -31,13 +64,18 @@ function VerdictBadge({ verdict }: { verdict: string }) {
   );
 }
 
-export function UnifiedBillTable({ houseRows, senateRows }: Props) {
+export function UnifiedBillTable({ houseRows, senateRows, pipeline, senateMethod }: Props) {
   const [domain, setDomain] = useState<string>('All');
+
+  const combo = `${pipeline}+${senateMethod}` as keyof typeof SENATE_PROB_FIELD;
+  const senateProbField = SENATE_PROB_FIELD[combo];
+  const senateVerdictField = SENATE_VERDICT_FIELD[combo];
+  const presSignsField = PRES_SIGNS_FIELD[combo];
+  const presLabel = PRES_LABEL[combo];
 
   const houseByVar = useMemo(() => Object.fromEntries(houseRows.map(r => [r.variable, r])), [houseRows]);
   const senateByVar = useMemo(() => Object.fromEntries(senateRows.map(r => [r.variable, r])), [senateRows]);
 
-  // Union of all variables
   const allVars = useMemo(() => {
     const vars = new Set([...houseRows.map(r => r.variable), ...senateRows.map(r => r.variable)]);
     return Array.from(vars);
@@ -63,7 +101,7 @@ export function UnifiedBillTable({ houseRows, senateRows }: Props) {
             className={`px-3 py-1 rounded text-xs font-medium transition-colors ${
               domain === d
                 ? 'bg-indigo-600 text-white'
-                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
             }`}
           >
             {d}
@@ -71,14 +109,13 @@ export function UnifiedBillTable({ houseRows, senateRows }: Props) {
         ))}
       </div>
 
-      {/* Column headers */}
-      <div className="hidden md:grid grid-cols-[1fr_auto_auto_auto_auto_auto] gap-x-3 items-center px-3 py-1 text-xs text-slate-500 uppercase tracking-widest border-b border-slate-700 mb-1">
+      <div className="hidden md:grid grid-cols-[1fr_auto_auto_auto_auto_auto] gap-x-3 items-center px-3 py-1 text-xs text-slate-600 uppercase tracking-widest border-b border-slate-200 mb-1">
         <div>Bill</div>
-        <div className="w-24 text-right">House prob</div>
+        <div className="w-24 text-right">House</div>
         <div className="w-14 text-right">Verdict</div>
-        <div className="w-24 text-right">Senate (Cond)</div>
+        <div className="w-24 text-right">Senate</div>
         <div className="w-14 text-right">Verdict</div>
-        <div className="w-24 text-right">Senate (IRV)</div>
+        <div className="w-20 text-center">Pres: {presLabel}</div>
       </div>
 
       <div className="space-y-0.5">
@@ -89,40 +126,49 @@ export function UnifiedBillTable({ houseRows, senateRows }: Props) {
           if (!ref) return null;
 
           const hVerdict = hr?.verdict ?? '—';
-          const scVerdict = sr?.condVerdict ?? '—';
-          const disagrees = hVerdict !== '—' && scVerdict !== '—' && hVerdict !== scVerdict;
+          const sVerdict = (sr?.[senateVerdictField] as string | undefined) ?? '—';
+          const signs = (sr?.[presSignsField] as string | undefined) ?? '—';
+          const disagrees = hVerdict !== '—' && sVerdict !== '—' && hVerdict !== sVerdict;
 
           return (
             <div
               key={variable}
               className={`flex flex-col md:grid md:grid-cols-[1fr_auto_auto_auto_auto_auto] gap-x-3 items-start md:items-center py-2 px-3 rounded text-sm ${
-                disagrees ? 'bg-amber-900/20 border border-amber-800/40' : 'bg-slate-800/60 hover:bg-slate-800'
+                disagrees ? 'bg-amber-50 border border-amber-300' : 'bg-white border border-slate-100 hover:bg-slate-50'
               }`}
             >
               <div className="min-w-0">
-                <span className="text-slate-300">{ref.question}</span>
+                <span className="text-slate-700">{ref.question}</span>
                 <span className="text-xs text-slate-500 ml-2">{ref.domain}</span>
               </div>
 
               {/* House */}
               <div className="w-24 mt-1 md:mt-0">
-                {hr ? <ProbBar prob={hr.probPass!} /> : <span className="text-slate-600 text-xs">—</span>}
+                {hr ? <ProbBar prob={hr.probPass!} /> : <span className="text-slate-300 text-xs">—</span>}
               </div>
               <div className="w-14">
-                {hVerdict !== '—' ? <VerdictBadge verdict={hVerdict} /> : <span className="text-slate-600 text-xs">—</span>}
+                {hVerdict !== '—' ? <VerdictBadge verdict={hVerdict} /> : <span className="text-slate-300 text-xs">—</span>}
               </div>
 
-              {/* Senate Condorcet */}
+              {/* Senate (scenario-driven) */}
               <div className="w-24 mt-1 md:mt-0">
-                {sr ? <ProbBar prob={sr.condProbPass!} /> : <span className="text-slate-600 text-xs">—</span>}
+                {sr && senateProbField ? <ProbBar prob={sr[senateProbField] as number} /> : <span className="text-slate-300 text-xs">—</span>}
               </div>
               <div className="w-14">
-                {scVerdict !== '—' ? <VerdictBadge verdict={scVerdict} /> : <span className="text-slate-600 text-xs">—</span>}
+                {sVerdict !== '—' ? <VerdictBadge verdict={sVerdict} /> : <span className="text-slate-300 text-xs">—</span>}
               </div>
 
-              {/* Senate IRV */}
-              <div className="w-24 mt-1 md:mt-0">
-                {sr ? <ProbBar prob={sr.irvProbPass!} /> : <span className="text-slate-600 text-xs">—</span>}
+              {/* Presidency */}
+              <div className="w-20 text-center">
+                {signs !== '—' ? (
+                  <span className={`text-xs font-semibold px-2 py-0.5 rounded border ${
+                    signs === 'SIGN'
+                      ? 'bg-green-50 text-green-700 border-green-300'
+                      : 'bg-red-50 text-red-700 border-red-300'
+                  }`}>
+                    {signs === 'SIGN' ? 'Signs' : 'Vetoes'}
+                  </span>
+                ) : <span className="text-slate-300 text-xs">—</span>}
               </div>
             </div>
           );

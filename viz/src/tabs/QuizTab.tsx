@@ -49,8 +49,8 @@ export function QuizTab({ questions, clusters, houseVotes }: Props) {
     return (
       <div className="space-y-6">
         <div>
-          <h2 className="text-2xl font-bold text-white mb-1">Your Political Profile</h2>
-          <p className="text-slate-400 text-sm">Based on your quiz answers, here's which party you align with most.</p>
+          <h2 className="text-2xl font-bold text-slate-900 mb-1">Your Political Profile</h2>
+          <p className="text-slate-500 text-sm">Based on your quiz answers, here's which party you align with most.</p>
         </div>
         <QuizResult
           cluster={cluster}
@@ -69,15 +69,15 @@ export function QuizTab({ questions, clusters, houseVotes }: Props) {
   return (
     <div className="space-y-6 max-w-xl mx-auto">
       <div>
-        <h2 className="text-2xl font-bold text-white mb-1">Who Are You?</h2>
-        <p className="text-slate-400 text-sm">
+        <h2 className="text-2xl font-bold text-slate-900 mb-1">Who Are You?</h2>
+        <p className="text-slate-500 text-sm">
           10 questions to find which of the 9 parties best matches your political values.
         </p>
       </div>
 
       <QuizProgress current={current + 1} total={questions.length} />
 
-      <div className="bg-slate-800/50 rounded-xl p-6">
+      <div className="bg-white rounded-xl p-6 border border-slate-200">
         <QuizQuestion
           question={q.question}
           domain={q.domain}
@@ -90,7 +90,7 @@ export function QuizTab({ questions, clusters, houseVotes }: Props) {
         <button
           onClick={handleBack}
           disabled={current === 0}
-          className="px-5 py-2 rounded bg-slate-700 text-slate-300 font-medium disabled:opacity-40 hover:bg-slate-600 transition-colors"
+          className="px-5 py-2 rounded bg-slate-200 text-slate-700 font-medium disabled:opacity-40 hover:bg-slate-300 transition-colors"
         >
           Back
         </button>

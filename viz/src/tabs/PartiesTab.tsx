@@ -1,26 +1,75 @@
+import { useState } from 'react';
 import type { ClusterProfile } from '../types';
 import { PartyCard } from '../components/parties/PartyCard';
+import { IdeologicalConstellation } from '../components/house/IdeologicalConstellation';
+import { PARTY_NAMES, FACTOR_LABELS } from '../constants/parties';
 
 interface Props {
   clusters: ClusterProfile[];
 }
 
-const PARTY_ORDER = ['CON','SD','STY','REF','CTR','LIB','NAT','DSA','PRG'];
+type SortFactor = 'F1' | 'F2' | 'F3' | 'F4' | 'F5';
 
 export function PartiesTab({ clusters }: Props) {
+  const [sortFactor, setSortFactor] = useState<SortFactor>('F5');
+  const [sortDir, setSortDir] = useState<'asc' | 'desc'>('desc');
+
+  function toggleSort(f: SortFactor) {
+    if (sortFactor === f) {
+      setSortDir(d => d === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortFactor(f);
+      setSortDir('desc');
+    }
+  }
+
   const sorted = [...clusters]
     .filter(c => c.party)
-    .sort((a, b) => PARTY_ORDER.indexOf(a.party) - PARTY_ORDER.indexOf(b.party));
+    .sort((a, b) => {
+      const diff = (a as any)[sortFactor] - (b as any)[sortFactor];
+      return sortDir === 'asc' ? diff : -diff;
+    });
 
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-white mb-1">The 9 Parties</h2>
-        <p className="text-slate-400 text-sm">
+        <h2 className="text-2xl font-bold text-slate-900 mb-1">The 9 Parties</h2>
+        <p className="text-slate-500 text-sm">
           A 10-cluster model of the American electorate, with the Blue Dog remnant (C7) merged
           into adjacent clusters. Each party reflects a distinct ideological constellation
           derived from CES 2024 survey data.
         </p>
+      </div>
+
+      {/* Sort controls */}
+      <div className="flex items-center gap-2 flex-wrap">
+        <span className="text-xs text-slate-600 uppercase tracking-widest">Sort by</span>
+        {(['F1','F2','F3','F4','F5'] as SortFactor[]).map(f => (
+          <button
+            key={f}
+            onClick={() => toggleSort(f)}
+            className={`px-3 py-1 rounded text-xs font-medium transition-colors ${
+              sortFactor === f
+                ? 'bg-indigo-600 text-white'
+                : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
+            }`}
+          >
+            {FACTOR_LABELS[f]} {sortFactor === f ? (sortDir === 'desc' ? '↓' : '↑') : ''}
+          </button>
+        ))}
+      </div>
+
+      {/* Constellation */}
+      <div className="bg-white rounded-xl p-4 border border-slate-200">
+        <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-3">
+          Ideological Constellation
+        </h3>
+        <IdeologicalConstellation
+          nodes={sorted.map(c => ({
+            id: c.party, label: PARTY_NAMES[c.party] ?? c.party,
+            seats: c.seatsHouse, F1: c.F1, F2: c.F2, F3: c.F3, F4: c.F4, F5: c.F5,
+          }))}
+        />
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">

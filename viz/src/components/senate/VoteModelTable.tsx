@@ -19,9 +19,9 @@ const SCENARIO_FIELDS: Record<SenateScenario, {
 
 function VerdictBadge({ verdict }: { verdict: string }) {
   const color =
-    verdict === 'PASS' ? 'bg-green-900 text-green-300 border-green-700' :
-    verdict === 'FAIL' ? 'bg-red-900 text-red-300 border-red-700' :
-    'bg-yellow-900 text-yellow-300 border-yellow-700';
+    verdict === 'PASS' ? 'bg-green-50 text-green-700 border-green-300' :
+    verdict === 'FAIL' ? 'bg-red-50 text-red-700 border-red-300' :
+    'bg-yellow-50 text-yellow-700 border-yellow-300';
   return (
     <span className={`text-xs font-semibold px-2 py-0.5 rounded border ${color}`}>
       {verdict}
@@ -49,7 +49,7 @@ export function VoteModelTable({ rows, scenario }: Props) {
             className={`px-3 py-1 rounded text-xs font-medium transition-colors ${
               domain === d
                 ? 'bg-teal-600 text-white'
-                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
             }`}
           >
             {d}
@@ -60,11 +60,11 @@ export function VoteModelTable({ rows, scenario }: Props) {
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
-            <tr className="border-b border-slate-700">
-              <th className="text-left py-2 pr-4 text-slate-400 font-medium">Bill</th>
-              <th className="text-center py-2 px-3 text-slate-400 font-medium whitespace-nowrap">Senate</th>
-              <th className="text-center py-2 px-3 text-slate-400 font-medium whitespace-nowrap">President</th>
-              <th className="text-center py-2 px-3 text-slate-400 font-medium whitespace-nowrap">Becomes Law?</th>
+            <tr className="border-b border-slate-200">
+              <th className="text-left py-2 pr-4 text-slate-500 font-medium">Bill</th>
+              <th className="text-center py-2 px-3 text-slate-500 font-medium whitespace-nowrap">Senate</th>
+              <th className="text-center py-2 px-3 text-slate-500 font-medium whitespace-nowrap">President</th>
+              <th className="text-center py-2 px-3 text-slate-500 font-medium whitespace-nowrap">Becomes Law?</th>
             </tr>
           </thead>
           <tbody>
@@ -76,32 +76,32 @@ export function VoteModelTable({ rows, scenario }: Props) {
               return (
                 <tr
                   key={row.variable}
-                  className={`border-b border-slate-800 ${vetoed ? 'bg-amber-900/10' : ''}`}
+                  className={`border-b border-slate-100 ${vetoed ? 'bg-amber-50' : ''}`}
                 >
-                  <td className="py-2 pr-4 text-slate-300">
+                  <td className="py-2 pr-4 text-slate-700">
                     <div>{row.question}</div>
                     <div className="text-xs text-slate-500">{row.domain}</div>
                   </td>
                   <td className="py-2 px-3 text-center">
-                    {verdict ? <VerdictBadge verdict={verdict} /> : <span className="text-slate-600 text-xs">—</span>}
+                    {verdict ? <VerdictBadge verdict={verdict} /> : <span className="text-slate-500 text-xs">—</span>}
                   </td>
                   <td className="py-2 px-3 text-center">
                     {signs ? (
                       <span className={`text-xs font-semibold px-2 py-0.5 rounded border ${
                         signs === 'SIGN'
-                          ? 'bg-green-900 text-green-300 border-green-700'
-                          : 'bg-red-900 text-red-300 border-red-700'
+                          ? 'bg-green-50 text-green-700 border-green-300'
+                          : 'bg-red-50 text-red-700 border-red-300'
                       }`}>
                         {signs === 'SIGN' ? 'Signs' : 'Vetoes'}
                       </span>
-                    ) : <span className="text-slate-600 text-xs">—</span>}
+                    ) : <span className="text-slate-500 text-xs">—</span>}
                   </td>
                   <td className="py-2 px-3 text-center">
                     {verdict && signs ? (
-                      <span className={`text-base ${becomesLaw ? 'text-green-400' : 'text-red-400'}`}>
+                      <span className={`text-base ${becomesLaw ? 'text-green-600' : 'text-red-500'}`}>
                         {becomesLaw ? '✓' : '✗'}
                       </span>
-                    ) : <span className="text-slate-600 text-xs">—</span>}
+                    ) : <span className="text-slate-500 text-xs">—</span>}
                   </td>
                 </tr>
               );

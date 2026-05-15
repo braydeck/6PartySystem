@@ -19,7 +19,7 @@ export function BlendCard({ profile }: Props) {
       <div className="px-5 py-4" style={{ backgroundColor: color + '22' }}>
         <div className="flex items-start justify-between gap-2">
           <div>
-            <div className="text-lg font-bold text-white font-mono">{profile.code}</div>
+            <div className="text-lg font-bold text-slate-900 font-mono">{profile.code}</div>
             <div className="flex gap-1 mt-1">
               {parts.map(p => (
                 <span
@@ -57,7 +57,7 @@ export function BlendCard({ profile }: Props) {
             <div className="text-xs text-slate-500 uppercase tracking-widest mb-2">Key Positions</div>
             <ul className="space-y-1">
               {profile.keyPositions.map((pos, i) => (
-                <li key={i} className="text-xs text-slate-300 flex items-start gap-1.5">
+                <li key={i} className="text-xs text-slate-700 flex items-start gap-1.5">
                   <span
                     className="mt-0.5 shrink-0"
                     style={{ color: pos.direction === 'supports' ? '#22c55e' : '#ef4444' }}

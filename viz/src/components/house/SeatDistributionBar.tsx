@@ -10,7 +10,7 @@ interface Props {
 }
 
 export function SeatDistributionBar({ seats: rawSeats }: Props) {
-  const seats = [...rawSeats].sort((a, b) => b.national - a.national);
+  const seats = [...rawSeats].filter(s => s.national > 0).sort((a, b) => b.national - a.national);
 
   const partyCode = (s: HouseSeat) => CLUSTER_TO_PARTY[String(s.party)] ?? 'CTR';
   const color = (s: HouseSeat) => PARTY_COLORS[partyCode(s)] ?? '#6b7280';
@@ -27,11 +27,11 @@ export function SeatDistributionBar({ seats: rawSeats }: Props) {
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (!active || !payload?.length) return null;
     return (
-      <div className="bg-slate-800 border border-slate-600 rounded px-3 py-2 text-sm">
+      <div className="bg-white border border-slate-200 rounded px-3 py-2 text-sm text-slate-900">
         <div className="font-semibold mb-1">{label}</div>
         {payload.map((p: any) => (
           <div key={p.name} className="flex justify-between gap-4">
-            <span className="text-slate-400">{p.name}:</span>
+            <span className="text-slate-500">{p.name}:</span>
             <span style={{ color: p.fill }}>{p.value} seats</span>
           </div>
         ))}
@@ -50,7 +50,7 @@ export function SeatDistributionBar({ seats: rawSeats }: Props) {
         <XAxis
           type="number"
           tick={{ fill: '#94a3b8', fontSize: 11 }}
-          axisLine={{ stroke: '#334155' }}
+          axisLine={{ stroke: '#e2e8f0' }}
         />
         <YAxis
           type="category"

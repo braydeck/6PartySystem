@@ -7,12 +7,16 @@ import { PartiesTab } from './tabs/PartiesTab';
 import { BlendedPartiesTab } from './tabs/BlendedPartiesTab';
 import { PresidentialTab } from './tabs/PresidentialTab';
 import { LegislationTab } from './tabs/LegislationTab';
+import { CompareTab } from './tabs/CompareTab';
 
 import primaryData from './data/primary.json';
 import primaryStateWinnersData from './data/primaryStateWinners.json';
 import presidentialElectionData from './data/presidentialElection.json';
 import presidentialElectionPureData from './data/presidentialElectionPure.json';
 import primarySankeyData from './data/primarySankey.json';
+import primaryRawData from './data/primaryRaw.json';
+import primaryStateWinnersRawData from './data/primaryStateWinnersRaw.json';
+import primarySankeyRawData from './data/primarySankeyRaw.json';
 import senateCondorcetData from './data/senateCondorcet.json';
 import senateIRVData from './data/senateIRV.json';
 import senateCondorcetPureData from './data/senateCondorcetPure.json';
@@ -36,10 +40,11 @@ import type {
 
 const TABS = [
   { id: 'primary',        label: 'Presidential Primary' },
-  { id: 'presidential',   label: 'Presidential Election' },
+  { id: 'presidential',   label: 'Presidential General' },
   { id: 'senate',         label: 'Senate' },
   { id: 'house',          label: 'House' },
   { id: 'legislation',    label: 'Legislation' },
+  { id: 'compare',        label: 'Compare' },
   { id: 'blends',         label: 'Blended Parties' },
   { id: 'parties',        label: 'Parties' },
   { id: 'quiz',           label: 'Who Are You?' },
@@ -51,11 +56,11 @@ export default function App() {
   const [tab, setTab] = useState<TabId>('primary');
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-200">
-      <header className="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-20">
+    <div className="min-h-screen bg-slate-50 text-slate-800">
+      <header className="border-b border-slate-200 bg-white/90 backdrop-blur sticky top-0 z-20">
         <div className="max-w-7xl mx-auto px-4 py-3">
           <div className="flex items-center gap-3 mb-3">
-            <div className="text-xl font-bold text-white">STV 2028</div>
+            <div className="text-xl font-bold text-slate-900">STV 2028</div>
             <div className="text-sm text-slate-500">Proportional Democracy Simulation</div>
           </div>
           <nav className="flex gap-1 overflow-x-auto pb-px">
@@ -65,8 +70,8 @@ export default function App() {
                 onClick={() => setTab(t.id)}
                 className={`px-4 py-1.5 rounded text-sm font-medium whitespace-nowrap transition-colors ${
                   tab === t.id
-                    ? 'bg-slate-700 text-white'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                    ? 'bg-slate-200 text-slate-900'
+                    : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100'
                 }`}
               >
                 {t.label}
@@ -79,15 +84,23 @@ export default function App() {
       <main className="max-w-7xl mx-auto px-4 py-8">
         {tab === 'primary' && (
           <PrimaryTab
-            data={primaryData as unknown as PrimaryData}
-            stateWinners={primaryStateWinnersData as unknown as Record<string, PrimaryStateWinner>}
-            sankey={primarySankeyData as unknown as PrimarySankeyData}
+            blended={primaryData as unknown as PrimaryData}
+            blendedStateWinners={primaryStateWinnersData as unknown as Record<string, PrimaryStateWinner>}
+            blendedSankey={primarySankeyData as unknown as PrimarySankeyData}
+            raw={primaryRawData as unknown as PrimaryData}
+            rawStateWinners={primaryStateWinnersRawData as unknown as Record<string, PrimaryStateWinner>}
+            rawSankey={primarySankeyRawData as unknown as PrimarySankeyData}
+            blendProfiles={blendProfilesData as unknown as BlendProfile[]}
+            clusters={clusterProfilesData as ClusterProfile[]}
           />
         )}
         {tab === 'presidential' && (
           <PresidentialTab
             mixed={presidentialElectionData as unknown as PresidentialElection}
             pure={presidentialElectionPureData as unknown as PresidentialElection}
+            clusters={clusterProfilesData as ClusterProfile[]}
+            blendProfiles={blendProfilesData as unknown as BlendProfile[]}
+            senateVotes={senateVoteModelData as VoteModelRow[]}
           />
         )}
         {tab === 'senate' && (
@@ -97,6 +110,7 @@ export default function App() {
             condorcetPure={senateCondorcetPureData as SenateSeat[]}
             irvPure={senateIRVPureData as SenateSeat[]}
             voteModel={senateVoteModelData as VoteModelRow[]}
+            blendProfiles={blendProfilesData as unknown as BlendProfile[]}
           />
         )}
         {tab === 'house' && (
@@ -106,12 +120,19 @@ export default function App() {
             transfers={transferMatrixData as unknown as TransferMatrix}
             voteModel={houseVoteModelData as VoteModelRow[]}
             stateMap={houseStateMapData as unknown as Record<string, HouseStateEntry>}
+            clusters={clusterProfilesData as ClusterProfile[]}
           />
         )}
         {tab === 'legislation' && (
           <LegislationTab
             houseVotes={houseVoteModelData as VoteModelRow[]}
             senateVotes={senateVoteModelData as VoteModelRow[]}
+          />
+        )}
+        {tab === 'compare' && (
+          <CompareTab
+            clusters={clusterProfilesData as ClusterProfile[]}
+            blendProfiles={blendProfilesData as unknown as BlendProfile[]}
           />
         )}
         {tab === 'blends' && (
@@ -129,7 +150,7 @@ export default function App() {
         )}
       </main>
 
-      <footer className="border-t border-slate-800 mt-12 py-6 text-center text-xs text-slate-600">
+      <footer className="border-t border-slate-200 mt-12 py-6 text-center text-xs text-slate-500">
         Built on CES 2024 survey data · 10-party STV simulation · 873 House seats · 50 Senate seats
       </footer>
     </div>

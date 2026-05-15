@@ -34,7 +34,7 @@ export function QuizResult({ cluster, topScore, secondScore, houseVotes, onRetak
         <div className="px-6 py-4" style={{ backgroundColor: color + '22' }}>
           <div className="text-xs uppercase tracking-widest mb-1" style={{ color }}>Your Match</div>
           <div className="text-2xl font-bold" style={{ color }}>{cluster.partyName}</div>
-          <div className="text-sm text-slate-400 mt-1">
+          <div className="text-sm text-slate-500 mt-1">
             {cluster.seatsHouse} House seats
           </div>
           {isBlend && (
@@ -55,7 +55,7 @@ export function QuizResult({ cluster, topScore, secondScore, houseVotes, onRetak
           <div className="text-sm font-semibold text-green-400 mb-2">Strongly supports:</div>
           <ul className="space-y-1">
             {strongSupport.map(r => (
-              <li key={r.variable} className="text-sm text-slate-300 flex items-start gap-2">
+              <li key={r.variable} className="text-sm text-slate-700 flex items-start gap-2">
                 <span className="text-green-500 mt-0.5">✓</span>
                 {r.question}
               </li>
@@ -69,7 +69,7 @@ export function QuizResult({ cluster, topScore, secondScore, houseVotes, onRetak
           <div className="text-sm font-semibold text-red-400 mb-2">Strongly opposes:</div>
           <ul className="space-y-1">
             {strongOppose.map(r => (
-              <li key={r.variable} className="text-sm text-slate-300 flex items-start gap-2">
+              <li key={r.variable} className="text-sm text-slate-700 flex items-start gap-2">
                 <span className="text-red-500 mt-0.5">✗</span>
                 {r.question}
               </li>
@@ -80,7 +80,7 @@ export function QuizResult({ cluster, topScore, secondScore, houseVotes, onRetak
 
       <button
         onClick={onRetake}
-        className="w-full py-3 rounded-lg bg-slate-700 hover:bg-slate-600 text-slate-300 font-medium transition-colors"
+        className="w-full py-3 rounded-lg bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium transition-colors"
       >
         Retake Quiz
       </button>

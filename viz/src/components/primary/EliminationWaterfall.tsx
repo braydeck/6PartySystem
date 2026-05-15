@@ -20,9 +20,10 @@ export function EliminationWaterfall({ candidates, stage, quota }: Props) {
         code: c.code,
         votePct: s?.votePct ?? 0,
         status: s?.status ?? 'previously_eliminated',
+        F5: c.F5,
       };
     })
-    .sort((a, b) => b.votePct - a.votePct);
+    .sort((a, b) => a.F5 - b.F5);
 
   return (
     <ResponsiveContainer width="100%" height={420}>
@@ -36,7 +37,7 @@ export function EliminationWaterfall({ candidates, stage, quota }: Props) {
           domain={[0, 'auto']}
           tickFormatter={v => `${v.toFixed(1)}%`}
           tick={{ fill: '#94a3b8', fontSize: 11 }}
-          axisLine={{ stroke: '#334155' }}
+          axisLine={{ stroke: '#e2e8f0' }}
         />
         <YAxis
           type="category"
@@ -48,8 +49,8 @@ export function EliminationWaterfall({ candidates, stage, quota }: Props) {
         />
         <Tooltip
           formatter={(v) => [`${Number(v).toFixed(2)}%`, 'Vote Share']}
-          contentStyle={{ background: '#1e293b', border: '1px solid #334155', borderRadius: 6 }}
-          labelStyle={{ color: '#f1f5f9' }}
+          contentStyle={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: 6 }}
+          labelStyle={{ color: '#0f172a' }}
         />
         <ReferenceLine
           x={quota}

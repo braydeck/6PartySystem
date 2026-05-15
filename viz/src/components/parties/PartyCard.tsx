@@ -28,7 +28,7 @@ export function PartyCard({ cluster }: Props) {
             >
               {cluster.party}
             </div>
-            <div className="text-lg font-bold text-white">{cluster.partyName}</div>
+            <div className="text-lg font-bold text-slate-900">{cluster.partyName}</div>
           </div>
           <div
             className="text-xl font-bold rounded px-2 py-1"
@@ -52,7 +52,7 @@ export function PartyCard({ cluster }: Props) {
             <div className="text-xs text-slate-500 uppercase tracking-widest mb-2">Strongest Positions</div>
             <ul className="space-y-1">
               {positions.map((pos, i) => (
-                <li key={i} className="text-xs text-slate-300 flex items-start gap-1.5">
+                <li key={i} className="text-xs text-slate-700 flex items-start gap-1.5">
                   <span
                     className="mt-0.5 shrink-0"
                     style={{ color: pos.direction === 'supports' ? '#22c55e' : '#ef4444' }}
@@ -87,7 +87,7 @@ export function PartyCard({ cluster }: Props) {
 
 function StatPill({ label, value, color }: { label: string; value: number; color: string }) {
   return (
-    <div className="text-center rounded bg-slate-800 py-2 px-1">
+    <div className="text-center rounded bg-slate-100 py-2 px-1">
       <div className="text-xs text-slate-500 mb-0.5">{label}</div>
       <div className="text-sm font-semibold" style={{ color }}>
         {Math.round(value)}%
